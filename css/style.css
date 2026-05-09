@@ -596,60 +596,169 @@ body {
 }
 
 /* ===== MOBILE / iPhone PWA ===== */
+
+/* Prevent iOS text size adjustment and double-tap zoom */
+html {
+  -webkit-text-size-adjust: 100%;
+  touch-action: manipulation;
+}
+
+/* Input must be >= 16px to prevent iOS auto-zoom on focus */
+input, select, textarea { font-size: 16px !important; }
+
+/* Remove tap highlight flash on buttons */
+button, a, .module-card, .choice-btn, .sidebar-item {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Touch active feedback (replaces hover on mobile) */
+.btn:active         { opacity: 0.75; transform: scale(0.97); }
+.choice-btn:active  { opacity: 0.75; transform: scale(0.98); }
+.module-card:active { transform: scale(0.98); opacity: 0.9; }
+
 @media (max-width: 480px) {
+  /* ── Navbar ── */
   .navbar {
     padding: 0 10px;
     height: 52px;
   }
-
   .navbar .logo span { display: none; }
-
   .nav-links {
-    gap: 2px;
-    margin-left: 8px;
+    gap: 1px;
+    margin-left: 6px;
   }
-
   .nav-links li a {
-    padding: 5px 9px;
-    font-size: 0.78rem;
+    padding: 5px 8px;
+    font-size: 0.75rem;
+    border-radius: 5px;
   }
 
+  /* ── Layout ── */
   .container {
-    padding: 14px 10px 70px;
+    padding: 12px 10px 80px;
   }
 
+  /* ── Dashboard ── */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .stat-card { padding: 14px 10px; }
+  .stat-card .stat-value { font-size: 1.6rem; }
+  .module-grid { grid-template-columns: 1fr; gap: 10px; }
+  .module-card { padding: 16px; }
+
+  /* ── Quiz header ── */
+  .quiz-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .quiz-header h2 { font-size: 1.1rem; }
+  .quiz-controls { flex-wrap: wrap; gap: 6px; }
+  .stopwatch { font-size: 1rem; padding: 5px 12px; }
+
+  /* ── Difficulty / category bar ── */
+  .difficulty-bar { flex-wrap: wrap; gap: 5px; margin-bottom: 12px; }
+  .diff-btn { padding: 7px 12px; font-size: 0.82rem; min-height: 40px; }
+
+  /* ── Question card ── */
   .question-card {
-    padding: 20px 16px;
+    padding: 20px 14px;
+    text-align: left;
   }
-
   .question-text {
-    font-size: 1.35rem;
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+    line-height: 1.5;
   }
+  .question-text.small { font-size: 1rem; }
 
+  /* ── Multiple choice: one column on mobile ── */
+  .choices {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    max-width: 100%;
+  }
   .choice-btn {
-    padding: 14px 12px;
-    font-size: 0.95rem;
-    min-height: 48px; /* iOS touch target minimum */
+    padding: 15px 14px;
+    font-size: 0.97rem;
+    min-height: 50px; /* iOS touch target */
+    text-align: left;
   }
 
-  .btn {
-    min-height: 44px;
-    font-size: 0.9rem;
+  /* ── Numeric input ── */
+  .answer-input-wrap {
+    flex-direction: column;
+    gap: 10px;
+    max-width: 100%;
+  }
+  .answer-input {
+    width: 100%;
+    font-size: 1.4rem !important;
+    padding: 14px 16px;
+    text-align: center;
+    border-radius: 10px;
+  }
+  .answer-input-wrap .btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
+    min-height: 50px;
   }
 
-  .module-card {
-    padding: 18px;
-  }
+  /* ── Buttons ── */
+  .btn { min-height: 44px; font-size: 0.9rem; }
+  .btn-sm { min-height: 38px; padding: 7px 14px; }
+  .btn-group { gap: 8px; }
 
+  /* ── Explanation modal ── */
+  .modal-overlay { padding: 8px; align-items: flex-end; }
   .modal {
-    padding: 20px;
-    max-height: 92vh;
+    padding: 20px 16px;
+    max-height: 88vh;
+    border-radius: 16px 16px 0 0;
   }
+  .modal h3 { font-size: 1.2rem; }
+  .modal .result-icon { font-size: 2rem; }
+  .explanation-block { padding: 12px; font-size: 0.9rem; }
+
+  /* ── Question browser (sidebar → top bar on mobile) ── */
+  .browser-layout {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .question-sidebar {
+    max-height: 22vh;
+    position: static;
+    border-radius: 8px;
+  }
+  .sidebar-item { padding: 7px 10px; }
+  .sidebar-text { font-size: 0.78rem; }
+
+  /* ── Browser nav ── */
+  .browser-nav {
+    margin-top: 10px;
+    gap: 6px;
+  }
+  .browser-nav .btn { flex: 1; justify-content: center; }
+
+  /* ── Mistakes table: scroll horizontal ── */
+  .mistakes-table { font-size: 0.8rem; display: block; overflow-x: auto; }
+
+  /* ── Table selector ── */
+  .table-btn { width: 38px; height: 38px; font-size: 0.85rem; }
 }
 
-/* Safe area for iPhone notch / home indicator */
-@supports (padding-bottom: env(safe-area-inset-bottom)) {
+/* Safe area: iPhone notch + home indicator */
+@supports (padding: env(safe-area-inset-bottom)) {
   .container {
-    padding-bottom: calc(60px + env(safe-area-inset-bottom));
+    padding-bottom: calc(80px + env(safe-area-inset-bottom));
+  }
+  .navbar {
+    padding-left:  max(10px, env(safe-area-inset-left));
+    padding-right: max(10px, env(safe-area-inset-right));
   }
 }

@@ -403,12 +403,16 @@ const App = (() => {
         <div class="question-card">
           <div class="question-text">${esc(q.text)}</div>
           <div class="answer-input-wrap">
-            <input type="text" class="answer-input" id="answer-input" autocomplete="off" autofocus
+            <input type="text" inputmode="decimal" class="answer-input" id="answer-input"
+              autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
               onkeydown="if(event.key==='Enter')App.submitInput()">
             <button class="btn btn-primary" onclick="App.submitInput()">Submit</button>
           </div>
         </div>`;
-      setTimeout(() => { const inp = getEl('answer-input'); if (inp) inp.focus(); }, 50);
+      // Only autofocus on non-touch devices to avoid unwanted keyboard popup on mobile
+      if (!('ontouchstart' in window)) {
+        setTimeout(() => { const inp = getEl('answer-input'); if (inp) inp.focus(); }, 50);
+      }
     }
   }
 

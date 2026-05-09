@@ -1,0 +1,18 @@
+{
+  "wordProblems": [
+    "distanceRateTime.json",
+    "geometry.json",
+    "mixture.json",
+    "numberProperties.json",
+    "probability.json",
+    "profitLoss.json",
+    "workRate.json"
+  ],
+  "brainTeasers": [
+    "balanceScale.json",
+    "counting.json",
+    "lateral.json",
+    "logic.json",
+    "numberPattern.json"
+  ]
+}

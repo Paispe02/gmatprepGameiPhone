@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GMAT Math Trainer</title>
+  <!-- ===== PWA / iPhone ===== -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#2d5be3">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="GMAT Math">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js');
+      });
+    }
+  </script>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="logo">GMAT<span> Math Trainer</span></div>
+    <ul class="nav-links">
+      <li><a href="#" data-view="dashboard" class="active">Dashboard</a></li>
+      <li><a href="#" data-view="multiplication">Tables</a></li>
+      <li><a href="#" data-view="arithmetic">Arithmetic</a></li>
+      <li><a href="#" data-view="percentages">Percentages</a></li>
+      <li><a href="#" data-view="wordProblems">Word Problems</a></li>
+      <li><a href="#" data-view="brainTeasers">Brain Teasers</a></li>
+      <li><a href="#" data-view="tricks">Tricks</a></li>
+      <li><a href="#" data-view="review">Review</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== MAIN CONTAINER ===== -->
+  <div class="container">
+
+    <!-- Dashboard -->
+    <div id="view-dashboard" class="view active">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Multiplication -->
+    <div id="view-multiplication" class="view">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Arithmetic -->
+    <div id="view-arithmetic" class="view">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Percentages -->
+    <div id="view-percentages" class="view">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Word Problems -->
+    <div id="view-wordProblems" class="view">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Brain Teasers -->
+    <div id="view-brainTeasers" class="view">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Tricks Reference -->
+    <div id="view-tricks" class="view">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Review Mistakes -->
+    <div id="view-review" class="view">
+      <!-- rendered by JS -->
+    </div>
+
+  </div>
+
+  <!-- ===== EXPLANATION MODAL ===== -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" id="modal-content">
+      <!-- rendered by JS -->
+    </div>
+  </div>
+
+  <!-- ===== SCRIPTS (order matters) ===== -->
+  <script src="js/stats.js"></script>
+  <script src="js/tricks.js"></script>
+  <script src="js/questions-data.js"></script>
+  <script src="js/questions.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

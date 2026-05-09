@@ -1,0 +1,377 @@
+[
+  {
+    "id": "lat1",
+    "category": "lateral",
+    "difficulty": "easy",
+    "text": "A woman shoots her husband, holds him underwater for 5 minutes. Then they go to dinner together. How is this possible?",
+    "choices": [
+      "She didn't actually shoot him",
+      "It's a trick question",
+      "She photographed him with a camera",
+      "She is a superhero",
+      "Time travel"
+    ],
+    "correct": 2,
+    "explanation": "\"Shoot\" = take a photograph! She shot (photographed) her husband, then developed the photo in a darkroom (holding it under water/chemicals). Then they went to dinner. No violence involved!"
+  },
+  {
+    "id": "lat2",
+    "category": "lateral",
+    "difficulty": "medium",
+    "text": "A man pushes his car to a hotel and tells the owner he's bankrupt. Why?",
+    "choices": [
+      "He ran out of gas",
+      "He is playing Monopoly",
+      "His car broke down",
+      "He was in an accident",
+      "He lost gambling"
+    ],
+    "correct": 1,
+    "explanation": "He's playing Monopoly! In the board game, players move tokens (including a car), land on properties with hotels, and can go bankrupt. The \"car\" is his game piece, and the \"hotel\" is on the board."
+  },
+  {
+    "id": "lat3",
+    "category": "lateral",
+    "difficulty": "medium",
+    "text": "How can you throw a ball as hard as you can and have it come back to you without bouncing off anything?",
+    "choices": [
+      "Use a boomerang",
+      "Throw it straight up",
+      "Throw it backward",
+      "Use a string",
+      "Use a rubber band"
+    ],
+    "correct": 1,
+    "explanation": "Throw the ball straight up! Gravity will bring it back down to you. No bouncing needed — it simply decelerates, stops, and falls back."
+  },
+  {
+    "id": "lat4",
+    "category": "lateral",
+    "difficulty": "hard",
+    "text": "A girl has as many brothers as sisters. Each brother has twice as many sisters as brothers. How many boys and girls are in the family?",
+    "choices": [
+      "3 boys, 3 girls",
+      "4 boys, 3 girls",
+      "2 boys, 4 girls",
+      "3 boys, 4 girls",
+      "2 boys, 3 girls"
+    ],
+    "correct": 3,
+    "explanation": "Let g = girls, b = boys.\n\nFrom the girl's perspective: brothers = b, sisters = g−1.\nShe has equal brothers and sisters: b = g − 1.\n\nFrom a brother's perspective: sisters = g, brothers = b−1.\nHe has twice as many sisters as brothers: g = 2(b − 1).\n\nSubstitute: g = 2(g−1−1) = 2g − 4 → g = 4.\nThen b = 4 − 1 = 3.\n\nAnswer: 3 boys, 4 girls.\nCheck: Girl sees 3 brothers, 3 sisters ✓. Boy sees 4 sisters, 2 brothers, and 4 = 2×2 ✓."
+  },
+  {
+    "id": "lat5",
+    "category": "lateral",
+    "difficulty": "easy",
+    "text": "A man enters a dark room with a match, an oil lamp, and a candle. What does he light first?",
+    "choices": [
+      "The oil lamp",
+      "The candle",
+      "The match",
+      "All simultaneously",
+      "He waits for help"
+    ],
+    "correct": 2,
+    "explanation": "He lights the match first! You need fire to light anything else, and the match is the source of that initial flame. This is a logic puzzle disguised as a riddle."
+  },
+  {
+    "id": "lat6",
+    "category": "lateral",
+    "difficulty": "easy",
+    "text": "What gets wetter the more it dries?",
+    "choices": [
+      "A sponge",
+      "Water",
+      "A towel",
+      "The sun",
+      "A fish"
+    ],
+    "correct": 2,
+    "explanation": "A towel! As it dries things (absorbs water), it gets wetter."
+  },
+  {
+    "id": "lat7",
+    "category": "lateral",
+    "difficulty": "easy",
+    "text": "If you have a bowl with six apples and you take away four, how many do you have?",
+    "choices": [
+      "2",
+      "4",
+      "6",
+      "0",
+      "10"
+    ],
+    "correct": 1,
+    "explanation": "You have 4 — because YOU took 4 apples. The bowl has 2, but you have 4."
+  },
+  {
+    "id": "lat8",
+    "category": "lateral",
+    "difficulty": "easy",
+    "text": "A rooster sits on the peak of a roof. It lays an egg. Which way does the egg roll?",
+    "choices": [
+      "Left",
+      "Right",
+      "Both sides equally",
+      "Toward the steeper side",
+      "Roosters don't lay eggs"
+    ],
+    "correct": 4,
+    "explanation": "Roosters don't lay eggs — only hens do! The question is a trick."
+  },
+  {
+    "id": "lat9",
+    "category": "lateral",
+    "difficulty": "easy",
+    "text": "What has hands but can't clap?",
+    "choices": [
+      "A baby",
+      "A statue",
+      "A clock",
+      "A puppet",
+      "A robot"
+    ],
+    "correct": 2,
+    "explanation": "A clock has hands (hour and minute hands) but cannot clap."
+  },
+  {
+    "id": "lat10",
+    "category": "lateral",
+    "difficulty": "easy",
+    "text": "Before Mt. Everest was discovered, what was the tallest mountain in the world?",
+    "choices": [
+      "K2",
+      "Kangchenjunga",
+      "Mt. Everest",
+      "Denali",
+      "Nobody knows"
+    ],
+    "correct": 2,
+    "explanation": "Mt. Everest was still the tallest mountain — it just hadn't been discovered yet! Discovery doesn't change physical reality."
+  },
+  {
+    "id": "lat11",
+    "category": "lateral",
+    "difficulty": "medium",
+    "text": "A man builds a house with all four sides facing south. A bear walks past. What color is the bear?",
+    "choices": [
+      "Brown",
+      "Black",
+      "White",
+      "Cannot determine",
+      "No bear exists"
+    ],
+    "correct": 2,
+    "explanation": "If all sides face south, the house must be at the North Pole. Bears at the North Pole are polar bears → white."
+  },
+  {
+    "id": "lat12",
+    "category": "lateral",
+    "difficulty": "medium",
+    "text": "How many months have 28 days?",
+    "choices": [
+      "1",
+      "2",
+      "6",
+      "11",
+      "12"
+    ],
+    "correct": 4,
+    "explanation": "All 12 months have at least 28 days! The question doesn't ask which months have ONLY 28 days."
+  },
+  {
+    "id": "lat13",
+    "category": "lateral",
+    "difficulty": "medium",
+    "text": "A plane crashes exactly on the border of the US and Canada. Where do you bury the survivors?",
+    "choices": [
+      "In the US",
+      "In Canada",
+      "On the border",
+      "In their home countries",
+      "You don't bury survivors"
+    ],
+    "correct": 4,
+    "explanation": "You don't bury SURVIVORS — they're alive! The question tries to distract you with the border detail."
+  },
+  {
+    "id": "lat14",
+    "category": "lateral",
+    "difficulty": "medium",
+    "text": "Is it legal for a man to marry his widow's sister?",
+    "choices": [
+      "Yes, in all countries",
+      "No, it's illegal",
+      "Depends on the country",
+      "He's dead, so he can't",
+      "Only with special permission"
+    ],
+    "correct": 3,
+    "explanation": "If a man has a widow, he's dead! Dead men can't marry anyone."
+  },
+  {
+    "id": "lat15",
+    "category": "lateral",
+    "difficulty": "medium",
+    "text": "What can you hold in your right hand but never in your left?",
+    "choices": [
+      "A sword",
+      "A pen",
+      "Your left elbow",
+      "A heavy weight",
+      "Nothing"
+    ],
+    "correct": 2,
+    "explanation": "Your left elbow! You can hold it in your right hand but physically cannot hold it in your left hand."
+  },
+  {
+    "id": "lat16",
+    "category": "lateral",
+    "difficulty": "hard",
+    "text": "A windowless room has 3 light bulbs. Outside are 3 switches, one per bulb. You may enter the room only once. How do you determine which switch controls which bulb?",
+    "choices": [
+      "Turn all on",
+      "Turn one on for a while, then off; turn second on; enter",
+      "Try each switch one at a time",
+      "Impossible",
+      "Peek through keyhole"
+    ],
+    "correct": 1,
+    "explanation": "Turn switch 1 ON for 10 minutes, then OFF. Turn switch 2 ON. Enter.\n• Hot but off bulb → switch 1\n• Lit bulb → switch 2\n• Cold, off bulb → switch 3\n\nUses heat as extra information channel!"
+  },
+  {
+    "id": "lat17",
+    "category": "lateral",
+    "difficulty": "hard",
+    "text": "You're in a room with no windows, doors, or any way out. You have a table and a mirror. How do you escape?",
+    "choices": [
+      "Break the mirror",
+      "Break the table",
+      "Look in mirror, see what you saw, use the saw to cut table in half, two halves make a whole, escape through the hole",
+      "Wait for rescue",
+      "Stack table on mirror"
+    ],
+    "correct": 2,
+    "explanation": "Look in the mirror → you see what you SAW → take the saw → cut the table in half → two halves make a whole (hole) → crawl through the hole.\n\nThis is a classic play on words: \"saw\", \"whole/hole\"."
+  },
+  {
+    "id": "lat18",
+    "category": "lateral",
+    "difficulty": "hard",
+    "text": "I speak without a mouth and hear without ears. I have no body, but I come alive with the wind. What am I?",
+    "choices": [
+      "A ghost",
+      "A radio",
+      "An echo",
+      "A flag",
+      "A shadow"
+    ],
+    "correct": 2,
+    "explanation": "An echo! It \"speaks\" (repeats sounds) without a mouth, \"hears\" (responds to sound) without ears, has no physical body, and travels through the air."
+  },
+  {
+    "id": "lat19",
+    "category": "lateral",
+    "difficulty": "medium",
+    "text": "What disappears the moment you say its name?",
+    "choices": [
+      "A secret",
+      "Silence",
+      "A dream",
+      "Darkness",
+      "Time"
+    ],
+    "correct": 1,
+    "explanation": "Silence! The moment you say the word \"silence\" (or anything), the silence is broken."
+  },
+  {
+    "id": "lat20",
+    "category": "lateral",
+    "difficulty": "hard",
+    "text": "A man walks into a bar and asks for a glass of water. The bartender pulls out a gun. The man says \"thank you\" and leaves. Why?",
+    "choices": [
+      "The man is a criminal",
+      "The bartender is crazy",
+      "The man had hiccups — the scare cured them",
+      "The gun is a water gun",
+      "It was a toy gun"
+    ],
+    "correct": 2,
+    "explanation": "The man had hiccups! He asked for water to cure them. The bartender recognized this and scared him with the gun instead — which also cures hiccups. The man said \"thank you\" because it worked!"
+  },
+  {
+    "id": "lat21",
+    "category": "lateral",
+    "difficulty": "easy",
+    "text": "How far can a dog run into a forest?",
+    "choices": [
+      "Until it gets tired",
+      "All the way through",
+      "Halfway",
+      "It depends on the forest",
+      "Dogs don't run in forests"
+    ],
+    "correct": 2,
+    "explanation": "Halfway! After that, the dog is running OUT of the forest, not into it."
+  },
+  {
+    "id": "lat22",
+    "category": "lateral",
+    "difficulty": "easy",
+    "text": "If there are 3 apples and you take away 2, how many apples do YOU have?",
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "0",
+      "5"
+    ],
+    "correct": 1,
+    "explanation": "You have 2 apples — the ones you took!"
+  },
+  {
+    "id": "lat23",
+    "category": "lateral",
+    "difficulty": "medium",
+    "text": "What occurs once in a minute, twice in a moment, but never in a thousand years?",
+    "choices": [
+      "Time",
+      "The letter M",
+      "An eclipse",
+      "A heartbeat",
+      "A breath"
+    ],
+    "correct": 1,
+    "explanation": "The letter \"M\"! Minute has one M, moment has two Ms, and \"a thousand years\" has zero Ms."
+  },
+  {
+    "id": "lat24",
+    "category": "lateral",
+    "difficulty": "hard",
+    "text": "I am not alive, but I grow; I don't have lungs, but I need air; I don't have a mouth, but water kills me. What am I?",
+    "choices": [
+      "A plant",
+      "A shadow",
+      "Fire",
+      "A cloud",
+      "A crystal"
+    ],
+    "correct": 2,
+    "explanation": "Fire! It \"grows\" (spreads), needs air (oxygen) to burn, and water extinguishes it."
+  },
+  {
+    "id": "lat25",
+    "category": "lateral",
+    "difficulty": "medium",
+    "text": "A man rode into town on Friday, stayed 3 days, and left on Friday. How?",
+    "choices": [
+      "Time travel",
+      "He miscounted",
+      "His horse is named Friday",
+      "He left a different week",
+      "He arrived on a Friday and left on a Monday called Friday"
+    ],
+    "correct": 2,
+    "explanation": "His horse's name is Friday! He rode INTO town on Friday (the horse), stayed 3 days, and rode out on Friday (the horse)."
+  }
+]

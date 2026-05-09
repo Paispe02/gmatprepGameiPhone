@@ -1,0 +1,272 @@
+[
+  {
+    "id": "log1",
+    "category": "logic",
+    "difficulty": "medium",
+    "text": "A man is looking at a portrait and says: \"Brothers and sisters I have none, but this man's father is my father's son.\" Who is the man in the portrait?",
+    "choices": [
+      "His son",
+      "His father",
+      "His brother",
+      "Himself",
+      "His uncle"
+    ],
+    "correct": 0,
+    "explanation": "\"My father's son\" — since the speaker has no brothers, this must be the speaker himself.\nSo: \"This man's father is ME.\"\nTherefore the man in the portrait is his son."
+  },
+  {
+    "id": "log2",
+    "category": "logic",
+    "difficulty": "hard",
+    "text": "There are 3 doors: behind one is a car, behind two are goats. You pick door 1. The host opens door 3 (showing a goat) and offers you to switch to door 2. Should you switch?",
+    "choices": [
+      "No, staying has 50% chance",
+      "Yes, switching has a 2/3 chance",
+      "Doesn't matter, both are 50%",
+      "No, switching reduces chances",
+      "Yes, but same odds"
+    ],
+    "correct": 1,
+    "explanation": "This is the Monty Hall problem.\n\nInitial pick: 1/3 chance of car, 2/3 chance of goat.\nThe host always reveals a goat from the remaining doors.\n\nIf you stay: you win only if your initial pick was right (1/3).\nIf you switch: you win if your initial pick was wrong (2/3).\n\nAlways switch! It doubles your probability from 1/3 to 2/3.\n\nIntuition: Imagine 100 doors. You pick 1. Host opens 98 goat doors. Would you switch to the remaining one? Of course — 99/100 chance!"
+  },
+  {
+    "id": "log3",
+    "category": "logic",
+    "difficulty": "hard",
+    "text": "Four people need to cross a bridge at night with one flashlight. The bridge holds 2 people max. Crossing times: A=1min, B=2min, C=5min, D=10min. A pair crosses at the slower person's speed. What is the minimum total crossing time?",
+    "choices": [
+      "17 minutes",
+      "18 minutes",
+      "19 minutes",
+      "20 minutes",
+      "21 minutes"
+    ],
+    "correct": 0,
+    "explanation": "Optimal strategy:\n1. A and B cross → 2 min (total: 2)\n2. A returns → 1 min (total: 3)\n3. C and D cross → 10 min (total: 13)\n4. B returns → 2 min (total: 15)\n5. A and B cross → 2 min (total: 17)\n\nKey insight: Send the two slowest together (step 3) so you only pay the 10-min penalty once, not twice!\n\nNaive strategy (A escorts everyone): 2+1+5+1+10 = 19 min — worse!"
+  },
+  {
+    "id": "log4",
+    "category": "logic",
+    "difficulty": "easy",
+    "text": "If all Bloops are Razzies, and all Razzies are Lazzies, are all Bloops definitely Lazzies?",
+    "choices": [
+      "Yes",
+      "No",
+      "Maybe",
+      "Only some",
+      "Not enough info"
+    ],
+    "correct": 0,
+    "explanation": "Transitive property: Bloops⊂Razzies⊂Lazzies.\nAll Bloops are Razzies, and all Razzies are Lazzies, so all Bloops are Lazzies. This is basic syllogistic logic."
+  },
+  {
+    "id": "log5",
+    "category": "logic",
+    "difficulty": "easy",
+    "text": "A farmer has 17 sheep. All but 9 die. How many sheep are left?",
+    "choices": [
+      "0",
+      "8",
+      "9",
+      "17",
+      "None"
+    ],
+    "correct": 2,
+    "explanation": "\"All but 9 die\" = 9 survive. Answer: 9 sheep.\nCommon mistake: computing 17−9=8."
+  },
+  {
+    "id": "log6",
+    "category": "logic",
+    "difficulty": "easy",
+    "text": "How many times can you subtract 5 from 25?",
+    "choices": [
+      "1",
+      "4",
+      "5",
+      "25",
+      "Infinite"
+    ],
+    "correct": 0,
+    "explanation": "You can subtract 5 from 25 only ONCE. After that, you're subtracting 5 from 20, not from 25!\n25−5=20 (done once from 25). The next time it's 20−5, not 25−5."
+  },
+  {
+    "id": "log7",
+    "category": "logic",
+    "difficulty": "medium",
+    "text": "I have two coins that total 30 cents. One is not a nickel. What are the two coins?",
+    "choices": [
+      "Two dimes and a nickel",
+      "A quarter and a nickel",
+      "Two dimes",
+      "A half-dollar coin",
+      "Cannot be determined"
+    ],
+    "correct": 1,
+    "explanation": "\"One is not a nickel\" — but the OTHER one can be! A quarter (25¢) + a nickel (5¢) = 30¢.\nThe quarter is \"not a nickel.\" The statement is true — it just doesn't say NEITHER is a nickel."
+  },
+  {
+    "id": "log8",
+    "category": "logic",
+    "difficulty": "medium",
+    "text": "Three light switches outside a room control three bulbs inside. You can flip switches as much as you want but can only enter the room once. How do you determine which switch controls which bulb?",
+    "choices": [
+      "Flip all on then off one by one",
+      "Turn switch 1 ON for 10 min, then OFF; switch 2 ON; enter",
+      "Try all combinations",
+      "Ask someone inside",
+      "Impossible with one visit"
+    ],
+    "correct": 1,
+    "explanation": "Turn switch 1 ON for 10 minutes, then turn it OFF.\nTurn switch 2 ON. Enter the room.\n• Hot bulb (off) → switch 1 (was on long enough to heat up)\n• Lit bulb → switch 2 (currently on)\n• Cold, off bulb → switch 3\nUses the property of heat, not just light!"
+  },
+  {
+    "id": "log9",
+    "category": "logic",
+    "difficulty": "medium",
+    "text": "You have a 3-gallon jug and a 5-gallon jug. How do you measure exactly 4 gallons?",
+    "choices": [
+      "Fill 5, pour into 3, empty 3, pour remaining 2 into 3, fill 5, pour into 3 until full",
+      "Fill both jugs",
+      "Fill 5 twice",
+      "Impossible",
+      "Fill 3, pour into 5, fill 3, pour into 5"
+    ],
+    "correct": 0,
+    "explanation": "Step 1: Fill 5-gal jug. Pour into 3-gal jug. (5-gal has 2, 3-gal has 3)\nStep 2: Empty 3-gal jug. Pour 2 gallons from 5-gal into 3-gal. (5-gal has 0, 3-gal has 2)\nStep 3: Fill 5-gal jug. Pour into 3-gal jug until full (needs 1 gallon). (5-gal has 4, 3-gal has 3)\nResult: 5-gallon jug has exactly 4 gallons!"
+  },
+  {
+    "id": "log10",
+    "category": "logic",
+    "difficulty": "hard",
+    "text": "Two fathers and two sons go fishing. They catch exactly 3 fish, each person catches one. How?",
+    "choices": [
+      "One didn't catch any",
+      "There are only 3 people (grandfather, father, son)",
+      "Magic",
+      "They released one",
+      "One fish was very large"
+    ],
+    "correct": 1,
+    "explanation": "There are only 3 people: a grandfather, his son (who is also a father), and his grandson.\nThe middle person is both a son AND a father.\n2 fathers (grandfather + father) and 2 sons (father + grandson) = 3 people, 3 fish."
+  },
+  {
+    "id": "log11",
+    "category": "logic",
+    "difficulty": "hard",
+    "text": "100 people in a line, each wearing a red or blue hat. Each can see all hats in front but not their own. From back to front, each must guess their hat color. They can agree on a strategy beforehand. How many can be guaranteed to guess correctly?",
+    "choices": [
+      "50",
+      "75",
+      "90",
+      "99",
+      "100"
+    ],
+    "correct": 3,
+    "explanation": "Strategy: Person 100 (back) counts the red hats they see.\n• If even → says \"red\". If odd → says \"blue\".\nPerson 99 sees all hats in front, heard person 100, and can deduce their own color.\nPerson 98 heard 99 and 100, deduces theirs, and so on.\n\nResult: Person 100 has a 50/50 chance (sacrifice). Persons 1-99 are guaranteed correct = 99 saved."
+  },
+  {
+    "id": "log12",
+    "category": "logic",
+    "difficulty": "hard",
+    "text": "A king tells 100 prisoners: tomorrow I'll line you up and put a number (1-100, may repeat) on each forehead. Each sees all numbers except their own. Each writes a guess for their own number. If at least ONE guesses correctly, all go free. Strategy?",
+    "choices": [
+      "Everyone guesses 50",
+      "Each guesses the number they see most",
+      "Assign each person an offset — person k guesses (S mod 100 – offset)",
+      "Everyone guesses 1",
+      "Impossible to guarantee"
+    ],
+    "correct": 2,
+    "explanation": "Assign prisoner k the \"responsibility\" for the case where the total sum mod 100 = k.\nPrisoner k calculates the sum of all numbers they see, call it S_others.\nPrisoner k guesses: (k − S_others) mod 100.\n\nIf the actual total S mod 100 = k, then prisoner k's guess = S − S_others = their own number.\nExactly one value of k from 0-99 equals S mod 100, so exactly one prisoner always guesses right!"
+  },
+  {
+    "id": "log13",
+    "category": "logic",
+    "difficulty": "medium",
+    "text": "You're on an island with two tribes: one always tells truth, one always lies. You meet a person at a fork. One road leads to safety. What ONE question guarantees the safe road?",
+    "choices": [
+      "Are you a truth-teller?",
+      "Which road do you live on?",
+      "If I asked the other tribe, which road would they say is safe?",
+      "Is the sky blue?",
+      "Which road is safe?"
+    ],
+    "correct": 2,
+    "explanation": "\"If I asked the other tribe which road is safe, what would they say?\"\nThen take the OPPOSITE road.\n\n• Truth-teller: honestly reports what liar would say (wrong road) → go opposite.\n• Liar: lies about what truth-teller would say (also wrong road) → go opposite.\n\nBoth give you the wrong road, so you always go the other way!"
+  },
+  {
+    "id": "log14",
+    "category": "logic",
+    "difficulty": "hard",
+    "text": "5 pirates divide 100 gold coins. The most senior proposes a split; all vote. If ≥50% approve, it's accepted. Otherwise, that pirate is thrown overboard and the next proposes. What does the most senior pirate propose?",
+    "choices": [
+      "20 each",
+      "98 for himself, 1 each to two others",
+      "50-50 with one other",
+      "Equal split",
+      "All 100 for himself"
+    ],
+    "correct": 1,
+    "explanation": "Work backwards:\n2 pirates: Senior takes 100, votes for self (50% = pass).\n3 pirates: #3 gives 1 coin to #1 (who'd get 0 with 2 pirates). Split: 99,0,1.\n4 pirates: #4 gives 1 to #2. Split: 99,0,1,0.\n5 pirates: #5 needs 3 votes (including self). Gives 1 coin each to pirates who'd get 0 in 4-pirate scenario (#2 and #4). Split: 98,0,1,0,1."
+  },
+  {
+    "id": "log15",
+    "category": "logic",
+    "difficulty": "medium",
+    "text": "A clock loses 10 minutes every hour. It was set correctly at noon. What time does it show when the actual time is 6 PM?",
+    "choices": [
+      "5:00 PM",
+      "5:10 PM",
+      "5:00 PM",
+      "4:50 PM",
+      "5:20 PM"
+    ],
+    "correct": 0,
+    "explanation": "In 6 actual hours, the clock runs 6×50/60 = 5 hours (50 min per actual hour).\nShows: 12:00 + 5 hours = 5:00 PM.\nIt lost 10 min/hr × 6 hrs = 60 minutes total."
+  },
+  {
+    "id": "log16",
+    "category": "logic",
+    "difficulty": "easy",
+    "text": "What is the angle between the hour and minute hands at 3:15?",
+    "choices": [
+      "0°",
+      "7.5°",
+      "15°",
+      "22.5°",
+      "90°"
+    ],
+    "correct": 1,
+    "explanation": "At 3:15:\nMinute hand: at 3 (90° from 12).\nHour hand: at 3 + 15/60 of the way to 4 = 3.25. Angle = 3.25×30° = 97.5°.\nDifference: 97.5°−90° = 7.5°.\n\nCommon mistake: thinking it's 0° because both point near 3."
+  },
+  {
+    "id": "log17",
+    "category": "logic",
+    "difficulty": "medium",
+    "text": "A snail climbs 3 feet up a 30-foot wall each day, but slides back 2 feet each night. How many days to reach the top?",
+    "choices": [
+      "27",
+      "28",
+      "29",
+      "30",
+      "15"
+    ],
+    "correct": 1,
+    "explanation": "Net progress: 1 ft/day. But on the last day, it reaches the top and stops.\nAfter 27 nights: 27 feet. Day 28: climbs 3 → reaches 30 feet. Done!\n28 days.\n\nCommon mistake: 30/1=30 days (ignores the final day's climb without sliding back)."
+  },
+  {
+    "id": "log18",
+    "category": "logic",
+    "difficulty": "hard",
+    "text": "You have 25 horses and can race 5 at a time (no stopwatch). Minimum races to find the top 3 fastest?",
+    "choices": [
+      "5",
+      "6",
+      "7",
+      "8",
+      "10"
+    ],
+    "correct": 2,
+    "explanation": "Race 1-5: Race all 25 in groups of 5 (5 races). Know winner of each group.\nRace 6: Race the 5 group winners. Now you know the overall fastest horse.\nRace 7: The 2nd and 3rd place could be:\n• 2nd and 3rd from race 6\n• 2nd from the fastest horse's original group\n• 2nd from the race-6-2nd-place horse's group\nRace these 5 candidates → top 2 of this race are overall 2nd and 3rd.\n\nTotal: 7 races."
+  }
+]

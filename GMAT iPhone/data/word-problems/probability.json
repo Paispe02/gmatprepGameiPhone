@@ -1,0 +1,257 @@
+[
+  {
+    "id": "prob1",
+    "category": "probability",
+    "difficulty": "easy",
+    "text": "A fair die is rolled once. What is the probability of getting a number greater than 4?",
+    "choices": [
+      "1/6",
+      "1/4",
+      "1/3",
+      "1/2",
+      "2/3"
+    ],
+    "correct": 2,
+    "explanation": "Numbers > 4: {5, 6} = 2 outcomes. Total: 6.\nP = 2/6 = 1/3."
+  },
+  {
+    "id": "prob2",
+    "category": "probability",
+    "difficulty": "easy",
+    "text": "A card is drawn from a standard deck of 52 cards. What is the probability it is a heart?",
+    "choices": [
+      "1/13",
+      "1/8",
+      "1/4",
+      "3/13",
+      "4/13"
+    ],
+    "correct": 2,
+    "explanation": "Hearts in a deck: 13. Total cards: 52.\nP = 13/52 = 1/4 = 25%."
+  },
+  {
+    "id": "prob3",
+    "category": "probability",
+    "difficulty": "medium",
+    "text": "Two fair dice are rolled. What is the probability that the sum is 7?",
+    "choices": [
+      "1/12",
+      "1/8",
+      "1/6",
+      "1/5",
+      "1/4"
+    ],
+    "correct": 2,
+    "explanation": "Outcomes with sum 7: (1,6), (2,5), (3,4), (4,3), (5,2), (6,1) = 6.\nTotal outcomes: 6 × 6 = 36.\nP = 6/36 = 1/6."
+  },
+  {
+    "id": "prob4",
+    "category": "probability",
+    "difficulty": "medium",
+    "text": "A bag contains 5 red, 3 blue, and 2 green balls. Two balls drawn without replacement. What is the probability both are red?",
+    "choices": [
+      "1/4",
+      "1/6",
+      "2/9",
+      "1/3",
+      "4/9"
+    ],
+    "correct": 2,
+    "explanation": "P(1st red) = 5/10 = 1/2.\nP(2nd red | 1st red) = 4/9.\nP(both red) = (1/2) × (4/9) = 4/18 = 2/9."
+  },
+  {
+    "id": "prob5",
+    "category": "probability",
+    "difficulty": "hard",
+    "text": "In a class of 30 students, 18 study math, 12 study science, and 8 study both. What is the probability a random student studies math or science?",
+    "choices": [
+      "3/5",
+      "11/15",
+      "13/15",
+      "4/5",
+      "19/30"
+    ],
+    "correct": 1,
+    "explanation": "Inclusion-exclusion: P(M ∪ S) = P(M) + P(S) − P(M ∩ S)\n= 18/30 + 12/30 − 8/30 = 22/30 = 11/15."
+  },
+  {
+    "id": "prob6",
+    "category": "probability",
+    "difficulty": "easy",
+    "text": "Coin flipped 3 times. Probability of exactly 2 heads?",
+    "choices": [
+      "1/8",
+      "1/4",
+      "3/8",
+      "1/2",
+      "5/8"
+    ],
+    "correct": 2,
+    "explanation": "Total=2³=8. Favorable: HHT,HTH,THH=3. P=3/8.\nUsing C(3,2)×(1/2)³=3/8."
+  },
+  {
+    "id": "prob7",
+    "category": "probability",
+    "difficulty": "easy",
+    "text": "Bag: 4 red, 3 blue, 3 green marbles. Draw one. P(NOT red)?",
+    "choices": [
+      "2/5",
+      "3/5",
+      "3/10",
+      "7/10",
+      "1/2"
+    ],
+    "correct": 1,
+    "explanation": "Total=10. Not red=6. P=6/10=3/5."
+  },
+  {
+    "id": "prob8",
+    "category": "probability",
+    "difficulty": "easy",
+    "text": "Random day of the week. Probability it is a weekday?",
+    "choices": [
+      "2/7",
+      "3/7",
+      "4/7",
+      "5/7",
+      "6/7"
+    ],
+    "correct": 3,
+    "explanation": "5 weekdays out of 7. P=5/7."
+  },
+  {
+    "id": "prob9",
+    "category": "probability",
+    "difficulty": "easy",
+    "text": "Two dice rolled. Probability the sum is at least 10?",
+    "choices": [
+      "1/12",
+      "1/6",
+      "5/36",
+      "1/4",
+      "7/36"
+    ],
+    "correct": 1,
+    "explanation": "Sum≥10: (4,6)(5,5)(6,4)=3 for 10; (5,6)(6,5)=2 for 11; (6,6)=1 for 12.\nTotal=6. P=6/36=1/6."
+  },
+  {
+    "id": "prob10",
+    "category": "probability",
+    "difficulty": "medium",
+    "text": "Committee of 3 from 5 men and 4 women. Probability all men?",
+    "choices": [
+      "5/42",
+      "10/84",
+      "5/36",
+      "1/12",
+      "1/6"
+    ],
+    "correct": 0,
+    "explanation": "Total: C(9,3)=84. All men: C(5,3)=10. P=10/84=5/42."
+  },
+  {
+    "id": "prob11",
+    "category": "probability",
+    "difficulty": "medium",
+    "text": "Three cards drawn without replacement from a deck. Probability all hearts?",
+    "choices": [
+      "1/64",
+      "11/850",
+      "13/850",
+      "1/52",
+      "3/52"
+    ],
+    "correct": 1,
+    "explanation": "P=(13/52)×(12/51)×(11/50)=1716/132600=11/850."
+  },
+  {
+    "id": "prob12",
+    "category": "probability",
+    "difficulty": "medium",
+    "text": "Number chosen randomly from 1-100. Probability divisible by both 3 and 5?",
+    "choices": [
+      "1/15",
+      "3/50",
+      "1/20",
+      "1/10",
+      "7/100"
+    ],
+    "correct": 1,
+    "explanation": "Divisible by LCM(3,5)=15. Multiples of 15 in 1-100: 15,30,45,60,75,90=6.\nP=6/100=3/50."
+  },
+  {
+    "id": "prob13",
+    "category": "probability",
+    "difficulty": "medium",
+    "text": "P(rain Saturday)=0.3, P(rain Sunday)=0.4, independent. P(rain at least one day)?",
+    "choices": [
+      "0.42",
+      "0.58",
+      "0.70",
+      "0.72",
+      "0.88"
+    ],
+    "correct": 1,
+    "explanation": "P(at least one)=1−P(neither)=1−0.7×0.6=1−0.42=0.58.\nCommon mistake: 0.3+0.4=0.7 (overcounts both days)."
+  },
+  {
+    "id": "prob14",
+    "category": "probability",
+    "difficulty": "hard",
+    "text": "Five people sit in a row. Probability two specific people sit next to each other?",
+    "choices": [
+      "1/5",
+      "2/5",
+      "1/3",
+      "1/2",
+      "3/5"
+    ],
+    "correct": 1,
+    "explanation": "Total: 5!=120. Treat pair as unit: 4!×2!=48.\nP=48/120=2/5."
+  },
+  {
+    "id": "prob15",
+    "category": "probability",
+    "difficulty": "hard",
+    "text": "Jar: 5 red, 3 blue. Two drawn without replacement. P(1st red AND 2nd blue)?",
+    "choices": [
+      "15/56",
+      "5/28",
+      "3/14",
+      "5/14",
+      "1/4"
+    ],
+    "correct": 0,
+    "explanation": "P(1st red)=5/8. P(2nd blue|1st red)=3/7.\nP=5/8×3/7=15/56."
+  },
+  {
+    "id": "prob16",
+    "category": "probability",
+    "difficulty": "hard",
+    "text": "4-digit PIN from 0-9 (repetition allowed). Probability all 4 digits different?",
+    "choices": [
+      "0.504",
+      "0.6048",
+      "0.720",
+      "0.5",
+      "0.4536"
+    ],
+    "correct": 0,
+    "explanation": "Total=10⁴=10000. All different=10×9×8×7=5040.\nP=5040/10000=0.504."
+  },
+  {
+    "id": "prob17",
+    "category": "probability",
+    "difficulty": "hard",
+    "text": "Group of 5 people. Probability at least two share a birth month?",
+    "choices": [
+      "0.382",
+      "0.427",
+      "0.618",
+      "0.573",
+      "0.236"
+    ],
+    "correct": 2,
+    "explanation": "P(all different)=(12/12)(11/12)(10/12)(9/12)(8/12)=7920/20736≈0.382.\nP(at least 2 same)=1−0.382=0.618."
+  }
+]

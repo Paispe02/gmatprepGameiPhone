@@ -1,0 +1,242 @@
+[
+  {
+    "id": "geom1",
+    "category": "geometry",
+    "difficulty": "easy",
+    "text": "What is the area of a rectangle with length 8 cm and width 5 cm?",
+    "choices": [
+      "13 cm²",
+      "26 cm²",
+      "40 cm²",
+      "50 cm²",
+      "64 cm²"
+    ],
+    "correct": 2,
+    "explanation": "Area = length × width = 8 × 5 = 40 cm²."
+  },
+  {
+    "id": "geom2",
+    "category": "geometry",
+    "difficulty": "medium",
+    "text": "A circle has radius 7 cm. What is its circumference? (Use π = 22/7)",
+    "choices": [
+      "22 cm",
+      "44 cm",
+      "77 cm",
+      "154 cm",
+      "308 cm"
+    ],
+    "correct": 1,
+    "explanation": "Circumference = 2πr = 2 × (22/7) × 7 = 2 × 22 = 44 cm."
+  },
+  {
+    "id": "geom3",
+    "category": "geometry",
+    "difficulty": "hard",
+    "text": "A right triangle has legs of 5 cm and 12 cm. What is the hypotenuse?",
+    "choices": [
+      "13 cm",
+      "15 cm",
+      "17 cm",
+      "20 cm",
+      "25 cm"
+    ],
+    "correct": 0,
+    "explanation": "Pythagorean theorem: c² = 5² + 12² = 25 + 144 = 169.\nc = √169 = 13 cm.\n\nKey Pythagorean triples to memorize: (3,4,5), (5,12,13), (8,15,17), (7,24,25)."
+  },
+  {
+    "id": "geom4",
+    "category": "geometry",
+    "difficulty": "hard",
+    "text": "A cylinder has radius 3 cm and height 8 cm. What is its volume? (Use π ≈ 3.14)",
+    "choices": [
+      "72.96 cm³",
+      "113.04 cm³",
+      "150 cm³",
+      "226.08 cm³",
+      "301.44 cm³"
+    ],
+    "correct": 3,
+    "explanation": "Volume = πr²h = 3.14 × 9 × 8 = 3.14 × 72 = 226.08 cm³."
+  },
+  {
+    "id": "geom5",
+    "category": "geometry",
+    "difficulty": "easy",
+    "text": "Triangle with base 10 cm and height 6 cm. Area?",
+    "choices": [
+      "16 cm²",
+      "30 cm²",
+      "40 cm²",
+      "60 cm²",
+      "80 cm²"
+    ],
+    "correct": 1,
+    "explanation": "Area=½×base×height=½×10×6=30 cm²."
+  },
+  {
+    "id": "geom6",
+    "category": "geometry",
+    "difficulty": "easy",
+    "text": "Square with perimeter 48 cm. Area?",
+    "choices": [
+      "96 cm²",
+      "120 cm²",
+      "144 cm²",
+      "192 cm²",
+      "576 cm²"
+    ],
+    "correct": 2,
+    "explanation": "Side=48/4=12. Area=12²=144 cm²."
+  },
+  {
+    "id": "geom7",
+    "category": "geometry",
+    "difficulty": "easy",
+    "text": "Circle diameter 14 cm. Area? (π=22/7)",
+    "choices": [
+      "44 cm²",
+      "88 cm²",
+      "154 cm²",
+      "308 cm²",
+      "616 cm²"
+    ],
+    "correct": 2,
+    "explanation": "r=7. Area=πr²=(22/7)×49=154 cm²."
+  },
+  {
+    "id": "geom8",
+    "category": "geometry",
+    "difficulty": "easy",
+    "text": "Rectangle perimeter 50 cm, length 15 cm. Width?",
+    "choices": [
+      "5 cm",
+      "8 cm",
+      "10 cm",
+      "12.5 cm",
+      "20 cm"
+    ],
+    "correct": 2,
+    "explanation": "P=2(l+w). 50=2(15+w). 25=15+w. w=10 cm."
+  },
+  {
+    "id": "geom9",
+    "category": "geometry",
+    "difficulty": "medium",
+    "text": "Right triangle with legs 3 and 4. Area?",
+    "choices": [
+      "5",
+      "6",
+      "7.5",
+      "10",
+      "12"
+    ],
+    "correct": 1,
+    "explanation": "3-4-5 right triangle. Area=½×3×4=6.\nKey triples: (3,4,5), (5,12,13), (8,15,17), (7,24,25)."
+  },
+  {
+    "id": "geom10",
+    "category": "geometry",
+    "difficulty": "medium",
+    "text": "Cube edge 5 cm. Total surface area?",
+    "choices": [
+      "25 cm²",
+      "100 cm²",
+      "125 cm²",
+      "150 cm²",
+      "300 cm²"
+    ],
+    "correct": 3,
+    "explanation": "SA=6×side²=6×25=150 cm²."
+  },
+  {
+    "id": "geom11",
+    "category": "geometry",
+    "difficulty": "medium",
+    "text": "Arc subtends 60° at center of circle radius 12 cm. Arc length? (π≈3.14)",
+    "choices": [
+      "6.28 cm",
+      "10.28 cm",
+      "12.56 cm",
+      "15.7 cm",
+      "18.84 cm"
+    ],
+    "correct": 2,
+    "explanation": "Arc=(θ/360)×2πr=(60/360)×2×3.14×12=(1/6)×75.36=12.56 cm."
+  },
+  {
+    "id": "geom12",
+    "category": "geometry",
+    "difficulty": "medium",
+    "text": "Regular hexagon side 6 cm. Area?",
+    "choices": [
+      "54√3 cm²",
+      "72√3 cm²",
+      "36√3 cm²",
+      "108 cm²",
+      "96 cm²"
+    ],
+    "correct": 0,
+    "explanation": "Area=(3√3/2)×s²=(3√3/2)×36=54√3≈93.5 cm².\nHexagon=6 equilateral triangles. Each=(√3/4)×36=9√3. Total=54√3."
+  },
+  {
+    "id": "geom13",
+    "category": "geometry",
+    "difficulty": "hard",
+    "text": "Cone radius 7 cm, slant height 25 cm. Curved surface area? (π=22/7)",
+    "choices": [
+      "440 cm²",
+      "550 cm²",
+      "616 cm²",
+      "770 cm²",
+      "1540 cm²"
+    ],
+    "correct": 1,
+    "explanation": "Curved SA=πrl=(22/7)×7×25=22×25=550 cm²."
+  },
+  {
+    "id": "geom14",
+    "category": "geometry",
+    "difficulty": "hard",
+    "text": "Sphere volume 288π cm³. Radius?",
+    "choices": [
+      "4 cm",
+      "5 cm",
+      "6 cm",
+      "8 cm",
+      "9 cm"
+    ],
+    "correct": 2,
+    "explanation": "V=(4/3)πr³=288π → r³=288×3/4=216 → r=∛216=6 cm."
+  },
+  {
+    "id": "geom15",
+    "category": "geometry",
+    "difficulty": "hard",
+    "text": "Two concentric circles radii 5 cm and 13 cm. Area of annular region? (π≈3.14)",
+    "choices": [
+      "301.44 cm²",
+      "376.8 cm²",
+      "452.16 cm²",
+      "502.4 cm²",
+      "530.66 cm²"
+    ],
+    "correct": 2,
+    "explanation": "Area=π(R²−r²)=3.14(169−25)=3.14×144=452.16 cm²."
+  },
+  {
+    "id": "geom16",
+    "category": "geometry",
+    "difficulty": "hard",
+    "text": "Rectangular box 6×8×10. Space diagonal length?",
+    "choices": [
+      "10√2",
+      "12",
+      "14",
+      "√200",
+      "15"
+    ],
+    "correct": 0,
+    "explanation": "Diagonal=√(6²+8²+10²)=√(36+64+100)=√200=10√2≈14.14.\nNote: √200=√(100×2)=10√2."
+  }
+]

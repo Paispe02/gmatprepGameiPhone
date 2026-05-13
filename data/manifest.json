@@ -14,5 +14,26 @@
     "lateral.json",
     "logic.json",
     "numberPattern.json"
+  ],
+  "numberTheory": [
+    "numberTheory.json"
+  ],
+  "estimation": [
+    "estimation.json"
+  ],
+  "dataSufficiency": [
+    "dataSufficiency.json"
+  ],
+  "errorDetection": [
+    "errorDetection.json"
+  ],
+  "fastQuant": [
+    "fastQuant.json"
+  ],
+  "quantStrategy": [
+    "quantStrategy.json"
+  ],
+  "constraintDeduction": [
+    "constraintDeduction.json"
   ]
 }

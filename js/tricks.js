@@ -296,6 +296,132 @@ const Tricks = (() => {
       example: 'Chessboard with opposite corners removed: can you tile with dominoes? Each domino covers 1 black + 1 white. Removed corners are same color → impossible.',
       when: 'Impossibility proofs or strategy puzzles',
     },
+
+    // ── NUMBER THEORY ──
+    {
+      id: 'divRules',
+      category: 'numberTheory',
+      title: 'Divisibility Rules',
+      rule: 'By 2: last digit even. By 3: digit sum ÷3. By 4: last two digits ÷4. By 5: ends in 0/5. By 6: ÷2 and ÷3. By 8: last three digits ÷8. By 9: digit sum ÷9.',
+      example: '372: sum=12 (÷3 ✓), even (÷2 ✓), so ÷6 ✓. Last two 72÷4=18 ✓ so ÷4.',
+      when: 'Checking divisibility without dividing',
+    },
+    {
+      id: 'gcdLcm',
+      category: 'numberTheory',
+      title: 'GCD and LCM Relationship',
+      rule: 'GCD(a,b) × LCM(a,b) = a × b. Find GCD by prime factorization or Euclidean algorithm.',
+      example: 'GCD(12,18)=6, LCM=12×18/6=36. Check: 12=2²×3, 18=2×3², GCD=2×3=6, LCM=2²×3²=36.',
+      when: 'GCD/LCM problems',
+    },
+    {
+      id: 'lastDigit',
+      category: 'numberTheory',
+      title: 'Last Digit Patterns',
+      rule: 'Powers cycle: 2→2,4,8,6 (cycle 4). 3→3,9,7,1 (cycle 4). 7→7,9,3,1. Find power mod 4.',
+      example: '7^23: 23 mod 4 = 3 → third in cycle (7,9,3,1) → last digit = 3.',
+      when: 'Finding last digit of large powers',
+    },
+    {
+      id: 'remainder',
+      category: 'numberTheory',
+      title: 'Remainder Theorem',
+      rule: 'Remainder of (a×b) ÷ n = (rem_a × rem_b) mod n. Break large products into remainders.',
+      example: '47×53 mod 7: 47 mod 7=5, 53 mod 7=4, 5×4=20, 20 mod 7=6.',
+      when: 'Remainder problems with products',
+    },
+
+    // ── ESTIMATION ──
+    {
+      id: 'orderMagnitude',
+      category: 'estimation',
+      title: 'Order of Magnitude',
+      rule: 'Round aggressively to 1 significant figure. 487×312 ≈ 500×300 = 150,000.',
+      example: '789 ÷ 23 ≈ 800 ÷ 25 = 32 (actual: 34.3)',
+      when: 'Quick estimation to eliminate answer choices',
+    },
+    {
+      id: 'sqrtEstimate',
+      category: 'estimation',
+      title: 'Square Root Estimation',
+      rule: 'Find nearest perfect square. √50 is between √49=7 and √64=8, closer to 7 → ≈ 7.1.',
+      example: '√200 ≈ √196 = 14 (actual: 14.14)',
+      when: 'Estimating square roots',
+    },
+
+    // ── DATA SUFFICIENCY ──
+    {
+      id: 'dsStrategy',
+      category: 'dataSufficiency',
+      title: 'DS Answer Framework',
+      rule: 'A: (1) alone. B: (2) alone. C: Together but not alone. D: Each alone. E: Neither even together.',
+      example: 'Test each statement independently first, then combine only if both fail alone.',
+      when: 'All data sufficiency questions',
+    },
+    {
+      id: 'dsSufficiency',
+      category: 'dataSufficiency',
+      title: 'Sufficiency Test',
+      rule: 'A statement is sufficient if it gives ONE definite answer. If you can find two different valid answers → insufficient.',
+      example: 'Is x>0? Given: x²=4. x could be 2 or -2. Two answers → insufficient.',
+      when: 'Testing if a statement is sufficient',
+    },
+
+    // ── QUANT STRATEGY ──
+    {
+      id: 'backsolve',
+      category: 'quantStrategy',
+      title: 'Backsolving',
+      rule: 'Plug answer choices back into the problem. Start with middle value to determine direction.',
+      example: 'If 2x+5=17, choices are 4,5,6,7. Try 6: 2(6)+5=17 ✓.',
+      when: 'Multiple choice with numeric answers',
+    },
+    {
+      id: 'smartNumbers',
+      category: 'quantStrategy',
+      title: 'Smart Number Picking',
+      rule: 'For percent/ratio/fraction problems without specific values, pick easy numbers (100 for %, LCM for ratios).',
+      example: 'What % of x is y if x:y=3:5? Pick x=30, y=50. Answer: 50/30×100 = 166.7%.',
+      when: 'Abstract percent or ratio problems',
+    },
+
+    // ── ERROR DETECTION ──
+    {
+      id: 'commonErrors',
+      category: 'errorDetection',
+      title: 'Common Math Errors',
+      rule: 'Watch for: (a+b)²≠a²+b², √(a+b)≠√a+√b, -(x²)≠(-x)², distributing over division, sign errors.',
+      example: '(3+4)²=49, NOT 9+16=25. Always check if operations distribute.',
+      when: 'Spotting algebraic errors',
+    },
+
+    // ── CONSTRAINT DEDUCTION ──
+    {
+      id: 'eliminationLogic',
+      category: 'constraintDeduction',
+      title: 'Elimination Strategy',
+      rule: 'Start with the most constrained element (fewest options). Then propagate constraints.',
+      example: 'If only one person can go in slot 3, place them first. Then update all other constraints.',
+      when: 'Logic grid and constraint problems',
+    },
+
+    // ── SPEED RECOGNITION ──
+    {
+      id: 'perfectSquares',
+      category: 'speedRecognition',
+      title: 'Memorize Perfect Squares',
+      rule: '1,4,9,16,25,36,49,64,81,100,121,144,169,196,225,256,289,324,361,400.',
+      example: '17²=289, 18²=324, 19²=361, 20²=400.',
+      when: 'Instant square recognition up to 20²',
+    },
+    {
+      id: 'perfectCubes',
+      category: 'speedRecognition',
+      title: 'Memorize Perfect Cubes',
+      rule: '1,8,27,64,125,216,343,512,729,1000.',
+      example: '5³=125, 6³=216, 7³=343, 8³=512.',
+      when: 'Instant cube recognition up to 10³',
+    },
   ];
 
   /** Get all tricks */

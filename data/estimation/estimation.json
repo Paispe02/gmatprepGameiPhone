@@ -1,0 +1,497 @@
+[
+  {
+    "id": "est1",
+    "category": "estimation",
+    "difficulty": "easy",
+    "text": "Which is closest to 47 × 83?",
+    "choices": ["3,200", "3,500", "3,900", "4,200", "4,600"],
+    "correct": 2,
+    "explanation": "Round: 47≈50, 83≈80. 50×80=4,000. Both rounds went up, so adjust down slightly. 47×83≈3,901. Closest is 3,900. Target: under 15 seconds."
+  },
+  {
+    "id": "est2",
+    "category": "estimation",
+    "difficulty": "easy",
+    "text": "Which is closest to 32 × 58?",
+    "choices": ["1,500", "1,700", "1,860", "2,100", "2,400"],
+    "correct": 2,
+    "explanation": "Round: 32≈30, 58≈60. 30×60=1,800. We rounded 32 down by 2 and 58 up by 2, so the product is slightly above 1,800. 32×58=1,856. Closest is 1,860. Target: under 15 seconds."
+  },
+  {
+    "id": "est3",
+    "category": "estimation",
+    "difficulty": "easy",
+    "text": "Which is closest to 19 × 41?",
+    "choices": ["620", "720", "780", "850", "920"],
+    "correct": 2,
+    "explanation": "Round: 19≈20, 41≈40. 20×40=800. We rounded 19 up (bigger effect), so adjust down: 19×41≈779. Closest is 780. Target: under 15 seconds."
+  },
+  {
+    "id": "est4",
+    "category": "estimation",
+    "difficulty": "easy",
+    "text": "Which is closest to 63 × 27?",
+    "choices": ["1,400", "1,550", "1,700", "1,900", "2,100"],
+    "correct": 2,
+    "explanation": "Round: 63≈60, 27≈30. 60×30=1,800. We rounded 63 down by 3 and 27 up by 3. Net effect: slightly below 1,800. 63×27=1,701. Closest is 1,700. Target: under 15 seconds."
+  },
+  {
+    "id": "est5",
+    "category": "estimation",
+    "difficulty": "medium",
+    "text": "Which is closest to 78 × 54?",
+    "choices": ["3,600", "3,900", "4,210", "4,500", "4,800"],
+    "correct": 2,
+    "explanation": "Round: 78≈80, 54≈50. 80×50=4,000. We rounded 78 up by 2 and 54 down by 4. Adjust: 78×54 = 80×54 - 2×54 = 4,320 - 108 ≈ 4,212. Closest is 4,210. Target: under 20 seconds."
+  },
+  {
+    "id": "est6",
+    "category": "estimation",
+    "difficulty": "medium",
+    "text": "Which is closest to 124 × 37?",
+    "choices": ["3,800", "4,200", "4,590", "5,000", "5,400"],
+    "correct": 2,
+    "explanation": "Round: 124≈125, 37≈36. 125×36 = 125×4×9 = 500×9 = 4,500. Actual: 124×37=4,588. Closest is 4,590. Target: under 20 seconds."
+  },
+  {
+    "id": "est7",
+    "category": "estimation",
+    "difficulty": "medium",
+    "text": "Which is closest to 67 × 93?",
+    "choices": ["5,400", "5,800", "6,230", "6,600", "7,000"],
+    "correct": 2,
+    "explanation": "Round: 67≈70, 93≈90. 70×90=6,300. We rounded both up, so adjust down slightly. 67×93=6,231. Closest is 6,230. Target: under 20 seconds."
+  },
+  {
+    "id": "est8",
+    "category": "estimation",
+    "difficulty": "medium",
+    "text": "Which is closest to 88 × 112?",
+    "choices": ["8,400", "9,100", "9,860", "10,500", "11,200"],
+    "correct": 2,
+    "explanation": "Use difference of squares: 88×112 = (100-12)(100+12) = 10,000 - 144 = 9,856. Closest is 9,860. Target: under 15 seconds with this trick."
+  },
+  {
+    "id": "est9",
+    "category": "estimation",
+    "difficulty": "hard",
+    "text": "Which is closest to 247 × 198?",
+    "choices": ["42,000", "45,500", "48,900", "52,000", "55,500"],
+    "correct": 2,
+    "explanation": "Round: 247≈250, 198≈200. 250×200=50,000. Both rounds went up, so adjust down. 247×198 = 247×200 - 247×2 = 49,400 - 494 ≈ 48,906. Closest is 48,900. Target: under 25 seconds."
+  },
+  {
+    "id": "est10",
+    "category": "estimation",
+    "difficulty": "hard",
+    "text": "Which is closest to 389 × 0.52?",
+    "choices": ["160", "180", "202", "225", "250"],
+    "correct": 2,
+    "explanation": "0.52 ≈ half + a little. Half of 389 ≈ 194.5. The extra 0.02 × 389 ≈ 7.8. Total ≈ 202.3. Closest is 202. Target: under 20 seconds."
+  },
+  {
+    "id": "est11",
+    "category": "estimation",
+    "difficulty": "easy",
+    "text": "Which of the following is closest to 9,876?",
+    "choices": ["5,000", "8,000", "10,000", "12,000", "15,000"],
+    "correct": 2,
+    "explanation": "9,876 rounds to 10,000. The answer is clearly 10,000 — just read the leading digits. Target: under 5 seconds."
+  },
+  {
+    "id": "est12",
+    "category": "estimation",
+    "difficulty": "easy",
+    "text": "Which is closest to 0.498 + 0.503 + 0.512?",
+    "choices": ["1.0", "1.2", "1.5", "1.8", "2.0"],
+    "correct": 2,
+    "explanation": "Each term is approximately 0.5. Three halves = 1.5. Actual sum = 1.513. Closest is 1.5. Target: under 10 seconds."
+  },
+  {
+    "id": "est13",
+    "category": "estimation",
+    "difficulty": "medium",
+    "text": "Which is closest to (4.9 × 10³) × (2.1 × 10⁴)?",
+    "choices": ["1 × 10⁷", "5 × 10⁷", "1 × 10⁸", "5 × 10⁸", "1 × 10⁹"],
+    "correct": 2,
+    "explanation": "4.9≈5, 2.1≈2. 5×2=10. Powers: 10³×10⁴=10⁷. So 10×10⁷=10⁸. Actual: 1.029×10⁸. Closest is 1×10⁸. Target: under 15 seconds."
+  },
+  {
+    "id": "est14",
+    "category": "estimation",
+    "difficulty": "medium",
+    "text": "Which is closest to 7,894 ÷ 39?",
+    "choices": ["150", "175", "202", "230", "260"],
+    "correct": 2,
+    "explanation": "Round: 7,894≈8,000, 39≈40. 8,000÷40=200. Actual: 7,894÷39≈202.4. Closest is 202. Target: under 15 seconds."
+  },
+  {
+    "id": "est15",
+    "category": "estimation",
+    "difficulty": "medium",
+    "text": "Which is closest to 1/7 + 1/8 + 1/9?",
+    "choices": ["0.20", "0.27", "0.35", "0.42", "0.50"],
+    "correct": 2,
+    "explanation": "Benchmarks: 1/7≈0.143, 1/8=0.125, 1/9≈0.111. Sum≈0.379. But use shortcut: average is about 1/8=0.125, times 3=0.375. Closest is 0.35. Target: under 20 seconds."
+  },
+  {
+    "id": "est16",
+    "category": "estimation",
+    "difficulty": "hard",
+    "text": "Which is closest to 9⁸?",
+    "choices": ["4.3 × 10⁷", "6.5 × 10⁷", "1.0 × 10⁸", "2.5 × 10⁸", "5.0 × 10⁸"],
+    "correct": 0,
+    "explanation": "9²=81, 9⁴=81²≈6,561, 9⁸=(9⁴)²≈6,561²≈43,000,000=4.3×10⁷. Shortcut: 9≈10, so 9⁸≈10⁸÷2ish (since 0.9⁸≈0.43). Closest is 4.3×10⁷. Target: under 30 seconds."
+  },
+  {
+    "id": "est17",
+    "category": "estimation",
+    "difficulty": "hard",
+    "text": "Which is closest to 997 × 1,003?",
+    "choices": ["990,000", "995,000", "999,991", "1,003,000", "1,010,000"],
+    "correct": 2,
+    "explanation": "Difference of squares: (1000-3)(1000+3) = 1,000,000 - 9 = 999,991. This is exact! Recognize this pattern instantly. Target: under 10 seconds."
+  },
+  {
+    "id": "est18",
+    "category": "estimation",
+    "difficulty": "hard",
+    "text": "Which is closest to 2⁴⁰?",
+    "choices": ["1 × 10¹⁰", "1 × 10¹¹", "1 × 10¹²", "1 × 10¹³", "1 × 10¹⁴"],
+    "correct": 2,
+    "explanation": "Key benchmark: 2¹⁰≈10³ (actually 1,024). So 2⁴⁰=(2¹⁰)⁴≈(10³)⁴=10¹². Actual: ≈1.1×10¹². Closest is 1×10¹². Target: under 15 seconds if you know the benchmark."
+  },
+  {
+    "id": "est19",
+    "category": "estimation",
+    "difficulty": "easy",
+    "text": "√81 is closest to which value?",
+    "choices": ["7", "8", "9", "10", "11"],
+    "correct": 2,
+    "explanation": "√81 = 9 exactly. This is a perfect square you should recognize instantly. Target: under 5 seconds."
+  },
+  {
+    "id": "est20",
+    "category": "estimation",
+    "difficulty": "easy",
+    "text": "√50 is closest to which value?",
+    "choices": ["5.5", "6.2", "7.1", "8.0", "8.9"],
+    "correct": 2,
+    "explanation": "√49=7 and √64=8. Since 50 is just above 49, √50 is just above 7. √50≈7.07. Closest is 7.1. Target: under 10 seconds."
+  },
+  {
+    "id": "est21",
+    "category": "estimation",
+    "difficulty": "medium",
+    "text": "√83 is closest to which value?",
+    "choices": ["8.1", "8.6", "9.1", "9.6", "10.1"],
+    "correct": 2,
+    "explanation": "√81=9 and √100=10. Since 83 is just above 81, √83 is just above 9. Use linear approx: √(81+2)≈9+2/(2×9)=9+0.11≈9.11. Closest is 9.1. Target: under 15 seconds."
+  },
+  {
+    "id": "est22",
+    "category": "estimation",
+    "difficulty": "medium",
+    "text": "√200 is closest to which value?",
+    "choices": ["12.1", "13.2", "14.1", "15.0", "16.2"],
+    "correct": 2,
+    "explanation": "√200 = √(100×2) = 10√2 ≈ 10×1.414 = 14.14. Closest is 14.1. Key benchmark: √2≈1.414. Target: under 10 seconds."
+  },
+  {
+    "id": "est23",
+    "category": "estimation",
+    "difficulty": "medium",
+    "text": "√0.37 is closest to which value?",
+    "choices": ["0.41", "0.49", "0.61", "0.72", "0.81"],
+    "correct": 2,
+    "explanation": "√0.36=0.6 exactly. 0.37 is slightly above 0.36, so √0.37≈0.608. Closest is 0.61. Target: under 15 seconds."
+  },
+  {
+    "id": "est24",
+    "category": "estimation",
+    "difficulty": "hard",
+    "text": "√(7.3 × 10⁵) is closest to which value?",
+    "choices": ["540", "680", "854", "1,020", "1,200"],
+    "correct": 2,
+    "explanation": "√(7.3×10⁵) = √7.3 × √10⁵ = √7.3 × 10² × √10. √7.3≈2.7 (since √4=2, √9=3). √10≈3.16. So 2.7×100×3.16≈853. Closest is 854. Target: under 25 seconds."
+  },
+  {
+    "id": "est25",
+    "category": "estimation",
+    "difficulty": "hard",
+    "text": "³√120 is closest to which value?",
+    "choices": ["3.9", "4.3", "4.9", "5.5", "6.1"],
+    "correct": 2,
+    "explanation": "³√125=5 exactly (5³=125). 120 is slightly less than 125, so ³√120 is slightly less than 5. ³√120≈4.93. Closest is 4.9. Target: under 15 seconds."
+  },
+  {
+    "id": "est26",
+    "category": "estimation",
+    "difficulty": "easy",
+    "text": "17% of 500 is approximately:",
+    "choices": ["65", "75", "85", "95", "105"],
+    "correct": 2,
+    "explanation": "10% of 500=50. 7% of 500=35. Total=85. Or: 17%≈1/6, and 500/6≈83. Either way, closest is 85. Target: under 10 seconds."
+  },
+  {
+    "id": "est27",
+    "category": "estimation",
+    "difficulty": "easy",
+    "text": "25% of 844 is approximately:",
+    "choices": ["180", "195", "211", "230", "250"],
+    "correct": 2,
+    "explanation": "25% = ÷4. 844÷4=211 exactly. Or: 800÷4=200, 44÷4=11, total=211. Target: under 10 seconds."
+  },
+  {
+    "id": "est28",
+    "category": "estimation",
+    "difficulty": "easy",
+    "text": "9% of 310 is approximately:",
+    "choices": ["18", "22", "28", "34", "40"],
+    "correct": 2,
+    "explanation": "10% of 310=31. 9% is slightly less: 31-3.1≈28. Closest is 28. Target: under 10 seconds."
+  },
+  {
+    "id": "est29",
+    "category": "estimation",
+    "difficulty": "medium",
+    "text": "17% of 493 is approximately:",
+    "choices": ["64", "72", "84", "96", "108"],
+    "correct": 2,
+    "explanation": "493≈500. 17% of 500: 10%=50, 7%=35, total=85. Adjust down slightly for 493: ≈83.8. Closest is 84. Target: under 15 seconds."
+  },
+  {
+    "id": "est30",
+    "category": "estimation",
+    "difficulty": "medium",
+    "text": "33% of 727 is approximately:",
+    "choices": ["190", "210", "240", "270", "300"],
+    "correct": 2,
+    "explanation": "33%≈1/3. 727÷3≈242. Quick check: 3×240=720, so 727÷3≈242. Closest is 240. Target: under 15 seconds."
+  },
+  {
+    "id": "est31",
+    "category": "estimation",
+    "difficulty": "medium",
+    "text": "8.5% of 1,200 is approximately:",
+    "choices": ["78", "88", "102", "115", "130"],
+    "correct": 2,
+    "explanation": "10% of 1,200=120. 8.5% = 10% - 1.5%. 1.5% of 1,200=18. So 120-18=102. Target: under 15 seconds."
+  },
+  {
+    "id": "est32",
+    "category": "estimation",
+    "difficulty": "hard",
+    "text": "If a price increases from $83 to $97, the percentage increase is closest to:",
+    "choices": ["10%", "13%", "17%", "20%", "24%"],
+    "correct": 2,
+    "explanation": "Increase = 97-83=14. Percentage = 14/83. 14/83≈14/84=1/6≈16.7%≈17%. Closest is 17%. Target: under 20 seconds."
+  },
+  {
+    "id": "est33",
+    "category": "estimation",
+    "difficulty": "hard",
+    "text": "37% of 2,718 is approximately:",
+    "choices": ["820", "910", "1,006", "1,100", "1,200"],
+    "correct": 2,
+    "explanation": "37%≈40%-3%. 40% of 2,718≈40% of 2,700=1,080. 3% of 2,718≈81. So 1,080-81≈999. Or: 37%≈3/8=0.375. 2,718×3/8≈2,720×3/8=1,020. Closest is 1,006. Target: under 25 seconds."
+  },
+  {
+    "id": "est34",
+    "category": "estimation",
+    "difficulty": "easy",
+    "text": "Which is larger: 3/5 or 4/7?",
+    "choices": ["3/5", "4/7", "They are equal", "Cannot be determined", "Depends on context"],
+    "correct": 0,
+    "explanation": "Cross-multiply: 3×7=21 vs 4×5=20. Since 21>20, 3/5 > 4/7. Or use benchmarks: 3/5=0.6, 4/7≈0.57. Target: under 10 seconds."
+  },
+  {
+    "id": "est35",
+    "category": "estimation",
+    "difficulty": "easy",
+    "text": "Which is larger: 5/9 or 7/13?",
+    "choices": ["5/9", "7/13", "They are equal", "Cannot be determined", "Depends on context"],
+    "correct": 0,
+    "explanation": "Cross-multiply: 5×13=65 vs 7×9=63. Since 65>63, 5/9 > 7/13. Decimals confirm: 5/9≈0.556, 7/13≈0.538. Answer: 5/9 is larger. Target: under 10 seconds."
+  },
+  {
+    "id": "est36",
+    "category": "estimation",
+    "difficulty": "medium",
+    "text": "Which fraction is closest to 0.4?",
+    "choices": ["3/8", "2/5", "5/13", "7/18", "3/7"],
+    "correct": 1,
+    "explanation": "2/5 = 0.4 exactly. Quick verification: 3/8=0.375, 5/13≈0.385, 7/18≈0.389, 3/7≈0.429. 2/5 is exactly 0.4. Target: under 15 seconds."
+  },
+  {
+    "id": "est37",
+    "category": "estimation",
+    "difficulty": "medium",
+    "text": "Arrange from smallest to largest: 5/8, 7/11, 2/3. Which is in the middle?",
+    "choices": ["5/8", "7/11", "2/3", "They are all equal", "Cannot be determined"],
+    "correct": 1,
+    "explanation": "Convert to decimals: 5/8=0.625, 7/11≈0.636, 2/3≈0.667. Sorted order: 5/8 < 7/11 < 2/3. The middle value is 7/11. Target: under 20 seconds."
+  },
+  {
+    "id": "est38",
+    "category": "estimation",
+    "difficulty": "hard",
+    "text": "Which is largest: 11/17, 13/20, or 17/26?",
+    "choices": ["11/17", "13/20", "17/26", "They are all equal", "11/17 and 17/26 are tied"],
+    "correct": 2,
+    "explanation": "Approximate: 11/17≈0.647, 13/20=0.65, 17/26≈0.654. 17/26 is largest. Shortcut: compare to 0.65 benchmark — 13/20=0.65 exactly, 17/26=17/26: 26×0.65=16.9<17, so 17/26>0.65. 11/17: 17×0.65=11.05>11, so 11/17<0.65. Target: under 25 seconds."
+  },
+  {
+    "id": "est39",
+    "category": "estimation",
+    "difficulty": "hard",
+    "text": "Which is closest to 29/47?",
+    "choices": ["0.52", "0.57", "0.62", "0.67", "0.72"],
+    "correct": 2,
+    "explanation": "29/47: think 30/50=0.6. Adjust: numerator dropped 1 (makes smaller), denominator dropped 3 (makes larger). Net effect: slightly above 0.6. 29/47≈0.617. Closest is 0.62. Target: under 15 seconds."
+  },
+  {
+    "id": "est40",
+    "category": "estimation",
+    "difficulty": "hard",
+    "text": "Which is larger: 15/23 or 19/29?",
+    "choices": ["15/23", "19/29", "They are equal", "Cannot be determined", "Depends on rounding"],
+    "correct": 1,
+    "explanation": "Cross-multiply: 15×29=435 vs 19×23=437. Since 437>435, 19/29 > 15/23. Decimals confirm: 15/23≈0.652, 19/29≈0.655. Answer: 19/29 is larger. Target: under 15 seconds."
+  },
+  {
+    "id": "est41",
+    "category": "estimation",
+    "difficulty": "easy",
+    "text": "The sum 1+2+3+...+100 is:",
+    "choices": ["4,500", "4,800", "5,050", "5,500", "6,000"],
+    "correct": 2,
+    "explanation": "Classic formula: n(n+1)/2 = 100×101/2 = 5,050. This is a must-know benchmark. Target: under 5 seconds."
+  },
+  {
+    "id": "est42",
+    "category": "estimation",
+    "difficulty": "medium",
+    "text": "The sum 101+102+...+200 is between:",
+    "choices": ["10,000 and 12,000", "12,000 and 14,000", "14,000 and 16,000", "16,000 and 18,000", "18,000 and 20,000"],
+    "correct": 2,
+    "explanation": "100 terms, average = (101+200)/2 = 150.5. Sum = 100×150.5 = 15,050. This falls between 14,000 and 16,000. Target: under 15 seconds."
+  },
+  {
+    "id": "est43",
+    "category": "estimation",
+    "difficulty": "medium",
+    "text": "The sum 2+4+6+...+80 is closest to:",
+    "choices": ["1,200", "1,440", "1,640", "1,800", "2,000"],
+    "correct": 2,
+    "explanation": "This is 2(1+2+3+...+40) = 2×40×41/2 = 40×41 = 1,640. Or: 40 terms, average=(2+80)/2=41, sum=40×41=1,640. Target: under 15 seconds."
+  },
+  {
+    "id": "est44",
+    "category": "estimation",
+    "difficulty": "medium",
+    "text": "The product 10×11×12 is between:",
+    "choices": ["1,000 and 1,100", "1,100 and 1,200", "1,200 and 1,400", "1,400 and 1,600", "1,600 and 1,800"],
+    "correct": 2,
+    "explanation": "10×11=110, 110×12=1,320. Falls between 1,200 and 1,400. Quick estimate: ~10³ adjusted up = ~11³=1,331. Target: under 15 seconds."
+  },
+  {
+    "id": "est45",
+    "category": "estimation",
+    "difficulty": "hard",
+    "text": "The sum 1²+2²+3²+...+10² is closest to:",
+    "choices": ["285", "325", "385", "425", "500"],
+    "correct": 2,
+    "explanation": "Formula: n(n+1)(2n+1)/6 = 10×11×21/6 = 2310/6 = 385. If you don't know the formula, estimate: average square ≈ (10²)/3 ≈ 33, times 10 terms ≈ 330. Actual is 385. Target: under 20 seconds."
+  },
+  {
+    "id": "est46",
+    "category": "estimation",
+    "difficulty": "hard",
+    "text": "1/2 + 1/4 + 1/8 + 1/16 + 1/32 is closest to:",
+    "choices": ["0.85", "0.91", "0.97", "1.00", "1.03"],
+    "correct": 2,
+    "explanation": "Geometric series: sum = 1 - (1/2)⁵ = 1 - 1/32 = 31/32 ≈ 0.969. Closest is 0.97. Pattern: each term halves the remaining gap to 1. Target: under 15 seconds."
+  },
+  {
+    "id": "est47",
+    "category": "estimation",
+    "difficulty": "hard",
+    "text": "How many digits does 2²⁰ have?",
+    "choices": ["5", "6", "7", "8", "9"],
+    "correct": 2,
+    "explanation": "2¹⁰=1,024≈10³. So 2²⁰=(2¹⁰)²≈10⁶. But 2²⁰=1,048,576 which has 7 digits. Number of digits = floor(20×log₁₀2)+1 = floor(20×0.301)+1 = floor(6.02)+1 = 7. Target: under 20 seconds."
+  },
+  {
+    "id": "est48",
+    "category": "estimation",
+    "difficulty": "easy",
+    "text": "If a car travels at 95 km/h for 3 hours, approximately how far does it go?",
+    "choices": ["240 km", "260 km", "285 km", "310 km", "330 km"],
+    "correct": 2,
+    "explanation": "95≈100. 100×3=300. Adjust down 5%: 300-15=285. Or 95×3=285 exactly. Target: under 10 seconds."
+  },
+  {
+    "id": "est49",
+    "category": "estimation",
+    "difficulty": "medium",
+    "text": "If a car uses 8L/100km, approximately how many liters for 370 km?",
+    "choices": ["22", "26", "30", "34", "38"],
+    "correct": 2,
+    "explanation": "370km ÷ 100 = 3.7 units. 3.7 × 8 = 29.6 ≈ 30 liters. Shortcut: 400km would need 32L, subtract a bit for 30km less → ~30L. Target: under 15 seconds."
+  },
+  {
+    "id": "est50",
+    "category": "estimation",
+    "difficulty": "medium",
+    "text": "A rectangular room is 4.8m × 3.2m. Its area is approximately:",
+    "choices": ["12 m²", "13.5 m²", "15.4 m²", "17 m²", "19 m²"],
+    "correct": 2,
+    "explanation": "Round: 4.8≈5, 3.2≈3. 5×3=15. Adjust: 4.8×3.2 = (5-0.2)(3+0.2) ≈ 15 + 5×0.2 - 3×0.2 = 15+1-0.6=15.4. Closest is 15.4 m². Target: under 15 seconds."
+  },
+  {
+    "id": "est51",
+    "category": "estimation",
+    "difficulty": "medium",
+    "text": "If you earn $52,000/year, your approximate monthly income is:",
+    "choices": ["$3,500", "$3,900", "$4,330", "$4,800", "$5,200"],
+    "correct": 2,
+    "explanation": "$52,000 ÷ 12. Shortcut: $48,000÷12=$4,000. Extra $4,000÷12≈$333. Total≈$4,333. Closest is $4,330. Target: under 15 seconds."
+  },
+  {
+    "id": "est52",
+    "category": "estimation",
+    "difficulty": "medium",
+    "text": "A 15% tip on a $73 dinner bill is approximately:",
+    "choices": ["$8", "$9.50", "$11", "$13", "$15"],
+    "correct": 2,
+    "explanation": "10% of $73=$7.30. 5%=$3.65. Total 15%=$10.95≈$11. Shortcut: 10% + half of 10%. Target: under 10 seconds."
+  },
+  {
+    "id": "est53",
+    "category": "estimation",
+    "difficulty": "hard",
+    "text": "Light travels at ~300,000 km/s. The Sun is ~150 million km away. Approximately how many minutes for sunlight to reach Earth?",
+    "choices": ["3.5 min", "5.5 min", "8.3 min", "12 min", "16 min"],
+    "correct": 2,
+    "explanation": "Time = 150,000,000 ÷ 300,000 = 500 seconds. 500÷60≈8.33 minutes. Shortcut: 150M/300K = 500s ≈ 8 min. Closest is 8.3 min. Target: under 20 seconds."
+  },
+  {
+    "id": "est54",
+    "category": "estimation",
+    "difficulty": "hard",
+    "text": "A swimming pool is 25m × 12m × 1.8m deep. Approximately how many liters of water does it hold?",
+    "choices": ["300,000 L", "420,000 L", "540,000 L", "680,000 L", "800,000 L"],
+    "correct": 2,
+    "explanation": "Volume = 25×12×1.8 m³. Estimate: 25×12=300, 300×1.8=540 m³. Since 1 m³ = 1,000 L, that's 540,000 L. Target: under 20 seconds."
+  },
+  {
+    "id": "est55",
+    "category": "estimation",
+    "difficulty": "hard",
+    "text": "If the world population is ~8 billion and Earth's land area is ~150 million km², approximately how many people per km²?",
+    "choices": ["25", "38", "53", "75", "110"],
+    "correct": 2,
+    "explanation": "8,000,000,000 ÷ 150,000,000 = 8,000/150 ≈ 53.3 people/km². Shortcut: 8B/150M = 80/1.5 ≈ 53. Closest is 53. Target: under 20 seconds."
+  }
+]

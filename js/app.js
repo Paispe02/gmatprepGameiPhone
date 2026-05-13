@@ -18,6 +18,16 @@ const App = (() => {
   let pctDifficulty = 'easy';
   let wpDifficulty = 'all';
   let btCategory = 'all';
+  let ntDifficulty = 'all';
+  let estDifficulty = 'all';
+  let dsDifficulty = 'all';
+  let edDifficulty = 'all';
+  let fqDifficulty = 'all';
+  let qsDifficulty = 'all';
+  let cdDifficulty = 'all';
+  let srDifficulty = 'easy';
+  let mcDifficulty = 'easy';
+  let vsDifficulty = 'easy';
 
   // Question browser state (for WP and BT modules)
   let questionPool = [];     // filtered question list
@@ -96,7 +106,7 @@ const App = (() => {
     renderModuleUI();
 
     // For curated modules, build question pool and show browser
-    if (module === 'wordProblems' || module === 'brainTeasers') {
+    if (isBrowserModule(module)) {
       rebuildPool();
       if (questionPool.length > 0) {
         // Start with first unanswered, or first
@@ -142,6 +152,16 @@ const App = (() => {
       percentages:    { name:'Percentages & Ratios',   icon:'%',  desc:'Fractions, percentages, ratios, financial math' },
       wordProblems:   { name:'GMAT Word Problems',     icon:'📝', desc:'Work-rate, distance, mixtures, probability' },
       brainTeasers:   { name:'Brain Teasers',           icon:'🧩', desc:'Logic puzzles, balance scales, patterns' },
+      numberTheory:   { name:'Number Theory',           icon:'🔢', desc:'Divisibility, primes, GCD/LCM, remainders' },
+      estimation:     { name:'Estimation',              icon:'📐', desc:'Quick approximation and order of magnitude' },
+      dataSufficiency: { name:'Data Sufficiency',       icon:'📊', desc:'GMAT DS format — is the info enough?' },
+      errorDetection: { name:'Error Detection',         icon:'🔍', desc:'Find the mistake in the solution' },
+      fastQuant:      { name:'Fast Quant Reading',      icon:'⚡', desc:'Parse verbose problems quickly' },
+      quantStrategy:  { name:'Quant Strategy',          icon:'♟️', desc:'Choose the optimal solving method' },
+      constraintDeduction: { name:'Constraint Deduction', icon:'🧠', desc:'Logic grids, seating, scheduling' },
+      speedRecognition: { name:'Speed Recognition',     icon:'⏱️', desc:'Instant pattern recognition (3-8 sec)' },
+      memoryChunking: { name:'Memory & Chunking',       icon:'🧠', desc:'Memorize expression, then solve' },
+      visualSpatial:  { name:'Visual-Spatial',          icon:'👁️', desc:'Sequences, patterns, spatial reasoning' },
     };
 
     let html = `
@@ -208,14 +228,22 @@ const App = (() => {
     multiplication:'Multiplication Tables', arithmetic:'Mental Arithmetic',
     percentages:'Percentages, Fractions & Ratios',
     wordProblems:'GMAT Word Problems', brainTeasers:'Brain Teasers',
+    numberTheory:'Number Theory', estimation:'Estimation & Approximation',
+    dataSufficiency:'Data Sufficiency', errorDetection:'Error Detection',
+    fastQuant:'Fast Quant Reading', quantStrategy:'Quant Strategy',
+    constraintDeduction:'Constraint Deduction', speedRecognition:'Speed Recognition',
+    memoryChunking:'Memory & Chunking', visualSpatial:'Visual-Spatial Patterns',
   };
+
+  const BROWSER_MODULES = ['wordProblems','brainTeasers','numberTheory','estimation','dataSufficiency','errorDetection','fastQuant','quantStrategy','constraintDeduction'];
+  function isBrowserModule(m) { return BROWSER_MODULES.includes(m); }
 
   function renderModuleUI() {
     const el = document.getElementById('view-' + currentModule);
     if (!el) return;
     const modStats = Stats.getModule(currentModule);
     const showBest = modStats.bestTime ? `<span class="best-time">Best: ${Stats.formatTime(modStats.bestTime)}</span>` : '';
-    const isBrowser = currentModule === 'wordProblems' || currentModule === 'brainTeasers';
+    const isBrowser = isBrowserModule(currentModule);
 
     let html = `
       <div class="quiz-header">
@@ -228,9 +256,7 @@ const App = (() => {
         </div>
       </div>
       ${currentModule === 'multiplication' ? '<div class="table-selector" id="table-selector"></div>' : ''}
-      ${currentModule === 'arithmetic' || currentModule === 'percentages' ? '<div class="difficulty-bar" id="difficulty-bar"></div>' : ''}
-      ${currentModule === 'wordProblems' ? '<div class="difficulty-bar" id="difficulty-bar"></div>' : ''}
-      ${currentModule === 'brainTeasers' ? '<div class="difficulty-bar" id="difficulty-bar"></div>' : ''}
+      ${currentModule !== 'multiplication' ? '<div class="difficulty-bar" id="difficulty-bar"></div>' : ''}
     `;
 
     if (isBrowser) {
@@ -257,9 +283,10 @@ const App = (() => {
     el.innerHTML = html;
 
     if (currentModule === 'multiplication') renderTableSelector();
-    if (currentModule === 'arithmetic' || currentModule === 'percentages') renderDifficultyBar();
+    if (currentModule === 'arithmetic' || currentModule === 'percentages' || currentModule === 'speedRecognition' || currentModule === 'memoryChunking' || currentModule === 'visualSpatial') renderDifficultyBar();
     if (currentModule === 'wordProblems') renderWPDifficultyBar();
     if (currentModule === 'brainTeasers') renderBTCategoryBar();
+    if (BROWSER_MODULES.includes(currentModule) && currentModule !== 'wordProblems' && currentModule !== 'brainTeasers') renderGenericDifficultyBar();
   }
 
   function renderTableSelector() {
@@ -275,7 +302,8 @@ const App = (() => {
   function renderDifficultyBar() {
     const el = getEl('difficulty-bar');
     if (!el) return;
-    const diff = currentModule==='arithmetic' ? arithDifficulty : pctDifficulty;
+    const diffMap = {arithmetic:arithDifficulty, percentages:pctDifficulty, speedRecognition:srDifficulty, memoryChunking:mcDifficulty, visualSpatial:vsDifficulty};
+    const diff = diffMap[currentModule] || 'easy';
     el.innerHTML = ['easy','medium','hard'].map(d =>
       `<button class="diff-btn ${d===diff?'active':''}" onclick="App.setDifficulty('${d}')">${d[0].toUpperCase()+d.slice(1)}</button>`
     ).join('');
@@ -301,17 +329,73 @@ const App = (() => {
     ).join('');
   }
 
+  function renderGenericDifficultyBar() {
+    const el = getEl('difficulty-bar');
+    if (!el) return;
+    const diffMap = {numberTheory:ntDifficulty,estimation:estDifficulty,dataSufficiency:dsDifficulty,errorDetection:edDifficulty,fastQuant:fqDifficulty,quantStrategy:qsDifficulty,constraintDeduction:cdDifficulty};
+    const diff = diffMap[currentModule] || 'all';
+    el.innerHTML = ['all','easy','medium','hard'].map(d =>
+      `<button class="diff-btn ${d===diff?'active':''}" onclick="App.setGenericDifficulty('${d}')">${d==='all'?'All':d[0].toUpperCase()+d.slice(1)}</button>`
+    ).join('');
+  }
+
+  function setGenericDifficulty(d) {
+    switch(currentModule) {
+      case 'numberTheory': ntDifficulty=d; break;
+      case 'estimation': estDifficulty=d; break;
+      case 'dataSufficiency': dsDifficulty=d; break;
+      case 'errorDetection': edDifficulty=d; break;
+      case 'fastQuant': fqDifficulty=d; break;
+      case 'quantStrategy': qsDifficulty=d; break;
+      case 'constraintDeduction': cdDifficulty=d; break;
+    }
+    renderGenericDifficultyBar();
+    rebuildPool();
+    if (questionPool.length > 0) goToQuestion(0);
+  }
+
   // ── QUESTION BROWSER (sidebar) ──
   function rebuildPool() {
-    if (currentModule === 'wordProblems') {
-      let all = Questions.getAllWordProblems();
-      if (wpDifficulty !== 'all') all = all.filter(q => q.difficulty === wpDifficulty);
-      questionPool = all;
-    } else if (currentModule === 'brainTeasers') {
-      let all = Questions.getAllBrainTeasers();
-      if (btCategory !== 'all') all = all.filter(q => q.category === btCategory);
-      questionPool = all;
+    let all = [];
+    switch (currentModule) {
+      case 'wordProblems':
+        all = Questions.getAllWordProblems();
+        if (wpDifficulty !== 'all') all = all.filter(q => q.difficulty === wpDifficulty);
+        break;
+      case 'brainTeasers':
+        all = Questions.getAllBrainTeasers();
+        if (btCategory !== 'all') all = all.filter(q => q.category === btCategory);
+        break;
+      case 'numberTheory':
+        all = Questions.getAllNumberTheory();
+        if (ntDifficulty !== 'all') all = all.filter(q => q.difficulty === ntDifficulty);
+        break;
+      case 'estimation':
+        all = Questions.getAllEstimation();
+        if (estDifficulty !== 'all') all = all.filter(q => q.difficulty === estDifficulty);
+        break;
+      case 'dataSufficiency':
+        all = Questions.getAllDataSufficiency();
+        if (dsDifficulty !== 'all') all = all.filter(q => q.difficulty === dsDifficulty);
+        break;
+      case 'errorDetection':
+        all = Questions.getAllErrorDetection();
+        if (edDifficulty !== 'all') all = all.filter(q => q.difficulty === edDifficulty);
+        break;
+      case 'fastQuant':
+        all = Questions.getAllFastQuant();
+        if (fqDifficulty !== 'all') all = all.filter(q => q.difficulty === fqDifficulty);
+        break;
+      case 'quantStrategy':
+        all = Questions.getAllQuantStrategy();
+        if (qsDifficulty !== 'all') all = all.filter(q => q.difficulty === qsDifficulty);
+        break;
+      case 'constraintDeduction':
+        all = Questions.getAllConstraintDeduction();
+        if (cdDifficulty !== 'all') all = all.filter(q => q.difficulty === cdDifficulty);
+        break;
     }
+    questionPool = all;
     questionIndex = -1;
   }
 
@@ -379,6 +463,9 @@ const App = (() => {
       case 'percentages':    q = Questions.getPercentage(pctDifficulty); break;
       case 'wordProblems':   q = Questions.getWordProblem(wpDifficulty); break;
       case 'brainTeasers':   q = Questions.getBrainTeaser(btCategory); break;
+      case 'speedRecognition': q = Questions.getSpeedRecognition(srDifficulty); break;
+      case 'memoryChunking':   q = Questions.getMemoryChunking(mcDifficulty); break;
+      case 'visualSpatial':    q = Questions.getVisualSpatial(vsDifficulty); break;
     }
     if (!q) return;
     currentQuestion = q;
@@ -389,7 +476,39 @@ const App = (() => {
   function renderQuestion(q) {
     const area = getEl('question-area');
     if (!area) return;
-    if (q.choices) {
+    if (q.type === 'memory') {
+      // Show expression for a few seconds, then hide
+      const showTime = {easy:4000, medium:3000, hard:2000}[q.meta?.difficulty] || 3000;
+      area.innerHTML = `
+        <div class="question-card memory-card">
+          <div class="memory-phase" id="memory-phase">
+            <p class="memory-label">Memorize this expression:</p>
+            <div class="memory-expression" id="memory-expr">${esc(q.text)}</div>
+            <div class="memory-timer" id="memory-timer">${Math.ceil(showTime/1000)}s</div>
+          </div>
+        </div>`;
+      let remaining = showTime;
+      const timerEl = document.getElementById('memory-timer');
+      const countdown = setInterval(() => {
+        remaining -= 100;
+        if (timerEl) timerEl.textContent = (remaining/1000).toFixed(1) + 's';
+        if (remaining <= 0) {
+          clearInterval(countdown);
+          area.innerHTML = `
+            <div class="question-card memory-card">
+              <div class="memory-phase solve-phase">
+                <p class="memory-label">Expression hidden — solve from memory:</p>
+                <div class="answer-input-wrap">
+                  <input type="text" inputmode="decimal" class="answer-input" id="answer-input"
+                    autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+                    onkeydown="if(event.key==='Enter')App.submitInput()">
+                  <button class="btn btn-primary" onclick="App.submitInput()">Submit</button>
+                </div>
+              </div>
+            </div>`;
+        }
+      }, 100);
+    } else if (q.choices) {
       const isLong = q.text.length > 100;
       area.innerHTML = `
         <div class="question-card">
@@ -409,7 +528,6 @@ const App = (() => {
             <button class="btn btn-primary" onclick="App.submitInput()">Submit</button>
           </div>
         </div>`;
-      // Only autofocus on non-touch devices to avoid unwanted keyboard popup on mobile
       if (!('ontouchstart' in window)) {
         setTimeout(() => { const inp = getEl('answer-input'); if (inp) inp.focus(); }, 50);
       }
@@ -464,7 +582,7 @@ const App = (() => {
     if (currentQuestion.id) { completedIds.add(currentQuestion.id); saveCompleted(); }
     updateSessionUI();
     // Update sidebar if in browser mode
-    if ((currentModule === 'wordProblems' || currentModule === 'brainTeasers') && getEl('question-sidebar')) {
+    if (isBrowserModule(currentModule) && getEl('question-sidebar')) {
       renderSidebar();
     }
   }
@@ -494,7 +612,7 @@ const App = (() => {
       }
     }
     const expl = currentQuestion.explanation || '';
-    const isBrowser = (currentModule === 'wordProblems' || currentModule === 'brainTeasers') && questionPool.length > 0;
+    const isBrowser = isBrowserModule(currentModule) && questionPool.length > 0;
     const hasNext = isBrowser ? questionIndex < questionPool.length - 1 : true;
 
     modal.innerHTML = `
@@ -514,7 +632,7 @@ const App = (() => {
   function closeModalAndNext() {
     document.getElementById('modal-overlay').classList.remove('active');
     if (!currentModule) return;
-    const isBrowser = (currentModule === 'wordProblems' || currentModule === 'brainTeasers') && questionPool.length > 0;
+    const isBrowser = isBrowserModule(currentModule) && questionPool.length > 0;
     if (isBrowser) {
       if (questionIndex < questionPool.length - 1) {
         goToQuestion(questionIndex + 1);
@@ -548,6 +666,9 @@ const App = (() => {
   function setDifficulty(d) {
     if (currentModule==='arithmetic') arithDifficulty=d;
     if (currentModule==='percentages') pctDifficulty=d;
+    if (currentModule==='speedRecognition') srDifficulty=d;
+    if (currentModule==='memoryChunking') mcDifficulty=d;
+    if (currentModule==='visualSpatial') vsDifficulty=d;
     renderDifficultyBar();
     nextQuestion();
   }
@@ -596,7 +717,7 @@ const App = (() => {
       html += '<p style="color:var(--text-light)">No mistakes yet! Start practicing.</p>';
       el.innerHTML = html; return;
     }
-    const labels = { multiplication:'Multiplication', arithmetic:'Arithmetic', percentages:'Percentages', wordProblems:'Word Problems', brainTeasers:'Brain Teasers' };
+    const labels = { multiplication:'Multiplication', arithmetic:'Arithmetic', percentages:'Percentages', wordProblems:'Word Problems', brainTeasers:'Brain Teasers', numberTheory:'Number Theory', estimation:'Estimation', dataSufficiency:'Data Sufficiency', errorDetection:'Error Detection', fastQuant:'Fast Quant', quantStrategy:'Quant Strategy', constraintDeduction:'Constraint Deduction', speedRecognition:'Speed Recognition', memoryChunking:'Memory & Chunking', visualSpatial:'Visual-Spatial' };
     html += `<p style="color:var(--text-light);margin-bottom:16px">${mistakes.length} mistake(s). Most recent first.</p>`;
     html += '<table class="mistakes-table"><thead><tr><th>Module</th><th>Question</th><th>Your Answer</th><th>Correct</th><th>Time</th><th>Date</th></tr></thead><tbody>';
     for (const m of mistakes.slice(0, 50)) {
@@ -637,7 +758,7 @@ const App = (() => {
       link.addEventListener('click', e => {
         e.preventDefault();
         const view = link.dataset.view;
-        if (['multiplication','arithmetic','percentages','wordProblems','brainTeasers'].includes(view)) {
+        if (['multiplication','arithmetic','percentages','wordProblems','brainTeasers','numberTheory','estimation','dataSufficiency','errorDetection','fastQuant','quantStrategy','constraintDeduction','speedRecognition','memoryChunking','visualSpatial'].includes(view)) {
           startModule(view);
         } else {
           navigate(view);
@@ -660,7 +781,7 @@ const App = (() => {
   return {
     init, navigate, startModule, nextQuestion,
     submitInput, submitChoice, closeModalAndNext, endSession,
-    toggleTable, setDifficulty, setWPDifficulty, setBTCategory,
+    toggleTable, setDifficulty, setWPDifficulty, setBTCategory, setGenericDifficulty,
     goToQuestion, prevQuestion, nextBrowserQuestion,
     switchUser, addNewUser, deleteCurrentUser, resetStats,
     renderReview,

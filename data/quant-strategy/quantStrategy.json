@@ -1,0 +1,752 @@
+[
+  {
+    "id": "qs1",
+    "category": "quantStrategy",
+    "difficulty": "easy",
+    "text": "What is the fastest method to solve: If 3x + 7 = 22, what is 6x + 14?\n\nA) Solve for x, then substitute\nB) Notice that 6x+14 = 2(3x+7) = 2×22 = 44\nC) Guess and check\nD) Graph both equations\nE) Use elimination",
+    "choices": [
+      "Method A: Solve for x first",
+      "Method B: Recognize the pattern (2× the equation)",
+      "Method C: Guess and check",
+      "Method D: Graphing",
+      "Method E: Elimination"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Pattern recognition.\n6x + 14 = 2(3x + 7) = 2 × 22 = 44.\n\nMethod B: ~3 seconds. Method A: ~30 seconds.\n\nWhy it's best: The target expression is exactly double the given equation. No need to isolate x.\nMethod A works (x=5, then 6(5)+14=44) but wastes 25+ seconds.\n\nGMAT lesson: ALWAYS check if the target is a multiple of the given expression before solving for variables."
+  },
+  {
+    "id": "qs2",
+    "category": "quantStrategy",
+    "difficulty": "easy",
+    "text": "What is the fastest method to solve: If x² - y² = 48 and x + y = 8, what is x - y?\n\nA) Solve the system of two equations for x and y\nB) Factor: x²-y² = (x+y)(x-y), so 48 = 8(x-y)\nC) Try integer pairs that sum to 8\nD) Square both sides of x+y=8\nE) Use the quadratic formula",
+    "choices": [
+      "Method A: Solve the system algebraically",
+      "Method B: Factor the difference of squares",
+      "Method C: Try integer pairs",
+      "Method D: Square the sum equation",
+      "Method E: Quadratic formula"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Pattern recognition via factoring.\nx² - y² = (x+y)(x-y) → 48 = 8(x-y) → x-y = 6.\n\nMethod B: ~5 seconds. Method A: ~60 seconds.\n\nWhy it's best: Recognizing the difference of squares pattern gives the answer directly.\nMethod A requires solving simultaneous equations (x=7, y=1) then subtracting — much slower.\n\nGMAT lesson: When you see x²-y², ALWAYS think (x+y)(x-y). This factorization appears constantly on the GMAT."
+  },
+  {
+    "id": "qs3",
+    "category": "quantStrategy",
+    "difficulty": "easy",
+    "text": "What is the fastest method to solve: What is 48% of 50?\n\nA) Set up 0.48 × 50 and multiply\nB) Recognize that 48% of 50 = 50% of 48 = 24\nC) Convert to fraction: 48/100 × 50\nD) Use long multiplication\nE) Estimate as roughly half of 50",
+    "choices": [
+      "Method A: Multiply 0.48 × 50",
+      "Method B: Flip — 50% of 48 = 24",
+      "Method C: Convert to fraction first",
+      "Method D: Long multiplication",
+      "Method E: Estimate"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Pattern recognition — flip the percentage.\n48% of 50 = 50% of 48 = 24.\n\nMethod B: ~2 seconds. Method A: ~15 seconds.\n\nWhy it's best: a% of b = b% of a. Taking 50% of anything is instant (divide by 2).\nMethod A works but requires decimal multiplication.\n\nGMAT lesson: When one number is close to 50 or 100, flip the percentage. 37% of 50 = 50% of 37 = 18.5."
+  },
+  {
+    "id": "qs4",
+    "category": "quantStrategy",
+    "difficulty": "easy",
+    "text": "What is the fastest method to solve: A shirt costs $60 after a 25% discount. What was the original price?\n\nA) Set up equation: x - 0.25x = 60, solve for x\nB) Plug in answers: try $80 → 25% off = $60 ✓\nC) Work backwards: $60 ÷ 0.75 = $80\nD) Guess and check random values\nE) Set up a proportion",
+    "choices": [
+      "Method A: Algebraic equation",
+      "Method B: Backsolve from answer choices",
+      "Method C: Divide by the complement (÷0.75)",
+      "Method D: Guess and check",
+      "Method E: Proportion"
+    ],
+    "correct": 2,
+    "explanation": "Best method: Working backwards — divide by the complement.\n$60 ÷ 0.75 = $80.\n\nMethod C: ~5 seconds. Method A: ~20 seconds. Method B: ~15 seconds.\n\nWhy it's best: After a 25% discount, you pay 75% of the original. So original = final ÷ 0.75.\nMethod A works but requires setting up and solving an equation unnecessarily.\n\nGMAT lesson: For 'reverse percentage' problems, divide by the complement. Discount of d% → divide by (1-d/100)."
+  },
+  {
+    "id": "qs5",
+    "category": "quantStrategy",
+    "difficulty": "easy",
+    "text": "What is the fastest method to solve: If 2x + 3 = 11 and 4x + 6 = ?\n\nA) Solve for x from the first equation, substitute into 4x+6\nB) Notice 4x+6 = 2(2x+3) = 2×11 = 22\nC) Graph both lines\nD) Substitute x=4 by guess\nE) Use matrix methods",
+    "choices": [
+      "Method A: Solve for x, then substitute",
+      "Method B: Recognize it as double the equation",
+      "Method C: Graphing",
+      "Method D: Guess a value",
+      "Method E: Matrix algebra"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Pattern recognition.\n4x + 6 = 2(2x + 3) = 2 × 11 = 22.\n\nMethod B: ~3 seconds. Method A: ~25 seconds.\n\nWhy it's best: The target is exactly 2× the given expression. Instant answer.\nMethod A wastes time: x=4, then 4(4)+6=22.\n\nGMAT lesson: Before solving, always compare the 'ask' to the 'given.' If one is a scalar multiple of the other, you're done."
+  },
+  {
+    "id": "qs6",
+    "category": "quantStrategy",
+    "difficulty": "easy",
+    "text": "What is the fastest method to solve: Is 391 prime?\n\nA) Test all primes up to √391 ≈ 19.8\nB) Notice 391 = 400 - 9 = 20² - 3² = (20+3)(20-3) = 23×17\nC) Check divisibility by 2, 3, 5, 7, 11, 13, 17, 19 one by one\nD) Use a prime factorization tree\nE) Check if it's odd and not ending in 5",
+    "choices": [
+      "Method A: Test all primes up to √391",
+      "Method B: Recognize difference of squares pattern",
+      "Method C: Sequential divisibility tests",
+      "Method D: Factor tree",
+      "Method E: Quick odd/not-5 check only"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Pattern recognition — difference of squares.\n391 = 400 - 9 = 20² - 3² = (23)(17). Not prime.\n\nMethod B: ~5 seconds. Method A/C: ~45 seconds.\n\nWhy it's best: Recognizing a number as a difference of two perfect squares factors it instantly.\nMethod C requires testing 2, 3, 5, 7, 11, 13 (all fail), then finally 17 works — very slow.\n\nGMAT lesson: When a number is close to a perfect square, check if the difference is also a perfect square."
+  },
+  {
+    "id": "qs7",
+    "category": "quantStrategy",
+    "difficulty": "easy",
+    "text": "What is the fastest method to solve: What is 15% of 80?\n\nA) Calculate 0.15 × 80\nB) Calculate 10% of 80 + 5% of 80 = 8 + 4 = 12\nC) Convert 15/100 × 80 and simplify\nD) Use long multiplication\nE) Estimate as between 10% and 20%",
+    "choices": [
+      "Method A: Direct decimal multiplication",
+      "Method B: Break into 10% + 5%",
+      "Method C: Fraction conversion",
+      "Method D: Long multiplication",
+      "Method E: Estimation only"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Decompose the percentage.\n10% of 80 = 8. 5% of 80 = 4. Total = 12.\n\nMethod B: ~5 seconds. Method A: ~15 seconds.\n\nWhy it's best: Breaking percentages into 10% and 5% chunks makes mental math trivial.\nMethod A (0.15 × 80) requires decimal multiplication which is error-prone mentally.\n\nGMAT lesson: Decompose hard percentages: 15% = 10%+5%, 35% = 30%+5%, 12.5% = 10%+2.5%."
+  },
+  {
+    "id": "qs8",
+    "category": "quantStrategy",
+    "difficulty": "easy",
+    "text": "What is the fastest method to solve: If a train travels 240 miles in 4 hours, how far does it go in 7 hours at the same speed?\n\nA) Find speed (240÷4=60), then multiply (60×7=420)\nB) Set up proportion: 240/4 = x/7, cross multiply\nC) Use the distance formula d=rt step by step\nD) Estimate based on doubling\nE) Draw a diagram",
+    "choices": [
+      "Method A: Find rate, then multiply",
+      "Method B: Set up a proportion",
+      "Method C: Use d=rt formula explicitly",
+      "Method D: Estimate by doubling",
+      "Method E: Draw a diagram"
+    ],
+    "correct": 0,
+    "explanation": "Best method: Direct rate calculation.\n240 ÷ 4 = 60 mph. Then 60 × 7 = 420 miles.\n\nMethod A: ~5 seconds. Method B: ~20 seconds.\n\nWhy it's best: The numbers divide cleanly, making the rate obvious. No need for formal proportion setup.\nMethod B works but adds unnecessary steps (cross multiplication, solving for x).\n\nGMAT lesson: When numbers divide evenly, just find the rate directly. Use proportions only when the rate isn't clean."
+  },
+  {
+    "id": "qs9",
+    "category": "quantStrategy",
+    "difficulty": "easy",
+    "text": "What is the fastest method to solve: A rectangle has perimeter 36 and length 10. What is the area?\n\nA) Use P=2l+2w: 36=2(10)+2w → w=8, then A=10×8=80\nB) Try all factor pairs of common areas\nC) Set up system of equations with two unknowns\nD) Use calculus to optimize\nE) Estimate from the perimeter alone",
+    "choices": [
+      "Method A: Direct formula substitution",
+      "Method B: Trial and error with factor pairs",
+      "Method C: System of equations",
+      "Method D: Calculus optimization",
+      "Method E: Estimation"
+    ],
+    "correct": 0,
+    "explanation": "Best method: Direct substitution.\nP = 2l + 2w → 36 = 20 + 2w → w = 8. Area = 10 × 8 = 80.\n\nMethod A: ~8 seconds. Method C: ~25 seconds.\n\nWhy it's best: With one dimension given and perimeter known, it's a single substitution. No need for complex setups.\nMethod C overcomplicates with two equations when one direct formula suffices.\n\nGMAT lesson: Not every problem needs a clever trick. When direct substitution is fast, just do it."
+  },
+  {
+    "id": "qs10",
+    "category": "quantStrategy",
+    "difficulty": "easy",
+    "text": "What is the fastest method to solve: What is 997 × 8?\n\nA) Long multiplication: 997 × 8\nB) Rewrite as (1000-3) × 8 = 8000 - 24 = 7976\nC) Break into 900×8 + 90×8 + 7×8\nD) Repeated addition\nE) Use a number line",
+    "choices": [
+      "Method A: Long multiplication",
+      "Method B: Use (1000-3) × 8",
+      "Method C: Distribute by place value",
+      "Method D: Repeated addition",
+      "Method E: Number line"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Pattern recognition — near-thousand adjustment.\n997 × 8 = (1000-3) × 8 = 8000 - 24 = 7976.\n\nMethod B: ~5 seconds. Method A: ~30 seconds. Method C: ~20 seconds.\n\nWhy it's best: 997 is 3 away from 1000, making the multiplication trivial.\nMethod C works but requires three separate multiplications and addition.\n\nGMAT lesson: When a number is near a round number (100, 1000), rewrite as (round ± small) and distribute."
+  },
+  {
+    "id": "qs11",
+    "category": "quantStrategy",
+    "difficulty": "easy",
+    "text": "What is the fastest method to solve: The average of 5 numbers is 20. If one number is removed and the average becomes 18, what was the removed number?\n\nA) Set up algebraic equation with sum\nB) Total was 5×20=100, new total is 4×18=72, removed = 100-72=28\nC) Guess and check values\nD) Use the median instead\nE) Set up weighted average formula",
+    "choices": [
+      "Method A: Algebraic equation",
+      "Method B: Use sum = count × average directly",
+      "Method C: Guess and check",
+      "Method D: Use median approach",
+      "Method E: Weighted average formula"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Sum approach — work with totals.\nOriginal sum = 5 × 20 = 100. New sum = 4 × 18 = 72. Removed = 100 - 72 = 28.\n\nMethod B: ~8 seconds. Method A: ~25 seconds.\n\nWhy it's best: Converting averages to sums makes the answer fall out directly.\nMethod A (setting up (100-x)/4 = 18) works but adds an unnecessary equation-solving step.\n\nGMAT lesson: For average problems, always convert to SUMS first. Sum = Count × Average."
+  },
+  {
+    "id": "qs12",
+    "category": "quantStrategy",
+    "difficulty": "easy",
+    "text": "What is the fastest method to solve: If x + y = 10 and xy = 21, what is x² + y²?\n\nA) Solve for x and y individually, then square and add\nB) Use identity: x²+y² = (x+y)² - 2xy = 100 - 42 = 58\nC) Try factor pairs of 21\nD) Use the quadratic formula\nE) Graph both equations",
+    "choices": [
+      "Method A: Solve for both variables",
+      "Method B: Use algebraic identity (x+y)² - 2xy",
+      "Method C: Factor pairs trial",
+      "Method D: Quadratic formula",
+      "Method E: Graphing"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Pattern recognition — algebraic identity.\nx² + y² = (x+y)² - 2xy = 10² - 2(21) = 100 - 42 = 58.\n\nMethod B: ~5 seconds. Method A: ~40 seconds.\n\nWhy it's best: The identity gives the answer directly from the given information.\nMethod A requires solving a quadratic (x²-10x+21=0 → x=7,3) then computing 49+9=58.\n\nGMAT lesson: Key identities to memorize: (x+y)²=x²+2xy+y², so x²+y²=(x+y)²-2xy."
+  },
+  {
+    "id": "qs13",
+    "category": "quantStrategy",
+    "difficulty": "medium",
+    "text": "What is the fastest method to solve: If 5x - 3y = 17 and 3x - 5y = -1, what is x + y?\n\nA) Solve the system by elimination or substitution\nB) Add both equations: 8x - 8y = 16, so x - y = 2. Then subtract: 2x + 2y = 18, so x + y = 9\nC) Use Cramer's rule (determinants)\nD) Graph both lines and find intersection\nE) Guess integer solutions",
+    "choices": [
+      "Method A: Standard elimination/substitution",
+      "Method B: Add and subtract the equations strategically",
+      "Method C: Cramer's rule",
+      "Method D: Graphing",
+      "Method E: Guess integers"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Pattern recognition — combine equations strategically.\nAdd: (5x-3y)+(3x-5y) = 17+(-1) → 8x-8y = 16 → x-y = 2.\nSubtract: (5x-3y)-(3x-5y) = 17-(-1) → 2x+2y = 18 → x+y = 9.\n\nMethod B: ~15 seconds. Method A: ~45 seconds.\n\nWhy it's best: Adding/subtracting the equations directly produces x+y without finding individual values.\nMethod A finds x=4, y=5 then adds — correct but unnecessarily slow.\n\nGMAT lesson: When asked for a COMBINATION (x+y, x-y, 2x+y), try adding/subtracting equations first."
+  },
+  {
+    "id": "qs14",
+    "category": "quantStrategy",
+    "difficulty": "medium",
+    "text": "What is the fastest method to solve: If 2^(x+3) = 32, what is x?\n\nA) Take log of both sides: (x+3)log2 = log32\nB) Recognize that 32 = 2⁵, so x+3 = 5, x = 2\nC) Try values: 2¹, 2², 2³... until you hit 32\nD) Convert to natural log and solve\nE) Use change of base formula",
+    "choices": [
+      "Method A: Logarithms",
+      "Method B: Match the bases (32 = 2⁵)",
+      "Method C: Trial values",
+      "Method D: Natural log conversion",
+      "Method E: Change of base"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Pattern recognition — express both sides with the same base.\n32 = 2⁵, so 2^(x+3) = 2⁵ → x+3 = 5 → x = 2.\n\nMethod B: ~5 seconds. Method A: ~30 seconds.\n\nWhy it's best: When both sides can be written as powers of the same base, exponents must be equal.\nMethod A introduces logarithms unnecessarily — slower and more error-prone.\n\nGMAT lesson: For exponential equations, ALWAYS try to match bases before using logarithms. Know: 2⁵=32, 3⁴=81, 5³=125."
+  },
+  {
+    "id": "qs15",
+    "category": "quantStrategy",
+    "difficulty": "medium",
+    "text": "What is the fastest method to solve: A store marks up an item 40% above cost, then offers a 20% discount. If the sale price is $56, what was the cost?\n\nA) Set up: cost × 1.4 × 0.8 = 56, solve for cost\nB) Work backwards: 56 ÷ 0.8 = 70 (pre-discount), 70 ÷ 1.4 = 50 (cost)\nC) Try answer choices: if cost=50, markup=70, discount=56 ✓\nD) Set up two separate equations\nE) Use profit formula",
+    "choices": [
+      "Method A: Combined multiplier equation",
+      "Method B: Reverse each step",
+      "Method C: Backsolve from answer choices",
+      "Method D: Two separate equations",
+      "Method E: Profit formula"
+    ],
+    "correct": 2,
+    "explanation": "Best method: Backsolving — try answer choices.\nIf cost = $50: markup 40% → $70, discount 20% → $56 ✓.\n\nMethod C: ~10 seconds. Method A: ~20 seconds. Method B: ~15 seconds.\n\nWhy it's best: With round answer choices, one quick check confirms the answer without any algebra.\nMethods A and B both work but require division by decimals (56÷1.12 or multi-step reversal).\n\nGMAT lesson: When answer choices are round numbers and the problem has sequential operations, backsolving is often fastest."
+  },
+  {
+    "id": "qs16",
+    "category": "quantStrategy",
+    "difficulty": "medium",
+    "text": "What is the fastest method to solve: If √(x+5) = 7, what is x?\n\nA) Square both sides: x+5 = 49, so x = 44\nB) Guess values until √(x+5) = 7\nC) Use the quadratic formula\nD) Rationalize the denominator\nE) Graph y = √(x+5) and y = 7",
+    "choices": [
+      "Method A: Square both sides directly",
+      "Method B: Guess and check",
+      "Method C: Quadratic formula",
+      "Method D: Rationalize",
+      "Method E: Graphing"
+    ],
+    "correct": 0,
+    "explanation": "Best method: Direct — square both sides.\n(√(x+5))² = 7² → x+5 = 49 → x = 44.\n\nMethod A: ~5 seconds. Method B: ~20 seconds.\n\nWhy it's best: This is a straightforward equation where the direct approach is the fastest.\nNo clever trick needed — squaring removes the radical immediately.\n\nGMAT lesson: Not every problem needs a shortcut. When the direct approach is already fast, use it. Don't overthink simple equations."
+  },
+  {
+    "id": "qs17",
+    "category": "quantStrategy",
+    "difficulty": "medium",
+    "text": "What is the fastest method to solve: 347 + 289 + 153 + 211 = ?\n\nA) Add left to right in sequence\nB) Group friendly pairs: (347+153) + (289+211) = 500 + 500 = 1000\nC) Round each number and adjust\nD) Add units, tens, hundreds separately\nE) Use a number line",
+    "choices": [
+      "Method A: Sequential addition",
+      "Method B: Group numbers that sum to round values",
+      "Method C: Round and adjust",
+      "Method D: Column addition",
+      "Method E: Number line"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Pattern recognition — find complementary pairs.\n347 + 153 = 500. 289 + 211 = 500. Total = 1000.\n\nMethod B: ~5 seconds. Method A: ~30 seconds.\n\nWhy it's best: Spotting pairs that sum to round numbers eliminates carrying and errors.\nMethod A requires three sequential additions with carrying digits.\n\nGMAT lesson: Before adding a series, scan for pairs that make 100, 500, or 1000. This saves massive time."
+  },
+  {
+    "id": "qs18",
+    "category": "quantStrategy",
+    "difficulty": "medium",
+    "text": "What is the fastest method to solve: If x² + 6x + 9 = 49, what are the possible values of x?\n\nA) Expand and use quadratic formula: x² + 6x - 40 = 0\nB) Recognize perfect square: (x+3)² = 49, so x+3 = ±7\nC) Factor x² + 6x - 40 = 0\nD) Complete the square from scratch\nE) Graph the parabola",
+    "choices": [
+      "Method A: Quadratic formula",
+      "Method B: Recognize perfect square trinomial",
+      "Method C: Factor the quadratic",
+      "Method D: Complete the square",
+      "Method E: Graphing"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Pattern recognition — it's already a perfect square.\nx² + 6x + 9 = (x+3)². So (x+3)² = 49 → x+3 = ±7 → x = 4 or x = -10.\n\nMethod B: ~8 seconds. Method A: ~40 seconds.\n\nWhy it's best: The left side is already factored as a perfect square. Taking the square root gives the answer instantly.\nMethods A and C require rearranging to x²+6x-40=0 first — unnecessary extra work.\n\nGMAT lesson: Memorize perfect square trinomials: x²+2ax+a² = (x+a)². Spot them before rearranging."
+  },
+  {
+    "id": "qs19",
+    "category": "quantStrategy",
+    "difficulty": "medium",
+    "text": "What is the fastest method to solve: What is 7/8 as a percentage?\n\nA) Divide 7÷8 by long division, then multiply by 100\nB) Know that 1/8 = 12.5%, so 7/8 = 87.5%\nC) Cross multiply with x/100\nD) Convert to decimal first, then percentage\nE) Estimate between 75% and 100%",
+    "choices": [
+      "Method A: Long division",
+      "Method B: Use known benchmark (1/8 = 12.5%)",
+      "Method C: Cross multiplication",
+      "Method D: Decimal conversion",
+      "Method E: Estimation"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Pattern recognition — use memorized benchmarks.\n1/8 = 12.5%, so 7/8 = 7 × 12.5% = 87.5%. Or: 1 - 1/8 = 1 - 12.5% = 87.5%.\n\nMethod B: ~3 seconds. Method A: ~30 seconds.\n\nWhy it's best: Having fraction-to-percent conversions memorized gives instant answers.\nMethod A requires tedious long division of 7÷8.\n\nGMAT lesson: Memorize: 1/8=12.5%, 3/8=37.5%, 5/8=62.5%, 7/8=87.5%. These appear frequently."
+  },
+  {
+    "id": "qs20",
+    "category": "quantStrategy",
+    "difficulty": "medium",
+    "text": "What is the fastest method to solve: A number when divided by 7 gives remainder 3. What is the remainder when the same number is multiplied by 5 and divided by 7?\n\nA) Pick a specific number with remainder 3 (like 10), multiply by 5, divide by 7\nB) Set up: n = 7q + 3, then 5n = 35q + 15, find 15 mod 7\nC) Use modular arithmetic notation\nD) Try all possible remainders\nE) Use the Chinese Remainder Theorem",
+    "choices": [
+      "Method A: Pick a smart number (e.g., 10)",
+      "Method B: Algebraic with modular reduction",
+      "Method C: Formal modular arithmetic",
+      "Method D: Try all remainders",
+      "Method E: Chinese Remainder Theorem"
+    ],
+    "correct": 0,
+    "explanation": "Best method: Smart number picking.\nPick n = 10 (gives remainder 3 when ÷7). Then 5×10 = 50. 50÷7 = 7 remainder 1.\n\nMethod A: ~8 seconds. Method B: ~20 seconds.\n\nWhy it's best: Picking the simplest number that satisfies the condition makes the problem concrete and fast.\nMethod B is rigorous but slower: 5n = 35q+15, and 15 = 2(7)+1, remainder = 1.\n\nGMAT lesson: For remainder problems, pick the SMALLEST number satisfying the condition and compute directly."
+  },
+  {
+    "id": "qs21",
+    "category": "quantStrategy",
+    "difficulty": "medium",
+    "text": "What is the fastest method to solve: If the sum of three consecutive even integers is 78, what is the largest?\n\nA) Set up: x + (x+2) + (x+4) = 78, solve for x\nB) The middle number is 78÷3 = 26, so largest is 28\nC) Try answer choices\nD) Use arithmetic sequence formula\nE) Guess and check triples",
+    "choices": [
+      "Method A: Algebraic equation",
+      "Method B: Middle = average = sum÷count",
+      "Method C: Backsolve from choices",
+      "Method D: Sequence formula",
+      "Method E: Guess and check"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Pattern recognition — for consecutive integers, mean = median = middle.\nMiddle number = 78 ÷ 3 = 26. Largest = 26 + 2 = 28.\n\nMethod B: ~5 seconds. Method A: ~25 seconds.\n\nWhy it's best: For evenly spaced numbers, the average equals the middle term. Instant answer.\nMethod A works (3x+6=78, x=24, largest=28) but requires unnecessary algebra.\n\nGMAT lesson: For consecutive integers/evens/odds: average = middle value. Divide the sum by count to find the middle."
+  },
+  {
+    "id": "qs22",
+    "category": "quantStrategy",
+    "difficulty": "medium",
+    "text": "What is the fastest method to solve: At a party, everyone shakes hands with everyone else exactly once. If there were 45 handshakes, how many people were at the party?\n\nA) Set up n(n-1)/2 = 45 and solve the quadratic\nB) Backsolve: try n=10 → 10(9)/2 = 45 ✓\nC) List out: 1 person = 0, 2 = 1, 3 = 3, 4 = 6...\nD) Use permutations formula\nE) Draw a diagram",
+    "choices": [
+      "Method A: Solve quadratic n(n-1)/2 = 45",
+      "Method B: Backsolve — try n = 10",
+      "Method C: Count up from small cases",
+      "Method D: Permutations",
+      "Method E: Diagram"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Backsolving.\nTry n = 10: handshakes = 10(9)/2 = 45 ✓. Done.\n\nMethod B: ~5 seconds. Method A: ~30 seconds.\n\nWhy it's best: The formula n(n-1)/2 = 45 means n(n-1) = 90. With backsolving, you just try 10×9 = 90 ✓.\nMethod A requires solving n²-n-90 = 0 with the quadratic formula.\n\nGMAT lesson: Combination/handshake problems often have clean answers. Try n=10 first (since 10×9/2 = 45 is a very common GMAT number)."
+  },
+  {
+    "id": "qs23",
+    "category": "quantStrategy",
+    "difficulty": "medium",
+    "text": "What is the fastest method to solve: 36 × 25 = ?\n\nA) Standard multiplication: 36 × 25\nB) Rewrite: 36 × 25 = 9 × 4 × 25 = 9 × 100 = 900\nC) Use distributive: 36 × 20 + 36 × 5\nD) Round: 36 × 25 ≈ 40 × 25\nE) Repeated addition",
+    "choices": [
+      "Method A: Standard multiplication",
+      "Method B: Factor to create 100 (4×25=100)",
+      "Method C: Distributive property",
+      "Method D: Rounding estimate",
+      "Method E: Repeated addition"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Pattern recognition — create friendly factors.\n36 × 25 = (9 × 4) × 25 = 9 × (4 × 25) = 9 × 100 = 900.\n\nMethod B: ~5 seconds. Method A: ~20 seconds. Method C: ~15 seconds.\n\nWhy it's best: Recognizing that 4 × 25 = 100 transforms a hard multiplication into a trivial one.\nMethod C (720 + 180 = 900) works but requires two multiplications.\n\nGMAT lesson: Key multiplication tricks: 4×25=100, 8×125=1000, 5×20=100. Factor numbers to exploit these."
+  },
+  {
+    "id": "qs24",
+    "category": "quantStrategy",
+    "difficulty": "medium",
+    "text": "What is the fastest method to solve: If f(x) = 2x + 3, what is f(f(2))?\n\nA) Find f(2), then apply f again to that result\nB) Find a general formula for f(f(x)) first\nC) Graph f and trace the composition\nD) Set up an equation\nE) Build a table of values",
+    "choices": [
+      "Method A: Evaluate step by step: f(2), then f(result)",
+      "Method B: Derive f(f(x)) = 2(2x+3)+3 first",
+      "Method C: Graphing",
+      "Method D: Equation approach",
+      "Method E: Table of values"
+    ],
+    "correct": 0,
+    "explanation": "Best method: Direct evaluation.\nf(2) = 2(2)+3 = 7. f(7) = 2(7)+3 = 17.\n\nMethod A: ~8 seconds. Method B: ~20 seconds.\n\nWhy it's best: For a specific numerical input, just plug in twice. No formula needed.\nMethod B derives f(f(x)) = 4x+9, then evaluates at x=2: 4(2)+9=17 — correct but over-engineered.\n\nGMAT lesson: When asked for a specific value of a composition, just evaluate step by step. Derive a general formula only if asked for the function itself."
+  },
+  {
+    "id": "qs25",
+    "category": "quantStrategy",
+    "difficulty": "medium",
+    "text": "What is the fastest method to solve: Is 3^100 + 3^100 + 3^100 greater than, less than, or equal to 3^101?\n\nA) Calculate both sides (impossible without calculator)\nB) Factor: 3^100 + 3^100 + 3^100 = 3 × 3^100 = 3^101\nC) Use logarithms to compare\nD) Estimate with smaller exponents and generalize\nE) Use numerical approximation",
+    "choices": [
+      "Method A: Direct calculation",
+      "Method B: Factor out 3^100",
+      "Method C: Logarithmic comparison",
+      "Method D: Test with smaller exponents",
+      "Method E: Approximation"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Pattern recognition — factor.\n3^100 + 3^100 + 3^100 = 3 × 3^100 = 3^(100+1) = 3^101. They're equal.\n\nMethod B: ~5 seconds. Method D: ~20 seconds.\n\nWhy it's best: Factoring reveals the equality instantly. Adding three copies of x equals 3x.\nMethod D (testing 3¹+3¹+3¹ = 9 = 3²) works but requires testing and generalizing.\n\nGMAT lesson: When adding identical exponential terms, factor: n copies of a^k = n × a^k. If n itself is a power of a, simplify further."
+  },
+  {
+    "id": "qs26",
+    "category": "quantStrategy",
+    "difficulty": "medium",
+    "text": "What is the fastest method to solve: A car depreciates 20% per year. After 2 years, a car is worth $25,600. What was the original price?\n\nA) Set up: P × (0.8)² = 25,600 → P = 25,600 ÷ 0.64\nB) Work backwards: Year 2→1: 25,600÷0.8 = 32,000. Year 1→0: 32,000÷0.8 = 40,000\nC) Try choices: if P=40,000, after yr1=32,000, after yr2=25,600 ✓\nD) Use compound interest formula\nE) Calculate total depreciation percentage",
+    "choices": [
+      "Method A: Direct equation with (0.8)²",
+      "Method B: Reverse step by step",
+      "Method C: Backsolve from answer choices",
+      "Method D: Compound interest formula",
+      "Method E: Calculate total % lost"
+    ],
+    "correct": 2,
+    "explanation": "Best method: Backsolving.\nTry $40,000: Year 1 = 40,000 × 0.8 = 32,000. Year 2 = 32,000 × 0.8 = 25,600 ✓.\n\nMethod C: ~10 seconds. Method A: ~25 seconds (requires 25,600 ÷ 0.64). Method B: ~20 seconds.\n\nWhy it's best: Multiplying by 0.8 is easier than dividing by 0.64. Backsolving lets you work forward with easy multiplications.\nMethod A requires dividing by 0.64 which is harder mental math.\n\nGMAT lesson: When reversing operations involves ugly division, try backsolving with forward computation instead."
+  },
+  {
+    "id": "qs27",
+    "category": "quantStrategy",
+    "difficulty": "medium",
+    "text": "What is the fastest method to solve: What is the units digit of 7^23?\n\nA) Calculate 7^23 directly\nB) Find the cycle of units digits: 7,9,3,1,7,9,3,1... Period 4. 23÷4 remainder 3 → units digit 3\nC) Use logarithms\nD) Multiply 7 × 7 × 7... twenty-three times\nE) Use binomial theorem",
+    "choices": [
+      "Method A: Direct computation",
+      "Method B: Find the units digit cycle (period 4)",
+      "Method C: Logarithms",
+      "Method D: Sequential multiplication",
+      "Method E: Binomial theorem"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Pattern recognition — units digit cycles.\n7¹=7, 7²=49, 7³=343, 7⁴=2401. Cycle: 7,9,3,1 (period 4).\n23 ÷ 4 = 5 remainder 3. So units digit = 3rd in cycle = 3.\n\nMethod B: ~15 seconds. Methods A,D: impossible without calculator.\n\nWhy it's best: All single digits have units digit cycles of period 1, 2, or 4. Find the cycle, divide the exponent.\nNo other method is feasible for large exponents.\n\nGMAT lesson: Units digit cycles: 2→{2,4,8,6}, 3→{3,9,7,1}, 7→{7,9,3,1}, 8→{8,4,2,6}. Period always divides 4."
+  },
+  {
+    "id": "qs28",
+    "category": "quantStrategy",
+    "difficulty": "medium",
+    "text": "What is the fastest method to solve: If the ratio of boys to girls is 3:5 and there are 40 students total, how many boys are there?\n\nA) Set up: 3x + 5x = 40, solve for x, then 3x\nB) Boys = 3/(3+5) × 40 = 3/8 × 40 = 15\nC) Try values until ratio works\nD) Set up proportion 3/5 = boys/(40-boys)\nE) Use simultaneous equations",
+    "choices": [
+      "Method A: Algebraic equation with multiplier",
+      "Method B: Fraction of total (part/whole × total)",
+      "Method C: Trial and error",
+      "Method D: Proportion",
+      "Method E: Simultaneous equations"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Direct fraction computation.\nBoys = (3/8) × 40 = 15.\n\nMethod B: ~5 seconds. Method A: ~15 seconds. Method D: ~25 seconds.\n\nWhy it's best: In a 3:5 ratio, boys are 3 out of (3+5)=8 parts. One multiplication gives the answer.\nMethod A works (8x=40, x=5, boys=15) but adds an unnecessary variable.\n\nGMAT lesson: For ratio-to-quantity problems: part = (part_ratio / sum_of_ratios) × total. No equations needed."
+  },
+  {
+    "id": "qs29",
+    "category": "quantStrategy",
+    "difficulty": "medium",
+    "text": "What is the fastest method to solve: The price of a stock went up 25% on Monday, then down 20% on Tuesday. What was the net change from the original price?\n\nA) Pick $100: up 25% = $125, down 20% = $100. Net: 0%\nB) Calculate: (1.25)(0.80) = 1.00, so 0% change\nC) Add the percentages: +25% - 20% = +5%\nD) Set up algebraic equation with original price P\nE) Use geometric mean",
+    "choices": [
+      "Method A: Pick $100 as the starting price",
+      "Method B: Multiply successive multipliers",
+      "Method C: Add percentages (TRAP — wrong)",
+      "Method D: Algebraic with variable P",
+      "Method E: Geometric mean"
+    ],
+    "correct": 0,
+    "explanation": "Best method: Smart number picking — use $100.\nStart: $100. Up 25%: $125. Down 20%: $125 × 0.8 = $100. Net change: 0%.\n\nMethod A: ~10 seconds. Method B: ~10 seconds. Method D: ~25 seconds.\n\nWhy it's best: Starting with $100 makes percentage calculations trivial — percent IS the dollar amount.\nMethod B also works quickly. Method C is the TRAP (you cannot simply add sequential percentages).\n\nGMAT lesson: For sequential percentage changes, ALWAYS pick $100. Never add/subtract percentages directly."
+  },
+  {
+    "id": "qs30",
+    "category": "quantStrategy",
+    "difficulty": "medium",
+    "text": "What is the fastest method to solve: 4^3 × 8^2 = 2^n. What is n?\n\nA) Calculate 4³=64, 8²=64, then 64×64=4096, then find n\nB) Convert all to base 2: 4³=(2²)³=2⁶, 8²=(2³)²=2⁶, so 2⁶×2⁶=2¹², n=12\nC) Use logarithms\nD) Trial values of n\nE) Prime factorization tree",
+    "choices": [
+      "Method A: Calculate then match",
+      "Method B: Convert everything to base 2",
+      "Method C: Logarithms",
+      "Method D: Trial and error",
+      "Method E: Factor tree"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Pattern recognition — convert to common base.\n4³ = (2²)³ = 2⁶. 8² = (2³)² = 2⁶. Product = 2⁶ × 2⁶ = 2¹². So n = 12.\n\nMethod B: ~10 seconds. Method A: ~30 seconds.\n\nWhy it's best: Expressing everything in base 2 uses exponent rules cleanly.\nMethod A requires computing 4096 and then figuring out 2¹² = 4096.\n\nGMAT lesson: When equating exponential expressions, convert all bases to the smallest prime base. Then use (a^m)^n = a^(mn) and a^m × a^n = a^(m+n)."
+  },
+  {
+    "id": "qs31",
+    "category": "quantStrategy",
+    "difficulty": "medium",
+    "text": "What is the fastest method to solve: In how many ways can 5 books be arranged on a shelf?\n\nA) List all arrangements systematically\nB) Recognize: 5! = 5×4×3×2×1 = 120\nC) Use the combination formula\nD) Draw a tree diagram\nE) Use the multiplication principle step by step: 5 choices × 4 × 3 × 2 × 1",
+    "choices": [
+      "Method A: List all arrangements",
+      "Method B: Direct factorial: 5! = 120",
+      "Method C: Combination formula",
+      "Method D: Tree diagram",
+      "Method E: Multiplication principle from scratch"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Pattern recognition — factorial.\n5! = 120.\n\nMethod B: ~2 seconds. Method E: ~10 seconds. Method A: impossible to list 120 arrangements.\n\nWhy it's best: Recognizing 'arrangements of n distinct items' = n! gives an instant answer.\nMethod E derives the same thing but takes longer if you don't recognize the pattern.\n\nGMAT lesson: Memorize: 5!=120, 6!=720, 7!=5040. Arrangement of n items = n! (this is a foundational pattern)."
+  },
+  {
+    "id": "qs32",
+    "category": "quantStrategy",
+    "difficulty": "medium",
+    "text": "What is the fastest method to solve: What is the approximate value of √(150)?\n\nA) Use the square root algorithm\nB) Estimate: 12²=144, 13²=169. So √150 ≈ 12.2 (closer to 12)\nC) Calculator (not available)\nD) Use Newton's method iterations\nE) Factor 150 and simplify: √(25×6) = 5√6",
+    "choices": [
+      "Method A: Square root algorithm",
+      "Method B: Bracket between perfect squares",
+      "Method C: Calculator",
+      "Method D: Newton's method",
+      "Method E: Simplify to 5√6"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Estimation — bracket between known squares.\n12² = 144, 13² = 169. 150 is 6/25 of the way from 144 to 169 → √150 ≈ 12.2.\n\nMethod B: ~8 seconds. Method E gives 5√6 which still needs estimation.\n\nWhy it's best: For approximation questions, bracketing between perfect squares is fast and sufficient.\nMethod E simplifies the radical but doesn't give a decimal approximation.\n\nGMAT lesson: Know perfect squares 1-15 cold. For approximation, bracket and interpolate linearly."
+  },
+  {
+    "id": "qs33",
+    "category": "quantStrategy",
+    "difficulty": "hard",
+    "text": "What is the fastest method to solve: If x³ - 8 = 0, which of the following must be true?\n(A) x=2  (B) x=-2  (C) x=2 or x=-2  (D) x=2 only  (E) x=±2 or x=0\n\nA) Factor as difference of cubes: (x-2)(x²+2x+4)=0, check discriminant\nB) Just note x³=8 → x=2 (for real numbers)\nC) Try all answer choices\nD) Use the cubic formula\nE) Graph y=x³-8",
+    "choices": [
+      "Method A: Factor difference of cubes, analyze all roots",
+      "Method B: Direct cube root (real solutions only)",
+      "Method C: Test answer choices",
+      "Method D: Cubic formula",
+      "Method E: Graphing"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Direct cube root.\nx³ = 8 → x = ∛8 = 2. For real numbers, cube root is unique.\n\nMethod B: ~5 seconds. Method A: ~40 seconds.\n\nWhy it's best: Unlike square roots, cube roots have exactly one real solution. No need to factor.\nMethod A is rigorous (finds complex roots too) but the GMAT only deals with real numbers.\n\nGMAT lesson: Don't over-complicate. On the GMAT, x³=k has exactly one real solution: x=∛k. Save factoring for when it's needed."
+  },
+  {
+    "id": "qs34",
+    "category": "quantStrategy",
+    "difficulty": "hard",
+    "text": "What is the fastest method to solve: If x + 1/x = 5, what is x² + 1/x²?\n\nA) Solve for x using quadratic formula, then compute x² + 1/x²\nB) Square both sides: (x+1/x)² = x²+2+1/x² = 25, so x²+1/x² = 23\nC) Try rational values of x\nD) Use numerical approximation\nE) Substitute u = x + 1/x and derive a new equation",
+    "choices": [
+      "Method A: Solve for x explicitly",
+      "Method B: Square the given equation",
+      "Method C: Try rational values",
+      "Method D: Numerical approximation",
+      "Method E: Substitution"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Pattern recognition — square the equation.\n(x + 1/x)² = x² + 2(x)(1/x) + 1/x² = x² + 2 + 1/x².\nSo 25 = x² + 2 + 1/x² → x² + 1/x² = 23.\n\nMethod B: ~10 seconds. Method A: ~60+ seconds.\n\nWhy it's best: Squaring (x+1/x) directly produces x²+1/x² with a known middle term.\nMethod A involves solving x²-5x+1=0, getting irrational roots, squaring them — nightmare.\n\nGMAT lesson: When asked for x²+1/x², x³+1/x³, etc., manipulate the given expression (x+1/x) by raising to powers."
+  },
+  {
+    "id": "qs35",
+    "category": "quantStrategy",
+    "difficulty": "hard",
+    "text": "What is the fastest method to solve: What is the value of 1/(1×2) + 1/(2×3) + 1/(3×4) + ... + 1/(99×100)?\n\nA) Add fractions one by one\nB) Use partial fractions: 1/(n(n+1)) = 1/n - 1/(n+1), then telescope\nC) Approximate with an integral\nD) Find a pattern with small cases\nE) Use a common denominator",
+    "choices": [
+      "Method A: Sequential addition",
+      "Method B: Partial fractions (telescoping)",
+      "Method C: Integral approximation",
+      "Method D: Small case pattern finding",
+      "Method E: Common denominator"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Pattern recognition — telescoping series.\n1/(n(n+1)) = 1/n - 1/(n+1).\nSum = (1/1-1/2)+(1/2-1/3)+...+(1/99-1/100) = 1 - 1/100 = 99/100.\n\nMethod B: ~15 seconds. Methods A, E: impossible with 99 terms.\n\nWhy it's best: Partial fraction decomposition reveals cancellation — only first and last terms survive.\nNo other method is feasible for 99 terms without a calculator.\n\nGMAT lesson: When you see 1/(n(n+1)), decompose into 1/n - 1/(n+1). This is the classic GMAT telescoping series."
+  },
+  {
+    "id": "qs36",
+    "category": "quantStrategy",
+    "difficulty": "hard",
+    "text": "What is the fastest method to solve: x² - 5x + 6 = 0. Which of the following is a possible value of x² + x?\n(A) 2  (B) 6  (C) 12  (D) 20  (E) 30\n\nA) Solve x²-5x+6=0, get x=2,3. Then check x²+x for each\nB) Try to relate x²+x to the original equation algebraically\nC) Test each answer choice\nD) Factor and use Vieta's formulas only\nE) Graph and find intersection",
+    "choices": [
+      "Method A: Solve for x, then compute x²+x",
+      "Method B: Algebraic manipulation without solving",
+      "Method C: Test answer choices",
+      "Method D: Vieta's formulas only",
+      "Method E: Graphing"
+    ],
+    "correct": 0,
+    "explanation": "Best method: Solve directly — it's fast here.\nx²-5x+6=0 → (x-2)(x-3)=0 → x=2 or x=3.\nIf x=2: x²+x = 4+2 = 6. If x=3: x²+x = 9+3 = 12. Both (B) and (C) work.\n\nMethod A: ~15 seconds. Method B: ~25 seconds (trying to algebraically relate is harder here).\n\nWhy it's best: The quadratic factors instantly. Computing x²+x for two small values is trivial.\nMethod B overcomplicates — sometimes the direct approach IS the shortcut.\n\nGMAT lesson: When a quadratic factors easily and values are small, just solve and substitute. Don't force a clever trick."
+  },
+  {
+    "id": "qs37",
+    "category": "quantStrategy",
+    "difficulty": "hard",
+    "text": "What is the fastest method to solve: If 3^a = 5 and 5^b = 3, what is ab?\n\nA) Solve for a and b using logarithms, then multiply\nB) From 3^a=5, raise both sides to power b: 3^(ab)=5^b=3, so ab=1\nC) Estimate: a≈1.46, b≈0.68, ab≈1\nD) Use natural logs: a=ln5/ln3, b=ln3/ln5, ab=1\nE) Convert to base 10 logs",
+    "choices": [
+      "Method A: Solve for each with logarithms",
+      "Method B: Compose the equations (raise to power)",
+      "Method C: Numerical estimation",
+      "Method D: Compute with ln and multiply",
+      "Method E: Base 10 conversion"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Pattern recognition — compose the equations.\n3^a = 5. Raise both sides to power b: (3^a)^b = 5^b → 3^(ab) = 5^b.\nBut 5^b = 3. So 3^(ab) = 3 → ab = 1.\n\nMethod B: ~10 seconds. Method A/D: ~30 seconds.\n\nWhy it's best: Substituting one equation into the other eliminates the need for logarithms entirely.\nMethod D works (a=ln5/ln3 × ln3/ln5 = 1) but requires knowing log properties.\n\nGMAT lesson: When given a^x = b and b^y = a, always try composing. The answer is xy = 1. This pattern appears frequently."
+  },
+  {
+    "id": "qs38",
+    "category": "quantStrategy",
+    "difficulty": "hard",
+    "text": "What is the fastest method to solve: A 6×8 rectangle is inscribed in a circle. What is the area of the circle?\n\nA) Use coordinate geometry: place rectangle at origin, find radius\nB) The diagonal is the diameter: d = √(6²+8²) = 10, so r=5, area=25π\nC) Use the formula for circumscribed circle of a rectangle\nD) Set up equations for the circle passing through four points\nE) Use trigonometry",
+    "choices": [
+      "Method A: Coordinate geometry",
+      "Method B: Diagonal = diameter (geometric insight)",
+      "Method C: Circumscribed circle formula",
+      "Method D: Four-point circle equation",
+      "Method E: Trigonometry"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Geometric insight — diagonal equals diameter.\nDiagonal = √(6²+8²) = √(36+64) = √100 = 10. Radius = 5. Area = π(5²) = 25π.\n\nMethod B: ~8 seconds. Method A: ~30 seconds.\n\nWhy it's best: For any rectangle inscribed in a circle, the diagonal IS the diameter. One Pythagorean calculation.\nMethod A works but requires setting up coordinates unnecessarily.\n\nGMAT lesson: Rectangle inscribed in circle → diagonal = diameter. Also recognize 6-8-10 as a Pythagorean triple (3-4-5 × 2)."
+  },
+  {
+    "id": "qs39",
+    "category": "quantStrategy",
+    "difficulty": "hard",
+    "text": "What is the fastest method to solve: If the probability of rain on any given day is 0.3, what is the probability of NO rain on 3 consecutive days?\n\nA) Use complement: P(no rain one day) = 0.7, then (0.7)³\nB) List all possible outcomes for 3 days\nC) Use the binomial formula with k=0\nD) Calculate P(at least one rain) and subtract from 1\nE) Draw a probability tree",
+    "choices": [
+      "Method A: Direct: (1-0.3)³ = 0.7³ = 0.343",
+      "Method B: List all outcomes",
+      "Method C: Binomial formula C(3,0)(0.7)³(0.3)⁰",
+      "Method D: 1 - P(at least one rain)",
+      "Method E: Probability tree"
+    ],
+    "correct": 0,
+    "explanation": "Best method: Direct computation with complement.\nP(no rain one day) = 1 - 0.3 = 0.7. P(no rain 3 days) = 0.7³ = 0.343.\n\nMethod A: ~8 seconds. Method C: ~15 seconds. Method D: ~40 seconds.\n\nWhy it's best: 'No rain on all days' means multiply P(no rain) for each day. No formula needed.\nMethod C gives the same calculation (C(3,0)=1) but wraps it in unnecessary notation.\nMethod D requires computing P(at least 1 rain) = multiple cases — much harder.\n\nGMAT lesson: For 'none of n trials' problems, compute P(complement)^n directly. Avoid over-applying the binomial formula."
+  },
+  {
+    "id": "qs40",
+    "category": "quantStrategy",
+    "difficulty": "hard",
+    "text": "What is the fastest method to solve: A worker can complete a job in 12 days. After working 4 days, he is joined by another worker who can do it in 18 days. How many more days to finish?\n\nA) Set up equation: 4/12 + d(1/12 + 1/18) = 1, solve for d\nB) Pick a smart number for total work: LCM(12,18)=36 units. Worker A does 3/day, B does 2/day. After 4 days: 12 done, 24 left. Together: 5/day → 24/5 = 4.8 days\nC) Use the work formula directly\nD) Calculate percentage complete after 4 days, then proportion the rest\nE) Trial and error with days",
+    "choices": [
+      "Method A: Algebraic equation with rates",
+      "Method B: Smart number (LCM) to avoid fractions",
+      "Method C: Work formula",
+      "Method D: Percentage approach",
+      "Method E: Trial and error"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Smart number picking — use LCM.\nTotal work = LCM(12,18) = 36 units. A does 36/12 = 3 units/day. B does 36/18 = 2 units/day.\nAfter 4 days alone: A completes 12 units. Remaining: 24 units. Together: 5 units/day → 24/5 = 4.8 days.\n\nMethod B: ~20 seconds. Method A: ~35 seconds.\n\nWhy it's best: Using the LCM eliminates all fractions, making mental math clean.\nMethod A requires working with 1/12 + 1/18 = 5/36, then solving 4/12 + 5d/36 = 1 — messy fractions.\n\nGMAT lesson: For work rate problems, let total work = LCM of all completion times. This converts rates to integers."
+  },
+  {
+    "id": "qs41",
+    "category": "quantStrategy",
+    "difficulty": "hard",
+    "text": "What is the fastest method to solve: If 0 < x < 1, which is largest: x, x², √x, 1/x, x³?\n\nA) Test with x=0.5: 0.5, 0.25, 0.707, 2, 0.125 → 1/x is largest\nB) Analyze each function's behavior on (0,1) theoretically\nC) Graph all five functions\nD) Take derivatives to compare\nE) Set up inequalities between each pair",
+    "choices": [
+      "Method A: Pick x=0.5 and evaluate all",
+      "Method B: Theoretical analysis of each function",
+      "Method C: Graphing",
+      "Method D: Derivatives",
+      "Method E: Pairwise inequalities"
+    ],
+    "correct": 0,
+    "explanation": "Best method: Smart number picking.\nLet x = 0.5: x=0.5, x²=0.25, √x≈0.707, 1/x=2, x³=0.125. Clearly 1/x is largest.\n\nMethod A: ~10 seconds. Method B: ~40 seconds. Method E: ~60+ seconds.\n\nWhy it's best: One concrete example immediately reveals the ordering.\nTheoretical analysis works but is time-consuming and error-prone.\n\nGMAT lesson: For 'which is largest/smallest' comparison problems with constraints, ALWAYS test with a specific value first. Use x=0.5 for (0,1), x=2 for x>1."
+  },
+  {
+    "id": "qs42",
+    "category": "quantStrategy",
+    "difficulty": "hard",
+    "text": "What is the fastest method to solve: Two trains leave from cities 300 miles apart, traveling toward each other at 60 mph and 40 mph. How long until they meet?\n\nA) Set up: 60t + 40t = 300, solve for t\nB) Combined closing speed = 100 mph. Time = 300/100 = 3 hours\nC) Track each train's position separately\nD) Draw a diagram and measure\nE) Set up parametric equations",
+    "choices": [
+      "Method A: Equation 60t + 40t = 300",
+      "Method B: Combined speed = 100, time = distance/speed",
+      "Method C: Track positions separately",
+      "Method D: Diagram",
+      "Method E: Parametric equations"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Geometric insight — combined closing speed.\nApproaching each other: combined speed = 60 + 40 = 100 mph. Time = 300/100 = 3 hours.\n\nMethod B: ~5 seconds. Method A: ~15 seconds.\n\nWhy it's best: Treating both trains as one object closing the gap at combined speed gives the answer in one division.\nMethod A gets the same equation (100t=300) but requires setting up variables.\n\nGMAT lesson: For approaching objects, add speeds. For objects moving apart, add speeds for separation rate. For chasing, subtract speeds."
+  },
+  {
+    "id": "qs43",
+    "category": "quantStrategy",
+    "difficulty": "hard",
+    "text": "What is the fastest method to solve: What is the sum of all integers from 1 to 200 that are divisible by 3?\n\nA) List and add: 3+6+9+...+198\nB) Use formula: count=66, sum = 66×(3+198)/2 = 66×100.5 = 6633\nC) Factor out 3: sum = 3(1+2+3+...+66) = 3×66×67/2 = 6633\nD) Estimate using average\nE) Use inclusion-exclusion",
+    "choices": [
+      "Method A: List and add",
+      "Method B: Arithmetic series formula directly",
+      "Method C: Factor out 3, use n(n+1)/2",
+      "Method D: Estimation",
+      "Method E: Inclusion-exclusion"
+    ],
+    "correct": 2,
+    "explanation": "Best method: Factor out 3 and use simple formula.\nSum = 3+6+...+198 = 3(1+2+...+66) = 3 × (66×67)/2 = 3 × 2211 = 6633.\n\nMethod C: ~15 seconds. Method B: ~20 seconds (requires 66×100.5 which is uglier).\n\nWhy it's best: Factoring out 3 reduces to n(n+1)/2 which is cleaner than computing (first+last)/2 × count with non-integers.\nMethod B gets 66 × 100.5 which requires multiplying by a decimal.\n\nGMAT lesson: For sum of multiples, factor out the multiplier: sum of multiples of k from k to nk = k × n(n+1)/2."
+  },
+  {
+    "id": "qs44",
+    "category": "quantStrategy",
+    "difficulty": "hard",
+    "text": "What is the fastest method to solve: A triangle has sides 5, 12, and 13. What is its area?\n\nA) Use Heron's formula: s=(5+12+13)/2=15, A=√(15×10×3×2)\nB) Recognize 5-12-13 is a right triangle (5²+12²=13²). Area = (5×12)/2 = 30\nC) Use the formula A = (1/2)ab sin(C)\nD) Draw height and calculate\nE) Use coordinate geometry",
+    "choices": [
+      "Method A: Heron's formula",
+      "Method B: Recognize Pythagorean triple → right triangle",
+      "Method C: Trigonometric formula",
+      "Method D: Construct altitude",
+      "Method E: Coordinate geometry"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Geometric insight — recognize the Pythagorean triple.\n5² + 12² = 25 + 144 = 169 = 13². Right triangle! Area = (1/2)(5)(12) = 30.\n\nMethod B: ~5 seconds. Method A: ~30 seconds.\n\nWhy it's best: Recognizing a Pythagorean triple means you know it's a right triangle, and the two legs are the base and height.\nMethod A works but requires computing √(15×10×3×2) = √900 = 30 — much longer.\n\nGMAT lesson: Memorize Pythagorean triples: 3-4-5, 5-12-13, 8-15-17, 7-24-25. Spot them to avoid Heron's formula."
+  },
+  {
+    "id": "qs45",
+    "category": "quantStrategy",
+    "difficulty": "hard",
+    "text": "What is the fastest method to solve: What is the remainder when 2^100 is divided by 7?\n\nA) Find the pattern of 2^n mod 7: 2,4,1,2,4,1... Period 3. 100÷3 remainder 1 → answer is 2\nB) Calculate 2^100 and divide by 7\nC) Use Fermat's little theorem: 2^6≡1(mod7), 100=16×6+4, so 2^100≡2^4≡2(mod7)\nD) Try small cases and guess\nE) Use Euler's theorem",
+    "choices": [
+      "Method A: Find cycle of remainders (period 3)",
+      "Method B: Direct calculation",
+      "Method C: Fermat's little theorem",
+      "Method D: Small cases",
+      "Method E: Euler's theorem"
+    ],
+    "correct": 0,
+    "explanation": "Best method: Pattern finding — cycle of remainders.\n2¹÷7→R2, 2²÷7→R4, 2³÷7→R1, 2⁴÷7→R2, 2⁵÷7→R4, 2⁶÷7→R1... Cycle: {2,4,1} period 3.\n100 ÷ 3 = 33 remainder 1. Position 1 in cycle → remainder 2.\n\nMethod A: ~15 seconds. Method C: ~25 seconds (requires knowing the theorem).\n\nWhy it's best: Computing a few powers and spotting the cycle is faster than recalling formal theorems.\nMethod C works (2^6≡1 mod 7, so 2^100=2^(96+4)=(2^6)^16 × 2^4≡1×16≡2 mod 7) but requires more theory.\n\nGMAT lesson: For remainder of large powers, find the cycle by computing the first few. The cycle length always divides φ(n)."
+  },
+  {
+    "id": "qs46",
+    "category": "quantStrategy",
+    "difficulty": "hard",
+    "text": "What is the fastest method to solve: A solution is 40% acid. How much water must be added to 60 liters to make it 30% acid?\n\nA) Set up: 0.4(60) = 0.3(60+w), solve for w\nB) Work backwards from answers: try w=20 → 24/(80)=30% ✓\nC) Use the alligation/mixture diagram\nD) Set up ratio of acid to total\nE) Use weighted average formula",
+    "choices": [
+      "Method A: Algebraic equation",
+      "Method B: Backsolve from answer choices",
+      "Method C: Alligation diagram",
+      "Method D: Ratio setup",
+      "Method E: Weighted average"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Backsolving.\nAcid amount stays at 0.4×60 = 24 liters. Try adding 20 liters water: total = 80, concentration = 24/80 = 0.30 = 30% ✓.\n\nMethod B: ~10 seconds. Method A: ~20 seconds.\n\nWhy it's best: The acid amount is fixed (24L). Just try water amounts until 24/(60+w) = 0.30.\nWith w=20: 24/80 = 0.3 ✓. One check is enough.\n\nGMAT lesson: In dilution problems, the solute amount is fixed. Backsolving is often faster because you avoid solving 24 = 0.3(60+w)."
+  },
+  {
+    "id": "qs47",
+    "category": "quantStrategy",
+    "difficulty": "hard",
+    "text": "What is the fastest method to solve: Of 100 students, 70 take Math, 60 take English, and 40 take both. How many take neither?\n\nA) Use inclusion-exclusion: |M∪E| = 70+60-40 = 90. Neither = 100-90 = 10\nB) Draw a Venn diagram and fill in all regions\nC) Set up three equations with four unknowns\nD) Use probability: P(neither) = 1 - P(M∪E)\nE) List out all possible combinations",
+    "choices": [
+      "Method A: Inclusion-exclusion formula directly",
+      "Method B: Venn diagram",
+      "Method C: System of equations",
+      "Method D: Probability conversion",
+      "Method E: List combinations"
+    ],
+    "correct": 0,
+    "explanation": "Best method: Direct formula — inclusion-exclusion.\n|M ∪ E| = |M| + |E| - |M ∩ E| = 70 + 60 - 40 = 90. Neither = 100 - 90 = 10.\n\nMethod A: ~5 seconds. Method B: ~20 seconds.\n\nWhy it's best: The formula gives the answer in one line with given numbers.\nMethod B (Venn diagram) works but requires filling in 4 regions before answering.\n\nGMAT lesson: For two-group overlap problems: |A∪B| = |A|+|B|-|A∩B|. Use this formula directly — don't draw Venn diagrams for simple two-set problems."
+  },
+  {
+    "id": "qs48",
+    "category": "quantStrategy",
+    "difficulty": "hard",
+    "text": "What is the fastest method to solve: The length of a rectangle is increased by 20% and width decreased by 20%. What happens to the area?\n\nA) Let length=l, width=w. New area = 1.2l × 0.8w = 0.96lw. Area decreases 4%\nB) Pick numbers: l=10, w=10. Old=100, New=12×8=96. Decreased by 4%\nC) Use calculus (differential approximation)\nD) Set up proportion\nE) Add the percentages: +20%-20%=0% (TRAP)",
+    "choices": [
+      "Method A: Algebraic with multipliers",
+      "Method B: Pick easy numbers (10×10)",
+      "Method C: Calculus approximation",
+      "Method D: Proportion",
+      "Method E: Add percentages (TRAP — wrong)"
+    ],
+    "correct": 1,
+    "explanation": "Best method: Smart number picking.\nLet l=10, w=10. Original area=100. New: 12×8=96. Change: -4%.\n\nMethod B: ~8 seconds. Method A: ~12 seconds.\n\nWhy it's best: Concrete numbers make the calculation trivial and error-proof.\nMethod A (1.2×0.8=0.96) is also fast but requires comfort with multiplying decimals.\nMethod E is the trap — percentages of different quantities don't add.\n\nGMAT lesson: For 'increase by a% and decrease by a%' problems, pick 10×10 or 100. Result is always a decrease of (a/10)² percent. Here: (20/10)²=4% decrease."
+  },
+  {
+    "id": "qs49",
+    "category": "quantStrategy",
+    "difficulty": "hard",
+    "text": "What is the fastest method to solve: A cylindrical tank with radius 3 and height 10 is filled to 2/3 capacity. What volume of water is in the tank?\n\nA) Volume of full cylinder = πr²h = 9π×10 = 90π. Then (2/3)(90π) = 60π\nB) Set up integral for partial volume\nC) Use the formula V = (2/3)πr²h directly\nD) Convert to gallons first\nE) Use proportional reasoning with a unit cylinder",
+    "choices": [
+      "Method A: Full volume × fraction filled",
+      "Method B: Integration",
+      "Method C: Combined formula",
+      "Method D: Unit conversion",
+      "Method E: Proportional reasoning"
+    ],
+    "correct": 0,
+    "explanation": "Best method: Direct — compute full volume, multiply by fraction.\nFull volume = π(3²)(10) = 90π. Water = (2/3)(90π) = 60π.\n\nMethod A: ~10 seconds. Method B: ~60+ seconds.\n\nWhy it's best: For a vertical cylinder filled to a fraction of its height, volume is simply that fraction of total volume.\nMethod B (integration) is absurdly over-engineered for this problem.\n\nGMAT lesson: Cylinders have uniform cross-section, so fraction of height filled = fraction of volume. No calculus needed."
+  },
+  {
+    "id": "qs50",
+    "category": "quantStrategy",
+    "difficulty": "hard",
+    "text": "What is the fastest method to solve: If |2x - 5| = 11, what is the product of all possible values of x?\n\nA) Solve two cases: 2x-5=11→x=8, 2x-5=-11→x=-3. Product = 8×(-3)=-24\nB) Square both sides: (2x-5)²=121, expand and use Vieta's\nC) Graph y=|2x-5| and y=11\nD) Test answer choices\nE) Use absolute value properties to set up inequality",
+    "choices": [
+      "Method A: Two cases, then multiply solutions",
+      "Method B: Square both sides and use Vieta's",
+      "Method C: Graphing",
+      "Method D: Test choices",
+      "Method E: Inequality approach"
+    ],
+    "correct": 0,
+    "explanation": "Best method: Direct — solve two cases.\nCase 1: 2x-5=11 → x=8. Case 2: 2x-5=-11 → x=-3. Product = 8×(-3) = -24.\n\nMethod A: ~15 seconds. Method B: ~30 seconds.\n\nWhy it's best: Two simple linear equations give both solutions directly.\nMethod B (squaring to get 4x²-20x+25=121 → 4x²-20x-96=0) is correct but much slower.\n\nGMAT lesson: For |expression| = k, set up expression = k and expression = -k. It's always two linear equations. Don't over-complicate with squaring."
+  }
+]

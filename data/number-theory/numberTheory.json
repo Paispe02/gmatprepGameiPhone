@@ -1,0 +1,902 @@
+[
+  {
+    "id": "nt1",
+    "category": "numberTheory",
+    "difficulty": "easy",
+    "text": "Which of the following numbers is divisible by 9?",
+    "choices": [
+      "145",
+      "253",
+      "351",
+      "412",
+      "524"
+    ],
+    "correct": 2,
+    "explanation": "A number is divisible by 9 if the sum of its digits is divisible by 9.\n\n145 → 1+4+5 = 10 (no)\n253 → 2+5+3 = 10 (no)\n351 → 3+5+1 = 9 ✓\n412 → 4+1+2 = 7 (no)\n524 → 5+2+4 = 11 (no)\n\nShortcut: Just add digits mentally. If sum = 9 or 18 or 27, it's divisible by 9."
+  },
+  {
+    "id": "nt2",
+    "category": "numberTheory",
+    "difficulty": "easy",
+    "text": "A number is divisible by 6 if and only if it is divisible by:",
+    "choices": [
+      "2 and 4",
+      "2 and 3",
+      "3 and 4",
+      "2 and 5",
+      "3 and 6"
+    ],
+    "correct": 1,
+    "explanation": "Divisibility by 6 requires divisibility by BOTH 2 and 3 (since 6 = 2 × 3 and gcd(2,3) = 1).\n\nShortcut: For composite divisors, check coprime factor pairs. 6 = 2 × 3, so check both."
+  },
+  {
+    "id": "nt3",
+    "category": "numberTheory",
+    "difficulty": "easy",
+    "text": "What is the sum of all prime numbers between 10 and 20?",
+    "choices": [
+      "41",
+      "52",
+      "58",
+      "60",
+      "67"
+    ],
+    "correct": 3,
+    "explanation": "Primes between 10 and 20: 11, 13, 17, 19.\n\nPair for fast addition: 11+19 = 30, 13+17 = 30. Total = 60.\n\nShortcut: Pair numbers that sum to round values for instant mental math."
+  },
+  {
+    "id": "nt4",
+    "category": "numberTheory",
+    "difficulty": "easy",
+    "text": "What is the last digit of 3^4?",
+    "choices": [
+      "1",
+      "3",
+      "7",
+      "9",
+      "6"
+    ],
+    "correct": 0,
+    "explanation": "3^1=3, 3^2=9, 3^3=27(last digit 7), 3^4=81(last digit 1).\n\nShortcut: Powers of 3 cycle with period 4: 3, 9, 7, 1. Exponent 4 mod 4 = 0 → position 4 → last digit 1."
+  },
+  {
+    "id": "nt5",
+    "category": "numberTheory",
+    "difficulty": "easy",
+    "text": "If n is an even number and m is an odd number, which of the following must be odd?",
+    "choices": [
+      "n + m",
+      "n × m",
+      "n²",
+      "m + m",
+      "n + n"
+    ],
+    "correct": 0,
+    "explanation": "Even + Odd = Odd. Always.\n\nKey parity rules:\n• Even + Even = Even\n• Odd + Odd = Even\n• Even + Odd = Odd\n• Even × anything = Even\n• Odd × Odd = Odd"
+  },
+  {
+    "id": "nt6",
+    "category": "numberTheory",
+    "difficulty": "easy",
+    "text": "How many factors does 36 have?",
+    "choices": [
+      "6",
+      "7",
+      "8",
+      "9",
+      "10"
+    ],
+    "correct": 3,
+    "explanation": "36 = 2² × 3²\n\nNumber of factors = (2+1)(2+1) = 9.\n\nFactors: 1, 2, 3, 4, 6, 9, 12, 18, 36.\n\nShortcut: Prime factorize → multiply (exponent+1) for each prime."
+  },
+  {
+    "id": "nt7",
+    "category": "numberTheory",
+    "difficulty": "easy",
+    "text": "What is the GCD of 48 and 36?",
+    "choices": [
+      "4",
+      "6",
+      "8",
+      "12",
+      "18"
+    ],
+    "correct": 3,
+    "explanation": "48 = 2⁴ × 3, 36 = 2² × 3²\n\nGCD = min power of each common prime = 2² × 3¹ = 12.\n\nShortcut: For GCD, take the smaller exponent of each shared prime factor."
+  },
+  {
+    "id": "nt8",
+    "category": "numberTheory",
+    "difficulty": "easy",
+    "text": "What is the remainder when 25 is divided by 7?",
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "correct": 3,
+    "explanation": "7 × 3 = 21, and 25 − 21 = 4.\n\nShortcut: Find the largest multiple of 7 below 25 → 21 → remainder = 25 − 21 = 4."
+  },
+  {
+    "id": "nt9",
+    "category": "numberTheory",
+    "difficulty": "easy",
+    "text": "Which of the following is a prime number?",
+    "choices": [
+      "51",
+      "57",
+      "59",
+      "63",
+      "69"
+    ],
+    "correct": 2,
+    "explanation": "51=3×17, 57=3×19, 63=9×7, 69=3×23. Only 59 is prime.\n\nShortcut: To test n<100, check primes up to √n. For 59: √59≈7.7, check 2,3,5,7. None divide 59 → prime."
+  },
+  {
+    "id": "nt10",
+    "category": "numberTheory",
+    "difficulty": "easy",
+    "text": "What is the LCM of 4 and 6?",
+    "choices": [
+      "2",
+      "8",
+      "12",
+      "18",
+      "24"
+    ],
+    "correct": 2,
+    "explanation": "4 = 2², 6 = 2 × 3\n\nLCM = max power of each prime = 2² × 3 = 12.\n\nAlternatively: LCM = (4×6) ÷ GCD(4,6) = 24 ÷ 2 = 12."
+  },
+  {
+    "id": "nt11",
+    "category": "numberTheory",
+    "difficulty": "easy",
+    "text": "The product of three consecutive integers is always divisible by:",
+    "choices": [
+      "4",
+      "5",
+      "6",
+      "8",
+      "9"
+    ],
+    "correct": 2,
+    "explanation": "Among 3 consecutive integers: one is divisible by 3, at least one by 2.\n\nProduct always divisible by 2×3 = 6.\n\nShortcut: Product of k consecutive integers is always divisible by k! Here 3! = 6."
+  },
+  {
+    "id": "nt12",
+    "category": "numberTheory",
+    "difficulty": "easy",
+    "text": "What is the last digit of 7²?",
+    "choices": [
+      "1",
+      "3",
+      "7",
+      "9",
+      "4"
+    ],
+    "correct": 3,
+    "explanation": "7² = 49. Last digit is 9.\n\nPowers of 7 cycle: 7, 9, 3, 1. Position 2 → last digit 9."
+  },
+  {
+    "id": "nt13",
+    "category": "numberTheory",
+    "difficulty": "easy",
+    "text": "If the sum of two integers is even, which must be true?",
+    "choices": [
+      "Both are even",
+      "Both are odd",
+      "One is even and one is odd",
+      "Both are even OR both are odd",
+      "At least one is even"
+    ],
+    "correct": 3,
+    "explanation": "Even + Even = Even, Odd + Odd = Even.\n\nIf the sum is even, both numbers have the SAME parity.\n\nShortcut: Same parity → even sum. Different parity → odd sum."
+  },
+  {
+    "id": "nt14",
+    "category": "numberTheory",
+    "difficulty": "easy",
+    "text": "How many prime numbers are there between 1 and 10?",
+    "choices": [
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "correct": 1,
+    "explanation": "Primes between 1 and 10: 2, 3, 5, 7 → 4 primes.\n\nRemember: 1 is NOT prime. 2 is the only even prime."
+  },
+  {
+    "id": "nt15",
+    "category": "numberTheory",
+    "difficulty": "easy",
+    "text": "What is 2^10?",
+    "choices": [
+      "512",
+      "1000",
+      "1024",
+      "1048",
+      "2048"
+    ],
+    "correct": 2,
+    "explanation": "2^10 = 1024. Must-know for GMAT.\n\nKey powers: 2^5=32, 2^6=64, 2^7=128, 2^8=256, 2^9=512, 2^10=1024."
+  },
+  {
+    "id": "nt16",
+    "category": "numberTheory",
+    "difficulty": "medium",
+    "text": "What is the remainder when 2^20 is divided by 5?",
+    "choices": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correct": 1,
+    "explanation": "Powers of 2 mod 5 cycle (period 4): 2, 4, 3, 1.\n\n20 mod 4 = 0 → position 4 in cycle → remainder 1.\n\nVerify: 2^4=16, 16 mod 5=1. 2^20=(2^4)^5 → 1^5=1 ✓\n\nShortcut: Find cycle of remainders, use exponent mod cycle-length."
+  },
+  {
+    "id": "nt17",
+    "category": "numberTheory",
+    "difficulty": "medium",
+    "text": "How many factors does 120 have?",
+    "choices": [
+      "12",
+      "14",
+      "16",
+      "18",
+      "20"
+    ],
+    "correct": 2,
+    "explanation": "120 = 2³ × 3¹ × 5¹\n\nFactors = (3+1)(1+1)(1+1) = 4×2×2 = 16.\n\nShortcut: Prime factorize → multiply (exponent+1) for each prime."
+  },
+  {
+    "id": "nt18",
+    "category": "numberTheory",
+    "difficulty": "medium",
+    "text": "What is the last digit of 3^100?",
+    "choices": [
+      "1",
+      "3",
+      "7",
+      "9",
+      "6"
+    ],
+    "correct": 0,
+    "explanation": "Powers of 3 cycle (period 4): 3, 9, 7, 1.\n\n100 mod 4 = 0 → position 4 → last digit 1.\n\nShortcut: When exponent mod cycle-length = 0, you're at the LAST position in the cycle."
+  },
+  {
+    "id": "nt19",
+    "category": "numberTheory",
+    "difficulty": "medium",
+    "text": "What is the LCM of 12, 15, and 20?",
+    "choices": [
+      "30",
+      "60",
+      "120",
+      "180",
+      "300"
+    ],
+    "correct": 1,
+    "explanation": "12 = 2²×3, 15 = 3×5, 20 = 2²×5\n\nLCM = max power of each prime = 2²×3×5 = 60.\n\nShortcut: List all primes, take highest power of each."
+  },
+  {
+    "id": "nt20",
+    "category": "numberTheory",
+    "difficulty": "medium",
+    "text": "If n is a positive integer and n² is divisible by 72, what is the smallest possible value of n?",
+    "choices": [
+      "6",
+      "12",
+      "18",
+      "24",
+      "36"
+    ],
+    "correct": 1,
+    "explanation": "72 = 2³ × 3²\n\nFor n² to contain 2³: n needs at least 2² (since (2²)² = 2⁴ ≥ 2³).\nFor n² to contain 3²: n needs at least 3¹ (since (3¹)² = 3²).\n\nSmallest n = 4×3 = 12. Check: 12²=144, 144÷72=2 ✓\n\nShortcut: n must have p^⌈a/2⌉ for each p^a in the target."
+  },
+  {
+    "id": "nt21",
+    "category": "numberTheory",
+    "difficulty": "medium",
+    "text": "A number leaves remainder 3 when divided by 7 and remainder 2 when divided by 5. What is the smallest such positive number?",
+    "choices": [
+      "17",
+      "22",
+      "27",
+      "32",
+      "37"
+    ],
+    "correct": 0,
+    "explanation": "Remainder 3 mod 7: 3, 10, 17, 24, 31...\nRemainder 2 mod 5: 2, 7, 12, 17, 22...\n\nFirst overlap: 17.\n\nCheck: 17÷7 = 2R3 ✓, 17÷5 = 3R2 ✓\n\nShortcut: List both sequences, find first common value."
+  },
+  {
+    "id": "nt22",
+    "category": "numberTheory",
+    "difficulty": "medium",
+    "text": "What is the largest prime factor of 330?",
+    "choices": [
+      "3",
+      "5",
+      "7",
+      "11",
+      "13"
+    ],
+    "correct": 3,
+    "explanation": "330 ÷ 2 = 165, 165 ÷ 3 = 55, 55 ÷ 5 = 11 (prime).\n\n330 = 2×3×5×11. Largest prime factor = 11.\n\nShortcut: Divide by small primes until you reach a prime."
+  },
+  {
+    "id": "nt23",
+    "category": "numberTheory",
+    "difficulty": "medium",
+    "text": "If the product of two integers is odd, which must be true?",
+    "choices": [
+      "Both are even",
+      "At least one is odd",
+      "Both are odd",
+      "One is even, one is odd",
+      "Their sum is odd"
+    ],
+    "correct": 2,
+    "explanation": "For a product to be odd, BOTH factors must be odd.\n\nEven × anything = Even, so if either factor is even, the product is even.\n\nShortcut: Odd × Odd = Odd is the ONLY way to get an odd product."
+  },
+  {
+    "id": "nt24",
+    "category": "numberTheory",
+    "difficulty": "medium",
+    "text": "What is the last digit of 17^23?",
+    "choices": [
+      "1",
+      "3",
+      "7",
+      "9",
+      "4"
+    ],
+    "correct": 1,
+    "explanation": "Only the units digit matters: 7^23.\n\nPowers of 7 cycle (period 4): 7, 9, 3, 1.\n23 mod 4 = 3 → position 3 → last digit 3.\n\nShortcut: Strip base to units digit, find cycle, use exponent mod cycle-length."
+  },
+  {
+    "id": "nt25",
+    "category": "numberTheory",
+    "difficulty": "medium",
+    "text": "How many positive integers less than 100 are divisible by both 4 and 6?",
+    "choices": [
+      "4",
+      "6",
+      "8",
+      "10",
+      "12"
+    ],
+    "correct": 2,
+    "explanation": "Divisible by both 4 and 6 = divisible by LCM(4,6) = 12.\n\nMultiples of 12 less than 100: 12,24,36,48,60,72,84,96 → 8.\n\nShortcut: 'Divisible by A and B' = divisible by LCM(A,B). Count = ⌊99/12⌋ = 8."
+  },
+  {
+    "id": "nt26",
+    "category": "numberTheory",
+    "difficulty": "medium",
+    "text": "What is the GCD of 84 and 126?",
+    "choices": [
+      "6",
+      "14",
+      "21",
+      "42",
+      "63"
+    ],
+    "correct": 3,
+    "explanation": "84 = 2²×3×7, 126 = 2×3²×7\n\nGCD = 2¹×3¹×7¹ = 42.\n\nEuclidean: 126−84=42, 84÷42=2 exactly → GCD=42.\n\nShortcut: GCD(a,b) = GCD(b, a mod b). Repeat until remainder=0."
+  },
+  {
+    "id": "nt27",
+    "category": "numberTheory",
+    "difficulty": "medium",
+    "text": "Which of the following must be a factor of n(n+1)(n+2) for any positive integer n?",
+    "choices": [
+      "4",
+      "5",
+      "6",
+      "8",
+      "12"
+    ],
+    "correct": 2,
+    "explanation": "n(n+1)(n+2) = product of 3 consecutive integers.\n\nAlways has one multiple of 3 and at least one multiple of 2 → divisible by 6.\n\nCounterexample for 4: n=1 → 1×2×3=6 (not div by 4).\n\nShortcut: Product of k consecutive integers is always divisible by k!"
+  },
+  {
+    "id": "nt28",
+    "category": "numberTheory",
+    "difficulty": "medium",
+    "text": "2^15 is how many times 2^11?",
+    "choices": [
+      "4",
+      "8",
+      "16",
+      "32",
+      "64"
+    ],
+    "correct": 2,
+    "explanation": "2^15 ÷ 2^11 = 2^(15−11) = 2^4 = 16.\n\nShortcut: Same-base division → subtract exponents."
+  },
+  {
+    "id": "nt29",
+    "category": "numberTheory",
+    "difficulty": "medium",
+    "text": "A number is divisible by 8. Which must also divide it?",
+    "choices": [
+      "3",
+      "6",
+      "12",
+      "4",
+      "16"
+    ],
+    "correct": 3,
+    "explanation": "8 = 2³. Every multiple of 8 is also a multiple of 1, 2, 4, and 8.\n\n4 divides 8, so 4 must divide any multiple of 8. The others (3,6,12,16) need not.\n\nShortcut: If k|n, then every factor of k also divides n."
+  },
+  {
+    "id": "nt30",
+    "category": "numberTheory",
+    "difficulty": "medium",
+    "text": "What is the remainder when 47^43 is divided by 5?",
+    "choices": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "correct": 3,
+    "explanation": "47 mod 5 = 2. Need 2^43 mod 5.\n\nPowers of 2 mod 5 cycle (period 4): 2, 4, 3, 1.\n43 mod 4 = 3 → position 3 → remainder 3.\n\nVerify: 2³=8, 8 mod 5=3 ✓\n\nShortcut: Reduce base mod divisor first, then find cycle."
+  },
+  {
+    "id": "nt31",
+    "category": "numberTheory",
+    "difficulty": "medium",
+    "text": "If p is a prime greater than 3, what is the remainder when p² is divided by 12?",
+    "choices": [
+      "0",
+      "1",
+      "3",
+      "5",
+      "7"
+    ],
+    "correct": 1,
+    "explanation": "Any prime > 3 has the form 6k±1.\n\n(6k+1)² = 36k²+12k+1 ≡ 1 (mod 12)\n(6k−1)² = 36k²−12k+1 ≡ 1 (mod 12)\n\nVerify: 5²=25, 25 mod 12=1 ✓. 7²=49, 49 mod 12=1 ✓.\n\nShortcut: p² ≡ 1 (mod 12) for all primes p > 3."
+  },
+  {
+    "id": "nt32",
+    "category": "numberTheory",
+    "difficulty": "medium",
+    "text": "How many positive factors of 900 are perfect squares?",
+    "choices": [
+      "4",
+      "6",
+      "8",
+      "9",
+      "12"
+    ],
+    "correct": 2,
+    "explanation": "900 = 2² × 3² × 5²\n\nFor a factor to be a perfect square, all exponents must be even.\n\nFor 2: even values in {0,1,2} → {0,2} = 2 choices\nFor 3: even values in {0,1,2} → {0,2} = 2 choices\nFor 5: even values in {0,1,2} → {0,2} = 2 choices\n\nTotal = 2×2×2 = 8.\n\nSquare factors: 1, 4, 9, 25, 36, 100, 225, 900."
+  },
+  {
+    "id": "nt33",
+    "category": "numberTheory",
+    "difficulty": "medium",
+    "text": "What is the last digit of 4^13 + 4^14?",
+    "choices": [
+      "0",
+      "2",
+      "4",
+      "6",
+      "8"
+    ],
+    "correct": 0,
+    "explanation": "Powers of 4 cycle (period 2): 4, 6, 4, 6...\n\n4^13 (odd exp) → last digit 4\n4^14 (even exp) → last digit 6\n\n4 + 6 = 10 → last digit 0.\n\nShortcut: Factor: 4^13(1+4) = 4^13 × 5. Even × 5 always ends in 0."
+  },
+  {
+    "id": "nt34",
+    "category": "numberTheory",
+    "difficulty": "medium",
+    "text": "If the GCD of two numbers is 6 and their LCM is 180, what is their product?",
+    "choices": [
+      "720",
+      "900",
+      "1080",
+      "1200",
+      "1440"
+    ],
+    "correct": 2,
+    "explanation": "Fundamental identity: a × b = GCD(a,b) × LCM(a,b)\n\nProduct = 6 × 180 = 1080.\n\nShortcut: Product of two numbers = GCD × LCM. Always."
+  },
+  {
+    "id": "nt35",
+    "category": "numberTheory",
+    "difficulty": "medium",
+    "text": "What is the remainder when 10^50 is divided by 7?",
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "6"
+    ],
+    "correct": 1,
+    "explanation": "10 mod 7 = 3. Need 3^50 mod 7.\n\nBy Fermat's Little Theorem: 3^6 ≡ 1 (mod 7).\n50 = 6×8 + 2, so 3^50 = (3^6)^8 × 3² ≡ 1×9 ≡ 2 (mod 7).\n\nVerify: 10²=100, 100÷7=14 R2 ✓\n\nShortcut: Use Fermat's Little Theorem (a^(p−1) ≡ 1 mod prime p)."
+  },
+  {
+    "id": "nt36",
+    "category": "numberTheory",
+    "difficulty": "medium",
+    "text": "How many two-digit numbers are divisible by 7?",
+    "choices": [
+      "11",
+      "12",
+      "13",
+      "14",
+      "15"
+    ],
+    "correct": 2,
+    "explanation": "Smallest: 14 (7×2). Largest: 98 (7×14).\n\nCount = 14 − 2 + 1 = 13.\n\nShortcut: ⌊99/7⌋ − ⌊9/7⌋ = 14 − 1 = 13."
+  },
+  {
+    "id": "nt37",
+    "category": "numberTheory",
+    "difficulty": "medium",
+    "text": "If n³ is odd, which must be true?",
+    "choices": [
+      "n is even",
+      "n is odd",
+      "n is prime",
+      "n² is even",
+      "n+1 is odd"
+    ],
+    "correct": 1,
+    "explanation": "If n were even, n³ = even×even×even = even.\n\nSo n must be odd for n³ to be odd.\n\nShortcut: Parity is preserved under exponentiation. Odd^k = Odd. Even^k = Even."
+  },
+  {
+    "id": "nt38",
+    "category": "numberTheory",
+    "difficulty": "medium",
+    "text": "What is 5^8 × 2^8?",
+    "choices": [
+      "10^8",
+      "10^16",
+      "7^8",
+      "10^64",
+      "25^8"
+    ],
+    "correct": 0,
+    "explanation": "5^8 × 2^8 = (5×2)^8 = 10^8.\n\nShortcut: a^n × b^n = (a×b)^n. Same exponent → combine bases."
+  },
+  {
+    "id": "nt39",
+    "category": "numberTheory",
+    "difficulty": "medium",
+    "text": "What is the sum of all positive factors of 28?",
+    "choices": [
+      "28",
+      "42",
+      "56",
+      "64",
+      "72"
+    ],
+    "correct": 2,
+    "explanation": "28 = 2² × 7¹\n\nSum of factors = (1+2+4)(1+7) = 7×8 = 56.\n\nFactors: 1,2,4,7,14,28. Sum = 56.\n\nNote: 28 is a perfect number (proper factor sum = 1+2+4+7+14 = 28).\n\nShortcut: Sum formula = Π(p^(a+1)−1)/(p−1) for each prime p^a."
+  },
+  {
+    "id": "nt40",
+    "category": "numberTheory",
+    "difficulty": "medium",
+    "text": "Which property must a number divisible by 11 have?",
+    "choices": [
+      "Sum of digits divisible by 11",
+      "Last two digits divisible by 11",
+      "Alternating sum of digits divisible by 11",
+      "Product of digits divisible by 11",
+      "The number is odd"
+    ],
+    "correct": 2,
+    "explanation": "Divisibility by 11: The alternating sum of digits (from right) must be divisible by 11.\n\nExample: 121 → 1−2+1 = 0 (divisible by 11) ✓\nExample: 918082 → 2−8+0−8+1−9 = −22 (div by 11) ✓\n\nShortcut: (sum of odd-position digits) − (sum of even-position digits) = 0 or ±11 or ±22..."
+  },
+  {
+    "id": "nt41",
+    "category": "numberTheory",
+    "difficulty": "hard",
+    "text": "How many positive integers from 1 to 100 are divisible by neither 2 nor 3?",
+    "choices": [
+      "17",
+      "25",
+      "33",
+      "40",
+      "50"
+    ],
+    "correct": 2,
+    "explanation": "Inclusion-exclusion for 'div by 2 OR 3':\nDiv by 2: ⌊100/2⌋ = 50\nDiv by 3: ⌊100/3⌋ = 33\nDiv by 6 (both): ⌊100/6⌋ = 16\n\nDiv by 2 or 3 = 50+33−16 = 67.\nNeither = 100−67 = 33.\n\nShortcut: Count the complement using inclusion-exclusion."
+  },
+  {
+    "id": "nt42",
+    "category": "numberTheory",
+    "difficulty": "hard",
+    "text": "What are the last two digits of 7^20?",
+    "choices": [
+      "01",
+      "07",
+      "43",
+      "49",
+      "51"
+    ],
+    "correct": 0,
+    "explanation": "Need 7^20 mod 100.\n\n7^4 = 2401 → last two digits 01.\n7^20 = (7^4)^5 → last two digits = 01^5 = 01.\n\nShortcut: 7^4 ends in 01, so any multiple-of-4 power of 7 ends in 01."
+  },
+  {
+    "id": "nt43",
+    "category": "numberTheory",
+    "difficulty": "hard",
+    "text": "How many positive factors of 720 are perfect squares?",
+    "choices": [
+      "4",
+      "5",
+      "6",
+      "8",
+      "10"
+    ],
+    "correct": 2,
+    "explanation": "720 = 2⁴ × 3² × 5¹\n\nPerfect square factors need all even exponents:\nFor 2: {0,2,4} → 3 choices\nFor 3: {0,2} → 2 choices\nFor 5: {0} → 1 choice\n\nTotal = 3×2×1 = 6.\n\nShortcut: For each p^a, choices = ⌊a/2⌋+1."
+  },
+  {
+    "id": "nt44",
+    "category": "numberTheory",
+    "difficulty": "hard",
+    "text": "What is the remainder when 13^52 is divided by 7?",
+    "choices": [
+      "0",
+      "1",
+      "2",
+      "4",
+      "6"
+    ],
+    "correct": 1,
+    "explanation": "13 mod 7 = 6 ≡ −1 (mod 7).\n\n13^52 ≡ (−1)^52 = 1 (mod 7).\n\nSince 52 is even, (−1)^52 = 1.\n\nShortcut: When base ≡ −1 mod divisor: even power → 1, odd power → (divisor−1)."
+  },
+  {
+    "id": "nt45",
+    "category": "numberTheory",
+    "difficulty": "hard",
+    "text": "What is the minimum value of n such that n! is divisible by 2^15?",
+    "choices": [
+      "12",
+      "14",
+      "15",
+      "16",
+      "17"
+    ],
+    "correct": 3,
+    "explanation": "Power of 2 in n! (Legendre's formula): ⌊n/2⌋+⌊n/4⌋+⌊n/8⌋+⌊n/16⌋+...\n\nn=16: 8+4+2+1 = 15 ✓\nn=15: 7+3+1+0 = 11 ✗\n\nMinimum n = 16.\n\nShortcut: Legendre's formula gives exact power of prime p in n!."
+  },
+  {
+    "id": "nt46",
+    "category": "numberTheory",
+    "difficulty": "hard",
+    "text": "What is the last digit of 2^(2^10)?",
+    "choices": [
+      "2",
+      "4",
+      "6",
+      "8",
+      "0"
+    ],
+    "correct": 2,
+    "explanation": "2^10 = 1024. Need last digit of 2^1024.\n\nPowers of 2 cycle (period 4): 2, 4, 8, 6.\n1024 mod 4 = 0 → position 4 → last digit 6.\n\nShortcut: For 2^n, n mod 4: 1→2, 2→4, 3→8, 0→6."
+  },
+  {
+    "id": "nt47",
+    "category": "numberTheory",
+    "difficulty": "hard",
+    "text": "How many trailing zeros does 50! have?",
+    "choices": [
+      "8",
+      "10",
+      "12",
+      "14",
+      "15"
+    ],
+    "correct": 2,
+    "explanation": "Trailing zeros = power of 5 in n! (always fewer 5s than 2s).\n\n⌊50/5⌋ + ⌊50/25⌋ + ⌊50/125⌋ = 10 + 2 + 0 = 12.\n\nShortcut: Trailing zeros in n! = ⌊n/5⌋ + ⌊n/25⌋ + ⌊n/125⌋ + ..."
+  },
+  {
+    "id": "nt48",
+    "category": "numberTheory",
+    "difficulty": "hard",
+    "text": "If x and y are positive integers with x > y and x² − y² = 91, how many solutions exist?",
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "correct": 1,
+    "explanation": "(x+y)(x−y) = 91 = 7×13 = 1×91.\n\nBoth factors must have same parity and x+y > x−y > 0:\n• x+y=91, x−y=1 → x=46, y=45 ✓ (both odd)\n• x+y=13, x−y=7 → x=10, y=3 ✓ (both odd)\n\n2 solutions.\n\nShortcut: Factor difference of squares. Need same-parity factor pairs."
+  },
+  {
+    "id": "nt49",
+    "category": "numberTheory",
+    "difficulty": "hard",
+    "text": "What is the largest power of 3 that divides 100!?",
+    "choices": [
+      "33",
+      "43",
+      "48",
+      "51",
+      "57"
+    ],
+    "correct": 2,
+    "explanation": "Legendre's formula:\n⌊100/3⌋ + ⌊100/9⌋ + ⌊100/27⌋ + ⌊100/81⌋ + ⌊100/243⌋\n= 33 + 11 + 3 + 1 + 0 = 48.\n\n3^48 || 100! (divides but 3^49 does not).\n\nShortcut: Sum ⌊n/p^k⌋ until p^k > n."
+  },
+  {
+    "id": "nt50",
+    "category": "numberTheory",
+    "difficulty": "hard",
+    "text": "What is the remainder when 99^99 is divided by 100?",
+    "choices": [
+      "1",
+      "9",
+      "11",
+      "91",
+      "99"
+    ],
+    "correct": 4,
+    "explanation": "99 ≡ −1 (mod 100).\n\n99^99 ≡ (−1)^99 = −1 ≡ 99 (mod 100).\n\n99 is odd → (−1)^odd = −1 → mod 100 = 99.\n\nShortcut: Base = modulus−1 → equivalent to (−1)^power."
+  },
+  {
+    "id": "nt51",
+    "category": "numberTheory",
+    "difficulty": "hard",
+    "text": "If the number 72X4 is divisible by 9, what digit does X represent?",
+    "choices": [
+      "1",
+      "3",
+      "5",
+      "7",
+      "9"
+    ],
+    "correct": 2,
+    "explanation": "Divisibility by 9: digit sum must be a multiple of 9.\n\n7+2+X+4 = 13+X.\n\nNext multiple of 9 after 13 is 18. So X = 18−13 = 5.\n\nCheck: 7+2+5+4 = 18 ✓ (18÷9=2)\n\nShortcut: Sum known digits, find gap to next multiple of 9."
+  },
+  {
+    "id": "nt52",
+    "category": "numberTheory",
+    "difficulty": "hard",
+    "text": "How many factors of 10^6 are perfect cubes?",
+    "choices": [
+      "4",
+      "6",
+      "8",
+      "9",
+      "12"
+    ],
+    "correct": 3,
+    "explanation": "10^6 = 2^6 × 5^6.\n\nPerfect cube → all exponents multiples of 3.\nFor 2: {0,3,6} → 3 choices\nFor 5: {0,3,6} → 3 choices\n\nTotal = 3×3 = 9.\n\nShortcut: For each p^a, count = ⌊a/3⌋+1."
+  },
+  {
+    "id": "nt53",
+    "category": "numberTheory",
+    "difficulty": "hard",
+    "text": "What is the last digit of 3^(3^3)?",
+    "choices": [
+      "1",
+      "3",
+      "7",
+      "9",
+      "6"
+    ],
+    "correct": 2,
+    "explanation": "3^3 = 27. Need last digit of 3^27.\n\nPowers of 3 cycle (period 4): 3, 9, 7, 1.\n27 mod 4 = 3 → position 3 → last digit 7.\n\nShortcut: Power towers — evaluate top-down. Compute exponent first, then use cycle."
+  },
+  {
+    "id": "nt54",
+    "category": "numberTheory",
+    "difficulty": "hard",
+    "text": "How many factors of 2³ × 3² × 5² are multiples of 6?",
+    "choices": [
+      "8",
+      "12",
+      "18",
+      "24",
+      "36"
+    ],
+    "correct": 2,
+    "explanation": "Multiples of 6 = multiples of 2¹×3¹. Need a≥1, b≥1.\n\nFor 2: {1,2,3} → 3 choices\nFor 3: {1,2} → 2 choices\nFor 5: {0,1,2} → 3 choices\n\nTotal = 3×2×3 = 18.\n\nShortcut: Fix minimum exponents for the required divisor, count remaining freedom."
+  },
+  {
+    "id": "nt55",
+    "category": "numberTheory",
+    "difficulty": "hard",
+    "text": "If 2^n − 1 is prime, which of the following could be n?",
+    "choices": [
+      "4",
+      "6",
+      "9",
+      "11",
+      "15"
+    ],
+    "correct": 3,
+    "explanation": "For 2^n−1 to be prime (Mersenne prime), n must be prime.\n\n4=2×2, 6=2×3, 9=3², 15=3×5 → all composite.\n11 is prime → only valid candidate.\n\nShortcut: 2^n−1 can only be prime when n is prime. Eliminate composites instantly."
+  },
+  {
+    "id": "nt56",
+    "category": "numberTheory",
+    "difficulty": "hard",
+    "text": "What is the remainder when 1! + 2! + 3! + ... + 100! is divided by 12?",
+    "choices": [
+      "1",
+      "5",
+      "9",
+      "10",
+      "11"
+    ],
+    "correct": 2,
+    "explanation": "For n≥4: n! is divisible by 12 (since 4!=24 contains 12).\n\nOnly 1!+2!+3! matters: 1+2+6 = 9.\n\n9 mod 12 = 9.\n\nShortcut: Terms n! where n≥4 all vanish mod 12. Only small factorials contribute."
+  },
+  {
+    "id": "nt57",
+    "category": "numberTheory",
+    "difficulty": "hard",
+    "text": "What is the units digit of 17^6 × 13^4 × 11^2?",
+    "choices": [
+      "1",
+      "3",
+      "7",
+      "9",
+      "4"
+    ],
+    "correct": 3,
+    "explanation": "Units digits only: 7^6 × 3^4 × 1^2.\n\n7 cycle (period 4): 7,9,3,1. 6 mod 4=2 → 9.\n3 cycle (period 4): 3,9,7,1. 4 mod 4=0 → 1.\n1^2 = 1.\n\nProduct: 9×1×1 = 9.\n\nShortcut: Reduce each base to units digit, find cycle position, multiply results."
+  },
+  {
+    "id": "nt58",
+    "category": "numberTheory",
+    "difficulty": "hard",
+    "text": "For how many integers n from 1 to 100 is n(n+1) divisible by 6?",
+    "choices": [
+      "33",
+      "50",
+      "66",
+      "67",
+      "83"
+    ],
+    "correct": 2,
+    "explanation": "n(n+1) = product of consecutive integers → always even. ✓\n\nNeed 3|n(n+1), meaning n≡0 or n≡2 (mod 3). Fails when n≡1 (mod 3).\n\nn≡1 mod 3 in [1,100]: {1,4,7,...,100} → 34 values.\n\nAnswer = 100−34 = 66.\n\nShortcut: Consecutive product always even. Only check divisibility by 3."
+  },
+  {
+    "id": "nt59",
+    "category": "numberTheory",
+    "difficulty": "hard",
+    "text": "How many digits does 8^20 have?",
+    "choices": [
+      "17",
+      "18",
+      "19",
+      "20",
+      "21"
+    ],
+    "correct": 2,
+    "explanation": "Digits = ⌊log₁₀(8^20)⌋ + 1 = ⌊20×log₁₀(8)⌋ + 1.\n\nlog₁₀(8) = 3×log₁₀(2) ≈ 3×0.301 = 0.903.\n20×0.903 = 18.06.\n⌊18.06⌋+1 = 19.\n\nShortcut: Memorize log₁₀(2)≈0.301. Digits = ⌊k×log₁₀(n)⌋+1."
+  },
+  {
+    "id": "nt60",
+    "category": "numberTheory",
+    "difficulty": "hard",
+    "text": "If LCM of two numbers is 120 and GCD is 4, which CANNOT be one of the numbers?",
+    "choices": [
+      "8",
+      "20",
+      "24",
+      "40",
+      "32"
+    ],
+    "correct": 4,
+    "explanation": "GCD=4 → a=4m, b=4n with gcd(m,n)=1.\nLCM=4mn=120 → mn=30.\n\nCoprime pairs with product 30: (1,30),(2,15),(3,10),(5,6).\nPossible numbers: 4,120,8,60,12,40,20,24.\n\n32=4×8. Need m=8, n=30/8=3.75 (not integer).\nAlso: 32∤120, so 32 can't be either number.\n\nShortcut: Each number must divide the LCM. 120÷32 is not an integer → impossible."
+  }
+]

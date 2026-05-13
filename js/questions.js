@@ -107,11 +107,215 @@ const Questions = (() => {
   // ──────────────────────────────────────────
   const WORD_PROBLEMS = (typeof QUESTIONS_DATA !== 'undefined' && QUESTIONS_DATA.wordProblems) || [];
   const BRAIN_TEASERS = (typeof QUESTIONS_DATA !== 'undefined' && QUESTIONS_DATA.brainTeasers) || [];
+  const NUMBER_THEORY = (typeof QUESTIONS_DATA !== 'undefined' && QUESTIONS_DATA.numberTheory) || [];
+  const ESTIMATION = (typeof QUESTIONS_DATA !== 'undefined' && QUESTIONS_DATA.estimation) || [];
+  const DATA_SUFFICIENCY = (typeof QUESTIONS_DATA !== 'undefined' && QUESTIONS_DATA.dataSufficiency) || [];
+  const ERROR_DETECTION = (typeof QUESTIONS_DATA !== 'undefined' && QUESTIONS_DATA.errorDetection) || [];
+  const FAST_QUANT = (typeof QUESTIONS_DATA !== 'undefined' && QUESTIONS_DATA.fastQuant) || [];
+  const QUANT_STRATEGY = (typeof QUESTIONS_DATA !== 'undefined' && QUESTIONS_DATA.quantStrategy) || [];
+  const CONSTRAINT_DEDUCTION = (typeof QUESTIONS_DATA !== 'undefined' && QUESTIONS_DATA.constraintDeduction) || [];
 
   if (WORD_PROBLEMS.length === 0 && BRAIN_TEASERS.length === 0) {
     console.warn('No question data found. Run: python3 tools/build_data.py');
   } else {
-    console.log(`Questions loaded: ${WORD_PROBLEMS.length} word problems, ${BRAIN_TEASERS.length} brain teasers`);
+    console.log(`Questions loaded: ${WORD_PROBLEMS.length} word problems, ${BRAIN_TEASERS.length} brain teasers, ${NUMBER_THEORY.length} number theory, ${ESTIMATION.length} estimation, ${DATA_SUFFICIENCY.length} data sufficiency, ${ERROR_DETECTION.length} error detection, ${FAST_QUANT.length} fast quant, ${QUANT_STRATEGY.length} quant strategy, ${CONSTRAINT_DEDUCTION.length} constraint deduction`);
+  }
+
+  // ──────────────────────────────────────────
+  // SPEED RECOGNITION (procedural)
+  // ──────────────────────────────────────────
+  function generateSpeedRecognition(difficulty = 'easy') {
+    const patterns = [];
+    if (difficulty === 'easy') {
+      patterns.push(
+        () => { const a = rand(2,9), b = rand(2,9); return { text: `${a} × ${b}`, answer: a*b, expl: `${a}×${b}=${a*b}` }; },
+        () => { const a = rand(1,9)*10, b = rand(1,9)*10; return { text: `${a} + ${b}`, answer: a+b, expl: `${a}+${b}=${a+b}` }; },
+        () => { const n = rand(2,12); return { text: `${n}²`, answer: n*n, expl: `${n}²=${n*n}` }; },
+        () => { const a = rand(11,99), b = 10; return { text: `${a} × ${b}`, answer: a*b, expl: `Append zero: ${a*b}` }; },
+        () => { const p = [10,20,25,50][rand(0,3)], base = rand(2,20)*10; return { text: `${p}% of ${base}`, answer: p*base/100, expl: `${p}%=${p/100}, ×${base}=${p*base/100}` }; }
+      );
+    } else if (difficulty === 'medium') {
+      patterns.push(
+        () => { const a = rand(11,25), b = rand(3,9); return { text: `${a} × ${b}`, answer: a*b, expl: `${a}×${b}=${a*b}` }; },
+        () => { const n = rand(11,20); return { text: `${n}²`, answer: n*n, expl: `${n}²=${n*n}` }; },
+        () => { const a = rand(100,999), b = rand(100,999); return { text: `${a} + ${b}`, answer: a+b, expl: `${a}+${b}=${a+b}` }; },
+        () => { const n = [4,8,9,16,25,27,32,36,49,64,81,100,121,125,144][rand(0,14)]; const r = Math.round(Math.sqrt(n)); return { text: `√${n}`, answer: r, expl: `√${n}=${r} because ${r}²=${n}` }; },
+        () => { const a = rand(2,9), b = rand(2,9), c = rand(2,9); return { text: `${a} × ${b} × ${c}`, answer: a*b*c, expl: `${a}×${b}=${a*b}, ×${c}=${a*b*c}` }; }
+      );
+    } else {
+      patterns.push(
+        () => { const a = rand(12,30), b = rand(12,30); return { text: `${a} × ${b}`, answer: a*b, expl: `${a}×${b}=${a*b}` }; },
+        () => { const n = rand(20,35); return { text: `${n}²`, answer: n*n, expl: `${n}²=${n*n}` }; },
+        () => { const n = rand(2,10); return { text: `${n}³`, answer: n*n*n, expl: `${n}³=${n*n*n}` }; },
+        () => { const a = rand(100,500), b = rand(10,99); return { text: `${a} − ${b}`, answer: a-b, expl: `${a}−${b}=${a-b}` }; },
+        () => { const b = rand(3,12), ans = rand(5,25); const a = b*ans; return { text: `${a} ÷ ${b}`, answer: ans, expl: `${a}÷${b}=${ans}` }; }
+      );
+    }
+    const gen = patterns[rand(0, patterns.length - 1)]();
+    return {
+      text: gen.text,
+      type: 'input',
+      correctAnswer: gen.answer,
+      explanation: gen.expl + '\n\nSpeed Recognition: train instant recall, no calculation needed.',
+      meta: { module: 'speedRecognition', difficulty }
+    };
+  }
+
+  // ──────────────────────────────────────────
+  // MEMORY CHUNKING (procedural)
+  // ──────────────────────────────────────────
+  function generateMemoryChunking(difficulty = 'easy') {
+    let expression, answer, steps;
+    if (difficulty === 'easy') {
+      const a = rand(10,50), b = rand(10,50), op = ['+','−'][rand(0,1)];
+      expression = `${a} ${op} ${b}`;
+      answer = op === '+' ? a+b : a-b;
+      steps = `${a} ${op} ${b} = ${answer}`;
+    } else if (difficulty === 'medium') {
+      const type = rand(0,2);
+      if (type === 0) {
+        const a = rand(10,99), b = rand(2,9), c = rand(10,50);
+        expression = `${a} × ${b} + ${c}`;
+        answer = a*b + c;
+        steps = `${a}×${b}=${a*b}, +${c}=${answer}`;
+      } else if (type === 1) {
+        const a = rand(100,500), b = rand(50,200), c = rand(10,99);
+        expression = `${a} + ${b} − ${c}`;
+        answer = a + b - c;
+        steps = `${a}+${b}=${a+b}, −${c}=${answer}`;
+      } else {
+        const a = rand(2,12), b = rand(2,12), c = rand(2,5);
+        expression = `${a} × ${b} × ${c}`;
+        answer = a*b*c;
+        steps = `${a}×${b}=${a*b}, ×${c}=${answer}`;
+      }
+    } else {
+      const type = rand(0,2);
+      if (type === 0) {
+        const a = rand(10,30), b = rand(10,30), c = rand(2,9), d = rand(10,50);
+        expression = `(${a} + ${b}) × ${c} − ${d}`;
+        answer = (a+b)*c - d;
+        steps = `(${a}+${b})=${a+b}, ×${c}=${(a+b)*c}, −${d}=${answer}`;
+      } else if (type === 1) {
+        const a = rand(11,25), b = rand(11,25), c = rand(2,5), d = rand(2,5);
+        expression = `${a} × ${b} + ${c} × ${d}`;
+        answer = a*b + c*d;
+        steps = `${a}×${b}=${a*b}, ${c}×${d}=${c*d}, sum=${answer}`;
+      } else {
+        const a = rand(2,9), b = rand(2,9), c = rand(2,9), d = rand(1,5);
+        expression = `${a}² + ${b} × ${c} − ${d}`;
+        answer = a*a + b*c - d;
+        steps = `${a}²=${a*a}, ${b}×${c}=${b*c}, ${a*a}+${b*c}=${a*a+b*c}, −${d}=${answer}`;
+      }
+    }
+    return {
+      text: expression,
+      type: 'memory',
+      correctAnswer: answer,
+      explanation: `Expression: ${expression}\n${steps}\n\nMemory training: chunk numbers and operations, solve step by step in your head.`,
+      meta: { module: 'memoryChunking', difficulty }
+    };
+  }
+
+  // ──────────────────────────────────────────
+  // VISUAL-SPATIAL (procedural)
+  // ──────────────────────────────────────────
+  function generateVisualSpatial(difficulty = 'easy') {
+    let text, answer, choices, explanation;
+    if (difficulty === 'easy') {
+      const type = rand(0,2);
+      if (type === 0) {
+        const start = rand(2,10), step = rand(2,5);
+        const seq = Array.from({length:5}, (_,i) => start + step*i);
+        text = `What comes next? ${seq.join(', ')}, ?`;
+        answer = start + step*5;
+        const distractors = generateDistractors(answer, 4);
+        choices = shuffle([answer, ...distractors]).map(String);
+        explanation = `Pattern: +${step} each time.\nNext: ${seq[4]}+${step}=${answer}`;
+      } else if (type === 1) {
+        const start = rand(2,5);
+        const seq = Array.from({length:5}, (_,i) => start * Math.pow(2, i));
+        text = `What comes next? ${seq.join(', ')}, ?`;
+        answer = start * Math.pow(2, 5);
+        const distractors = generateDistractors(answer, 4);
+        choices = shuffle([answer, ...distractors]).map(String);
+        explanation = `Pattern: ×2 each time.\nNext: ${seq[4]}×2=${answer}`;
+      } else {
+        const offset = rand(1,5);
+        const seq = Array.from({length:5}, (_,i) => (i+offset)*(i+offset));
+        text = `What comes next? ${seq.join(', ')}, ?`;
+        answer = (5+offset)*(5+offset);
+        const distractors = generateDistractors(answer, 4);
+        choices = shuffle([answer, ...distractors]).map(String);
+        explanation = `Pattern: perfect squares (${offset}²,${offset+1}²,...)\nNext: ${5+offset}²=${answer}`;
+      }
+    } else if (difficulty === 'medium') {
+      const type = rand(0,2);
+      if (type === 0) {
+        const start = rand(2,8); const a = rand(2,4); const b = rand(1,3);
+        const seq = [start];
+        for(let i=0;i<5;i++) seq.push(i%2===0 ? seq[seq.length-1]*a : seq[seq.length-1]+b);
+        text = `What comes next? ${seq.join(', ')}, ?`;
+        answer = seq.length%2===1 ? seq[seq.length-1]*a : seq[seq.length-1]+b;
+        const distractors = generateDistractors(answer, 4);
+        choices = shuffle([answer, ...distractors]).map(String);
+        explanation = `Pattern: alternating ×${a} then +${b}.\nNext: ${answer}`;
+      } else if (type === 1) {
+        const a = rand(1,5), b = rand(1,5);
+        const seq = [a, b];
+        for(let i=2;i<6;i++) seq.push(seq[i-1]+seq[i-2]);
+        text = `What comes next? ${seq.join(', ')}, ?`;
+        answer = seq[seq.length-1] + seq[seq.length-2];
+        const distractors = generateDistractors(answer, 4);
+        choices = shuffle([answer, ...distractors]).map(String);
+        explanation = `Pattern: each number = sum of previous two.\n${seq[seq.length-2]}+${seq[seq.length-1]}=${answer}`;
+      } else {
+        const start = rand(1,5); const diffs = [2,3,5,8,13];
+        const seq = [start];
+        for(let i=0;i<5;i++) seq.push(seq[seq.length-1]+diffs[i]);
+        text = `What comes next? ${seq.join(', ')}, ?`;
+        answer = seq[seq.length-1] + 21;
+        const distractors = generateDistractors(answer, 4);
+        choices = shuffle([answer, ...distractors]).map(String);
+        explanation = `Differences are Fibonacci: 2,3,5,8,13,21,...\nNext diff=21, so ${seq[seq.length-1]}+21=${answer}`;
+      }
+    } else {
+      const type = rand(0,2);
+      if (type === 0) {
+        const base = rand(2,4);
+        const seq = Array.from({length:5}, (_,i) => base*(i+1)*(i+1) - (i+1));
+        text = `What comes next? ${seq.join(', ')}, ?`;
+        answer = base*36 - 6;
+        const distractors = generateDistractors(answer, 4);
+        choices = shuffle([answer, ...distractors]).map(String);
+        explanation = `Pattern: ${base}×n² − n for n=1,2,3,...\nNext (n=6): ${base}×36−6=${answer}`;
+      } else if (type === 1) {
+        const primes = [2,3,5,7,11,13,17,19,23,29,31];
+        const start = rand(0,5);
+        const seq = primes.slice(start, start+5);
+        text = `What comes next? ${seq.join(', ')}, ?`;
+        answer = primes[start+5];
+        const distractors = generateDistractors(answer, 4);
+        choices = shuffle([answer, ...distractors]).map(String);
+        explanation = `Pattern: prime numbers.\nNext prime after ${seq[4]} is ${answer}`;
+      } else {
+        const base = rand(2,3);
+        const seq = Array.from({length:5}, (_,i) => Math.pow(base, i+1));
+        text = `What comes next? ${seq.join(', ')}, ?`;
+        answer = Math.pow(base, 6);
+        const distractors = generateDistractors(answer, 4);
+        choices = shuffle([answer, ...distractors]).map(String);
+        explanation = `Pattern: powers of ${base} (${base}¹,${base}²,...)\nNext: ${base}⁶=${answer}`;
+      }
+    }
+    const correctIdx = choices.indexOf(String(answer));
+    return {
+      text,
+      choices,
+      correct: correctIdx,
+      explanation,
+      meta: { module: 'visualSpatial', difficulty }
+    };
   }
 
   // ── PUBLIC API ──
@@ -140,10 +344,69 @@ const Questions = (() => {
   function getWordProblemByIndex(idx) { return WORD_PROBLEMS[idx] || null; }
   function getBrainTeaserByIndex(idx) { return BRAIN_TEASERS[idx] || null; }
 
+  function getNumberTheory(difficulty) {
+    let pool = NUMBER_THEORY;
+    if (difficulty && difficulty !== 'all') pool = pool.filter(p => p.difficulty === difficulty);
+    if (pool.length === 0) return null;
+    return pool[rand(0, pool.length - 1)];
+  }
+  function getEstimation(difficulty) {
+    let pool = ESTIMATION;
+    if (difficulty && difficulty !== 'all') pool = pool.filter(p => p.difficulty === difficulty);
+    if (pool.length === 0) return null;
+    return pool[rand(0, pool.length - 1)];
+  }
+  function getDataSufficiency(difficulty) {
+    let pool = DATA_SUFFICIENCY;
+    if (difficulty && difficulty !== 'all') pool = pool.filter(p => p.difficulty === difficulty);
+    if (pool.length === 0) return null;
+    return pool[rand(0, pool.length - 1)];
+  }
+  function getErrorDetection(difficulty) {
+    let pool = ERROR_DETECTION;
+    if (difficulty && difficulty !== 'all') pool = pool.filter(p => p.difficulty === difficulty);
+    if (pool.length === 0) return null;
+    return pool[rand(0, pool.length - 1)];
+  }
+  function getFastQuant(difficulty) {
+    let pool = FAST_QUANT;
+    if (difficulty && difficulty !== 'all') pool = pool.filter(p => p.difficulty === difficulty);
+    if (pool.length === 0) return null;
+    return pool[rand(0, pool.length - 1)];
+  }
+  function getQuantStrategy(difficulty) {
+    let pool = QUANT_STRATEGY;
+    if (difficulty && difficulty !== 'all') pool = pool.filter(p => p.difficulty === difficulty);
+    if (pool.length === 0) return null;
+    return pool[rand(0, pool.length - 1)];
+  }
+  function getConstraintDeduction(difficulty) {
+    let pool = CONSTRAINT_DEDUCTION;
+    if (difficulty && difficulty !== 'all') pool = pool.filter(p => p.difficulty === difficulty);
+    if (pool.length === 0) return null;
+    return pool[rand(0, pool.length - 1)];
+  }
+  function getSpeedRecognition(difficulty) { return generateSpeedRecognition(difficulty); }
+  function getMemoryChunking(difficulty) { return generateMemoryChunking(difficulty); }
+  function getVisualSpatial(difficulty) { return generateVisualSpatial(difficulty); }
+
+  function getAllNumberTheory() { return NUMBER_THEORY; }
+  function getAllEstimation() { return ESTIMATION; }
+  function getAllDataSufficiency() { return DATA_SUFFICIENCY; }
+  function getAllErrorDetection() { return ERROR_DETECTION; }
+  function getAllFastQuant() { return FAST_QUANT; }
+  function getAllQuantStrategy() { return QUANT_STRATEGY; }
+  function getAllConstraintDeduction() { return CONSTRAINT_DEDUCTION; }
+
   return {
     getMultiplication, getArithmetic, getPercentage,
     getWordProblem, getBrainTeaser,
     getAllWordProblems, getAllBrainTeasers,
     getWordProblemByIndex, getBrainTeaserByIndex,
+    getNumberTheory, getEstimation, getDataSufficiency,
+    getErrorDetection, getFastQuant, getQuantStrategy,
+    getConstraintDeduction, getSpeedRecognition, getMemoryChunking, getVisualSpatial,
+    getAllNumberTheory, getAllEstimation, getAllDataSufficiency,
+    getAllErrorDetection, getAllFastQuant, getAllQuantStrategy, getAllConstraintDeduction,
   };
 })();

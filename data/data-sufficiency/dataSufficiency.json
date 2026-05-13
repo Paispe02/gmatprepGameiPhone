@@ -1,0 +1,827 @@
+[
+  {
+    "id": "ds1",
+    "category": "dataSufficiency",
+    "difficulty": "easy",
+    "text": "What is the value of x?\n\n(1) 2x + 4 = 10\n(2) x is a positive integer less than 5",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 0,
+    "explanation": "Test (1) alone: 2x + 4 = 10 → 2x = 6 → x = 3. Sufficient — unique value.\nTest (2) alone: x could be 1, 2, 3, or 4. Not sufficient — multiple values.\nAnswer: (A) Statement (1) ALONE is sufficient."
+  },
+  {
+    "id": "ds2",
+    "category": "dataSufficiency",
+    "difficulty": "easy",
+    "text": "What is the value of y?\n\n(1) y + 3 = 7\n(2) 2y = 8",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 3,
+    "explanation": "Test (1) alone: y + 3 = 7 → y = 4. Sufficient.\nTest (2) alone: 2y = 8 → y = 4. Sufficient.\nBoth statements independently give a unique value.\nAnswer: (D) EACH statement ALONE is sufficient."
+  },
+  {
+    "id": "ds3",
+    "category": "dataSufficiency",
+    "difficulty": "easy",
+    "text": "Is n divisible by 6?\n\n(1) n is divisible by 3\n(2) n is divisible by 2",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 2,
+    "explanation": "Test (1) alone: n divisible by 3 → n could be 3 (not div by 6) or 6 (div by 6). Not sufficient.\nTest (2) alone: n divisible by 2 → n could be 2 (not div by 6) or 6 (div by 6). Not sufficient.\nTogether: n divisible by both 2 and 3. Since gcd(2,3) = 1, n must be divisible by 6. Sufficient.\nAnswer: (C) BOTH statements TOGETHER are sufficient, but NEITHER alone."
+  },
+  {
+    "id": "ds4",
+    "category": "dataSufficiency",
+    "difficulty": "easy",
+    "text": "What is the area of rectangle R?\n\n(1) The length of R is 8\n(2) The perimeter of R is 22",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 2,
+    "explanation": "Test (1) alone: Length = 8, but width unknown. Area = 8 × w. Not sufficient.\nTest (2) alone: Perimeter = 22 → 2(l + w) = 22 → l + w = 11, but infinite combinations. Not sufficient.\nTogether: l = 8, l + w = 11 → w = 3. Area = 8 × 3 = 24. Sufficient.\nAnswer: (C) BOTH statements TOGETHER are sufficient, but NEITHER alone."
+  },
+  {
+    "id": "ds5",
+    "category": "dataSufficiency",
+    "difficulty": "easy",
+    "text": "Is integer k odd?\n\n(1) k + 1 is even\n(2) k − 3 is even",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 3,
+    "explanation": "Test (1) alone: k + 1 is even → k is odd. Sufficient.\nTest (2) alone: k − 3 is even → k is odd (odd − odd = even). Sufficient.\nBoth statements independently confirm k is odd.\nAnswer: (D) EACH statement ALONE is sufficient."
+  },
+  {
+    "id": "ds6",
+    "category": "dataSufficiency",
+    "difficulty": "easy",
+    "text": "A store sold an item at a profit. What was the selling price?\n\n(1) The cost price was $40\n(2) The profit was 25% of the cost price",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 2,
+    "explanation": "Test (1) alone: Cost = $40, but profit % unknown. Not sufficient.\nTest (2) alone: Profit = 25% of cost, but cost unknown. Not sufficient.\nTogether: Cost = $40, Profit = 25% × $40 = $10. Selling price = $40 + $10 = $50. Sufficient.\nAnswer: (C) BOTH statements TOGETHER are sufficient, but NEITHER alone."
+  },
+  {
+    "id": "ds7",
+    "category": "dataSufficiency",
+    "difficulty": "easy",
+    "text": "What is the value of |x|?\n\n(1) x² = 16\n(2) x < 0",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 0,
+    "explanation": "Test (1) alone: x² = 16 → x = 4 or x = −4. Either way, |x| = 4. Sufficient — unique value for |x|.\nTest (2) alone: x < 0 tells us nothing about the magnitude. Not sufficient.\nAnswer: (A) Statement (1) ALONE is sufficient.\nDS Trap: Even though x has two values (±4), the question asks for |x|, which is uniquely determined."
+  },
+  {
+    "id": "ds8",
+    "category": "dataSufficiency",
+    "difficulty": "easy",
+    "text": "Is the product mn positive?\n\n(1) m > 0\n(2) n > 0",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 2,
+    "explanation": "Test (1) alone: m > 0, but n could be positive or negative. mn could be positive or negative. Not sufficient.\nTest (2) alone: n > 0, but m could be positive or negative. Not sufficient.\nTogether: m > 0 and n > 0, so mn > 0. Yes, the product is positive. Sufficient.\nAnswer: (C) BOTH statements TOGETHER are sufficient, but NEITHER alone."
+  },
+  {
+    "id": "ds9",
+    "category": "dataSufficiency",
+    "difficulty": "easy",
+    "text": "How many students are in the class?\n\n(1) There are 12 boys in the class\n(2) There are 15 girls in the class",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 2,
+    "explanation": "Test (1) alone: 12 boys, but number of girls unknown. Not sufficient.\nTest (2) alone: 15 girls, but number of boys unknown. Not sufficient.\nTogether: 12 boys + 15 girls = 27 students total. Sufficient.\nAnswer: (C) BOTH statements TOGETHER are sufficient, but NEITHER alone."
+  },
+  {
+    "id": "ds10",
+    "category": "dataSufficiency",
+    "difficulty": "easy",
+    "text": "What is the speed of the car?\n\n(1) The car travels 150 km in 3 hours\n(2) The car travels at a constant speed",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 0,
+    "explanation": "Test (1) alone: Speed = distance/time = 150/3 = 50 km/h. Sufficient.\nTest (2) alone: Constant speed tells us the nature of motion but not the actual value. Not sufficient.\nAnswer: (A) Statement (1) ALONE is sufficient."
+  },
+  {
+    "id": "ds11",
+    "category": "dataSufficiency",
+    "difficulty": "easy",
+    "text": "Is x = 5?\n\n(1) x² = 25\n(2) x > 0",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 2,
+    "explanation": "Test (1) alone: x² = 25 → x = 5 or x = −5. Cannot determine if x = 5. Not sufficient.\nTest (2) alone: x > 0, but x could be any positive number. Not sufficient.\nTogether: x² = 25 and x > 0 → x = 5. Sufficient.\nAnswer: (C) BOTH statements TOGETHER are sufficient, but NEITHER alone.\nDS Trap: Statement (1) alone gives two values — always check both solutions of a squared equation."
+  },
+  {
+    "id": "ds12",
+    "category": "dataSufficiency",
+    "difficulty": "easy",
+    "text": "What is the ratio of men to women at a meeting?\n\n(1) There are 8 men at the meeting\n(2) There are 12 women at the meeting",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 2,
+    "explanation": "Test (1) alone: 8 men, but number of women unknown. Cannot determine ratio. Not sufficient.\nTest (2) alone: 12 women, but number of men unknown. Not sufficient.\nTogether: Ratio = 8:12 = 2:3. Sufficient.\nAnswer: (C) BOTH statements TOGETHER are sufficient, but NEITHER alone."
+  },
+  {
+    "id": "ds13",
+    "category": "dataSufficiency",
+    "difficulty": "medium",
+    "text": "What is the value of x + y?\n\n(1) 3x + 3y = 27\n(2) x − y = 1",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 0,
+    "explanation": "Test (1) alone: 3x + 3y = 27 → 3(x + y) = 27 → x + y = 9. Sufficient — gives the exact sum.\nTest (2) alone: x − y = 1. This gives the difference, not the sum. Not sufficient.\nAnswer: (A) Statement (1) ALONE is sufficient.\nDS Insight: The question asks for x + y, not individual values. Factor before solving."
+  },
+  {
+    "id": "ds14",
+    "category": "dataSufficiency",
+    "difficulty": "medium",
+    "text": "Is x > y?\n\n(1) x − y > 0\n(2) x/y > 1",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 0,
+    "explanation": "Test (1) alone: x − y > 0 → x > y. Directly answers the question. Sufficient.\nTest (2) alone: x/y > 1. If y > 0, then x > y. But if y < 0, then x < y (inequality flips when multiplying by negative). Not sufficient.\nExample: x = 3, y = 2 → 3/2 > 1 and x > y. But x = −3, y = −2 → (−3)/(−2) = 1.5 > 1 but x < y.\nAnswer: (A) Statement (1) ALONE is sufficient.\nDS Trap: Division by a variable — always consider negative values."
+  },
+  {
+    "id": "ds15",
+    "category": "dataSufficiency",
+    "difficulty": "medium",
+    "text": "What is the remainder when n is divided by 5?\n\n(1) n = 10k + 3 for some integer k\n(2) n is odd",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 0,
+    "explanation": "Test (1) alone: n = 10k + 3. Dividing by 5: 10k is divisible by 5, so remainder is 3. Sufficient.\nTest (2) alone: n is odd → n could be 1 (rem 1), 3 (rem 3), 5 (rem 0), etc. Not sufficient.\nAnswer: (A) Statement (1) ALONE is sufficient."
+  },
+  {
+    "id": "ds16",
+    "category": "dataSufficiency",
+    "difficulty": "medium",
+    "text": "Is triangle ABC a right triangle?\n\n(1) The sides of triangle ABC are 3, 4, and 5\n(2) One angle of triangle ABC is 90°",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 3,
+    "explanation": "Test (1) alone: 3² + 4² = 9 + 16 = 25 = 5². Pythagorean theorem satisfied → right triangle. Sufficient.\nTest (2) alone: One angle is 90° → by definition, it's a right triangle. Sufficient.\nAnswer: (D) EACH statement ALONE is sufficient."
+  },
+  {
+    "id": "ds17",
+    "category": "dataSufficiency",
+    "difficulty": "medium",
+    "text": "Is integer n a prime number?\n\n(1) n is odd\n(2) 10 < n < 14",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 2,
+    "explanation": "Test (1) alone: n is odd → could be 3 (prime) or 9 (not prime). Not sufficient.\nTest (2) alone: 10 < n < 14 → n = 11, 12, or 13. Could be prime (11, 13) or not (12). Not sufficient.\nTogether: n is odd AND 10 < n < 14 → n = 11 or n = 13. Both are prime, so yes. Sufficient.\nAnswer: (C) BOTH statements TOGETHER are sufficient, but NEITHER alone."
+  },
+  {
+    "id": "ds18",
+    "category": "dataSufficiency",
+    "difficulty": "medium",
+    "text": "What is the value of x²?\n\n(1) x² + 2x + 1 = 0\n(2) x = −1",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 3,
+    "explanation": "Test (1) alone: x² + 2x + 1 = 0 → (x + 1)² = 0 → x = −1. So x² = 1. Sufficient.\nTest (2) alone: x = −1 → x² = 1. Sufficient.\nAnswer: (D) EACH statement ALONE is sufficient."
+  },
+  {
+    "id": "ds19",
+    "category": "dataSufficiency",
+    "difficulty": "medium",
+    "text": "Is x positive?\n\n(1) x³ > 0\n(2) x² > 0",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 0,
+    "explanation": "Test (1) alone: x³ > 0. Since cubing preserves sign, x must be positive. Sufficient.\nTest (2) alone: x² > 0. This means x ≠ 0, but x could be positive or negative (both give positive square). Not sufficient.\nAnswer: (A) Statement (1) ALONE is sufficient.\nDS Trap: Squaring destroys sign information; cubing preserves it."
+  },
+  {
+    "id": "ds20",
+    "category": "dataSufficiency",
+    "difficulty": "medium",
+    "text": "Train A and Train B start from stations 300 km apart and travel toward each other. When will they meet?\n\n(1) Train A travels at 60 km/h\n(2) Train B travels at 40 km/h",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 2,
+    "explanation": "Test (1) alone: Speed of A = 60 km/h, but speed of B unknown. Combined speed unknown. Not sufficient.\nTest (2) alone: Speed of B = 40 km/h, but speed of A unknown. Not sufficient.\nTogether: Combined speed = 60 + 40 = 100 km/h. Time = 300/100 = 3 hours. Sufficient.\nAnswer: (C) BOTH statements TOGETHER are sufficient, but NEITHER alone."
+  },
+  {
+    "id": "ds21",
+    "category": "dataSufficiency",
+    "difficulty": "medium",
+    "text": "What is the area of circle C?\n\n(1) The circumference of circle C is 10π\n(2) The diameter of circle C is 10",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 3,
+    "explanation": "Test (1) alone: Circumference = 2πr = 10π → r = 5. Area = π(5²) = 25π. Sufficient.\nTest (2) alone: Diameter = 10 → r = 5. Area = π(5²) = 25π. Sufficient.\nAnswer: (D) EACH statement ALONE is sufficient."
+  },
+  {
+    "id": "ds22",
+    "category": "dataSufficiency",
+    "difficulty": "medium",
+    "text": "Is ab > 0?\n\n(1) a > b\n(2) a > 0",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 4,
+    "explanation": "Test (1) alone: a > b. If a = 3, b = 2 → ab = 6 > 0. If a = 1, b = −2 → ab = −2 < 0. Not sufficient.\nTest (2) alone: a > 0. But b could be positive or negative. Not sufficient.\nTogether: a > b and a > 0. Try a = 3, b = 2 → ab = 6 > 0. Try a = 3, b = −1 → ab = −3 < 0. Still not sufficient.\nAnswer: (E) Statements (1) and (2) TOGETHER are NOT sufficient."
+  },
+  {
+    "id": "ds23",
+    "category": "dataSufficiency",
+    "difficulty": "medium",
+    "text": "What percent of employees in a company are managers?\n\n(1) There are 240 employees in total\n(2) The ratio of managers to non-managers is 1:5",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 1,
+    "explanation": "Test (1) alone: 240 employees total, but number of managers unknown. Not sufficient.\nTest (2) alone: Ratio of managers to non-managers = 1:5. So managers = 1/6 of total = 16.67%. Sufficient — ratio gives percentage directly.\nAnswer: (B) Statement (2) ALONE is sufficient.\nDS Insight: A ratio is enough to determine a percentage — you don't need absolute numbers."
+  },
+  {
+    "id": "ds24",
+    "category": "dataSufficiency",
+    "difficulty": "medium",
+    "text": "Is x an integer?\n\n(1) 2x is an integer\n(2) 3x is an integer",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 2,
+    "explanation": "Test (1) alone: 2x is integer → x could be 3 (integer) or 1.5 (not integer). Not sufficient.\nTest (2) alone: 3x is integer → x could be 2 (integer) or 1/3 (not integer). Not sufficient.\nTogether: If 2x and 3x are both integers, then 3x − 2x = x must be an integer (difference of two integers). Sufficient.\nAnswer: (C) BOTH statements TOGETHER are sufficient, but NEITHER alone.\nDS Insight: The key trick is computing 3x − 2x = x rather than solving algebraically."
+  },
+  {
+    "id": "ds25",
+    "category": "dataSufficiency",
+    "difficulty": "medium",
+    "text": "What is the value of a − b?\n\n(1) a = b + 7\n(2) a + b = 15",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 0,
+    "explanation": "Test (1) alone: a = b + 7 → a − b = 7. Sufficient — directly gives the answer.\nTest (2) alone: a + b = 15. This gives the sum, not the difference. Not sufficient.\nAnswer: (A) Statement (1) ALONE is sufficient.\nDS Insight: Always check if the statement directly answers what's being asked before solving for individual variables."
+  },
+  {
+    "id": "ds26",
+    "category": "dataSufficiency",
+    "difficulty": "medium",
+    "text": "Is n² − 1 divisible by 8?\n\n(1) n is an odd integer\n(2) n > 5",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 0,
+    "explanation": "Test (1) alone: If n is odd, write n = 2k+1. Then n² − 1 = (2k+1)² − 1 = 4k² + 4k = 4k(k+1). Since k(k+1) is always even (consecutive integers), 4k(k+1) is divisible by 8. Sufficient.\nTest (2) alone: n > 5. Try n = 6: 36 − 1 = 35, not divisible by 8. Try n = 7: 49 − 1 = 48, divisible by 8. Not sufficient.\nAnswer: (A) Statement (1) ALONE is sufficient."
+  },
+  {
+    "id": "ds27",
+    "category": "dataSufficiency",
+    "difficulty": "medium",
+    "text": "A jar contains only red and blue marbles. What fraction of the marbles are red?\n\n(1) The jar contains 24 marbles in total\n(2) If 6 red marbles are removed, the ratio of red to blue becomes 1:2",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 2,
+    "explanation": "Test (1) alone: 24 marbles total, but don't know the split. Not sufficient.\nTest (2) alone: Let r = red, b = blue. (r−6)/b = 1/2 → 2(r−6) = b → b = 2r − 12. Fraction = r/(r+b) = r/(r + 2r − 12) = r/(3r − 12). Without knowing r, not sufficient.\nTogether: r + b = 24 and b = 2r − 12. So r + (2r − 12) = 24 → 3r = 36 → r = 12. Fraction = 12/24 = 1/2. Sufficient.\nAnswer: (C) BOTH statements TOGETHER are sufficient, but NEITHER alone."
+  },
+  {
+    "id": "ds28",
+    "category": "dataSufficiency",
+    "difficulty": "medium",
+    "text": "Is x² > x?\n\n(1) x > 0\n(2) x < 1",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 2,
+    "explanation": "x² > x ↔ x(x−1) > 0, which holds when x < 0 or x > 1.\nTest (1) alone: x > 0. If x = 2, YES. If x = 0.5, NO. Not sufficient.\nTest (2) alone: x < 1. If x = −2, YES. If x = 0.5, NO. Not sufficient.\nTogether: 0 < x < 1. In this range x(x−1) < 0, so x² < x always. Definitive NO → Sufficient.\nAnswer: (C) BOTH statements TOGETHER are sufficient, but NEITHER alone.\nDS Insight: A definitive NO is sufficient — you've conclusively answered the yes/no question."
+  },
+  {
+    "id": "ds29",
+    "category": "dataSufficiency",
+    "difficulty": "medium",
+    "text": "If x and y are integers, what is the value of x?\n\n(1) xy = 12\n(2) x and y are both positive",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 4,
+    "explanation": "Test (1) alone: xy = 12 with integers. Possibilities: (1,12), (2,6), (3,4), (4,3), (6,2), (12,1), and negatives. Multiple values of x. Not sufficient.\nTest (2) alone: x and y are positive integers. No constraint on value. Not sufficient.\nTogether: xy = 12, both positive integers. Still multiple possibilities: x = 1, 2, 3, 4, 6, or 12. Not sufficient.\nAnswer: (E) Statements (1) and (2) TOGETHER are NOT sufficient."
+  },
+  {
+    "id": "ds30",
+    "category": "dataSufficiency",
+    "difficulty": "medium",
+    "text": "What is the perimeter of right triangle T?\n\n(1) The hypotenuse of T is 10\n(2) The area of T is 24",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 2,
+    "explanation": "Test (1) alone: Hypotenuse = 10, so a² + b² = 100. Infinitely many right triangles with hyp 10. Not sufficient.\nTest (2) alone: Area = (1/2)ab = 24 → ab = 48. Infinitely many possibilities. Not sufficient.\nTogether: a² + b² = 100 and ab = 48. (a+b)² = a² + 2ab + b² = 100 + 96 = 196 → a + b = 14. Perimeter = a + b + 10 = 24. Sufficient.\nAnswer: (C) BOTH statements TOGETHER are sufficient, but NEITHER alone."
+  },
+  {
+    "id": "ds31",
+    "category": "dataSufficiency",
+    "difficulty": "medium",
+    "text": "Is n divisible by 12?\n\n(1) n is divisible by 4\n(2) n is divisible by 6",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 2,
+    "explanation": "Test (1) alone: n divisible by 4 → n could be 8 (not div by 12) or 12 (div by 12). Not sufficient.\nTest (2) alone: n divisible by 6 → n could be 6 (not div by 12) or 12 (div by 12). Not sufficient.\nTogether: n divisible by both 4 and 6 → n divisible by LCM(4,6) = 12. Sufficient.\nAnswer: (C) BOTH statements TOGETHER are sufficient, but NEITHER alone.\nDS Insight: If n is divisible by a AND b, then n is divisible by LCM(a,b). Here LCM(4,6) = 12."
+  },
+  {
+    "id": "ds32",
+    "category": "dataSufficiency",
+    "difficulty": "medium",
+    "text": "If p and q are positive integers, is p/q a terminating decimal?\n\n(1) q = 2⁴ × 5²\n(2) p = 7",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 0,
+    "explanation": "A fraction p/q in lowest terms is a terminating decimal if and only if q has no prime factors other than 2 and 5.\nTest (1) alone: q = 2⁴ × 5² = 400. q only has factors of 2 and 5, so p/q terminates regardless of p. Sufficient.\nTest (2) alone: p = 7, but q is unknown. If q = 3, then 7/3 doesn't terminate. If q = 4, then 7/4 terminates. Not sufficient.\nAnswer: (A) Statement (1) ALONE is sufficient.\nDS Insight: For terminating decimals, only the denominator's prime factors matter (after reducing)."
+  },
+  {
+    "id": "ds33",
+    "category": "dataSufficiency",
+    "difficulty": "medium",
+    "text": "If a mixture contains only milk and water, what percent of the mixture is milk?\n\n(1) If 10 liters of milk are added, the ratio becomes 3:1\n(2) If 10 liters of water are added, the ratio becomes 1:1",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 2,
+    "explanation": "Let m = milk, w = water.\nTest (1) alone: (m+10)/w = 3/1 → m + 10 = 3w. Two unknowns, one equation. Not sufficient.\nTest (2) alone: m/(w+10) = 1/1 → m = w + 10. Two unknowns, one equation. Not sufficient.\nTogether: m + 10 = 3w and m = w + 10. Substituting: (w+10) + 10 = 3w → 2w = 20 → w = 10, m = 20. Percent milk = 20/30 = 66.7%. Sufficient.\nAnswer: (C) BOTH statements TOGETHER are sufficient, but NEITHER alone."
+  },
+  {
+    "id": "ds34",
+    "category": "dataSufficiency",
+    "difficulty": "medium",
+    "text": "Is |x − 3| < 2?\n\n(1) x > 2\n(2) x < 4",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 2,
+    "explanation": "|x − 3| < 2 means 1 < x < 5.\nTest (1) alone: x > 2. Try x = 3 → YES. Try x = 6 → NO. Not sufficient.\nTest (2) alone: x < 4. Try x = 3 → YES. Try x = 0 → NO. Not sufficient.\nTogether: 2 < x < 4. This interval is entirely within (1, 5), so |x−3| < 2 always holds. Definitive YES. Sufficient.\nAnswer: (C) BOTH statements TOGETHER are sufficient, but NEITHER alone."
+  },
+  {
+    "id": "ds35",
+    "category": "dataSufficiency",
+    "difficulty": "medium",
+    "text": "What is the average (arithmetic mean) of a, b, and c?\n\n(1) a + b = 10\n(2) b + c = 14",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 4,
+    "explanation": "Average = (a + b + c)/3. We need a + b + c.\nTest (1) alone: a + b = 10, c unknown. Not sufficient.\nTest (2) alone: b + c = 14, a unknown. Not sufficient.\nTogether: a + b = 10 and b + c = 14. Adding: a + 2b + c = 24 → (a + b + c) + b = 24 → (a + b + c) = 24 − b. Without knowing b, cannot determine the sum. Not sufficient.\nAnswer: (E) Statements (1) and (2) TOGETHER are NOT sufficient."
+  },
+  {
+    "id": "ds36",
+    "category": "dataSufficiency",
+    "difficulty": "hard",
+    "text": "Is x > 5?\n\n(1) x² > 25\n(2) x > −6",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 4,
+    "explanation": "Test (1) alone: x² > 25 → x > 5 or x < −5. Could be x = 6 (> 5) or x = −6 (not > 5). Not sufficient.\nTest (2) alone: x > −6 → x could be 0 (not > 5) or 10 (> 5). Not sufficient.\nTogether: x² > 25 AND x > −6. From x² > 25: x > 5 or x < −5. Combined with x > −6: x > 5 or −6 < x < −5. So x could be 6 (> 5) or −5.5 (not > 5). Still not sufficient.\nAnswer: (E) Statements (1) and (2) TOGETHER are NOT sufficient.\nDS Trap: x² > 25 does NOT mean x > 5. Always consider negative solutions."
+  },
+  {
+    "id": "ds37",
+    "category": "dataSufficiency",
+    "difficulty": "hard",
+    "text": "If a and b are integers, is a + b even?\n\n(1) a × b is even\n(2) a − b is odd",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 1,
+    "explanation": "Test (1) alone: ab is even → at least one of a, b is even. Cases: (even, even) → sum even; (even, odd) → sum odd; (odd, even) → sum odd. Not sufficient.\nTest (2) alone: a − b is odd → one is even, one is odd (since even − odd = odd, odd − even = odd). So a + b = (a − b) + 2b → same parity as a − b → odd. Definitively: a + b is odd. Sufficient.\nAnswer: (B) Statement (2) ALONE is sufficient.\nDS Insight: If a − b is odd, then a + b is also odd (they share the same parity since a + b = (a − b) + 2b)."
+  },
+  {
+    "id": "ds38",
+    "category": "dataSufficiency",
+    "difficulty": "hard",
+    "text": "What is the value of integer n?\n\n(1) n² − 5n + 6 = 0\n(2) n is prime",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 2,
+    "explanation": "Test (1) alone: n² − 5n + 6 = 0 → (n−2)(n−3) = 0 → n = 2 or n = 3. Two values. Not sufficient.\nTest (2) alone: n is prime → n could be 2, 3, 5, 7, 11... Infinite values. Not sufficient.\nTogether: n = 2 or 3, and n is prime. Both 2 and 3 are prime! Still two values. Not sufficient.\n\nWait — both 2 and 3 are prime, so the constraint doesn't narrow it down. Not sufficient.\nAnswer: (E) Statements (1) and (2) TOGETHER are NOT sufficient.\nDS Trap: Don't assume 'prime' eliminates one of the quadratic roots — always check both."
+  },
+  {
+    "id": "ds39",
+    "category": "dataSufficiency",
+    "difficulty": "hard",
+    "text": "In a group of 100 people, how many speak only English?\n\n(1) 70 people speak English\n(2) 40 people speak French",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 4,
+    "explanation": "Let E = English, F = French, B = both.\nTest (1) alone: 70 speak English, but don't know how many also speak French. Only English = 70 − B. Not sufficient.\nTest (2) alone: 40 speak French. Tells nothing about English-only. Not sufficient.\nTogether: E = 70, F = 40. People speaking at least one = E + F − B = 70 + 40 − B = 110 − B. Since total ≤ 100 (or some speak neither), we know B ≥ 10. But we don't know if everyone speaks at least one language. Without knowing B exactly, cannot determine only-English = 70 − B. Not sufficient.\nAnswer: (E) Statements (1) and (2) TOGETHER are NOT sufficient.\nDS Trap: Overlapping sets require knowing the intersection (both) to determine 'only' categories."
+  },
+  {
+    "id": "ds40",
+    "category": "dataSufficiency",
+    "difficulty": "hard",
+    "text": "If x ≠ 0, is x/|x| = 1?\n\n(1) x = |x|\n(2) x² = x × |x|",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 3,
+    "explanation": "x/|x| = 1 means x is positive (since x/|x| = 1 when x > 0 and = −1 when x < 0).\nTest (1) alone: x = |x|. This is true only when x ≥ 0. Since x ≠ 0, x > 0 → x/|x| = 1. Yes. Sufficient.\nTest (2) alone: x² = x × |x|. If x > 0: x² = x × x = x² ✓. If x < 0: x² = x × (−x) = −x² → x² = −x² → 2x² = 0 → x = 0, contradicts x ≠ 0. So x must be positive → x/|x| = 1. Sufficient.\nAnswer: (D) EACH statement ALONE is sufficient."
+  },
+  {
+    "id": "ds41",
+    "category": "dataSufficiency",
+    "difficulty": "hard",
+    "text": "If k is a positive integer, is k a perfect square?\n\n(1) k has an odd number of positive factors\n(2) √k is an integer",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 3,
+    "explanation": "Test (1) alone: A positive integer has an odd number of factors if and only if it's a perfect square (since factors pair up, except when a factor is the square root). Sufficient.\nTest (2) alone: √k is an integer → k is a perfect square by definition. Sufficient.\nAnswer: (D) EACH statement ALONE is sufficient.\nDS Insight: 'Odd number of factors' is equivalent to 'perfect square' — a key number theory fact."
+  },
+  {
+    "id": "ds42",
+    "category": "dataSufficiency",
+    "difficulty": "hard",
+    "text": "What is the value of xy?\n\n(1) (x + y)² = 36\n(2) x² + y² = 20",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 2,
+    "explanation": "Test (1) alone: (x+y)² = 36 → x² + 2xy + y² = 36. One equation, unknowns xy and x²+y². Not sufficient.\nTest (2) alone: x² + y² = 20. Doesn't tell us xy directly. Not sufficient.\nTogether: From (1): x² + 2xy + y² = 36. From (2): x² + y² = 20. Substituting: 20 + 2xy = 36 → 2xy = 16 → xy = 8. Sufficient.\nAnswer: (C) BOTH statements TOGETHER are sufficient, but NEITHER alone."
+  },
+  {
+    "id": "ds43",
+    "category": "dataSufficiency",
+    "difficulty": "hard",
+    "text": "Is the positive integer n divisible by every integer from 1 to 10?\n\n(1) n is divisible by 5040\n(2) n is divisible by 2520",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 1,
+    "explanation": "For n to be divisible by every integer from 1 to 10, n must be divisible by LCM(1,2,...,10) = 2520.\nTest (1) alone: 5040 = 2 × 2520, so n divisible by 5040 → n divisible by 2520 → divisible by all 1-10. Sufficient.\nTest (2) alone: n divisible by 2520 = LCM(1,...,10). Directly answers: yes. Sufficient.\nAnswer: (D) EACH statement ALONE is sufficient.\nNote: LCM(1-10) = 2³ × 3² × 5 × 7 = 2520. Since 5040 is a multiple of 2520, both conditions guarantee divisibility by 1 through 10."
+  },
+  {
+    "id": "ds44",
+    "category": "dataSufficiency",
+    "difficulty": "hard",
+    "text": "Is x between 0 and 1?\n\n(1) x² < x\n(2) x³ > 0",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 0,
+    "explanation": "Test (1) alone: x² < x → x² − x < 0 → x(x−1) < 0. This is true only when 0 < x < 1. Sufficient — directly tells us x is between 0 and 1.\nTest (2) alone: x³ > 0 → x > 0. But x could be 0.5 (between 0 and 1) or 5 (not between 0 and 1). Not sufficient.\nAnswer: (A) Statement (1) ALONE is sufficient.\nDS Insight: x² < x is the algebraic equivalent of 0 < x < 1. Recognizing this saves time."
+  },
+  {
+    "id": "ds45",
+    "category": "dataSufficiency",
+    "difficulty": "hard",
+    "text": "A tank is being filled by pipe A and drained by pipe B simultaneously. How long will it take to fill the tank?\n\n(1) Pipe A alone fills the tank in 6 hours\n(2) The net fill rate is 1/12 of the tank per hour",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 1,
+    "explanation": "Test (1) alone: Pipe A fills at rate 1/6 per hour. But drain rate of B unknown. Net rate = 1/6 − (rate of B). Not sufficient.\nTest (2) alone: Net fill rate = 1/12 per hour. Time to fill = 1 ÷ (1/12) = 12 hours. Sufficient — net rate directly gives the time.\nAnswer: (B) Statement (2) ALONE is sufficient.\nDS Insight: If you're asked for time and given the net rate, that alone is sufficient regardless of individual rates."
+  },
+  {
+    "id": "ds46",
+    "category": "dataSufficiency",
+    "difficulty": "hard",
+    "text": "If x and y are positive, is x/y > y/x?\n\n(1) x > y\n(2) xy < x²",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 3,
+    "explanation": "x/y > y/x. Since x, y > 0, cross-multiply: x² > y² → (x−y)(x+y) > 0. Since x+y > 0 (both positive), this reduces to x > y.\nTest (1) alone: x > y. As shown above, this is exactly the condition needed. Sufficient.\nTest (2) alone: xy < x². Since x > 0, divide by x: y < x → x > y. Same condition. Sufficient.\nAnswer: (D) EACH statement ALONE is sufficient.\nDS Insight: With positive numbers, x/y > y/x simplifies to x > y. Always simplify the question before testing statements."
+  },
+  {
+    "id": "ds47",
+    "category": "dataSufficiency",
+    "difficulty": "hard",
+    "text": "What is the value of a³ − b³?\n\n(1) a − b = 3\n(2) a² + ab + b² = 7",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 2,
+    "explanation": "Key identity: a³ − b³ = (a − b)(a² + ab + b²).\nTest (1) alone: a − b = 3. Need a² + ab + b² to use the identity. Not sufficient.\nTest (2) alone: a² + ab + b² = 7. Need a − b to use the identity. Not sufficient.\nTogether: a³ − b³ = (a − b)(a² + ab + b²) = 3 × 7 = 21. Sufficient.\nAnswer: (C) BOTH statements TOGETHER are sufficient, but NEITHER alone.\nDS Insight: Recognize factoring identities — the question is designed around a³ − b³ = (a−b)(a²+ab+b²)."
+  },
+  {
+    "id": "ds48",
+    "category": "dataSufficiency",
+    "difficulty": "hard",
+    "text": "A merchant mixes two types of coffee. What is the price per kg of the mixture?\n\n(1) Type A costs $8/kg and Type B costs $12/kg\n(2) The merchant uses equal quantities of each type",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 2,
+    "explanation": "Test (1) alone: Prices are $8 and $12, but mixing ratio unknown. Price = (8a + 12b)/(a+b). Not sufficient.\nTest (2) alone: Equal quantities, but individual prices unknown. Not sufficient.\nTogether: Equal quantities of $8 and $12 coffee. Price = (8 + 12)/2 = $10/kg. Sufficient.\nAnswer: (C) BOTH statements TOGETHER are sufficient, but NEITHER alone."
+  },
+  {
+    "id": "ds49",
+    "category": "dataSufficiency",
+    "difficulty": "hard",
+    "text": "Is quadrilateral ABCD a square?\n\n(1) All sides of ABCD are equal\n(2) All angles of ABCD are 90°",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 2,
+    "explanation": "Test (1) alone: All sides equal → could be a square or a rhombus (non-right angles). Not sufficient.\nTest (2) alone: All angles 90° → could be a square or a non-square rectangle (unequal sides). Not sufficient.\nTogether: All sides equal AND all angles 90° → must be a square. Sufficient.\nAnswer: (C) BOTH statements TOGETHER are sufficient, but NEITHER alone.\nDS Insight: A square requires BOTH equal sides and right angles. Neither condition alone eliminates all alternatives."
+  },
+  {
+    "id": "ds50",
+    "category": "dataSufficiency",
+    "difficulty": "hard",
+    "text": "If n is a positive integer greater than 1, is n odd?\n\n(1) 3n is odd\n(2) n + 4 is odd",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 3,
+    "explanation": "Test (1) alone: 3n is odd. Since 3 is odd, 3n is odd only if n is odd (odd × odd = odd; odd × even = even). Sufficient.\nTest (2) alone: n + 4 is odd. Since 4 is even, n + 4 has same parity as n. So n must be odd. Sufficient.\nAnswer: (D) EACH statement ALONE is sufficient."
+  },
+  {
+    "id": "ds51",
+    "category": "dataSufficiency",
+    "difficulty": "hard",
+    "text": "A worker can complete a job in d days working alone. If a second worker joins, how many days will the job take?\n\n(1) d = 12\n(2) The second worker is twice as fast as the first",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 2,
+    "explanation": "First worker's rate = 1/d. Second worker's rate = r. Combined time = 1/(1/d + r).\nTest (1) alone: d = 12, so first worker's rate = 1/12. But second worker's rate unknown. Not sufficient.\nTest (2) alone: Second worker is twice as fast → rate = 2/d. Combined rate = 1/d + 2/d = 3/d. Time = d/3. But d is unknown. Not sufficient.\nTogether: d = 12, second worker rate = 2/12 = 1/6. Combined = 1/12 + 1/6 = 1/12 + 2/12 = 3/12 = 1/4. Time = 4 days. Sufficient.\nAnswer: (C) BOTH statements TOGETHER are sufficient, but NEITHER alone."
+  },
+  {
+    "id": "ds52",
+    "category": "dataSufficiency",
+    "difficulty": "hard",
+    "text": "If a, b, and c are consecutive positive integers in increasing order, is b a prime number?\n\n(1) a + c = 12\n(2) abc is divisible by 6",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 0,
+    "explanation": "Since a, b, c are consecutive: a = b−1, c = b+1.\nTest (1) alone: a + c = (b−1) + (b+1) = 2b = 12 → b = 6. Is 6 prime? No. We have a definitive answer. Sufficient.\nTest (2) alone: abc divisible by 6. For any three consecutive integers, one is divisible by 2 and one by 3, so the product is always divisible by 6. This gives no information about b specifically. Not sufficient.\nAnswer: (A) Statement (1) ALONE is sufficient.\nDS Insight: A definitive 'NO' is still sufficient — you've answered the yes/no question conclusively."
+  },
+  {
+    "id": "ds53",
+    "category": "dataSufficiency",
+    "difficulty": "hard",
+    "text": "Is 1/p > 1/q?\n\n(1) p > q\n(2) pq > 0",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 2,
+    "explanation": "Test (1) alone: p > q. If p = 3, q = 2: 1/3 < 1/2 → NO. If p = 2, q = −1: 1/2 > −1 → YES. Not sufficient.\nTest (2) alone: pq > 0 → same sign. If p = 3, q = 2: 1/3 < 1/2 → NO. If p = 2, q = 3: 1/2 > 1/3 → YES. Not sufficient.\nTogether: p > q and pq > 0. Case 1 (both positive): p > q → 1/p < 1/q → NO. Case 2 (both negative): p > q means |p| < |q| → 1/|p| > 1/|q|, but signs flip → 1/p < 1/q → NO. Always NO. Sufficient.\nAnswer: (C) BOTH statements TOGETHER are sufficient, but NEITHER alone.\nDS Trap: A definitive NO is still sufficient. With same-sign numbers, larger denominator means smaller reciprocal."
+  },
+  {
+    "id": "ds54",
+    "category": "dataSufficiency",
+    "difficulty": "hard",
+    "text": "What is the units digit of n⁵?\n\n(1) The units digit of n is 7\n(2) n is a multiple of 7",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 0,
+    "explanation": "Test (1) alone: Units digit of n is 7. The units digit of powers of 7 cycles: 7¹=7, 7²=9, 7³=3, 7⁴=1, 7⁵=7. So units digit of n⁵ is 7. Sufficient.\nTest (2) alone: n is a multiple of 7 → n could be 7, 14, 21, 28, 35... Units of n⁵: 7⁵→7, 14⁵→4⁵ pattern→4, 21⁵→1⁵→1. Different answers. Not sufficient.\nAnswer: (A) Statement (1) ALONE is sufficient.\nDS Insight: Units digit of a power depends only on the units digit of the base, not on the full number."
+  },
+  {
+    "id": "ds55",
+    "category": "dataSufficiency",
+    "difficulty": "hard",
+    "text": "If x and y are nonzero numbers, is x > y?\n\n(1) x/y > 1\n(2) x − y > 0",
+    "choices": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER alone",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are NOT sufficient"
+    ],
+    "correct": 1,
+    "explanation": "Test (1) alone: x/y > 1. If y > 0: multiply both sides by y → x > y ✓. If y < 0: multiply and flip → x < y ✗. So x/y > 1 with y negative means x < y. Example: x = −3, y = −2 → x/y = 1.5 > 1 but x < y. Not sufficient.\nTest (2) alone: x − y > 0 → x > y. Directly answers the question. Sufficient.\nAnswer: (B) Statement (2) ALONE is sufficient.\nDS Trap: You cannot conclude x > y from x/y > 1 unless you know the sign of y. Subtraction is more reliable for comparing values."
+  }
+]

@@ -1,0 +1,752 @@
+[
+  {
+    "id": "err1",
+    "category": "errorDetection",
+    "difficulty": "easy",
+    "text": "Find the error in this solution:\n\nProblem: What is 15% of 80?\nStep 1: 15% = 15/100 = 0.15\nStep 2: 0.15 × 80 = 1.2\nStep 3: Answer = 1.2",
+    "choices": [
+      "Step 1 is wrong",
+      "Step 2 has a calculation error",
+      "Step 3 is wrong",
+      "There is no error",
+      "The problem setup is wrong"
+    ],
+    "correct": 1,
+    "explanation": "Step 2 is wrong: 0.15 × 80 = 12, not 1.2.\nThe student likely misplaced the decimal point.\nCorrect answer: 15% of 80 = 12."
+  },
+  {
+    "id": "err2",
+    "category": "errorDetection",
+    "difficulty": "easy",
+    "text": "Find the error in this solution:\n\nProblem: Solve 3x + 7 = 22\nStep 1: 3x = 22 + 7 = 29\nStep 2: x = 29/3\nStep 3: x ≈ 9.67",
+    "choices": [
+      "Step 1 incorrectly adds instead of subtracting",
+      "Step 2 divides incorrectly",
+      "Step 3 rounds incorrectly",
+      "There is no error",
+      "The equation has no solution"
+    ],
+    "correct": 0,
+    "explanation": "Step 1 is wrong: when moving 7 to the other side, it should be subtracted, not added.\nCorrect: 3x = 22 − 7 = 15, so x = 5."
+  },
+  {
+    "id": "err3",
+    "category": "errorDetection",
+    "difficulty": "easy",
+    "text": "Find the error in this solution:\n\nProblem: What is 8 + 3 × 2?\nStep 1: 8 + 3 = 11\nStep 2: 11 × 2 = 22\nStep 3: Answer = 22",
+    "choices": [
+      "Step 1 adds incorrectly",
+      "Step 2 multiplies incorrectly",
+      "Order of operations violated — multiplication before addition",
+      "There is no error",
+      "The expression is ambiguous"
+    ],
+    "correct": 2,
+    "explanation": "The student performed addition before multiplication, violating order of operations (PEMDAS).\nCorrect: 3 × 2 = 6, then 8 + 6 = 14."
+  },
+  {
+    "id": "err4",
+    "category": "errorDetection",
+    "difficulty": "easy",
+    "text": "Find the error in this solution:\n\nProblem: A shirt costs $40. It's on sale for 25% off. What's the sale price?\nStep 1: 25% of 40 = 0.25 × 40 = 10\nStep 2: Sale price = 40 + 10 = 50\nStep 3: Answer = $50",
+    "choices": [
+      "Step 1 calculates the percentage incorrectly",
+      "Step 2 should subtract the discount, not add it",
+      "Step 3 has the wrong unit",
+      "There is no error",
+      "The discount should be applied differently"
+    ],
+    "correct": 1,
+    "explanation": "Step 2 is wrong: a discount means subtracting, not adding.\nCorrect: Sale price = 40 − 10 = $30."
+  },
+  {
+    "id": "err5",
+    "category": "errorDetection",
+    "difficulty": "easy",
+    "text": "Find the error in this solution:\n\nProblem: What is the area of a triangle with base 10 and height 6?\nStep 1: Area = base × height\nStep 2: Area = 10 × 6 = 60\nStep 3: Answer = 60 square units",
+    "choices": [
+      "The base value is wrong",
+      "The formula is wrong — should be ½ × base × height",
+      "The multiplication in Step 2 is wrong",
+      "There is no error",
+      "The units are wrong"
+    ],
+    "correct": 1,
+    "explanation": "The formula for a triangle's area is ½ × base × height, not base × height.\nThat's the formula for a rectangle.\nCorrect: Area = ½ × 10 × 6 = 30 square units."
+  },
+  {
+    "id": "err6",
+    "category": "errorDetection",
+    "difficulty": "easy",
+    "text": "Find the error in this solution:\n\nProblem: Simplify 2(x + 3)\nStep 1: Distribute 2 to each term inside\nStep 2: 2·x + 2·3 = 2x + 23\nStep 3: Answer = 2x + 23",
+    "choices": [
+      "Step 1 describes the wrong method",
+      "Step 2 writes 2·3 as 23 instead of 6",
+      "Step 3 should combine like terms",
+      "There is no error",
+      "Distribution doesn't apply here"
+    ],
+    "correct": 1,
+    "explanation": "Step 2 is wrong: 2·3 = 6, not 23. The student concatenated instead of multiplying.\nCorrect: 2(x + 3) = 2x + 6."
+  },
+  {
+    "id": "err7",
+    "category": "errorDetection",
+    "difficulty": "easy",
+    "text": "Find the error in this solution:\n\nProblem: If 5 workers take 10 days to complete a job, how long do 10 workers take?\nStep 1: More workers = more time\nStep 2: 10 workers take 10 × 2 = 20 days\nStep 3: Answer = 20 days",
+    "choices": [
+      "Step 1 has the relationship backwards — more workers means less time",
+      "Step 2 uses the wrong multiplier",
+      "Step 3 has wrong units",
+      "There is no error",
+      "The problem cannot be solved with given information"
+    ],
+    "correct": 0,
+    "explanation": "Step 1 is wrong: more workers means LESS time (inverse proportion).\nCorrect: Work = 5 × 10 = 50 worker-days. With 10 workers: 50/10 = 5 days."
+  },
+  {
+    "id": "err8",
+    "category": "errorDetection",
+    "difficulty": "easy",
+    "text": "Find the error in this solution:\n\nProblem: Convert 0.3 to a fraction.\nStep 1: 0.3 = 3/100\nStep 2: Simplify: 3/100 is already in lowest terms\nStep 3: Answer = 3/100",
+    "choices": [
+      "Step 1 is wrong — 0.3 = 3/10, not 3/100",
+      "Step 2 simplification is wrong",
+      "Step 3 should be a mixed number",
+      "There is no error",
+      "The decimal is repeating"
+    ],
+    "correct": 0,
+    "explanation": "Step 1 is wrong: 0.3 has one decimal place, so it equals 3/10, not 3/100.\n0.03 would equal 3/100.\nCorrect answer: 0.3 = 3/10."
+  },
+  {
+    "id": "err9",
+    "category": "errorDetection",
+    "difficulty": "easy",
+    "text": "Find the error in this solution:\n\nProblem: What is (-3)²?\nStep 1: (-3)² means -3 × -3\nStep 2: -3 × -3 = -9\nStep 3: Answer = -9",
+    "choices": [
+      "Step 1 interprets the notation incorrectly",
+      "Step 2 is wrong — negative × negative = positive",
+      "Step 3 should include ±",
+      "There is no error",
+      "Squaring a negative is undefined"
+    ],
+    "correct": 1,
+    "explanation": "Step 2 is wrong: a negative times a negative gives a positive result.\n(-3) × (-3) = +9, not -9.\nCorrect answer: (-3)² = 9."
+  },
+  {
+    "id": "err10",
+    "category": "errorDetection",
+    "difficulty": "easy",
+    "text": "Find the error in this solution:\n\nProblem: Solve x² = 16\nStep 1: Take square root of both sides\nStep 2: x = √16 = 4\nStep 3: Answer: x = 4",
+    "choices": [
+      "Step 1 is the wrong approach",
+      "Step 2 calculates √16 incorrectly",
+      "The solution misses x = -4 (must include ±)",
+      "There is no error",
+      "x² = 16 has no real solutions"
+    ],
+    "correct": 2,
+    "explanation": "The solution is incomplete: x² = 16 has TWO solutions.\nWhen taking the square root, you must consider both positive and negative roots.\nCorrect: x = ±4, so x = 4 or x = -4."
+  },
+  {
+    "id": "err11",
+    "category": "errorDetection",
+    "difficulty": "easy",
+    "text": "Find the error in this solution:\n\nProblem: What is 50% of 50% of 200?\nStep 1: 50% of 50% = 100%\nStep 2: 100% of 200 = 200\nStep 3: Answer = 200",
+    "choices": [
+      "Step 1 is wrong — you can't add percentages like that",
+      "Step 2 calculates incorrectly",
+      "Step 3 has wrong units",
+      "There is no error",
+      "The problem is poorly defined"
+    ],
+    "correct": 0,
+    "explanation": "Step 1 is wrong: '50% of 50%' means 0.5 × 0.5 = 0.25 (25%), not 100%.\nYou multiply successive percentages, not add them.\nCorrect: 50% of 200 = 100, then 50% of 100 = 50."
+  },
+  {
+    "id": "err12",
+    "category": "errorDetection",
+    "difficulty": "easy",
+    "text": "Find the error in this solution:\n\nProblem: A rectangle has length 8 cm and width 5 cm. What is its perimeter?\nStep 1: Perimeter = length + width\nStep 2: P = 8 + 5 = 13\nStep 3: Answer = 13 cm",
+    "choices": [
+      "Step 1 uses wrong formula — perimeter = 2(length + width)",
+      "Step 2 adds incorrectly",
+      "Step 3 has wrong units",
+      "There is no error",
+      "Need to know diagonal too"
+    ],
+    "correct": 0,
+    "explanation": "Step 1 is wrong: the perimeter formula for a rectangle is 2(length + width), not just length + width.\nA rectangle has 4 sides, not 2.\nCorrect: P = 2(8 + 5) = 2(13) = 26 cm."
+  },
+  {
+    "id": "err13",
+    "category": "errorDetection",
+    "difficulty": "medium",
+    "text": "Find the error in this solution:\n\nProblem: Solve 2(x - 3) = 4x + 2\nStep 1: 2x - 3 = 4x + 2\nStep 2: 2x - 4x = 2 + 3\nStep 3: -2x = 5\nStep 4: x = -5/2",
+    "choices": [
+      "Step 1 distributes incorrectly — should be 2x - 6",
+      "Step 2 moves terms incorrectly",
+      "Step 3 combines incorrectly",
+      "Step 4 divides incorrectly",
+      "There is no error"
+    ],
+    "correct": 0,
+    "explanation": "Step 1 is wrong: 2(x - 3) = 2x - 6, not 2x - 3. The 2 must multiply BOTH terms.\nCorrect: 2x - 6 = 4x + 2 → -2x = 8 → x = -4."
+  },
+  {
+    "id": "err14",
+    "category": "errorDetection",
+    "difficulty": "medium",
+    "text": "Find the error in this solution:\n\nProblem: A price increases by 20%, then decreases by 20%. What is the net change?\nStep 1: +20% then -20% cancel out\nStep 2: Net change = 0%\nStep 3: The price returns to its original value",
+    "choices": [
+      "Step 1 is wrong — the 20% decrease applies to the NEW (higher) price",
+      "Step 2 arithmetic is wrong",
+      "Step 3 contradicts Step 2",
+      "There is no error",
+      "You need to know the original price"
+    ],
+    "correct": 0,
+    "explanation": "Step 1 is wrong: the 20% decrease is on the increased price, not the original.\nLet original = 100. After +20%: 120. After -20% of 120: 120 - 24 = 96.\nNet change = -4%, not 0%."
+  },
+  {
+    "id": "err15",
+    "category": "errorDetection",
+    "difficulty": "medium",
+    "text": "Find the error in this solution:\n\nProblem: Simplify (x² + 4x + 4)/(x + 2)\nStep 1: Factor numerator: x² + 4x + 4 = (x + 2)(x + 2)\nStep 2: Cancel (x + 2): (x + 2)(x + 2)/(x + 2) = x + 2\nStep 3: Answer = x + 2 for all values of x",
+    "choices": [
+      "Step 1 factors incorrectly",
+      "Step 2 cancels incorrectly",
+      "Step 3 is wrong — the answer is undefined at x = -2",
+      "There is no error",
+      "The expression cannot be simplified"
+    ],
+    "correct": 2,
+    "explanation": "Step 3 is wrong: while the simplification is correct, the result is only valid for x ≠ -2.\nAt x = -2, the original expression is undefined (division by zero).\nCorrect: (x + 2) for all x ≠ -2."
+  },
+  {
+    "id": "err16",
+    "category": "errorDetection",
+    "difficulty": "medium",
+    "text": "Find the error in this solution:\n\nProblem: Solve |x - 3| = 5\nStep 1: x - 3 = 5 or x - 3 = -5\nStep 2: x = 8 or x = 2\nStep 3: Answer: x = 8 or x = 2",
+    "choices": [
+      "Step 1 sets up cases incorrectly",
+      "Step 2 solves the second equation wrong — should be x = -2",
+      "Step 3 should only include positive values",
+      "There is no error",
+      "Absolute value equations have only one solution"
+    ],
+    "correct": 1,
+    "explanation": "Step 2 has a sign error: x - 3 = -5 → x = -5 + 3 = -2, not 2.\nThe student added 3 correctly for the first case (x = 8) but made a sign error in the second.\nCorrect solutions: x = 8 or x = -2."
+  },
+  {
+    "id": "err17",
+    "category": "errorDetection",
+    "difficulty": "medium",
+    "text": "Find the error in this solution:\n\nProblem: Solve |x - 3| = 5\nStep 1: x - 3 = 5 or x - 3 = -5\nStep 2: x = 8 or x = -2\nStep 3: Answer: x = 8 or x = -2",
+    "choices": [
+      "Step 1 sets up cases incorrectly",
+      "Step 2 solves incorrectly",
+      "Step 3 should exclude negative values",
+      "There is no error",
+      "Only one case is valid"
+    ],
+    "correct": 3,
+    "explanation": "There is no error. The absolute value equation |x - 3| = 5 produces two cases:\nx - 3 = 5 → x = 8, and x - 3 = -5 → x = -2.\nBoth solutions are valid. Check: |8-3| = 5 ✓ and |-2-3| = |-5| = 5 ✓."
+  },
+  {
+    "id": "err18",
+    "category": "errorDetection",
+    "difficulty": "medium",
+    "text": "Find the error in this solution:\n\nProblem: A store marks up a $50 item by 40%, then offers a 25% employee discount. What does the employee pay?\nStep 1: Markup: 50 × 1.40 = 70\nStep 2: Discount: 70 × 0.25 = 17.50\nStep 3: Employee pays: 70 + 17.50 = $87.50",
+    "choices": [
+      "Step 1 calculates markup incorrectly",
+      "Step 2 is correct but Step 3 should subtract, not add",
+      "Step 2 should use the original price as base",
+      "There is no error",
+      "Step 1 should use 50 × 0.40"
+    ],
+    "correct": 1,
+    "explanation": "Step 3 is wrong: a discount means SUBTRACTING, not adding.\nStep 2 correctly finds 25% of 70 = 17.50.\nBut the employee pays 70 - 17.50 = $52.50, not 70 + 17.50."
+  },
+  {
+    "id": "err19",
+    "category": "errorDetection",
+    "difficulty": "medium",
+    "text": "Find the error in this solution:\n\nProblem: Solve x/3 + x/4 = 7\nStep 1: Common denominator = 12\nStep 2: 4x + 3x = 7\nStep 3: 7x = 7, so x = 1",
+    "choices": [
+      "Step 1 finds wrong common denominator",
+      "Step 2 forgets to multiply the right side by 12",
+      "Step 3 divides incorrectly",
+      "There is no error",
+      "Step 2 gets wrong numerators"
+    ],
+    "correct": 1,
+    "explanation": "Step 2 is wrong: when multiplying both sides by 12, the right side must also be multiplied.\nCorrect: 4x + 3x = 7 × 12 = 84.\n7x = 84, so x = 12."
+  },
+  {
+    "id": "err20",
+    "category": "errorDetection",
+    "difficulty": "medium",
+    "text": "Find the error in this solution:\n\nProblem: What is the probability of getting at least one head in 3 coin flips?\nStep 1: P(at least one head) = 1 - P(no heads)\nStep 2: P(no heads) = P(all tails) = (1/2)³ = 1/6\nStep 3: P(at least one head) = 1 - 1/6 = 5/6",
+    "choices": [
+      "Step 1 uses wrong complement approach",
+      "Step 2 is wrong: (1/2)³ = 1/8, not 1/6",
+      "Step 3 subtracts incorrectly",
+      "There is no error",
+      "Should multiply probabilities instead"
+    ],
+    "correct": 1,
+    "explanation": "Step 2 is wrong: (1/2)³ = 1/8, not 1/6.\nThe student confused powers with multiplication.\nCorrect: P(at least one head) = 1 - 1/8 = 7/8."
+  },
+  {
+    "id": "err21",
+    "category": "errorDetection",
+    "difficulty": "medium",
+    "text": "Find the error in this solution:\n\nProblem: Find the area of a circle with diameter 10.\nStep 1: radius = diameter/2 = 10/2 = 5\nStep 2: Area = πr² = π × 5 = 5π\nStep 3: Answer = 5π ≈ 15.7",
+    "choices": [
+      "Step 1 calculates radius incorrectly",
+      "Step 2 forgets to square the radius — should be π × 25 = 25π",
+      "Step 3 approximates π incorrectly",
+      "There is no error",
+      "Should use diameter in the formula"
+    ],
+    "correct": 1,
+    "explanation": "Step 2 is wrong: the formula is πr², meaning π × r × r = π × 5² = π × 25 = 25π.\nThe student wrote πr instead of πr².\nCorrect: Area = 25π ≈ 78.5."
+  },
+  {
+    "id": "err22",
+    "category": "errorDetection",
+    "difficulty": "medium",
+    "text": "Find the error in this solution:\n\nProblem: In how many ways can 5 people be arranged in a line?\nStep 1: This is a permutation of 5 objects\nStep 2: 5! = 5 × 4 × 3 × 2 = 120\nStep 3: Answer = 120",
+    "choices": [
+      "Step 1 should use combination, not permutation",
+      "Step 2 forgets to include ×1 in factorial",
+      "Step 3 is wrong",
+      "There is no error",
+      "Should divide by repetitions"
+    ],
+    "correct": 3,
+    "explanation": "There is no error. 5 people in a line is indeed a permutation.\n5! = 5 × 4 × 3 × 2 × 1 = 120.\nNote: omitting ×1 doesn't change the result since multiplying by 1 has no effect."
+  },
+  {
+    "id": "err23",
+    "category": "errorDetection",
+    "difficulty": "medium",
+    "text": "Find the error in this solution:\n\nProblem: Solve 3x² - 12 = 0\nStep 1: 3x² = 12\nStep 2: x² = 4\nStep 3: x = 2",
+    "choices": [
+      "Step 1 moves -12 incorrectly",
+      "Step 2 divides incorrectly",
+      "Step 3 must include x = -2 as well",
+      "There is no error",
+      "Should factor instead"
+    ],
+    "correct": 2,
+    "explanation": "Step 3 is incomplete: x² = 4 gives x = ±2, not just x = 2.\nBoth x = 2 and x = -2 satisfy the equation.\nCorrect: x = 2 or x = -2."
+  },
+  {
+    "id": "err24",
+    "category": "errorDetection",
+    "difficulty": "medium",
+    "text": "Find the error in this solution:\n\nProblem: What is 30% more than 200?\nStep 1: 30% of 200 = 0.30 × 200 = 60\nStep 2: 30% more = 200 - 60 = 140\nStep 3: Answer = 140",
+    "choices": [
+      "Step 1 calculates 30% incorrectly",
+      "Step 2 subtracts instead of adding",
+      "Step 3 should round",
+      "There is no error",
+      "Should multiply 200 × 1.30 instead"
+    ],
+    "correct": 1,
+    "explanation": "Step 2 is wrong: '30% MORE than' means adding, not subtracting.\nCorrect: 200 + 60 = 260.\nAlternatively: 200 × 1.30 = 260."
+  },
+  {
+    "id": "err25",
+    "category": "errorDetection",
+    "difficulty": "medium",
+    "text": "Find the error in this solution:\n\nProblem: A triangle has sides 3, 4, and 5. What is its area?\nStep 1: This is a right triangle (3² + 4² = 5²)\nStep 2: Area = ½ × 3 × 4 × 5\nStep 3: Area = 30",
+    "choices": [
+      "Step 1 incorrectly identifies it as a right triangle",
+      "Step 2 uses wrong formula — for right triangle, Area = ½ × leg₁ × leg₂",
+      "Step 3 arithmetic is wrong",
+      "There is no error",
+      "Should use Heron's formula instead"
+    ],
+    "correct": 1,
+    "explanation": "Step 2 is wrong: for a right triangle, the area is ½ × base × height = ½ × leg₁ × leg₂.\nThe hypotenuse (5) should NOT be included in the multiplication.\nCorrect: Area = ½ × 3 × 4 = 6."
+  },
+  {
+    "id": "err26",
+    "category": "errorDetection",
+    "difficulty": "medium",
+    "text": "Find the error in this solution:\n\nProblem: If a car travels 60 mph for 2.5 hours, how far does it go?\nStep 1: Distance = Speed × Time\nStep 2: Distance = 60 × 2.30 = 138 miles\nStep 3: Answer = 138 miles",
+    "choices": [
+      "Step 1 uses wrong formula",
+      "Step 2 converts 2.5 hours to 2.30 incorrectly",
+      "Step 3 has wrong units",
+      "There is no error",
+      "Should convert to minutes first"
+    ],
+    "correct": 1,
+    "explanation": "Step 2 is wrong: 2.5 hours ≠ 2.30 hours. The student confused decimal with time notation.\n2.5 hours means 2 hours and 30 minutes, but as a decimal it's simply 2.5.\nCorrect: 60 × 2.5 = 150 miles."
+  },
+  {
+    "id": "err27",
+    "category": "errorDetection",
+    "difficulty": "medium",
+    "text": "Find the error in this solution:\n\nProblem: Simplify √(x²)\nStep 1: The square root and square cancel\nStep 2: √(x²) = x\nStep 3: This is true for all x",
+    "choices": [
+      "Step 1 reasoning is too simplified",
+      "Step 2 is wrong — √(x²) = |x|, not x",
+      "Step 3 is correct",
+      "There is no error",
+      "√(x²) is undefined"
+    ],
+    "correct": 1,
+    "explanation": "Step 2 is wrong: √(x²) = |x|, not x.\nFor negative values of x, √(x²) gives the positive value.\nExample: if x = -3, √((-3)²) = √9 = 3 = |-3|, not -3.\nCorrect: √(x²) = |x| for all real x."
+  },
+  {
+    "id": "err28",
+    "category": "errorDetection",
+    "difficulty": "medium",
+    "text": "Find the error in this solution:\n\nProblem: A bag has 3 red and 5 blue marbles. You draw 2 without replacement. What's P(both red)?\nStep 1: P(1st red) = 3/8\nStep 2: P(2nd red) = 3/8\nStep 3: P(both red) = 3/8 × 3/8 = 9/64",
+    "choices": [
+      "Step 1 is wrong",
+      "Step 2 should be 2/7 (one red removed, one fewer total)",
+      "Step 3 should add, not multiply",
+      "There is no error",
+      "Should use combinations instead"
+    ],
+    "correct": 1,
+    "explanation": "Step 2 is wrong: since we draw WITHOUT replacement, after removing one red marble, there are 2 red left out of 7 total.\nP(2nd red | 1st red) = 2/7, not 3/8.\nCorrect: P(both red) = 3/8 × 2/7 = 6/56 = 3/28."
+  },
+  {
+    "id": "err29",
+    "category": "errorDetection",
+    "difficulty": "medium",
+    "text": "Find the error in this solution:\n\nProblem: Solve (x - 2)(x + 3) = 0\nStep 1: x - 2 = 0 → x = 2\nStep 2: x + 3 = 0 → x = 3\nStep 3: Solutions: x = 2 or x = 3",
+    "choices": [
+      "Step 1 is wrong",
+      "Step 2 has a sign error — should be x = -3",
+      "Step 3 should only have one solution",
+      "There is no error",
+      "Should use quadratic formula"
+    ],
+    "correct": 1,
+    "explanation": "Step 2 has a sign error: x + 3 = 0 means x = -3, not x = 3.\nThe student forgot to change the sign when solving.\nCorrect solutions: x = 2 or x = -3."
+  },
+  {
+    "id": "err30",
+    "category": "errorDetection",
+    "difficulty": "medium",
+    "text": "Find the error in this solution:\n\nProblem: What is the volume of a cylinder with radius 3 and height 7?\nStep 1: V = πr²h\nStep 2: V = π × 3 × 7\nStep 3: V = 21π ≈ 65.97",
+    "choices": [
+      "Step 1 uses the wrong formula",
+      "Step 2 forgets to square the radius — should be π × 9 × 7",
+      "Step 3 approximates π incorrectly",
+      "There is no error",
+      "Should use diameter instead"
+    ],
+    "correct": 1,
+    "explanation": "Step 2 is wrong: the formula says r², so it should be π × 3² × 7 = π × 9 × 7 = 63π.\nThe student used r instead of r².\nCorrect: V = 63π ≈ 197.92."
+  },
+  {
+    "id": "err31",
+    "category": "errorDetection",
+    "difficulty": "medium",
+    "text": "Find the error in this solution:\n\nProblem: How many ways can you choose 3 people from a group of 7?\nStep 1: This is a combination: C(7,3) = 7!/(3! × 4!)\nStep 2: = (7 × 6 × 5)/(3 × 2 × 1)\nStep 3: = 210/6 = 35",
+    "choices": [
+      "Step 1 should be permutation, not combination",
+      "Step 2 expands incorrectly",
+      "Step 3 divides incorrectly",
+      "There is no error",
+      "Should subtract repeats separately"
+    ],
+    "correct": 3,
+    "explanation": "There is no error. Choosing 3 from 7 (order doesn't matter) is C(7,3).\nC(7,3) = 7!/(3!4!) = (7×6×5)/(3×2×1) = 210/6 = 35. All steps are correct."
+  },
+  {
+    "id": "err32",
+    "category": "errorDetection",
+    "difficulty": "medium",
+    "text": "Find the error in this solution:\n\nProblem: If a population grows from 1000 to 1200, what is the percentage increase?\nStep 1: Increase = 1200 - 1000 = 200\nStep 2: % increase = (200/1200) × 100 = 16.67%\nStep 3: Answer = 16.67%",
+    "choices": [
+      "Step 1 calculates increase incorrectly",
+      "Step 2 divides by wrong base — should divide by original (1000)",
+      "Step 3 rounds incorrectly",
+      "There is no error",
+      "Should use geometric growth formula"
+    ],
+    "correct": 1,
+    "explanation": "Step 2 is wrong: percentage increase uses the ORIGINAL value as the base.\n% increase = (change/original) × 100 = (200/1000) × 100 = 20%.\nDividing by 1200 (new value) is a common error."
+  },
+  {
+    "id": "err33",
+    "category": "errorDetection",
+    "difficulty": "hard",
+    "text": "Find the error in this solution:\n\nProblem: Solve x² - 5x + 6 = 0 by factoring.\nStep 1: Need two numbers that multiply to 6 and add to -5\nStep 2: Numbers are -2 and -3 (since -2 × -3 = 6 and -2 + -3 = -5)\nStep 3: (x - 2)(x - 3) = 0\nStep 4: x = 2 or x = 3",
+    "choices": [
+      "Step 1 states wrong conditions",
+      "Step 2 finds wrong numbers",
+      "Step 3 factors incorrectly",
+      "Step 4 solves incorrectly",
+      "There is no error"
+    ],
+    "correct": 4,
+    "explanation": "There is no error. All steps are correct.\n-2 × -3 = 6 ✓, -2 + -3 = -5 ✓\n(x-2)(x-3) = x² - 5x + 6 ✓\nSolutions x = 2 and x = 3 both satisfy the equation."
+  },
+  {
+    "id": "err34",
+    "category": "errorDetection",
+    "difficulty": "hard",
+    "text": "Find the error in this solution:\n\nProblem: Solve √(2x + 3) = x - 1\nStep 1: Square both sides: 2x + 3 = (x - 1)² = x² - 2x + 1\nStep 2: Rearrange: x² - 4x - 2 = 0\nStep 3: Using quadratic formula: x = (4 ± √24)/2 = 2 ± √6\nStep 4: x ≈ 4.45 or x ≈ -0.45, so both are solutions",
+    "choices": [
+      "Step 1 squares incorrectly",
+      "Step 2 rearranges incorrectly",
+      "Step 3 applies quadratic formula incorrectly",
+      "Step 4 fails to check for extraneous solutions",
+      "There is no error"
+    ],
+    "correct": 3,
+    "explanation": "Step 4 is wrong: when you square both sides of an equation, you must check for extraneous solutions.\nx ≈ -0.45: right side = -0.45 - 1 = -1.45 (negative), but √ is always ≥ 0. This is extraneous.\nOnly x = 2 + √6 ≈ 4.45 is valid."
+  },
+  {
+    "id": "err35",
+    "category": "errorDetection",
+    "difficulty": "hard",
+    "text": "Find the error in this solution:\n\nProblem: If log₂(x) + log₂(x-2) = 3, find x.\nStep 1: Combine logs: log₂(x(x-2)) = 3\nStep 2: x(x-2) = 2³ = 8\nStep 3: x² - 2x - 8 = 0\nStep 4: (x-4)(x+2) = 0, so x = 4 or x = -2\nStep 5: Both solutions are valid",
+    "choices": [
+      "Step 1 combines logs incorrectly",
+      "Step 2 converts from log form incorrectly",
+      "Step 3 or Step 4 has algebra error",
+      "Step 5 is wrong — x = -2 is invalid (can't take log of negative)",
+      "There is no error"
+    ],
+    "correct": 3,
+    "explanation": "Step 5 is wrong: x = -2 makes log₂(x) = log₂(-2), which is undefined.\nThe domain requires x > 0 AND x - 2 > 0, so x > 2.\nOnly x = 4 is valid. Check: log₂(4) + log₂(2) = 2 + 1 = 3 ✓."
+  },
+  {
+    "id": "err36",
+    "category": "errorDetection",
+    "difficulty": "hard",
+    "text": "Find the error in this solution:\n\nProblem: Simplify (a + b)² - (a - b)²\nStep 1: (a+b)² = a² + b²\nStep 2: (a-b)² = a² - b²\nStep 3: Difference = (a² + b²) - (a² - b²) = 2b²\nStep 4: Answer = 2b²",
+    "choices": [
+      "Step 1 is wrong — (a+b)² = a² + 2ab + b²",
+      "Step 2 is wrong — (a-b)² = a² - 2ab + b²",
+      "Both Step 1 and Step 2 are wrong",
+      "Step 3 subtracts incorrectly",
+      "There is no error"
+    ],
+    "correct": 2,
+    "explanation": "Both expansions are wrong:\n(a+b)² = a² + 2ab + b², not a² + b²\n(a-b)² = a² - 2ab + b², not a² - b²\nCorrect: (a²+2ab+b²) - (a²-2ab+b²) = 4ab."
+  },
+  {
+    "id": "err37",
+    "category": "errorDetection",
+    "difficulty": "hard",
+    "text": "Find the error in this solution:\n\nProblem: A 20% solution and a 50% solution are mixed to get 30 liters of a 30% solution. How much of each?\nStep 1: Let x = liters of 20% solution, so (30-x) = liters of 50% solution\nStep 2: 0.20x + 0.50(30-x) = 0.30(30)\nStep 3: 0.20x + 15 - 0.50x = 0.9\nStep 4: -0.30x = 0.9 - 15 = -14.1, so x = 47\nStep 5: Answer: 47 liters of 20% and -17 liters of 50%",
+    "choices": [
+      "Step 1 sets up variables incorrectly",
+      "Step 2 sets up equation incorrectly",
+      "Step 3 has error: 0.30 × 30 = 9, not 0.9",
+      "Step 4 solves incorrectly",
+      "Step 5 gives impossible negative volume"
+    ],
+    "correct": 2,
+    "explanation": "Step 3 is wrong: 0.30 × 30 = 9, not 0.9. The student misplaced the decimal point.\nThis cascading error leads to an impossible answer (negative volume).\nCorrect: 0.20x + 15 - 0.50x = 9 → -0.30x = -6 → x = 20.\nAnswer: 20 liters of 20% and 10 liters of 50%."
+  },
+  {
+    "id": "err38",
+    "category": "errorDetection",
+    "difficulty": "hard",
+    "text": "Find the error in this solution:\n\nProblem: Find the sum of the infinite geometric series: 8 + 4 + 2 + 1 + ...\nStep 1: First term a = 8, common ratio r = 4/8 = 1/2\nStep 2: Since |r| < 1, sum = a/(1-r)\nStep 3: Sum = 8/(1 - 1/2) = 8/(1/2) = 4\nStep 4: Answer = 4",
+    "choices": [
+      "Step 1 finds wrong ratio",
+      "Step 2 uses wrong formula",
+      "Step 3 calculates 8/(1/2) incorrectly — should be 16",
+      "Step 4 is wrong",
+      "There is no error"
+    ],
+    "correct": 2,
+    "explanation": "Step 3 is wrong: 8 ÷ (1/2) = 8 × 2 = 16, not 4.\nThe student likely computed 8 × (1/2) instead of 8 ÷ (1/2).\nDividing by a fraction means multiplying by its reciprocal.\nCorrect: Sum = 8/(1/2) = 16."
+  },
+  {
+    "id": "err39",
+    "category": "errorDetection",
+    "difficulty": "hard",
+    "text": "Find the error in this solution:\n\nProblem: The angles of a quadrilateral are x, 2x, 3x, and 4x. Find x.\nStep 1: Sum of angles in a quadrilateral = 180°\nStep 2: x + 2x + 3x + 4x = 180\nStep 3: 10x = 180\nStep 4: x = 18°",
+    "choices": [
+      "Step 1 is wrong — sum of quadrilateral angles = 360°",
+      "Step 2 sets up equation incorrectly",
+      "Step 3 adds incorrectly",
+      "Step 4 divides incorrectly",
+      "There is no error"
+    ],
+    "correct": 0,
+    "explanation": "Step 1 is wrong: the sum of interior angles of a quadrilateral is 360°, not 180°.\n180° is for a triangle.\nCorrect: 10x = 360, so x = 36°."
+  },
+  {
+    "id": "err40",
+    "category": "errorDetection",
+    "difficulty": "hard",
+    "text": "Find the error in this solution:\n\nProblem: If P(A) = 0.3 and P(B) = 0.4, and A and B are independent, what is P(A or B)?\nStep 1: For independent events, P(A or B) = P(A) + P(B)\nStep 2: P(A or B) = 0.3 + 0.4 = 0.7\nStep 3: Answer = 0.7",
+    "choices": [
+      "Step 1 is wrong — must subtract P(A and B) even for independent events",
+      "Step 2 adds incorrectly",
+      "Step 3 should be expressed as a fraction",
+      "There is no error",
+      "Independence means P(A or B) = 1"
+    ],
+    "correct": 0,
+    "explanation": "Step 1 is wrong: P(A or B) = P(A) + P(B) - P(A and B) ALWAYS.\nFor independent events, P(A and B) = P(A)×P(B) = 0.3×0.4 = 0.12.\nCorrect: P(A or B) = 0.3 + 0.4 - 0.12 = 0.58."
+  },
+  {
+    "id": "err41",
+    "category": "errorDetection",
+    "difficulty": "hard",
+    "text": "Find the error in this solution:\n\nProblem: Solve the inequality x² > 9\nStep 1: Take square root of both sides\nStep 2: x > 3\nStep 3: Solution set: x > 3",
+    "choices": [
+      "Step 1 approach is incomplete",
+      "Step 2 forgets the negative case — also x < -3",
+      "Step 3 should use ≥ instead of >",
+      "There is no error",
+      "Cannot take square root of an inequality"
+    ],
+    "correct": 1,
+    "explanation": "Step 2 is incomplete: x² > 9 means |x| > 3, which gives x > 3 OR x < -3.\nThe student only considered positive values.\nCorrect solution set: x ∈ (-∞, -3) ∪ (3, +∞)."
+  },
+  {
+    "id": "err42",
+    "category": "errorDetection",
+    "difficulty": "hard",
+    "text": "Find the error in this solution:\n\nProblem: A ladder 10 ft long leans against a wall. The base is 6 ft from the wall. How high up the wall does it reach?\nStep 1: Use Pythagorean theorem: a² + b² = c²\nStep 2: height² + 6² = 10²\nStep 3: height² = 100 + 36 = 136\nStep 4: height = √136 ≈ 11.66 ft",
+    "choices": [
+      "Step 1 uses wrong theorem",
+      "Step 2 assigns sides incorrectly",
+      "Step 3 should subtract, not add: 100 - 36 = 64",
+      "Step 4 calculates square root incorrectly",
+      "There is no error"
+    ],
+    "correct": 2,
+    "explanation": "Step 3 is wrong: we need height² = c² - b² = 100 - 36 = 64, not 100 + 36.\nThe hypotenuse (ladder = 10) is the longest side; we subtract to find the unknown leg.\nCorrect: height = √64 = 8 ft."
+  },
+  {
+    "id": "err43",
+    "category": "errorDetection",
+    "difficulty": "hard",
+    "text": "Find the error in this solution:\n\nProblem: Simplify: (x³ × x⁴) / x²\nStep 1: x³ × x⁴ = x^(3×4) = x¹²\nStep 2: x¹² / x² = x^(12-2) = x¹⁰\nStep 3: Answer = x¹⁰",
+    "choices": [
+      "Step 1 is wrong — should ADD exponents: x^(3+4) = x⁷",
+      "Step 2 applies division rule incorrectly",
+      "Step 3 needs to specify x ≠ 0",
+      "There is no error",
+      "Exponent rules don't apply here"
+    ],
+    "correct": 0,
+    "explanation": "Step 1 is wrong: when multiplying same bases, you ADD exponents, not multiply them.\nx³ × x⁴ = x^(3+4) = x⁷, not x¹².\nCorrect: x⁷/x² = x^(7-2) = x⁵."
+  },
+  {
+    "id": "err44",
+    "category": "errorDetection",
+    "difficulty": "hard",
+    "text": "Find the error in this solution:\n\nProblem: A committee of 3 is chosen from 4 men and 3 women. What's the probability that all 3 are men?\nStep 1: Total ways to choose 3 from 7: C(7,3) = 35\nStep 2: Ways to choose 3 men from 4: C(4,3) = 4!/3! = 24\nStep 3: P(all men) = 24/35",
+    "choices": [
+      "Step 1 calculates C(7,3) incorrectly",
+      "Step 2 is wrong: C(4,3) = 4!/(3!×1!) = 4, not 24",
+      "Step 3 sets up probability incorrectly",
+      "There is no error",
+      "Should use permutations instead"
+    ],
+    "correct": 1,
+    "explanation": "Step 2 is wrong: C(4,3) = 4!/(3! × 1!) = 4, not 4!/3! = 24.\nThe student forgot to divide by (n-k)! = 1! in the combination formula.\n4!/3! = 4 is actually P(4,1) — a permutation calculation.\nCorrect: P(all men) = 4/35."
+  },
+  {
+    "id": "err45",
+    "category": "errorDetection",
+    "difficulty": "hard",
+    "text": "Find the error in this solution:\n\nProblem: If f(x) = x² - 4 and g(x) = x + 2, simplify f(x)/g(x).\nStep 1: Factor f(x): x² - 4 = (x+2)(x-2)\nStep 2: f(x)/g(x) = (x+2)(x-2)/(x+2) = x - 2\nStep 3: Answer: f(x)/g(x) = x - 2 for all real numbers",
+    "choices": [
+      "Step 1 factors incorrectly",
+      "Step 2 cancels incorrectly",
+      "Step 3 fails to state restriction: x ≠ -2",
+      "There is no error",
+      "Should not cancel common factors"
+    ],
+    "correct": 2,
+    "explanation": "Step 3 is wrong: the simplified form equals x - 2, but only when x ≠ -2.\nAt x = -2, g(x) = 0, making the original expression undefined.\nThe domain restriction must be preserved after simplification."
+  },
+  {
+    "id": "err46",
+    "category": "errorDetection",
+    "difficulty": "hard",
+    "text": "Find the error in this solution:\n\nProblem: Two dice are rolled. What's the probability the sum is 7?\nStep 1: Total outcomes = 6 + 6 = 12\nStep 2: Ways to get sum 7: (1,6)(2,5)(3,4)(4,3)(5,2)(6,1) = 6 ways\nStep 3: P(sum=7) = 6/12 = 1/2",
+    "choices": [
+      "Step 1 is wrong — total outcomes = 6 × 6 = 36",
+      "Step 2 counts outcomes incorrectly",
+      "Step 3 reduces fraction incorrectly",
+      "There is no error",
+      "Should account for identical dice"
+    ],
+    "correct": 0,
+    "explanation": "Step 1 is wrong: for two dice, total outcomes = 6 × 6 = 36, not 6 + 6 = 12.\nEach die is independent, so we MULTIPLY the possibilities.\nCorrect: P(sum=7) = 6/36 = 1/6."
+  },
+  {
+    "id": "err47",
+    "category": "errorDetection",
+    "difficulty": "hard",
+    "text": "Find the error in this solution:\n\nProblem: The surface area of a cube with side 5 cm.\nStep 1: A cube has 6 faces\nStep 2: Each face area = 5 × 5 = 25 cm²\nStep 3: Total surface area = 25 × 4 = 100 cm²",
+    "choices": [
+      "Step 1 is wrong about number of faces",
+      "Step 2 calculates face area incorrectly",
+      "Step 3 multiplies by 4 instead of 6",
+      "There is no error",
+      "Units should be cm³"
+    ],
+    "correct": 2,
+    "explanation": "Step 3 is wrong: a cube has 6 faces (correctly stated in Step 1), but then multiplies by 4 instead of 6.\nCorrect: Total SA = 25 × 6 = 150 cm²."
+  },
+  {
+    "id": "err48",
+    "category": "errorDetection",
+    "difficulty": "hard",
+    "text": "Find the error in this solution:\n\nProblem: If x + y = 10 and xy = 21, find x² + y².\nStep 1: (x + y)² = x² + y²\nStep 2: 10² = x² + y²\nStep 3: x² + y² = 100",
+    "choices": [
+      "Step 1 is wrong — (x+y)² = x² + 2xy + y²",
+      "Step 2 substitutes incorrectly",
+      "Step 3 arithmetic is wrong",
+      "There is no error",
+      "Need more information to solve"
+    ],
+    "correct": 0,
+    "explanation": "Step 1 is wrong: (x + y)² = x² + 2xy + y², not just x² + y².\nThe student forgot the middle term 2xy.\nCorrect: x² + y² = (x+y)² - 2xy = 100 - 2(21) = 100 - 42 = 58."
+  },
+  {
+    "id": "err49",
+    "category": "errorDetection",
+    "difficulty": "hard",
+    "text": "Find the error in this solution:\n\nProblem: A train 200m long passes a pole in 10 seconds. How long to pass a platform 300m long?\nStep 1: Speed = distance/time = 200/10 = 20 m/s\nStep 2: To pass platform, train covers platform length = 300m\nStep 3: Time = 300/20 = 15 seconds",
+    "choices": [
+      "Step 1 calculates speed incorrectly",
+      "Step 2 is wrong — train must cover its own length PLUS platform length",
+      "Step 3 divides incorrectly",
+      "There is no error",
+      "Need the platform's position"
+    ],
+    "correct": 1,
+    "explanation": "Step 2 is wrong: to completely pass a platform, the train must cover a distance equal to its own length + platform length.\nTotal distance = 200 + 300 = 500m.\nCorrect: Time = 500/20 = 25 seconds."
+  },
+  {
+    "id": "err50",
+    "category": "errorDetection",
+    "difficulty": "hard",
+    "text": "Find the error in this solution:\n\nProblem: Solve for x: 2^(x+1) = 8^x\nStep 1: Rewrite: 2^(x+1) = (2³)^x = 2^(3x)\nStep 2: Since bases are equal: x + 1 = 3x\nStep 3: 1 = 3x - x = 2x\nStep 4: x = 2",
+    "choices": [
+      "Step 1 rewrites 8^x incorrectly",
+      "Step 2 equates exponents incorrectly",
+      "Step 3 rearranges incorrectly",
+      "Step 4 divides incorrectly — should be x = 1/2",
+      "There is no error"
+    ],
+    "correct": 3,
+    "explanation": "Step 4 is wrong: from 2x = 1, dividing both sides by 2 gives x = 1/2, not x = 2.\nThe student likely solved 'x = 2' by confusing 2x = 1 with x = 2.\nCorrect: x = 1/2. Check: 2^(1/2 + 1) = 2^(3/2) and 8^(1/2) = (2³)^(1/2) = 2^(3/2) ✓."
+  }
+]

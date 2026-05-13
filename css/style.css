@@ -752,6 +752,78 @@ button, a, .module-card, .choice-btn, .sidebar-item {
   .table-btn { width: 38px; height: 38px; font-size: 0.85rem; }
 }
 
+/* ===== MEMORY & CHUNKING MODULE ===== */
+.memory-card {
+  text-align: center;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.memory-phase {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+.memory-label {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  font-weight: 500;
+}
+.memory-expression {
+  font-family: var(--mono);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+  padding: 20px;
+  background: var(--bg);
+  border-radius: var(--radius);
+  border: 2px dashed var(--primary);
+  min-width: 200px;
+}
+.memory-timer {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--danger);
+  font-family: var(--mono);
+}
+.solve-phase .memory-label {
+  color: var(--warning);
+  font-weight: 600;
+}
+
+/* ===== MODULE GRID — extra cards ===== */
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+/* ===== DIFFICULTY BADGE (Elite) ===== */
+.diff-btn.elite {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border-color: #764ba2;
+}
+.diff-btn.elite.active {
+  box-shadow: 0 0 0 3px rgba(118, 75, 162, 0.3);
+}
+
+@media (max-width: 480px) {
+  .memory-expression {
+    font-size: 1.5rem;
+    padding: 16px;
+  }
+  .memory-timer {
+    font-size: 1.2rem;
+  }
+  .module-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Safe area: iPhone notch + home indicator */
 @supports (padding: env(safe-area-inset-bottom)) {
   .container {

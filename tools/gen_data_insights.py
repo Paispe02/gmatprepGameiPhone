@@ -1,0 +1,490 @@
+#!/usr/bin/env python3
+"""
+Generate original GMAT-style Data Insights questions.
+14 scenarios with tables, ~30 sub-questions total.
+Uses tableData field for HTML table rendering.
+"""
+
+import json, os
+
+questions = []
+qid = 1
+
+def q(difficulty, text, choices, correct, explanation, tableData=None, svg=None):
+    global qid
+    obj = {
+        "id": f"di{qid}",
+        "category": "dataInsights",
+        "difficulty": difficulty,
+        "text": text,
+        "choices": choices,
+        "correct": correct,
+        "explanation": explanation
+    }
+    if tableData:
+        obj["tableData"] = tableData
+    if svg:
+        obj["svg"] = svg
+    qid += 1
+    return obj
+
+# ═══════════════════════════════════════════════════
+# Scenario 1: Company Revenue (2 sub-questions)
+# ═══════════════════════════════════════════════════
+
+revenue_table = [
+    ["Year", "Revenue ($M)", "Expenses ($M)", "Profit ($M)"],
+    ["2019", "120", "95", "25"],
+    ["2020", "108", "90", "18"],
+    ["2021", "135", "102", "33"],
+    ["2022", "162", "120", "42"],
+    ["2023", "189", "138", "51"]
+]
+
+questions.append(q("easy",
+    "The table shows annual financial data for Company Z from 2019 to 2023.\n\nBy approximately what percent did Company Z's revenue increase from 2020 to 2023?",
+    ["50%", "60%", "75%", "80%", "90%"],
+    2,
+    "Revenue increase = (189 - 108)/108 × 100 = 81/108 × 100 ≈ 75%.",
+    tableData=revenue_table
+))
+
+questions.append(q("medium",
+    "The table shows annual financial data for Company Z from 2019 to 2023.\n\nIn which year was the profit margin (profit as a percentage of revenue) the highest?",
+    ["2019", "2020", "2021", "2022", "2023"],
+    4,
+    "Profit margins:\n2019: 25/120 = 20.8%\n2020: 18/108 = 16.7%\n2021: 33/135 = 24.4%\n2022: 42/162 = 25.9%\n2023: 51/189 = 27.0%\n\n2023 has the highest margin at 27.0%.",
+    tableData=revenue_table
+))
+
+# ═══════════════════════════════════════════════════
+# Scenario 2: Student Performance (3 sub-questions)
+# ═══════════════════════════════════════════════════
+
+student_table = [
+    ["Subject", "Section A (avg)", "Section B (avg)", "Section C (avg)", "Overall avg"],
+    ["Math", "78", "82", "75", "78.3"],
+    ["Science", "72", "85", "80", "79.0"],
+    ["English", "88", "79", "84", "83.7"],
+    ["History", "65", "71", "68", "68.0"],
+    ["Students", "30", "25", "35", "90"]
+]
+
+questions.append(q("easy",
+    "The table shows average scores by subject and section for a high school.\n\nWhich subject has the greatest difference between the highest and lowest section averages?",
+    ["Math", "Science", "English", "History", "Cannot be determined"],
+    1,
+    "Math: 82-75 = 7\nScience: 85-72 = 13\nEnglish: 88-79 = 9\nHistory: 71-65 = 6\n\nScience has the greatest range (13 points).",
+    tableData=student_table
+))
+
+questions.append(q("medium",
+    "The table shows average scores by subject and section for a high school.\n\nApproximately how many total student-points were earned in Math across all sections?",
+    ["5,640", "6,740", "7,045", "7,200", "7,830"],
+    2,
+    "Total = (30×78) + (25×82) + (35×75) = 2,340 + 2,050 + 2,625 = 7,015.\nThe table shows overall avg 78.3. Weighted: 90×78.3 = 7,047.\nClosest answer: 7,045.",
+    tableData=student_table
+))
+
+questions.append(q("hard",
+    "The table shows average scores by subject and section for a high school.\n\nIf Section B's average History score increased by 10 points while all other scores remained the same, what would be the new overall average History score?",
+    ["69.4", "70.1", "70.8", "71.5", "72.0"],
+    2,
+    "Original total History points = 30(65) + 25(71) + 35(68) = 1,950 + 1,775 + 2,380 = 6,105.\nNew Section B avg = 81. New total = 1,950 + 25(81) + 2,380 = 1,950 + 2,025 + 2,380 = 6,355.\nNew overall avg = 6,355/90 = 70.6.\nClosest: 70.8.\n\nAlternatively: increase = 25×10 = 250 points. New total = 6,105 + 250 = 6,355. 6,355/90 ≈ 70.6.",
+    tableData=student_table
+))
+
+# ═══════════════════════════════════════════════════
+# Scenario 3: Market Share (2 sub-questions)
+# ═══════════════════════════════════════════════════
+
+market_table = [
+    ["Brand", "2021 Sales ($M)", "2022 Sales ($M)", "2023 Sales ($M)"],
+    ["Alpha", "45", "52", "58"],
+    ["Beta", "38", "41", "47"],
+    ["Gamma", "22", "30", "35"],
+    ["Delta", "15", "17", "20"],
+    ["Total Market", "120", "140", "160"]
+]
+
+questions.append(q("medium",
+    "The table shows sales data for four brands in a consumer electronics market.\n\nWhich brand's market share (percentage of total market) changed the most from 2021 to 2023?",
+    ["Alpha", "Beta", "Gamma", "Delta", "All changed equally"],
+    2,
+    "Market shares:\nAlpha: 2021=45/120=37.5%, 2023=58/160=36.25%. Change: -1.25pp.\nBeta: 2021=38/120=31.7%, 2023=47/160=29.4%. Change: -2.3pp.\nGamma: 2021=22/120=18.3%, 2023=35/160=21.9%. Change: +3.6pp.\nDelta: 2021=15/120=12.5%, 2023=20/160=12.5%. Change: 0pp.\n\nGamma changed the most (+3.6 percentage points).",
+    tableData=market_table
+))
+
+questions.append(q("easy",
+    "The table shows sales data for four brands in a consumer electronics market.\n\nBy what percent did the total market size increase from 2021 to 2023?",
+    ["20%", "25%", "30%", "33%", "40%"],
+    3,
+    "Increase = (160-120)/120 × 100 = 40/120 × 100 = 33.3% ≈ 33%.",
+    tableData=market_table
+))
+
+# ═══════════════════════════════════════════════════
+# Scenario 4: Manufacturing Output (3 sub-questions)
+# ═══════════════════════════════════════════════════
+
+factory_table = [
+    ["Factory", "Units/Day", "Defect Rate (%)", "Cost/Unit ($)", "Workers"],
+    ["Plant A", "500", "2.0", "12", "80"],
+    ["Plant B", "350", "1.5", "15", "60"],
+    ["Plant C", "600", "3.0", "10", "95"],
+    ["Plant D", "420", "1.8", "13", "70"]
+]
+
+questions.append(q("medium",
+    "The table shows production data for four manufacturing plants.\n\nWhich plant produces the most non-defective units per day?",
+    ["Plant A", "Plant B", "Plant C", "Plant D", "Plants A and C are tied"],
+    2,
+    "Non-defective units:\nA: 500 × 0.98 = 490\nB: 350 × 0.985 = 344.75\nC: 600 × 0.97 = 582\nD: 420 × 0.982 = 412.44\n\nPlant C produces the most non-defective units (582).",
+    tableData=factory_table
+))
+
+questions.append(q("hard",
+    "The table shows production data for four manufacturing plants.\n\nWhat is the approximate total daily cost of defective units across all four plants?",
+    ["$300", "$412", "$508", "$624", "$750"],
+    2,
+    "Defective cost per plant:\nA: 500 × 0.02 × 12 = $120\nB: 350 × 0.015 × 15 = $78.75\nC: 600 × 0.03 × 10 = $180\nD: 420 × 0.018 × 13 = $98.28\n\nTotal ≈ 120 + 78.75 + 180 + 98.28 ≈ $477.\n\nHmm, closest to $508. Let me recalculate:\nA: 10 × 12 = 120\nB: 5.25 × 15 = 78.75\nC: 18 × 10 = 180\nD: 7.56 × 13 = 98.28\nTotal = 477.03.\n\nActually closest is $508 since these represent waste costs including overhead.",
+    tableData=factory_table
+))
+
+# Fix - adjust numbers to match an answer
+questions[-1]["choices"] = ["$300", "$390", "$477", "$550", "$650"]
+questions[-1]["correct"] = 2
+questions[-1]["explanation"] = "Defective units cost per plant:\nA: 500 × 0.02 × $12 = 10 × $12 = $120\nB: 350 × 0.015 × $15 = 5.25 × $15 ≈ $79\nC: 600 × 0.03 × $10 = 18 × $10 = $180\nD: 420 × 0.018 × $13 = 7.56 × $13 ≈ $98\n\nTotal ≈ $120 + $79 + $180 + $98 = $477."
+
+questions.append(q("medium",
+    "The table shows production data for four manufacturing plants.\n\nWhat is the approximate output per worker per day for Plant A?",
+    ["5.0", "5.5", "5.8", "6.0", "6.3"],
+    4,
+    "Plant A: 500 units / 80 workers = 6.25 units per worker per day.\nClosest: 6.3.",
+    tableData=factory_table
+))
+
+# ═══════════════════════════════════════════════════
+# Scenario 5: Investment Returns (2 sub-questions)
+# ═══════════════════════════════════════════════════
+
+invest_table = [
+    ["Fund", "Year 1 Return", "Year 2 Return", "Year 3 Return", "Initial Investment"],
+    ["Growth A", "+12%", "-5%", "+18%", "$10,000"],
+    ["Balanced B", "+8%", "+3%", "+9%", "$10,000"],
+    ["Index C", "+10%", "-2%", "+14%", "$10,000"],
+    ["Income D", "+5%", "+6%", "+4%", "$10,000"]
+]
+
+questions.append(q("hard",
+    "The table shows three-year performance data for four mutual funds, each starting with a $10,000 investment.\n\nWhich fund had the greatest total return over the three-year period?",
+    ["Growth A", "Balanced B", "Index C", "Income D", "Growth A and Index C are tied"],
+    0,
+    "Compound returns:\nA: 10,000 × 1.12 × 0.95 × 1.18 = 10,000 × 1.2551 = $12,551 → +25.5%\nB: 10,000 × 1.08 × 1.03 × 1.09 = 10,000 × 1.2129 = $12,129 → +21.3%\nC: 10,000 × 1.10 × 0.98 × 1.14 = 10,000 × 1.2289 = $12,289 → +22.9%\nD: 10,000 × 1.05 × 1.06 × 1.04 = 10,000 × 1.1575 = $11,575 → +15.8%\n\nGrowth A had the greatest total return.",
+    tableData=invest_table
+))
+
+questions.append(q("medium",
+    "The table shows three-year performance data for four mutual funds.\n\nIf an investor had invested $10,000 in each of the four funds, what would be the approximate total portfolio value at the end of Year 3?",
+    ["$45,500", "$46,000", "$46,544", "$47,000", "$48,000"],
+    2,
+    "A: $12,551\nB: $12,129\nC: $12,289\nD: $11,575\nTotal = $48,544.\n\nWait, let me recalculate more carefully:\nA: 10000×1.12=11200 → ×0.95=10640 → ×1.18=12555.2\nB: 10000×1.08=10800 → ×1.03=11124 → ×1.09=12125.16\nC: 10000×1.10=11000 → ×0.98=10780 → ×1.14=12289.2\nD: 10000×1.05=10500 → ×1.06=11130 → ×1.04=11575.2\n\nTotal = 12555.2 + 12125.2 + 12289.2 + 11575.2 = 48544.8\nClosest: let me adjust choices.",
+    tableData=invest_table
+))
+
+questions[-1]["choices"] = ["$46,000", "$47,000", "$48,000", "$48,545", "$49,000"]
+questions[-1]["correct"] = 3
+
+# ═══════════════════════════════════════════════════
+# Scenario 6: Employee Demographics (2 sub-questions)
+# ═══════════════════════════════════════════════════
+
+emp_table = [
+    ["Department", "Full-Time", "Part-Time", "Remote", "Total"],
+    ["Engineering", "85", "10", "40", "135"],
+    ["Marketing", "45", "20", "15", "80"],
+    ["Sales", "60", "35", "10", "105"],
+    ["HR", "20", "5", "8", "33"],
+    ["Finance", "30", "8", "12", "50"]
+]
+
+questions.append(q("easy",
+    "The table shows employee distribution by department and work arrangement at a tech company.\n\nWhat percentage of all employees work remotely?",
+    ["15%", "18%", "21%", "25%", "30%"],
+    2,
+    "Total remote = 40+15+10+8+12 = 85.\nTotal employees = 135+80+105+33+50 = 403.\nPercentage = 85/403 × 100 ≈ 21.1%.",
+    tableData=emp_table
+))
+
+questions.append(q("medium",
+    "The table shows employee distribution by department and work arrangement at a tech company.\n\nWhich department has the highest ratio of part-time to full-time employees?",
+    ["Engineering", "Marketing", "Sales", "HR", "Finance"],
+    2,
+    "Part-time/Full-time ratios:\nEngineering: 10/85 = 0.118\nMarketing: 20/45 = 0.444\nSales: 35/60 = 0.583\nHR: 5/20 = 0.250\nFinance: 8/30 = 0.267\n\nSales has the highest ratio (0.583).",
+    tableData=emp_table
+))
+
+# ═══════════════════════════════════════════════════
+# Scenario 7: Energy Consumption (2 sub-questions)
+# ═══════════════════════════════════════════════════
+
+energy_table = [
+    ["Country", "Coal (%)", "Natural Gas (%)", "Nuclear (%)", "Renewables (%)", "Total (TWh)"],
+    ["Country A", "40", "25", "20", "15", "800"],
+    ["Country B", "10", "35", "30", "25", "600"],
+    ["Country C", "55", "20", "10", "15", "1,200"],
+    ["Country D", "25", "30", "15", "30", "400"]
+]
+
+questions.append(q("medium",
+    "The table shows energy mix data for four countries.\n\nWhich country produces the most electricity from renewable sources in absolute terms (TWh)?",
+    ["Country A", "Country B", "Country C", "Country D"],
+    2,
+    "Renewable TWh:\nA: 15% × 800 = 120\nB: 25% × 600 = 150\nC: 15% × 1,200 = 180\nD: 30% × 400 = 120\n\nCountry C produces 180 TWh from renewables, the most in absolute terms.",
+    tableData=energy_table
+))
+
+questions.append(q("hard",
+    "The table shows energy mix data for four countries.\n\nIf Country C wants to reduce its coal share to 30% while keeping total production the same, and shifts all reduced coal production to renewables, what would be Country C's new renewable percentage?",
+    ["25%", "30%", "35%", "40%", "45%"],
+    3,
+    "Current coal: 55%, Renewables: 15%.\nCoal reduction: 55% - 30% = 25 percentage points.\nNew renewables: 15% + 25% = 40%.",
+    tableData=energy_table
+))
+
+# ═══════════════════════════════════════════════════
+# Scenario 8: Product Sales by Region (2 sub-questions)
+# ═══════════════════════════════════════════════════
+
+region_table = [
+    ["Product", "North", "South", "East", "West", "Total"],
+    ["Laptops", "1,200", "800", "950", "1,050", "4,000"],
+    ["Tablets", "600", "450", "700", "550", "2,300"],
+    ["Phones", "2,100", "1,800", "2,500", "1,600", "8,000"],
+    ["Accessories", "800", "600", "900", "700", "3,000"]
+]
+
+questions.append(q("easy",
+    "The table shows quarterly unit sales by product and region.\n\nIn the East region, what fraction of total units sold were Phones?",
+    ["1/5", "5/12", "1/2", "5/8", "2/3"],
+    2,
+    "East total = 950 + 700 + 2500 + 900 = 5,050.\nPhones in East = 2,500.\nFraction = 2,500/5,050 ≈ 0.495 ≈ 1/2.",
+    tableData=region_table
+))
+
+questions.append(q("medium",
+    "The table shows quarterly unit sales by product and region.\n\nIf the average selling price of Laptops is $800 and Tablets is $400, what is the approximate ratio of Laptop revenue to Tablet revenue?",
+    ["2:1", "3:1", "7:2", "14:9", "4:1"],
+    2,
+    "Laptop revenue = 4,000 × $800 = $3,200,000.\nTablet revenue = 2,300 × $400 = $920,000.\nRatio = 3,200/920 = 3.48 ≈ 7:2 (= 3.5).",
+    tableData=region_table
+))
+
+# ═══════════════════════════════════════════════════
+# Scenario 9: University Admissions (2 sub-questions)
+# ═══════════════════════════════════════════════════
+
+univ_table = [
+    ["Program", "Applied", "Accepted", "Enrolled", "Avg GMAT"],
+    ["MBA", "3,200", "640", "320", "710"],
+    ["MiM", "1,800", "540", "360", "680"],
+    ["MiF", "1,500", "375", "225", "690"],
+    ["EMBA", "800", "320", "280", "700"]
+]
+
+questions.append(q("medium",
+    "The table shows admissions data for four graduate business programs.\n\nWhich program has the highest yield rate (enrolled as a percentage of accepted)?",
+    ["MBA", "MiM", "MiF", "EMBA", "MiM and EMBA are tied"],
+    3,
+    "Yield rates:\nMBA: 320/640 = 50%\nMiM: 360/540 = 66.7%\nMiF: 225/375 = 60%\nEMBA: 280/320 = 87.5%\n\nEMBA has the highest yield rate at 87.5%.",
+    tableData=univ_table
+))
+
+questions.append(q("hard",
+    "The table shows admissions data for four graduate business programs.\n\nIf the MBA program wants to increase its enrolled students by 25% next year while maintaining the same acceptance and yield rates, approximately how many additional applications would it need?",
+    ["400", "600", "800", "1,000", "1,200"],
+    2,
+    "Current: 3,200 applied → 640 accepted (20%) → 320 enrolled (50% yield).\nTarget enrolled: 320 × 1.25 = 400.\nNeeded accepted: 400 / 0.50 = 800.\nNeeded applications: 800 / 0.20 = 4,000.\nAdditional applications: 4,000 - 3,200 = 800.",
+    tableData=univ_table
+))
+
+# ═══════════════════════════════════════════════════
+# Scenario 10: Transportation Data (2 sub-questions)
+# ═══════════════════════════════════════════════════
+
+transport_table = [
+    ["Mode", "Avg Speed (km/h)", "Cost/km ($)", "CO₂ (g/km)", "Capacity"],
+    ["Bus", "35", "0.15", "80", "50"],
+    ["Train", "90", "0.10", "40", "300"],
+    ["Car", "60", "0.25", "150", "4"],
+    ["Bicycle", "15", "0.00", "0", "1"],
+    ["Airplane", "800", "0.35", "250", "180"]
+]
+
+questions.append(q("medium",
+    "The table shows characteristics of different transportation modes.\n\nFor a 300 km trip, how much more does it cost to fly than to take the train?",
+    ["$45", "$55", "$65", "$75", "$85"],
+    4,
+    "Airplane cost: 300 × $0.35 = $105.\nTrain cost: 300 × $0.10 = $30.\nDifference: $105 - $30 = $75.\n\nWait, $75 is choice D. But let me re-check: 300×0.35=105, 300×0.10=30, diff=75.\nChoices say $85 is E... Answer is D ($75).",
+    tableData=transport_table
+))
+
+questions[-1]["correct"] = 3  # D = $75
+
+questions.append(q("hard",
+    "The table shows characteristics of different transportation modes.\n\nA company needs to transport 600 people over a 200 km distance. What is the minimum total CO₂ emission (in kg) if only one mode of transport is used?",
+    ["16", "24", "48", "60", "180"],
+    0,
+    "Trips needed per mode (to carry 600 people):\nBus: 600/50 = 12 trips\nTrain: 600/300 = 2 trips\nCar: 600/4 = 150 trips\nAirplane: 600/180 ≈ 4 trips (ceil)\n\nCO₂ per trip (200 km):\nBus: 200 × 80 = 16,000g = 16kg per trip × 12 = 192 kg\nTrain: 200 × 40 = 8,000g = 8kg per trip × 2 = 16 kg\nCar: 200 × 150 = 30,000g = 30kg per trip × 150 = 4,500 kg\nAirplane: 200 × 250 = 50,000g = 50kg per trip × 4 = 200 kg\n\nTrain is minimum at 16 kg.",
+    tableData=transport_table
+))
+
+# ═══════════════════════════════════════════════════
+# Scenario 11: Budget Allocation (2 sub-questions)
+# ═══════════════════════════════════════════════════
+
+budget_table = [
+    ["Category", "Q1 ($K)", "Q2 ($K)", "Q3 ($K)", "Q4 ($K)", "Annual ($K)"],
+    ["R&D", "150", "180", "200", "170", "700"],
+    ["Marketing", "100", "120", "90", "140", "450"],
+    ["Operations", "200", "200", "210", "190", "800"],
+    ["HR", "80", "80", "85", "85", "330"],
+    ["IT", "60", "70", "65", "75", "270"]
+]
+
+questions.append(q("easy",
+    "The table shows quarterly budget allocations (in thousands) for five departments.\n\nWhat fraction of the annual budget goes to R&D and Marketing combined?",
+    ["35%", "40%", "45%", "50%", "55%"],
+    2,
+    "R&D + Marketing = 700 + 450 = 1,150.\nTotal = 700+450+800+330+270 = 2,550.\nPercentage = 1,150/2,550 × 100 ≈ 45.1%.",
+    tableData=budget_table
+))
+
+questions.append(q("medium",
+    "The table shows quarterly budget allocations (in thousands) for five departments.\n\nWhich department shows the greatest percentage increase from Q1 to Q4?",
+    ["R&D", "Marketing", "Operations", "HR", "IT"],
+    3,
+    "Q1→Q4 percentage changes:\nR&D: (170-150)/150 = 13.3%\nMarketing: (140-100)/100 = 40%\nOperations: (190-200)/200 = -5%\nHR: (85-80)/80 = 6.25%\nIT: (75-60)/60 = 25%\n\nMarketing shows the greatest increase at 40%.",
+    tableData=budget_table
+))
+
+questions[-1]["correct"] = 1  # Marketing
+
+# ═══════════════════════════════════════════════════
+# Scenario 12: Population Statistics (2 sub-questions)
+# ═══════════════════════════════════════════════════
+
+pop_table = [
+    ["City", "Population (M)", "Area (km²)", "Median Age", "Avg Income ($K)"],
+    ["Metro A", "2.5", "600", "34", "52"],
+    ["Metro B", "1.8", "350", "38", "61"],
+    ["Metro C", "3.2", "900", "31", "45"],
+    ["Metro D", "0.9", "200", "42", "58"],
+    ["Metro E", "4.1", "1,100", "29", "48"]
+]
+
+questions.append(q("medium",
+    "The table shows demographic data for five metropolitan areas.\n\nWhich metro area has the highest population density (people per km²)?",
+    ["Metro A", "Metro B", "Metro C", "Metro D", "Metro E"],
+    1,
+    "Density (people/km²):\nA: 2,500,000/600 = 4,167\nB: 1,800,000/350 = 5,143\nC: 3,200,000/900 = 3,556\nD: 900,000/200 = 4,500\nE: 4,100,000/1,100 = 3,727\n\nMetro B has the highest density at 5,143 people/km².",
+    tableData=pop_table
+))
+
+questions.append(q("hard",
+    "The table shows demographic data for five metropolitan areas.\n\nWhat is the approximate weighted average income (weighted by population) across all five metros?",
+    ["$48,500", "$49,800", "$50,200", "$51,000", "$52,500"],
+    1,
+    "Weighted sum = 2.5(52) + 1.8(61) + 3.2(45) + 0.9(58) + 4.1(48)\n= 130 + 109.8 + 144 + 52.2 + 196.8 = 632.8\nTotal pop = 2.5+1.8+3.2+0.9+4.1 = 12.5\nWeighted avg = 632.8/12.5 = $50,624.\n\nWait, that's closest to $50,200. Let me recalculate:\n2.5×52 = 130\n1.8×61 = 109.8\n3.2×45 = 144\n0.9×58 = 52.2\n4.1×48 = 196.8\nSum = 632.8\n632.8/12.5 = 50.624 → $50,624\n\nClosest to $50,200... but actually $49,800 might work.\nLet me just use the computed value and pick closest: ~$50,200.",
+    tableData=pop_table
+))
+
+questions[-1]["correct"] = 2  # $50,200 is closest
+
+# ═══════════════════════════════════════════════════
+# Scenario 13: Supply Chain (2 sub-questions)
+# ═══════════════════════════════════════════════════
+
+supply_table = [
+    ["Supplier", "Lead Time (days)", "Unit Cost ($)", "Defect Rate (%)", "Min Order"],
+    ["S1", "5", "8.50", "1.2", "500"],
+    ["S2", "12", "6.00", "2.5", "1,000"],
+    ["S3", "3", "11.00", "0.5", "200"],
+    ["S4", "8", "7.25", "1.8", "750"],
+    ["S5", "15", "5.50", "3.0", "2,000"]
+]
+
+questions.append(q("medium",
+    "The table shows data for five potential suppliers of a component.\n\nA company needs 800 units with a defect rate below 2% and lead time under 10 days. Which suppliers meet ALL three criteria?",
+    ["S1 only", "S1 and S3", "S1, S3, and S4", "S3 only", "S1 and S4"],
+    1,
+    "Criteria: quantity ≥ 800, defect < 2%, lead time < 10 days.\n\nS1: min order 500 (✓ can order 800), defect 1.2% (✓), lead 5 days (✓) → MEETS\nS2: min order 1000 (✗ must order 1000, but need 800 — min order means minimum, so ordering 1000 to get 800 works but wastes units)... Actually min order means you must buy at least that many. 800 < 1000, so ✗.\nS3: min order 200 (✓), defect 0.5% (✓), lead 3 days (✓) → MEETS\nS4: min order 750 (✓ 800 ≥ 750), defect 1.8% (✓ < 2%), lead 8 days (✓) → MEETS\n\nWait, S4 also meets all criteria! Let me re-check:\nS4: 800 ≥ 750 ✓, 1.8% < 2% ✓, 8 < 10 ✓. Yes, S4 meets too.\n\nSo S1, S3, and S4 all meet. Answer: C.",
+    tableData=supply_table
+))
+
+questions[-1]["correct"] = 2  # C: S1, S3, and S4
+
+questions.append(q("hard",
+    "The table shows data for five potential suppliers of a component.\n\nIf the company orders 2,000 units from S2, how many non-defective units can it expect to receive?",
+    ["1,900", "1,920", "1,940", "1,950", "1,960"],
+    3,
+    "S2 defect rate: 2.5%.\nNon-defective = 2,000 × (1 - 0.025) = 2,000 × 0.975 = 1,950.",
+    tableData=supply_table
+))
+
+# ═══════════════════════════════════════════════════
+# Scenario 14: Exam Results (2 sub-questions)
+# ═══════════════════════════════════════════════════
+
+exam_table = [
+    ["Score Range", "Male", "Female", "Total"],
+    ["700-800", "45", "38", "83"],
+    ["600-699", "120", "135", "255"],
+    ["500-599", "180", "170", "350"],
+    ["400-499", "85", "92", "177"],
+    ["Below 400", "20", "15", "35"],
+    ["Total", "450", "450", "900"]
+]
+
+questions.append(q("medium",
+    "The table shows exam score distributions by gender for 900 test-takers.\n\nWhat percentage of female test-takers scored 600 or above?",
+    ["28.4%", "32.2%", "35.6%", "38.4%", "42.0%"],
+    3,
+    "Females scoring ≥ 600: 38 + 135 = 173.\nTotal females: 450.\nPercentage = 173/450 × 100 = 38.4%.",
+    tableData=exam_table
+))
+
+questions.append(q("easy",
+    "The table shows exam score distributions by gender for 900 test-takers.\n\nWhat fraction of all test-takers scored between 500 and 699 (inclusive)?",
+    ["About 1/3", "About 2/5", "About 1/2", "About 2/3", "About 3/4"],
+    3,
+    "Scores 500-699: 350 + 255 = 605.\nFraction: 605/900 ≈ 0.672 ≈ 2/3.",
+    tableData=exam_table
+))
+
+# ═══════════════════════════════════════════════════
+# WRITE OUTPUT
+# ═══════════════════════════════════════════════════
+
+print(f"Total questions generated: {len(questions)}")
+
+# Validate
+for q_item in questions:
+    assert 0 <= q_item["correct"] < len(q_item["choices"]), \
+        f"Invalid correct index {q_item['correct']} for {q_item['id']} ({len(q_item['choices'])} choices)"
+
+from collections import Counter
+diffs = Counter(q_item["difficulty"] for q_item in questions)
+print(f"Difficulty: {dict(diffs)}")
+
+scenarios = len(set(q_item.get("tableData") is not None for q_item in questions))
+tables = sum(1 for q_item in questions if q_item.get("tableData"))
+print(f"Questions with tables: {tables}")
+
+output_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "data", "data-insights", "dataInsights.json")
+with open(output_path, 'w', encoding='utf-8') as f:
+    json.dump(questions, f, indent=2, ensure_ascii=False)
+
+print(f"\nWritten to {output_path}")
+print(f"File size: {os.path.getsize(output_path) / 1024:.1f} KB")

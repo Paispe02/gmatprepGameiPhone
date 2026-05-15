@@ -28,11 +28,16 @@ const App = (() => {
   let srDifficulty = 'easy';
   let mcDifficulty = 'easy';
   let vsDifficulty = 'easy';
+  let mqDifficulty = 'all';
+  let diDifficulty = 'all';
+  let crDifficulty = 'all';
 
   // Question browser state (for WP and BT modules)
   let questionPool = [];     // filtered question list
   let questionIndex = -1;    // current index in pool
   let completedIds = new Set(); // IDs of answered questions (per user)
+
+  const SPEED_MODULES = ['multiplication', 'arithmetic', 'percentages'];
 
   // ── COMPLETED QUESTIONS PERSISTENCE ──
   function _completedKey() {
@@ -51,6 +56,7 @@ const App = (() => {
   // ── CLEANUP ──
   function cleanupModule() {
     if (stopwatchInterval) { clearInterval(stopwatchInterval); stopwatchInterval = null; }
+    if (examState && examState.timerInterval) { clearInterval(examState.timerInterval); examState.timerInterval = null; }
     const overlay = document.getElementById('modal-overlay');
     if (overlay) overlay.classList.remove('active');
     answered = false;
@@ -78,7 +84,9 @@ const App = (() => {
     currentView = view;
     if (view === 'dashboard') renderDashboard();
     if (view === 'tricks') renderTricks();
+    if (view === 'learn') renderLearn();
     if (view === 'review') renderReview();
+    if (view === 'examSim') renderExamSetup();
   }
 
   function startModule(module) {
@@ -162,6 +170,9 @@ const App = (() => {
       speedRecognition: { name:'Speed Recognition',     icon:'⏱️', desc:'Instant pattern recognition (3-8 sec)' },
       memoryChunking: { name:'Memory & Chunking',       icon:'🧠', desc:'Memorize expression, then solve' },
       visualSpatial:  { name:'Visual-Spatial',          icon:'👁️', desc:'Sequences, patterns, spatial reasoning' },
+      mimQuant:      { name:'MiM Practice: Quant',    icon:'🎓', desc:'90 quantitative questions — PS & DS format' },
+      dataInsights:  { name:'Data Insights',           icon:'📈', desc:'Tables, charts & multi-source reasoning' },
+      criticalReasoning: { name:'Critical Reasoning',  icon:'💬', desc:'Logical arguments and assumptions' },
     };
 
     let html = `
@@ -233,9 +244,11 @@ const App = (() => {
     fastQuant:'Fast Quant Reading', quantStrategy:'Quant Strategy',
     constraintDeduction:'Constraint Deduction', speedRecognition:'Speed Recognition',
     memoryChunking:'Memory & Chunking', visualSpatial:'Visual-Spatial Patterns',
+    mimQuant:'MiM Practice: Quantitative', dataInsights:'Data Insights',
+    criticalReasoning:'Critical Reasoning',
   };
 
-  const BROWSER_MODULES = ['wordProblems','brainTeasers','numberTheory','estimation','dataSufficiency','errorDetection','fastQuant','quantStrategy','constraintDeduction'];
+  const BROWSER_MODULES = ['wordProblems','brainTeasers','numberTheory','estimation','dataSufficiency','errorDetection','fastQuant','quantStrategy','constraintDeduction','mimQuant','dataInsights','criticalReasoning'];
   function isBrowserModule(m) { return BROWSER_MODULES.includes(m); }
 
   function renderModuleUI() {
@@ -332,7 +345,7 @@ const App = (() => {
   function renderGenericDifficultyBar() {
     const el = getEl('difficulty-bar');
     if (!el) return;
-    const diffMap = {numberTheory:ntDifficulty,estimation:estDifficulty,dataSufficiency:dsDifficulty,errorDetection:edDifficulty,fastQuant:fqDifficulty,quantStrategy:qsDifficulty,constraintDeduction:cdDifficulty};
+    const diffMap = {numberTheory:ntDifficulty,estimation:estDifficulty,dataSufficiency:dsDifficulty,errorDetection:edDifficulty,fastQuant:fqDifficulty,quantStrategy:qsDifficulty,constraintDeduction:cdDifficulty,mimQuant:mqDifficulty,dataInsights:diDifficulty,criticalReasoning:crDifficulty};
     const diff = diffMap[currentModule] || 'all';
     el.innerHTML = ['all','easy','medium','hard'].map(d =>
       `<button class="diff-btn ${d===diff?'active':''}" onclick="App.setGenericDifficulty('${d}')">${d==='all'?'All':d[0].toUpperCase()+d.slice(1)}</button>`
@@ -348,6 +361,9 @@ const App = (() => {
       case 'fastQuant': fqDifficulty=d; break;
       case 'quantStrategy': qsDifficulty=d; break;
       case 'constraintDeduction': cdDifficulty=d; break;
+      case 'mimQuant': mqDifficulty=d; break;
+      case 'dataInsights': diDifficulty=d; break;
+      case 'criticalReasoning': crDifficulty=d; break;
     }
     renderGenericDifficultyBar();
     rebuildPool();
@@ -393,6 +409,18 @@ const App = (() => {
       case 'constraintDeduction':
         all = Questions.getAllConstraintDeduction();
         if (cdDifficulty !== 'all') all = all.filter(q => q.difficulty === cdDifficulty);
+        break;
+      case 'mimQuant':
+        all = Questions.getAllMimQuant();
+        if (mqDifficulty !== 'all') all = all.filter(q => q.difficulty === mqDifficulty);
+        break;
+      case 'dataInsights':
+        all = Questions.getAllDataInsights();
+        if (diDifficulty !== 'all') all = all.filter(q => q.difficulty === diDifficulty);
+        break;
+      case 'criticalReasoning':
+        all = Questions.getAllCriticalReasoning();
+        if (crDifficulty !== 'all') all = all.filter(q => q.difficulty === crDifficulty);
         break;
     }
     questionPool = all;
@@ -473,6 +501,26 @@ const App = (() => {
     startStopwatch();
   }
 
+  /** Render optional image, SVG diagram, or HTML table for a question */
+  function renderQuestionMedia(q) {
+    let html = '';
+    if (q.image) {
+      html += `<div class="question-media"><img src="${esc(q.image)}" alt="Diagram" loading="lazy"></div>`;
+    }
+    if (q.svg) {
+      html += `<div class="question-media">${q.svg}</div>`;
+    }
+    if (q.tableData) {
+      html += `<div class="question-media"><table class="question-table">`;
+      q.tableData.forEach((row, ri) => {
+        const tag = ri === 0 ? 'th' : 'td';
+        html += '<tr>' + row.map(cell => `<${tag}>${esc(String(cell))}</${tag}>`).join('') + '</tr>';
+      });
+      html += '</table></div>';
+    }
+    return html;
+  }
+
   function renderQuestion(q) {
     const area = getEl('question-area');
     if (!area) return;
@@ -512,6 +560,7 @@ const App = (() => {
       const isLong = q.text.length > 100;
       area.innerHTML = `
         <div class="question-card">
+          ${renderQuestionMedia(q)}
           <div class="question-text ${isLong ? 'small' : ''}">${esc(q.text)}</div>
           <div class="choices" id="choices">
             ${q.choices.map((c,i) => `<button class="choice-btn" data-idx="${i}" onclick="App.submitChoice(${i})">${esc(c)}</button>`).join('')}
@@ -520,6 +569,7 @@ const App = (() => {
     } else {
       area.innerHTML = `
         <div class="question-card">
+          ${renderQuestionMedia(q)}
           <div class="question-text">${esc(q.text)}</div>
           <div class="answer-input-wrap">
             <input type="text" inputmode="decimal" class="answer-input" id="answer-input"
@@ -596,6 +646,11 @@ const App = (() => {
 
   // ── EXPLANATION MODAL ──
   function showExplanation(ok, correctAns, timeMs) {
+    // Speed modules: auto-advance on correct, only show modal on wrong
+    if (ok && SPEED_MODULES.includes(currentModule)) {
+      setTimeout(() => nextQuestion(), 300);
+      return;
+    }
     const overlay = document.getElementById('modal-overlay');
     const modal = document.getElementById('modal-content');
     let trickHtml = '';
@@ -708,6 +763,194 @@ const App = (() => {
     el.innerHTML = html;
   }
 
+  // ── LEARN ──
+  function renderLearn() {
+    const el = document.getElementById('view-learn');
+    if (!el) return;
+    el.innerHTML = `
+<h2 style="margin-bottom:6px">GMAT Focus Edition — Study Guide</h2>
+<p style="color:var(--text-light);margin-bottom:20px">Conceptos clave, fórmulas y estrategias para el examen GMAT.</p>
+<div class="learn-tabs" id="learn-tabs">
+  <button class="learn-tab active" data-tab="structure">Estructura</button>
+  <button class="learn-tab" data-tab="formulas">Fórmulas</button>
+  <button class="learn-tab" data-tab="ds">Data Suf.</button>
+  <button class="learn-tab" data-tab="cr">C. Reasoning</button>
+  <button class="learn-tab" data-tab="strategy">Estrategia</button>
+</div>
+
+<div id="learn-panel-structure" class="learn-panel active">
+  <h3 class="learn-section-title">Estructura del examen</h3>
+  <table class="learn-table">
+    <thead><tr><th>Sección</th><th>Preguntas</th><th>Tiempo</th><th>Tipos</th></tr></thead>
+    <tbody>
+      <tr><td>Quantitative Reasoning</td><td>21</td><td>45 min</td><td>Problem Solving, Data Sufficiency</td></tr>
+      <tr><td>Verbal Reasoning</td><td>23</td><td>45 min</td><td>Critical Reasoning, Reading Comprehension</td></tr>
+      <tr><td>Data Insights</td><td>20</td><td>45 min</td><td>Data Sufficiency, Multi-Source, Table Analysis, Graphics</td></tr>
+    </tbody>
+  </table>
+  <h3 class="learn-section-title" style="margin-top:20px">Puntuación</h3>
+  <ul class="learn-list">
+    <li><strong>Puntuación total:</strong> 205–805 (incrementos de 10)</li>
+    <li><strong>Cada sección:</strong> 60–90 puntos</li>
+    <li><strong>Adaptativo:</strong> computer-adaptive dentro de cada sección</li>
+    <li><strong>Sin penalización:</strong> las respuestas incorrectas no restan — responde siempre</li>
+    <li><strong>Sin saltar preguntas:</strong> cada pregunta debe responderse antes de continuar</li>
+  </ul>
+  <h3 class="learn-section-title" style="margin-top:20px">Gestión del tiempo</h3>
+  <ul class="learn-list">
+    <li>Quant: ~2 min 9 seg por pregunta (21 preguntas / 45 min)</li>
+    <li>Verbal: ~1 min 57 seg por pregunta</li>
+    <li>Data Insights: ~2 min 15 seg por pregunta</li>
+    <li>Sacrifica las preguntas difíciles para proteger tiempo en las fáciles</li>
+    <li>Pasa a la siguiente si llevas más de 2,5 minutos atascado</li>
+  </ul>
+</div>
+
+<div id="learn-panel-formulas" class="learn-panel">
+  <h3 class="learn-section-title">Propiedades numéricas</h3>
+  <ul class="learn-list">
+    <li><strong>Par × Par = Par | Par × Impar = Par | Impar × Impar = Impar</strong></li>
+    <li><strong>Divisible por 2:</strong> último dígito par</li>
+    <li><strong>Divisible por 3:</strong> suma de dígitos divisible por 3</li>
+    <li><strong>Divisible por 4:</strong> últimas dos cifras divisibles por 4</li>
+    <li><strong>Divisible por 9:</strong> suma de dígitos divisible por 9</li>
+    <li><strong>Primos &lt; 30:</strong> 2, 3, 5, 7, 11, 13, 17, 19, 23, 29</li>
+    <li><strong>MCD × MCM = a × b</strong> (para dos números a, b)</li>
+  </ul>
+  <h3 class="learn-section-title" style="margin-top:20px">Porcentajes y razones</h3>
+  <ul class="learn-list">
+    <li><strong>% de cambio:</strong> (Nuevo − Viejo) / Viejo × 100</li>
+    <li><strong>Cambios sucesivos:</strong> multiplica factores (no sumes)</li>
+    <li><strong>Markup y descuento:</strong> precio final = coste × (1+m)(1−d)</li>
+    <li><strong>Partes:</strong> si a:b = 3:5 → a = 3/(3+5) del total</li>
+    <li><strong>1/8 = 12,5% | 1/6 ≈ 16,7% | 1/3 ≈ 33,3% | 3/8 = 37,5%</strong></li>
+    <li><strong>1/7 ≈ 14,3% | 2/7 ≈ 28,6% | 3/7 ≈ 42,9%</strong></li>
+  </ul>
+  <h3 class="learn-section-title" style="margin-top:20px">Geometría</h3>
+  <ul class="learn-list">
+    <li><strong>Círculo:</strong> Área = πr² | Perímetro = 2πr</li>
+    <li><strong>Triángulo:</strong> Área = ½ × base × altura</li>
+    <li><strong>Ternas pitagóricas:</strong> 3-4-5 | 5-12-13 | 8-15-17</li>
+    <li><strong>30-60-90:</strong> lados x : x√3 : 2x</li>
+    <li><strong>45-45-90:</strong> lados x : x : x√2</li>
+    <li><strong>Cilindro:</strong> V = πr²h | SA = 2πr² + 2πrh</li>
+    <li><strong>Suma de ángulos interiores:</strong> (n−2) × 180°</li>
+  </ul>
+  <h3 class="learn-section-title" style="margin-top:20px">Estadística</h3>
+  <ul class="learn-list">
+    <li><strong>Media:</strong> suma / cantidad</li>
+    <li><strong>Mediana:</strong> valor central al ordenar</li>
+    <li><strong>Moda:</strong> valor más frecuente</li>
+    <li><strong>Rango:</strong> máx − mín</li>
+    <li><strong>DS:</strong> si multiplicas cada valor por c → DS × c | si sumas constante → DS no cambia</li>
+    <li><strong>Varianza</strong> = DS²</li>
+  </ul>
+  <h3 class="learn-section-title" style="margin-top:20px">Probabilidad y combinatoria</h3>
+  <ul class="learn-list">
+    <li><strong>P(A y B)</strong> = P(A) × P(B) [independientes]</li>
+    <li><strong>P(A o B)</strong> = P(A) + P(B) − P(A y B)</li>
+    <li><strong>P(al menos uno)</strong> = 1 − P(ninguno)</li>
+    <li><strong>Combinaciones:</strong> C(n,k) = n! / (k!(n−k)!)</li>
+    <li><strong>Permutaciones:</strong> P(n,k) = n! / (n−k)!</li>
+  </ul>
+</div>
+
+<div id="learn-panel-ds" class="learn-panel">
+  <h3 class="learn-section-title">Data Sufficiency — Las 5 opciones</h3>
+  <div class="ds-choices">
+    <div class="ds-choice"><span class="ds-letter">A</span><p>El enunciado (1) SOLO es suficiente, pero el (2) no.</p></div>
+    <div class="ds-choice"><span class="ds-letter">B</span><p>El enunciado (2) SOLO es suficiente, pero el (1) no.</p></div>
+    <div class="ds-choice"><span class="ds-letter">C</span><p>AMBOS enunciados JUNTOS son suficientes, pero NINGUNO solo lo es.</p></div>
+    <div class="ds-choice"><span class="ds-letter">D</span><p>CADA enunciado SOLO es suficiente.</p></div>
+    <div class="ds-choice"><span class="ds-letter">E</span><p>Los enunciados (1) y (2) JUNTOS NO son suficientes.</p></div>
+  </div>
+  <h3 class="learn-section-title" style="margin-top:20px">Árbol de decisión</h3>
+  <ul class="learn-list">
+    <li><strong>Paso 1 — Prueba (1) solo:</strong> suficiente → A o D | no suficiente → B, C o E</li>
+    <li><strong>Paso 2 — Prueba (2) solo:</strong><br>Si (1) fue suficiente: (2) suficiente → D | no → A<br>Si (1) no fue suficiente: (2) suficiente → B | no suficiente → C o E</li>
+    <li><strong>Paso 3 — Prueba ambos juntos:</strong> suficiente → C | no suficiente → E</li>
+  </ul>
+  <h3 class="learn-section-title" style="margin-top:20px">Reglas clave</h3>
+  <ul class="learn-list">
+    <li>No necesitas calcular la respuesta exacta — solo determinar si es posible hacerlo</li>
+    <li>En preguntas SÍ/NO: suficiente = siempre SÍ o siempre NO</li>
+    <li>No asumas enteros a menos que se diga; prueba fracciones y negativos</li>
+    <li>Dos ecuaciones consistentes ≠ solución única si hay infinitas soluciones</li>
+    <li>Nemotécnico: <strong>AD/BCE</strong> — elimina en grupos</li>
+  </ul>
+</div>
+
+<div id="learn-panel-cr" class="learn-panel">
+  <h3 class="learn-section-title">Tipos de pregunta</h3>
+  <table class="learn-table">
+    <thead><tr><th>Tipo</th><th>Palabras clave en el enunciado</th><th>Busca</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Strengthen</strong></td><td>most supports, strengthens</td><td>Evidencia adicional para la conclusión</td></tr>
+      <tr><td><strong>Weaken</strong></td><td>most seriously weakens, undermines</td><td>Causa alternativa o contraejemplo</td></tr>
+      <tr><td><strong>Assumption</strong></td><td>assumes, depends on, relies on</td><td>Brecha necesaria entre premisa y conclusión</td></tr>
+      <tr><td><strong>Inference</strong></td><td>must be true, can be concluded</td><td>Lo que se sigue lógicamente del texto</td></tr>
+      <tr><td><strong>Flaw</strong></td><td>vulnerable to criticism, flawed because</td><td>Error lógico en el argumento</td></tr>
+      <tr><td><strong>Evaluate</strong></td><td>most useful to determine</td><td>Información que cambiaría la respuesta</td></tr>
+      <tr><td><strong>Boldface</strong></td><td>boldface portions play which roles</td><td>Premisa vs. conclusión vs. contrapunto</td></tr>
+    </tbody>
+  </table>
+  <h3 class="learn-section-title" style="margin-top:20px">El proceso CR</h3>
+  <ul class="learn-list">
+    <li><strong>1. Identifica la conclusión</strong> — ¿Qué está afirmando el autor?</li>
+    <li><strong>2. Identifica las premisas</strong> — ¿Qué evidencia la apoya?</li>
+    <li><strong>3. Identifica el gap</strong> — ¿Qué asunción conecta premisas y conclusión?</li>
+    <li><strong>4. Pre-piensa la respuesta</strong> — ¿Qué fortalecería/debilitaría/asumiría?</li>
+    <li><strong>5. Elimina</strong> — fuera de alcance, lenguaje extremo, dirección invertida</li>
+  </ul>
+  <h3 class="learn-section-title" style="margin-top:20px">Trampas comunes</h3>
+  <ul class="learn-list">
+    <li><strong>Causalidad inversa:</strong> A causa B vs B causa A</li>
+    <li><strong>Correlación ≠ Causalidad:</strong> pueden tener una causa común</li>
+    <li><strong>Lenguaje extremo:</strong> "siempre", "nunca", "todos" — normalmente incorrecto</li>
+    <li><strong>Fuera de alcance:</strong> hecho correcto pero irrelevante para el argumento</li>
+    <li><strong>Dirección correcta, argumento incorrecto:</strong> fortalece cuando necesitas debilitar</li>
+  </ul>
+</div>
+
+<div id="learn-panel-strategy" class="learn-panel">
+  <h3 class="learn-section-title">Estrategia general</h3>
+  <ul class="learn-list">
+    <li><strong>Lee toda la pregunta</strong> antes de mirar las opciones</li>
+    <li><strong>Elimina respuestas incorrectas</strong> sistemáticamente en lugar de buscar la correcta</li>
+    <li><strong>Números inteligentes:</strong> usa 100 para porcentajes, enteros fáciles para álgebra</li>
+    <li><strong>Backsolving:</strong> empieza con la opción C (o B), prueba si funciona</li>
+    <li><strong>Estimación:</strong> si las opciones difieren en &gt;10%, estima en lugar de calcular exacto</li>
+    <li><strong>Nunca dejes en blanco:</strong> al azar = 20% de acierto; elimina 2 → 33%</li>
+  </ul>
+  <h3 class="learn-section-title" style="margin-top:20px">Errores frecuentes en Quant</h3>
+  <ul class="learn-list">
+    <li>Asumir que las variables son enteros positivos cuando no se especifica</li>
+    <li>Confundir preguntas de resto (el resto siempre es ≥ 0 y &lt; divisor)</li>
+    <li>Olvidar que √x² = |x|, no necesariamente x</li>
+    <li>Cambios sucesivos de %: subir 20% y bajar 20% ≠ 0% de cambio neto</li>
+    <li>Velocidad media ≠ (v1 + v2) / 2 para distancias iguales</li>
+    <li>No probar x = 0, negativos y fracciones en desigualdades</li>
+  </ul>
+  <h3 class="learn-section-title" style="margin-top:20px">Consejos para MiM/MiF</h3>
+  <ul class="learn-list">
+    <li>Los programas valoran mucho el GMAT junto con el GPA y experiencia laboral</li>
+    <li>Objetivo: 650+ para MiM, 680+ para MiF en las mejores escuelas</li>
+    <li>La sección Quant importa especialmente — practica hasta el percentil 80+</li>
+    <li>Data Insights es la sección más nueva — relativamente más fácil de mejorar</li>
+    <li>Las repeticiones son habituales y aceptadas; la mayoría de escuelas toma la mejor nota</li>
+  </ul>
+</div>`;
+    // Tab switching
+    el.querySelectorAll('.learn-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        el.querySelectorAll('.learn-tab').forEach(t => t.classList.remove('active'));
+        el.querySelectorAll('.learn-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('learn-panel-' + tab.dataset.tab).classList.add('active');
+      });
+    });
+  }
+
   // ── REVIEW MISTAKES ──
   function renderReview() {
     const el = document.getElementById('view-review');
@@ -717,7 +960,7 @@ const App = (() => {
       html += '<p style="color:var(--text-light)">No mistakes yet! Start practicing.</p>';
       el.innerHTML = html; return;
     }
-    const labels = { multiplication:'Multiplication', arithmetic:'Arithmetic', percentages:'Percentages', wordProblems:'Word Problems', brainTeasers:'Brain Teasers', numberTheory:'Number Theory', estimation:'Estimation', dataSufficiency:'Data Sufficiency', errorDetection:'Error Detection', fastQuant:'Fast Quant', quantStrategy:'Quant Strategy', constraintDeduction:'Constraint Deduction', speedRecognition:'Speed Recognition', memoryChunking:'Memory & Chunking', visualSpatial:'Visual-Spatial' };
+    const labels = { multiplication:'Multiplication', arithmetic:'Arithmetic', percentages:'Percentages', wordProblems:'Word Problems', brainTeasers:'Brain Teasers', numberTheory:'Number Theory', estimation:'Estimation', dataSufficiency:'Data Sufficiency', errorDetection:'Error Detection', fastQuant:'Fast Quant', quantStrategy:'Quant Strategy', constraintDeduction:'Constraint Deduction', speedRecognition:'Speed Recognition', memoryChunking:'Memory & Chunking', visualSpatial:'Visual-Spatial', mimQuant:'MiM Quant', dataInsights:'Data Insights', criticalReasoning:'Critical Reasoning', examSim:'Exam Simulation' };
     html += `<p style="color:var(--text-light);margin-bottom:16px">${mistakes.length} mistake(s). Most recent first.</p>`;
     html += '<table class="mistakes-table"><thead><tr><th>Module</th><th>Question</th><th>Your Answer</th><th>Correct</th><th>Time</th><th>Date</th></tr></thead><tbody>';
     for (const m of mistakes.slice(0, 50)) {
@@ -732,6 +975,288 @@ const App = (() => {
     }
     html += '</tbody></table>';
     el.innerHTML = html;
+  }
+
+  // ── EXAM SIMULATION ──
+  let examState = null;
+
+  function renderExamSetup() {
+    const el = document.getElementById('view-examSim');
+    if (!el) return;
+    el.innerHTML = `
+      <h2 style="margin-bottom:6px">📝 Exam Simulation</h2>
+      <p style="color:var(--text-light);margin-bottom:20px">Configure and take a practice exam under timed conditions.</p>
+      <div class="exam-setup-card">
+        <h3>Select Sections</h3>
+        <div class="exam-section-checks">
+          <label class="exam-check"><input type="checkbox" id="exam-quant" checked> <span>Quantitative Reasoning</span> <small>Problem Solving & Data Sufficiency</small></label>
+          <label class="exam-check"><input type="checkbox" id="exam-di" checked> <span>Data Insights</span> <small>Tables, charts & multi-source</small></label>
+          <label class="exam-check"><input type="checkbox" id="exam-cr" checked> <span>Critical Reasoning</span> <small>Logical arguments & assumptions</small></label>
+          <label class="exam-check"><input type="checkbox" id="exam-verbal" checked> <span>Verbal / Word Problems</span> <small>Reading comprehension style</small></label>
+        </div>
+        <h3 style="margin-top:20px">Exam Length</h3>
+        <div class="exam-length-options">
+          <button class="diff-btn active" data-len="mini" onclick="App.setExamLength(this)">Mini (15 Qs / 20 min)</button>
+          <button class="diff-btn" data-len="half" onclick="App.setExamLength(this)">Half (30 Qs / 40 min)</button>
+          <button class="diff-btn" data-len="full" onclick="App.setExamLength(this)">Full (64 Qs / 135 min)</button>
+        </div>
+        <h3 style="margin-top:20px">Difficulty Mix</h3>
+        <div class="exam-length-options">
+          <button class="diff-btn" data-diff="easy" onclick="App.setExamDiff(this)">Easy</button>
+          <button class="diff-btn active" data-diff="mixed" onclick="App.setExamDiff(this)">Mixed (Realistic)</button>
+          <button class="diff-btn" data-diff="hard" onclick="App.setExamDiff(this)">Hard</button>
+        </div>
+        <button class="btn btn-primary" style="width:100%;margin-top:24px;padding:14px" onclick="App.startExam()">Start Exam →</button>
+      </div>
+      <div class="btn-group" style="margin-top:16px">
+        <button class="btn btn-outline btn-sm" onclick="App.navigate('dashboard')">← Back to Dashboard</button>
+      </div>`;
+  }
+
+  function setExamLength(btn) {
+    btn.closest('.exam-length-options').querySelectorAll('.diff-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  function setExamDiff(btn) {
+    btn.closest('.exam-length-options').querySelectorAll('.diff-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  function startExam() {
+    const el = document.getElementById('view-examSim');
+    const includeQuant = document.getElementById('exam-quant')?.checked;
+    const includeDI = document.getElementById('exam-di')?.checked;
+    const includeCR = document.getElementById('exam-cr')?.checked;
+    const includeVerbal = document.getElementById('exam-verbal')?.checked;
+
+    if (!includeQuant && !includeDI && !includeCR && !includeVerbal) {
+      alert('Select at least one section.');
+      return;
+    }
+
+    const lenBtn = el.querySelector('.exam-length-options .diff-btn.active[data-len]');
+    const diffBtn = el.querySelector('.exam-length-options .diff-btn.active[data-diff]');
+    const len = lenBtn ? lenBtn.dataset.len : 'mini';
+    const diff = diffBtn ? diffBtn.dataset.diff : 'mixed';
+
+    const counts = { mini: 15, half: 30, full: 64 };
+    const timeLimits = { mini: 20*60*1000, half: 40*60*1000, full: 135*60*1000 };
+    const totalQs = counts[len];
+    const timeLimit = timeLimits[len];
+
+    let pool = [];
+    if (includeQuant) {
+      pool.push(...Questions.getAllMimQuant());
+      pool.push(...Questions.getAllNumberTheory());
+      pool.push(...Questions.getAllDataSufficiency());
+      pool.push(...Questions.getAllEstimation());
+    }
+    if (includeDI) {
+      pool.push(...Questions.getAllDataInsights());
+    }
+    if (includeCR) {
+      pool.push(...Questions.getAllCriticalReasoning());
+    }
+    if (includeVerbal) {
+      pool.push(...Questions.getAllWordProblems());
+      pool.push(...Questions.getAllBrainTeasers());
+    }
+
+    if (diff === 'easy') pool = pool.filter(q => q.difficulty === 'easy' || q.difficulty === 'medium');
+    if (diff === 'hard') pool = pool.filter(q => q.difficulty === 'hard' || q.difficulty === 'medium');
+
+    for (let i = pool.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [pool[i], pool[j]] = [pool[j], pool[i]];
+    }
+    const questions = pool.slice(0, Math.min(totalQs, pool.length));
+
+    if (questions.length === 0) {
+      alert('No questions available for this configuration.');
+      return;
+    }
+
+    if (questions.length < totalQs) {
+      if (!confirm('Only ' + questions.length + ' questions available (requested ' + totalQs + '). Continue anyway?')) return;
+    }
+
+    examState = {
+      questions,
+      index: 0,
+      answers: new Array(questions.length).fill(null),
+      flagged: new Set(),
+      times: new Array(questions.length).fill(0),
+      startTime: Date.now(),
+      timeLimit,
+      timerInterval: null,
+      config: { len, diff },
+      _qStart: performance.now()
+    };
+
+    renderExamQuestion();
+  }
+
+  function renderExamQuestion() {
+    const el = document.getElementById('view-examSim');
+    if (!examState) return;
+    const q = examState.questions[examState.index];
+    const total = examState.questions.length;
+    const idx = examState.index;
+
+    examState._qStart = performance.now();
+
+    let qHtml = '';
+    if (q.tableData) {
+      qHtml += '<div class="question-media"><table class="question-table">';
+      q.tableData.forEach((row, ri) => {
+        const tag = ri === 0 ? 'th' : 'td';
+        qHtml += '<tr>' + row.map(cell => '<' + tag + '>' + esc(String(cell)) + '</' + tag + '>').join('') + '</tr>';
+      });
+      qHtml += '</table></div>';
+    }
+    if (q.svg) qHtml += '<div class="question-media">' + q.svg + '</div>';
+
+    let choicesHtml = '';
+    if (q.choices) {
+      choicesHtml = '<div class="choices">' +
+        q.choices.map((c, i) => {
+          const selected = examState.answers[idx] === i;
+          return '<button class="choice-btn exam-choice' + (selected ? ' selected' : '') + '" data-idx="' + i + '" onclick="App.examSelectChoice(' + i + ')">' + esc(c) + '</button>';
+        }).join('') + '</div>';
+    }
+
+    const flagged = examState.flagged.has(idx);
+
+    el.innerHTML = `
+      <div class="exam-topbar">
+        <div class="exam-timer" id="exam-timer">--:--</div>
+        <div class="exam-progress">${idx+1} / ${total}</div>
+        <button class="btn btn-outline btn-sm exam-flag-btn ${flagged?'flagged':''}" onclick="App.examToggleFlag()">🚩 Flag</button>
+      </div>
+      <div class="exam-progress-bar"><div class="exam-progress-fill" style="width:${((idx+1)/total)*100}%"></div></div>
+      <div class="question-card">
+        ${qHtml}
+        <div class="question-text ${q.text.length > 100 ? 'small' : ''}">${esc(q.text)}</div>
+        ${choicesHtml}
+      </div>
+      <div class="exam-nav">
+        <button class="btn btn-outline btn-sm" onclick="App.examPrev()" ${idx===0?'disabled':''}>← Previous</button>
+        ${idx < total - 1
+          ? '<button class="btn btn-primary btn-sm" onclick="App.examNext()">Next →</button>'
+          : '<button class="btn btn-primary btn-sm" onclick="App.examFinish()" style="background:var(--success)">Finish Exam ✓</button>'
+        }
+      </div>`;
+
+    if (!examState.timerInterval) {
+      examState.timerInterval = setInterval(updateExamTimer, 1000);
+    }
+    updateExamTimer();
+  }
+
+  function updateExamTimer() {
+    if (!examState) return;
+    const elapsed = Date.now() - examState.startTime;
+    const remaining = Math.max(0, examState.timeLimit - elapsed);
+    const min = Math.floor(remaining / 60000);
+    const sec = Math.floor((remaining % 60000) / 1000);
+    const timerEl = document.getElementById('exam-timer');
+    if (timerEl) {
+      timerEl.textContent = min + ':' + String(sec).padStart(2, '0');
+      if (remaining < 120000) timerEl.style.color = 'var(--danger)';
+      else if (remaining < 300000) timerEl.style.color = 'var(--warning)';
+    }
+    if (remaining <= 0) {
+      examFinish();
+    }
+  }
+
+  function examSelectChoice(idx) {
+    const qIdx = examState.index;
+    examState.answers[qIdx] = idx;
+    examState.times[qIdx] = (examState.times[qIdx] || 0) + (performance.now() - examState._qStart);
+    examState._qStart = performance.now();
+    document.querySelectorAll('.exam-choice').forEach((btn, i) => {
+      btn.classList.toggle('selected', i === idx);
+    });
+  }
+
+  function examToggleFlag() {
+    const qIdx = examState.index;
+    if (examState.flagged.has(qIdx)) examState.flagged.delete(qIdx);
+    else examState.flagged.add(qIdx);
+    renderExamQuestion();
+  }
+
+  function examPrev() {
+    if (!examState || examState.index <= 0) return;
+    examState.times[examState.index] = (examState.times[examState.index] || 0) + (performance.now() - examState._qStart);
+    examState.index--;
+    renderExamQuestion();
+  }
+
+  function examNext() {
+    if (!examState || examState.index >= examState.questions.length - 1) return;
+    examState.times[examState.index] = (examState.times[examState.index] || 0) + (performance.now() - examState._qStart);
+    examState.index++;
+    renderExamQuestion();
+  }
+
+  function examFinish() {
+    if (!examState) return;
+    examState.times[examState.index] = (examState.times[examState.index] || 0) + (performance.now() - examState._qStart);
+    if (examState.timerInterval) { clearInterval(examState.timerInterval); examState.timerInterval = null; }
+
+    const total = examState.questions.length;
+    let correct = 0;
+    let answered = 0;
+    const totalTime = Date.now() - examState.startTime;
+
+    const details = examState.questions.map((q, i) => {
+      const userIdx = examState.answers[i];
+      const isAnswered = userIdx !== null && userIdx >= 0;
+      const isCorrect = isAnswered && userIdx === q.correct;
+      if (isAnswered) answered++;
+      if (isCorrect) correct++;
+      if (isAnswered) {
+        Stats.record('examSim', q.text, q.choices[userIdx], q.choices[q.correct], isCorrect, Math.round(examState.times[i]));
+      }
+      return { q, userIdx, isCorrect, isAnswered, time: examState.times[i] };
+    });
+
+    const accuracy = answered > 0 ? Math.round((correct / answered) * 100) : 0;
+    const avgTime = answered > 0 ? Math.round(details.filter(d => d.isAnswered).reduce((s, d) => s + d.time, 0) / answered) : 0;
+
+    const rawScore = (correct / total) * 100;
+    const estScore = Math.round(205 + (rawScore / 100) * 600);
+
+    const el = document.getElementById('view-examSim');
+    const reviewHtml = details.map((d, i) => {
+      const statusClass = !d.isAnswered ? 'skipped' : d.isCorrect ? 'correct' : 'wrong';
+      const statusIcon = !d.isAnswered ? '○' : d.isCorrect ? '✓' : '✗';
+      return `<div class="exam-review-item ${statusClass}">
+        <span class="exam-review-num">${i+1}. ${statusIcon}</span>
+        <span class="exam-review-text">${esc(d.q.text.length > 80 ? d.q.text.slice(0,77)+'…' : d.q.text)}</span>
+        <span class="exam-review-time">${Stats.formatTime(Math.round(d.time))}</span>
+      </div>`;
+    }).join('');
+
+    el.innerHTML = `
+      <h2 style="margin-bottom:6px">📊 Exam Results</h2>
+      <p style="color:var(--text-light);margin-bottom:20px">Exam completed in ${Math.floor(totalTime/60000)} min ${Math.floor((totalTime%60000)/1000)} sec</p>
+      <div class="stats-grid" style="margin-bottom:24px">
+        <div class="stat-card"><div class="stat-value" style="color:var(--primary)">${estScore}</div><div class="stat-label">Est. Score (approx.)</div></div>
+        <div class="stat-card"><div class="stat-value">${correct}/${total}</div><div class="stat-label">Correct</div></div>
+        <div class="stat-card"><div class="stat-value">${accuracy}%</div><div class="stat-label">Accuracy</div></div>
+        <div class="stat-card"><div class="stat-value">${Stats.formatTime(avgTime)}</div><div class="stat-label">Avg Time</div></div>
+      </div>
+      <h3 style="margin-bottom:12px">Question Review</h3>
+      <div class="exam-review-list">${reviewHtml}</div>
+      <div class="btn-group" style="margin-top:24px">
+        <button class="btn btn-primary" onclick="App.renderExamSetup()">New Exam</button>
+        <button class="btn btn-outline" onclick="App.navigate('dashboard')">Dashboard</button>
+      </div>`;
+
+    examState = null;
   }
 
   // ── UTILS ──
@@ -758,7 +1283,7 @@ const App = (() => {
       link.addEventListener('click', e => {
         e.preventDefault();
         const view = link.dataset.view;
-        if (['multiplication','arithmetic','percentages','wordProblems','brainTeasers','numberTheory','estimation','dataSufficiency','errorDetection','fastQuant','quantStrategy','constraintDeduction','speedRecognition','memoryChunking','visualSpatial'].includes(view)) {
+        if (['multiplication','arithmetic','percentages','wordProblems','brainTeasers','numberTheory','estimation','dataSufficiency','errorDetection','fastQuant','quantStrategy','constraintDeduction','speedRecognition','memoryChunking','visualSpatial','mimQuant','dataInsights','criticalReasoning'].includes(view)) {
           startModule(view);
         } else {
           navigate(view);
@@ -770,7 +1295,8 @@ const App = (() => {
       if (e.target === e.currentTarget) closeModalAndNext();
     });
     document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') {
+      if (e.key === 'Enter' && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
+      if (e.key === 'Escape' || e.key === 'Enter') {
         const ov = document.getElementById('modal-overlay');
         if (ov.classList.contains('active')) closeModalAndNext();
       }
@@ -785,6 +1311,8 @@ const App = (() => {
     goToQuestion, prevQuestion, nextBrowserQuestion,
     switchUser, addNewUser, deleteCurrentUser, resetStats,
     renderReview,
+    renderExamSetup, startExam, setExamLength, setExamDiff,
+    examSelectChoice, examToggleFlag, examPrev, examNext, examFinish,
   };
 })();
 

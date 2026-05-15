@@ -35,5 +35,14 @@
   ],
   "constraintDeduction": [
     "constraintDeduction.json"
+  ],
+  "mimQuant": [
+    "mimQuant.json"
+  ],
+  "dataInsights": [
+    "dataInsights.json"
+  ],
+  "criticalReasoning": [
+    "criticalReasoning.json"
   ]
 }

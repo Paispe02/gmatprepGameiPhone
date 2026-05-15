@@ -26,6 +26,9 @@ FOLDER_MAP = {
     'fastQuant': 'fast-quant',
     'quantStrategy': 'quant-strategy',
     'constraintDeduction': 'constraint-deduction',
+    'mimQuant': 'mim-quant',
+    'dataInsights': 'data-insights',
+    'criticalReasoning': 'critical-reasoning',
 }
 
 

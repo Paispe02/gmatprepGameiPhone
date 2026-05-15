@@ -1,6 +1,6 @@
 /* GMAT Math Trainer — Service Worker (offline support) */
 
-const CACHE_NAME = 'gmat-math-v2';
+const CACHE_NAME = 'gmat-math-v4';
 
 const CORE_FILES = [
   './',

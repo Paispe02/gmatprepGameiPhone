@@ -28,6 +28,7 @@ const Stats = (() => {
       mimQuant:            { answered: 0, correct: 0, totalTime: 0, bestTime: null, times: [], mistakes: [] },
       dataInsights:        { answered: 0, correct: 0, totalTime: 0, bestTime: null, times: [], mistakes: [] },
       criticalReasoning:   { answered: 0, correct: 0, totalTime: 0, bestTime: null, times: [], mistakes: [] },
+      riddles:             { answered: 0, correct: 0, totalTime: 0, bestTime: null, times: [], mistakes: [] },
       examSim:             { answered: 0, correct: 0, totalTime: 0, bestTime: null, times: [], mistakes: [] },
     },
     sessions: [],

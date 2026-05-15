@@ -898,5 +898,320 @@
     ],
     "correct": 4,
     "explanation": "GCD=4 → a=4m, b=4n with gcd(m,n)=1.\nLCM=4mn=120 → mn=30.\n\nCoprime pairs with product 30: (1,30),(2,15),(3,10),(5,6).\nPossible numbers: 4,120,8,60,12,40,20,24.\n\n32=4×8. Need m=8, n=30/8=3.75 (not integer).\nAlso: 32∤120, so 32 can't be either number.\n\nShortcut: Each number must divide the LCM. 120÷32 is not an integer → impossible."
+  },
+  {
+    "id": "cnt1",
+    "category": "counting",
+    "difficulty": "easy",
+    "text": "At a party, 10 people shake hands with each other exactly once. How many total handshakes occur?",
+    "choices": [
+      "10",
+      "45",
+      "55",
+      "90",
+      "100"
+    ],
+    "correct": 1,
+    "explanation": "Combinations: C(10,2) = 10! / (2! × 8!) = (10 × 9) / 2 = 45.\n\nEach of 10 people shakes hands with 9 others = 90, but each handshake was counted twice, so 90/2 = 45.\n\nGeneral formula: n people → n(n−1)/2 handshakes."
+  },
+  {
+    "id": "cnt2",
+    "category": "counting",
+    "difficulty": "medium",
+    "text": "On a 4×4 grid, how many different paths go from bottom-left to top-right, moving only up or right?",
+    "choices": [
+      "8",
+      "16",
+      "32",
+      "70",
+      "256"
+    ],
+    "correct": 3,
+    "explanation": "You need 4 moves right and 4 moves up = 8 total moves.\nChoose which 4 of 8 moves are \"right\": C(8,4) = 8! / (4! × 4!) = 70.\n\nCalculation: (8×7×6×5) / (4×3×2×1) = 1680/24 = 70."
+  },
+  {
+    "id": "cnt3",
+    "category": "counting",
+    "difficulty": "medium",
+    "text": "How many ways can you arrange the letters in the word \"BOOK\"?",
+    "choices": [
+      "4",
+      "12",
+      "24",
+      "4!",
+      "8"
+    ],
+    "correct": 1,
+    "explanation": "\"BOOK\" has 4 letters with O repeated twice.\nArrangements = 4! / 2! = 24 / 2 = 12.\n\nFormula: n! / (n₁! × n₂! × ...) where nᵢ are the repeat counts."
+  },
+  {
+    "id": "cnt4",
+    "category": "counting",
+    "difficulty": "hard",
+    "text": "In how many ways can you select 3 books from 8 where order matters?",
+    "choices": [
+      "56",
+      "336",
+      "512",
+      "120",
+      "168"
+    ],
+    "correct": 1,
+    "explanation": "Permutations: P(8,3) = 8! / (8−3)! = 8 × 7 × 6 = 336.\n\nWhen order matters: first choice has 8 options, second has 7, third has 6."
+  },
+  {
+    "id": "cnt5",
+    "category": "counting",
+    "difficulty": "medium",
+    "text": "You have 5 different balls and 3 different boxes. Each ball goes into a box. How many ways to distribute them?",
+    "choices": [
+      "15",
+      "60",
+      "243",
+      "120",
+      "20"
+    ],
+    "correct": 2,
+    "explanation": "Each ball independently chooses 1 of 3 boxes.\n5 balls × 3 choices each = 3⁵ = 243.\n\nThis is \"distribution with repetition\": n^k where n=boxes, k=balls."
+  },
+  {
+    "id": "cnt6",
+    "category": "counting",
+    "difficulty": "hard",
+    "text": "How many 3-digit numbers can be formed using digits 1,2,3,4,5 with no digit repeated?",
+    "choices": [
+      "60",
+      "75",
+      "100",
+      "125",
+      "150"
+    ],
+    "correct": 0,
+    "explanation": "First digit: 5 choices. Second: 4 choices. Third: 3 choices.\n5 × 4 × 3 = 60.\n\nThis is P(5,3) = 5!/(5−3)! = 120/2 = 60."
+  },
+  {
+    "id": "cnt7",
+    "category": "counting",
+    "difficulty": "easy",
+    "text": "How many ways can 3 people sit in a row of 3 chairs?",
+    "choices": [
+      "3",
+      "6",
+      "9",
+      "12",
+      "27"
+    ],
+    "correct": 1,
+    "explanation": "3! = 3×2×1 = 6 arrangements.\nPerson 1: 3 choices. Person 2: 2 choices. Person 3: 1 choice."
+  },
+  {
+    "id": "cnt8",
+    "category": "counting",
+    "difficulty": "easy",
+    "text": "How many 2-letter codes can be made from A,B,C,D (no repetition)?",
+    "choices": [
+      "4",
+      "8",
+      "12",
+      "16",
+      "24"
+    ],
+    "correct": 2,
+    "explanation": "P(4,2) = 4×3 = 12.\nFirst letter: 4 choices. Second: 3 remaining choices."
+  },
+  {
+    "id": "cnt9",
+    "category": "counting",
+    "difficulty": "easy",
+    "text": "A pizza shop offers 4 toppings. How many different 2-topping pizzas can be made?",
+    "choices": [
+      "4",
+      "6",
+      "8",
+      "12",
+      "16"
+    ],
+    "correct": 1,
+    "explanation": "C(4,2) = 4!/(2!×2!) = (4×3)/(2×1) = 6.\nOrder doesn't matter for toppings."
+  },
+  {
+    "id": "cnt10",
+    "category": "counting",
+    "difficulty": "medium",
+    "text": "How many ways to arrange the letters in \"MISSISSIPPI\"?",
+    "choices": [
+      "11!",
+      "34,650",
+      "39,916,800",
+      "2,520",
+      "5,040"
+    ],
+    "correct": 1,
+    "explanation": "MISSISSIPPI: M=1, I=4, S=4, P=2. Total=11 letters.\nArrangements = 11!/(4!×4!×2!×1!) = 39916800/(24×24×2×1) = 34,650."
+  },
+  {
+    "id": "cnt11",
+    "category": "counting",
+    "difficulty": "medium",
+    "text": "How many diagonals does a 10-sided polygon have?",
+    "choices": [
+      "20",
+      "30",
+      "35",
+      "40",
+      "45"
+    ],
+    "correct": 2,
+    "explanation": "Diagonals = n(n−3)/2 = 10×7/2 = 35.\nOr: Total segments C(10,2)=45, minus 10 sides = 35 diagonals."
+  },
+  {
+    "id": "cnt12",
+    "category": "counting",
+    "difficulty": "medium",
+    "text": "How many different 4-digit even numbers can be formed from {1,2,3,4,5} with no repetition?",
+    "choices": [
+      "24",
+      "36",
+      "48",
+      "60",
+      "72"
+    ],
+    "correct": 2,
+    "explanation": "Last digit must be even: 2 or 4 → 2 choices.\nRemaining 3 digits from 4 remaining: P(4,3) = 4×3×2 = 24.\nTotal = 2×24 = 48."
+  },
+  {
+    "id": "cnt13",
+    "category": "counting",
+    "difficulty": "hard",
+    "text": "In how many ways can 8 people be seated around a circular table?",
+    "choices": [
+      "40320",
+      "5040",
+      "720",
+      "362880",
+      "20160"
+    ],
+    "correct": 1,
+    "explanation": "Circular permutations = (n−1)! = 7! = 5040.\nWe fix one person's position to remove rotational symmetry, then arrange the other 7."
+  },
+  {
+    "id": "cnt14",
+    "category": "counting",
+    "difficulty": "hard",
+    "text": "How many 5-card hands from a standard 52-card deck contain exactly 2 aces?",
+    "choices": [
+      "2,598,960",
+      "103,776",
+      "778,320",
+      "84,480",
+      "1,128"
+    ],
+    "correct": 1,
+    "explanation": "Choose 2 aces from 4: C(4,2) = 6.\nChoose 3 non-aces from 48: C(48,3) = 17,296.\nTotal = 6 × 17,296 = 103,776."
+  },
+  {
+    "id": "cnt15",
+    "category": "counting",
+    "difficulty": "medium",
+    "text": "A committee of 5 is formed from 6 men and 4 women. How many committees have at least 2 women?",
+    "choices": [
+      "186",
+      "120",
+      "246",
+      "60",
+      "126"
+    ],
+    "correct": 0,
+    "explanation": "At least 2 women: 2W+3M, 3W+2M, 4W+1M.\nC(4,2)C(6,3) + C(4,3)C(6,2) + C(4,4)C(6,1)\n= 6×20 + 4×15 + 1×6 = 120+60+6 = 186."
+  },
+  {
+    "id": "cnt16",
+    "category": "counting",
+    "difficulty": "hard",
+    "text": "How many positive integers less than 1000 have no repeated digits?",
+    "choices": [
+      "648",
+      "720",
+      "738",
+      "792",
+      "810"
+    ],
+    "correct": 2,
+    "explanation": "1-digit: 9 (1-9).\n2-digit: 9×9 = 81 (first digit 1-9, second 0-9 minus first).\n3-digit: 9×9×8 = 648 (first 1-9, second 0-9 minus first, third minus first two).\nTotal = 9+81+648 = 738."
+  },
+  {
+    "id": "cnt17",
+    "category": "counting",
+    "difficulty": "easy",
+    "text": "You flip a coin 4 times. How many possible outcomes?",
+    "choices": [
+      "4",
+      "8",
+      "12",
+      "16",
+      "24"
+    ],
+    "correct": 3,
+    "explanation": "Each flip has 2 outcomes. 4 flips: 2⁴ = 16 outcomes.\nE.g., HHHH, HHHT, HHTH, ..."
+  },
+  {
+    "id": "cnt18",
+    "category": "counting",
+    "difficulty": "medium",
+    "text": "A password uses 3 letters followed by 2 digits. How many possible passwords? (repetition allowed)",
+    "choices": [
+      "1,757,600",
+      "17,576,000",
+      "175,760",
+      "1,404,000",
+      "11,881,376"
+    ],
+    "correct": 0,
+    "explanation": "Letters: 26³ = 17,576. Digits: 10² = 100.\nTotal = 17,576 × 100 = 1,757,600."
+  },
+  {
+    "id": "cnt19",
+    "category": "counting",
+    "difficulty": "hard",
+    "text": "How many ways can you distribute 10 identical candies among 3 children?",
+    "choices": [
+      "30",
+      "66",
+      "120",
+      "220",
+      "1000"
+    ],
+    "correct": 1,
+    "explanation": "Stars and bars: C(n+k−1, k−1) = C(10+3−1, 3−1) = C(12,2) = 66.\nEquivalent to choosing 2 dividers among 12 positions."
+  },
+  {
+    "id": "cnt20",
+    "category": "counting",
+    "difficulty": "hard",
+    "text": "How many subsets does a set with 6 elements have?",
+    "choices": [
+      "6",
+      "12",
+      "32",
+      "36",
+      "64"
+    ],
+    "correct": 4,
+    "explanation": "Each element is either in or out: 2⁶ = 64 subsets.\nIncludes the empty set and the set itself."
+  },
+  {
+    "id": "cnt21",
+    "category": "counting",
+    "difficulty": "medium",
+    "text": "In how many ways can you choose a president, VP, and secretary from a club of 10?",
+    "choices": [
+      "120",
+      "720",
+      "1000",
+      "252",
+      "504"
+    ],
+    "correct": 1,
+    "explanation": "Order matters (different positions): P(10,3) = 10×9×8 = 720."
   }
 ]

@@ -117,6 +117,7 @@ const Questions = (() => {
   const MIM_QUANT = (typeof QUESTIONS_DATA !== 'undefined' && QUESTIONS_DATA.mimQuant) || [];
   const DATA_INSIGHTS_DATA = (typeof QUESTIONS_DATA !== 'undefined' && QUESTIONS_DATA.dataInsights) || [];
   const CRITICAL_REASONING = (typeof QUESTIONS_DATA !== 'undefined' && QUESTIONS_DATA.criticalReasoning) || [];
+  const RIDDLES = (typeof QUESTIONS_DATA !== 'undefined' && QUESTIONS_DATA.riddles) || [];
 
   if (WORD_PROBLEMS.length === 0 && BRAIN_TEASERS.length === 0) {
     console.warn('No question data found. Run: python3 tools/build_data.py');
@@ -422,6 +423,14 @@ const Questions = (() => {
   function getAllMimQuant() { return MIM_QUANT; }
   function getAllDataInsights() { return DATA_INSIGHTS_DATA; }
   function getAllCriticalReasoning() { return CRITICAL_REASONING; }
+  function getAllRiddles() { return RIDDLES; }
+
+  function getRiddles(difficulty) {
+    let pool = RIDDLES;
+    if (difficulty && difficulty !== 'all') pool = pool.filter(p => p.difficulty === difficulty);
+    if (pool.length === 0) return null;
+    return pool[rand(0, pool.length - 1)];
+  }
 
   return {
     getMultiplication, getArithmetic, getPercentage,
@@ -433,7 +442,7 @@ const Questions = (() => {
     getConstraintDeduction, getSpeedRecognition, getMemoryChunking, getVisualSpatial,
     getAllNumberTheory, getAllEstimation, getAllDataSufficiency,
     getAllErrorDetection, getAllFastQuant, getAllQuantStrategy, getAllConstraintDeduction,
-    getMimQuant, getDataInsights, getCriticalReasoning,
-    getAllMimQuant, getAllDataInsights, getAllCriticalReasoning,
+    getMimQuant, getDataInsights, getCriticalReasoning, getRiddles,
+    getAllMimQuant, getAllDataInsights, getAllCriticalReasoning, getAllRiddles,
   };
 })();

@@ -10,10 +10,17 @@
   ],
   "brainTeasers": [
     "balanceScale.json",
-    "counting.json",
     "lateral.json",
     "logic.json",
-    "numberPattern.json"
+    "numberPattern.json",
+    "truthLiar.json",
+    "cryptarithmetic.json",
+    "clockPuzzle.json",
+    "agePuzzle.json",
+    "probabilityParadox.json",
+    "gameStrategy.json",
+    "geometric.json",
+    "riverCrossing.json"
   ],
   "numberTheory": [
     "numberTheory.json"
@@ -44,5 +51,8 @@
   ],
   "criticalReasoning": [
     "criticalReasoning.json"
+  ],
+  "riddles": [
+    "riddles.json"
   ]
 }

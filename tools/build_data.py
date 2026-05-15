@@ -29,6 +29,7 @@ FOLDER_MAP = {
     'mimQuant': 'mim-quant',
     'dataInsights': 'data-insights',
     'criticalReasoning': 'critical-reasoning',
+    'riddles': 'riddles',
 }
 
 

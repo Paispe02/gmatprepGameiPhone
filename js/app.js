@@ -31,6 +31,7 @@ const App = (() => {
   let mqDifficulty = 'all';
   let diDifficulty = 'all';
   let crDifficulty = 'all';
+  let rdDifficulty = 'all';
 
   // Question browser state (for WP and BT modules)
   let questionPool = [];     // filtered question list
@@ -173,6 +174,7 @@ const App = (() => {
       mimQuant:      { name:'MiM Practice: Quant',    icon:'🎓', desc:'90 quantitative questions — PS & DS format' },
       dataInsights:  { name:'Data Insights',           icon:'📈', desc:'Tables, charts & multi-source reasoning' },
       criticalReasoning: { name:'Critical Reasoning',  icon:'💬', desc:'Logical arguments and assumptions' },
+      riddles:       { name:'Riddles & Lateral Thinking', icon:'🎭', desc:'Verbal riddles, wordplay, and lateral thinking puzzles' },
     };
 
     let html = `
@@ -246,9 +248,10 @@ const App = (() => {
     memoryChunking:'Memory & Chunking', visualSpatial:'Visual-Spatial Patterns',
     mimQuant:'MiM Practice: Quantitative', dataInsights:'Data Insights',
     criticalReasoning:'Critical Reasoning',
+    riddles:'Riddles & Lateral Thinking',
   };
 
-  const BROWSER_MODULES = ['wordProblems','brainTeasers','numberTheory','estimation','dataSufficiency','errorDetection','fastQuant','quantStrategy','constraintDeduction','mimQuant','dataInsights','criticalReasoning'];
+  const BROWSER_MODULES = ['wordProblems','brainTeasers','numberTheory','estimation','dataSufficiency','errorDetection','fastQuant','quantStrategy','constraintDeduction','mimQuant','dataInsights','criticalReasoning','riddles'];
   function isBrowserModule(m) { return BROWSER_MODULES.includes(m); }
 
   function renderModuleUI() {
@@ -335,7 +338,9 @@ const App = (() => {
     if (!el) return;
     const cats = [
       {key:'all',label:'All'},{key:'balanceScale',label:'Balance Scale'},{key:'numberPattern',label:'Patterns'},
-      {key:'logic',label:'Logic'},{key:'counting',label:'Counting'},{key:'lateral',label:'Lateral'},
+      {key:'logic',label:'Logic'},{key:'lateral',label:'Lateral'},{key:'truthLiar',label:'Truth/Liar'},
+      {key:'cryptarithmetic',label:'Cryptarithmetic'},{key:'clockPuzzle',label:'Clock'},{key:'agePuzzle',label:'Age'},
+      {key:'probabilityParadox',label:'Paradox'},{key:'gameStrategy',label:'Game'},{key:'geometric',label:'Geometric'},{key:'riverCrossing',label:'River'},
     ];
     el.innerHTML = cats.map(c =>
       `<button class="diff-btn ${c.key===btCategory?'active':''}" onclick="App.setBTCategory('${c.key}')">${c.label}</button>`
@@ -345,7 +350,7 @@ const App = (() => {
   function renderGenericDifficultyBar() {
     const el = getEl('difficulty-bar');
     if (!el) return;
-    const diffMap = {numberTheory:ntDifficulty,estimation:estDifficulty,dataSufficiency:dsDifficulty,errorDetection:edDifficulty,fastQuant:fqDifficulty,quantStrategy:qsDifficulty,constraintDeduction:cdDifficulty,mimQuant:mqDifficulty,dataInsights:diDifficulty,criticalReasoning:crDifficulty};
+    const diffMap = {numberTheory:ntDifficulty,estimation:estDifficulty,dataSufficiency:dsDifficulty,errorDetection:edDifficulty,fastQuant:fqDifficulty,quantStrategy:qsDifficulty,constraintDeduction:cdDifficulty,mimQuant:mqDifficulty,dataInsights:diDifficulty,criticalReasoning:crDifficulty,riddles:rdDifficulty};
     const diff = diffMap[currentModule] || 'all';
     el.innerHTML = ['all','easy','medium','hard'].map(d =>
       `<button class="diff-btn ${d===diff?'active':''}" onclick="App.setGenericDifficulty('${d}')">${d==='all'?'All':d[0].toUpperCase()+d.slice(1)}</button>`
@@ -364,6 +369,7 @@ const App = (() => {
       case 'mimQuant': mqDifficulty=d; break;
       case 'dataInsights': diDifficulty=d; break;
       case 'criticalReasoning': crDifficulty=d; break;
+      case 'riddles': rdDifficulty=d; break;
     }
     renderGenericDifficultyBar();
     rebuildPool();
@@ -421,6 +427,10 @@ const App = (() => {
       case 'criticalReasoning':
         all = Questions.getAllCriticalReasoning();
         if (crDifficulty !== 'all') all = all.filter(q => q.difficulty === crDifficulty);
+        break;
+      case 'riddles':
+        all = Questions.getAllRiddles();
+        if (rdDifficulty !== 'all') all = all.filter(q => q.difficulty === rdDifficulty);
         break;
     }
     questionPool = all;
@@ -960,7 +970,7 @@ const App = (() => {
       html += '<p style="color:var(--text-light)">No mistakes yet! Start practicing.</p>';
       el.innerHTML = html; return;
     }
-    const labels = { multiplication:'Multiplication', arithmetic:'Arithmetic', percentages:'Percentages', wordProblems:'Word Problems', brainTeasers:'Brain Teasers', numberTheory:'Number Theory', estimation:'Estimation', dataSufficiency:'Data Sufficiency', errorDetection:'Error Detection', fastQuant:'Fast Quant', quantStrategy:'Quant Strategy', constraintDeduction:'Constraint Deduction', speedRecognition:'Speed Recognition', memoryChunking:'Memory & Chunking', visualSpatial:'Visual-Spatial', mimQuant:'MiM Quant', dataInsights:'Data Insights', criticalReasoning:'Critical Reasoning', examSim:'Exam Simulation' };
+    const labels = { multiplication:'Multiplication', arithmetic:'Arithmetic', percentages:'Percentages', wordProblems:'Word Problems', brainTeasers:'Brain Teasers', numberTheory:'Number Theory', estimation:'Estimation', dataSufficiency:'Data Sufficiency', errorDetection:'Error Detection', fastQuant:'Fast Quant', quantStrategy:'Quant Strategy', constraintDeduction:'Constraint Deduction', speedRecognition:'Speed Recognition', memoryChunking:'Memory & Chunking', visualSpatial:'Visual-Spatial', mimQuant:'MiM Quant', dataInsights:'Data Insights', criticalReasoning:'Critical Reasoning', riddles:'Riddles', examSim:'Exam Simulation' };
     html += `<p style="color:var(--text-light);margin-bottom:16px">${mistakes.length} mistake(s). Most recent first.</p>`;
     html += '<table class="mistakes-table"><thead><tr><th>Module</th><th>Question</th><th>Your Answer</th><th>Correct</th><th>Time</th><th>Date</th></tr></thead><tbody>';
     for (const m of mistakes.slice(0, 50)) {

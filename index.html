@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GMAT Math Trainer</title>
+  <title>GMAT Free Trainer</title>
   <!-- ===== PWA / iPhone ===== -->
   <link rel="manifest" href="manifest.webmanifest">
-  <meta name="theme-color" content="#2d5be3">
+  <meta name="theme-color" content="#1a2744">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="GMAT Math">
+  <meta name="apple-mobile-web-app-title" content="GMAT Free">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
   <link rel="stylesheet" href="css/style.css">
   <script>
@@ -24,14 +24,15 @@
 
   <!-- ===== NAVBAR ===== -->
   <nav class="navbar">
-    <div class="logo">GMAT<span> Math Trainer</span></div>
+    <div class="logo"><img src="icons/logo.png" alt="Logo">GMAT<span> Free Trainer</span></div>
     <ul class="nav-links">
       <li><a href="#" data-view="dashboard" class="active">Dashboard</a></li>
-      <li><a href="#" data-view="examSim">Exam</a></li>
+      <li><a href="#" data-view="examSim">Mock Exam</a></li>
       <li><a href="#" data-view="tricks">Tricks</a></li>
       <li><a href="#" data-view="learn">Learn</a></li>
       <li><a href="#" data-view="review">Review</a></li>
     </ul>
+    <button class="theme-toggle" id="theme-toggle" onclick="App.toggleTheme()" title="Toggle dark/light mode">🌙</button>
   </nav>
 
   <!-- ===== MAIN CONTAINER ===== -->

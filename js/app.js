@@ -1,4 +1,4 @@
-/* ===== GMAT Math Trainer — App Core Engine ===== */
+/* ===== GMAT Free Trainer — App Core Engine ===== */
 
 const App = (() => {
   // ── STATE ──
@@ -984,7 +984,7 @@ const App = (() => {
     const el = document.getElementById('view-examSim');
     if (!el) return;
     el.innerHTML = `
-      <h2 style="margin-bottom:6px">📝 Exam Simulation</h2>
+      <h2 style="margin-bottom:6px">📝 Mock Exam</h2>
       <p style="color:var(--text-light);margin-bottom:20px">Configure and take a practice exam under timed conditions.</p>
       <div class="exam-setup-card">
         <h3>Select Sections</h3>
@@ -1252,7 +1252,7 @@ const App = (() => {
       <h3 style="margin-bottom:12px">Question Review</h3>
       <div class="exam-review-list">${reviewHtml}</div>
       <div class="btn-group" style="margin-top:24px">
-        <button class="btn btn-primary" onclick="App.renderExamSetup()">New Exam</button>
+        <button class="btn btn-primary" onclick="App.renderExamSetup()">New Mock Exam</button>
         <button class="btn btn-outline" onclick="App.navigate('dashboard')">Dashboard</button>
       </div>`;
 
@@ -1276,8 +1276,41 @@ const App = (() => {
     return document.getElementById(id);
   }
 
+  // ── THEME ──
+  function initTheme() {
+    let saved = null;
+    try { saved = localStorage.getItem('gmat_theme'); } catch {}
+    if (saved) {
+      document.documentElement.setAttribute('data-theme', saved);
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+    updateThemeIcon();
+    // Sync meta theme-color
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.content = document.documentElement.getAttribute('data-theme') === 'dark' ? '#0d1117' : '#1a2744';
+  }
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('gmat_theme', next); } catch {}
+    updateThemeIcon();
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.content = next === 'dark' ? '#0d1117' : '#1a2744';
+  }
+  function updateThemeIcon() {
+    const btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    btn.textContent = isDark ? '☀️' : '🌙';
+  }
+
   // ── INIT ──
   function init() {
+    initTheme();
     // Nav links
     document.querySelectorAll('.nav-links a').forEach(link => {
       link.addEventListener('click', e => {
@@ -1310,7 +1343,7 @@ const App = (() => {
     toggleTable, setDifficulty, setWPDifficulty, setBTCategory, setGenericDifficulty,
     goToQuestion, prevQuestion, nextBrowserQuestion,
     switchUser, addNewUser, deleteCurrentUser, resetStats,
-    renderReview,
+    renderReview, toggleTheme,
     renderExamSetup, startExam, setExamLength, setExamDiff,
     examSelectChoice, examToggleFlag, examPrev, examNext, examFinish,
   };

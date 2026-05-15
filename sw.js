@@ -1,6 +1,6 @@
-/* GMAT Math Trainer — Service Worker (offline support) */
+/* GMAT Free Trainer — Service Worker (offline support) */
 
-const CACHE_NAME = 'gmat-math-v4';
+const CACHE_NAME = 'gmat-math-v5';
 
 const CORE_FILES = [
   './',
@@ -14,6 +14,7 @@ const CORE_FILES = [
   './js/app.js',
   './icons/apple-touch-icon.png',
   './icons/icon-192.png',
+  './icons/logo.png',
 ];
 
 // Install: cache all core files

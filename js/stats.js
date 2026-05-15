@@ -33,6 +33,11 @@ const Stats = (() => {
     },
     sessions: [],
     lastPlayed: null,
+    xp: 0,
+    level: 1,
+    dailyStreak: 0,
+    lastDailyDate: null,
+    weeklyHistory: [],
   };
 
   // ── USER MANAGEMENT ──
@@ -103,6 +108,12 @@ const Stats = (() => {
           parsed.modules[key] = JSON.parse(JSON.stringify(DEFAULT.modules[key]));
         }
       }
+      // Ensure new gamification fields exist
+      if (parsed.xp === undefined) parsed.xp = 0;
+      if (parsed.level === undefined) parsed.level = 1;
+      if (parsed.dailyStreak === undefined) parsed.dailyStreak = 0;
+      if (parsed.lastDailyDate === undefined) parsed.lastDailyDate = null;
+      if (parsed.weeklyHistory === undefined) parsed.weeklyHistory = [];
       return parsed;
     } catch {
       return JSON.parse(JSON.stringify(DEFAULT));
@@ -147,8 +158,49 @@ const Stats = (() => {
     }
 
     data.lastPlayed = new Date().toISOString();
+
+    // ── XP SYSTEM ──
+    const baseXP = isCorrect ? 10 : 2;
+    const streakBonus = data.currentStreak >= 10 ? 5 : data.currentStreak >= 5 ? 3 : 0;
+    const speedBonus = timeMs < 5000 ? 3 : timeMs < 10000 ? 1 : 0;
+    const totalXP = baseXP + streakBonus + speedBonus;
+    data.xp += totalXP;
+    // Level: 100 XP per level, increasing by 50 each level
+    data.level = 1;
+    let xpNeeded = 100;
+    let xpAccum = 0;
+    while (xpAccum + xpNeeded <= data.xp) {
+      xpAccum += xpNeeded;
+      data.level++;
+      xpNeeded = 100 + (data.level - 1) * 50;
+    }
+
+    // ── DAILY STREAK ──
+    const now = new Date();
+    const today = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0');
+    if (data.lastDailyDate !== today) {
+      const yd = new Date(Date.now() - 86400000);
+      const yesterday = yd.getFullYear() + '-' + String(yd.getMonth()+1).padStart(2,'0') + '-' + String(yd.getDate()).padStart(2,'0');
+      if (data.lastDailyDate === yesterday) {
+        data.dailyStreak++;
+      } else if (data.lastDailyDate !== today) {
+        data.dailyStreak = 1;
+      }
+      data.lastDailyDate = today;
+    }
+
+    // ── WEEKLY HISTORY ──
+    const lastEntry = data.weeklyHistory[data.weeklyHistory.length - 1];
+    if (lastEntry && lastEntry.date === today) {
+      lastEntry.answered++;
+      if (isCorrect) lastEntry.correct++;
+    } else {
+      data.weeklyHistory.push({ date: today, answered: 1, correct: isCorrect ? 1 : 0 });
+    }
+    if (data.weeklyHistory.length > 14) data.weeklyHistory = data.weeklyHistory.slice(-14);
+
     _save(data);
-    return data;
+    return { data, totalXP };
   }
 
   /** Save a session summary */
@@ -216,14 +268,192 @@ const Stats = (() => {
     return min + ':' + String(sec).padStart(2, '0');
   }
 
+  /** Get XP needed for current level and progress */
+  function getLevelProgress() {
+    const data = _load();
+    let lvl = 1, xpAccum = 0, xpNeeded = 100;
+    while (xpAccum + xpNeeded <= data.xp) {
+      xpAccum += xpNeeded;
+      lvl++;
+      xpNeeded = 100 + (lvl - 1) * 50;
+    }
+    const xpInLevel = data.xp - xpAccum;
+    return { level: lvl, xp: data.xp, xpInLevel, xpNeeded, percent: Math.round((xpInLevel / xpNeeded) * 100) };
+  }
+
+  /** Get topic group stats */
+  function getTopicGroups() {
+    const data = _load();
+    const groups = {
+      'Arithmetic': ['multiplication', 'arithmetic', 'percentages'],
+      'Algebra & Logic': ['numberTheory', 'constraintDeduction', 'brainTeasers', 'riddles'],
+      'Word Problems': ['wordProblems', 'estimation', 'fastQuant'],
+      'GMAT Quant': ['dataSufficiency', 'errorDetection', 'quantStrategy', 'mimQuant'],
+      'Data & Reasoning': ['dataInsights', 'criticalReasoning'],
+      'Cognitive Skills': ['speedRecognition', 'memoryChunking', 'visualSpatial'],
+    };
+    const result = {};
+    for (const [name, mods] of Object.entries(groups)) {
+      let answered = 0, correct = 0, totalTime = 0;
+      for (const m of mods) {
+        const mod = data.modules[m];
+        if (mod) { answered += mod.answered; correct += mod.correct; totalTime += mod.totalTime; }
+      }
+      const accuracy = answered > 0 ? Math.round((correct / answered) * 100) : 0;
+      const avgTime = answered > 0 ? Math.round(totalTime / answered) : 0;
+      result[name] = { answered, correct, accuracy, avgTime };
+    }
+    return result;
+  }
+
+  /** Get weekly improvement */
+  function getWeeklyImprovement() {
+    const data = _load();
+    const hist = data.weeklyHistory || [];
+    if (hist.length < 2) return null;
+    const thisWeek = hist.slice(-7);
+    const prevWeek = hist.slice(-14, -7);
+    if (prevWeek.length === 0) return null;
+    const thisAcc = thisWeek.reduce((s, d) => s + d.correct, 0) / Math.max(1, thisWeek.reduce((s, d) => s + d.answered, 0));
+    const prevAcc = prevWeek.reduce((s, d) => s + d.correct, 0) / Math.max(1, prevWeek.reduce((s, d) => s + d.answered, 0));
+    const diff = Math.round((thisAcc - prevAcc) * 100);
+    return diff;
+  }
+
+  /** Get strongest and weakest topics */
+  function getTopicStrengths() {
+    const data = _load();
+    let best = null, worst = null, bestAcc = -1, worstAcc = 101;
+    const labels = {
+      multiplication:'Multiplication', arithmetic:'Arithmetic', percentages:'Percentages',
+      wordProblems:'Word Problems', brainTeasers:'Brain Teasers', numberTheory:'Number Theory',
+      estimation:'Estimation', dataSufficiency:'Data Sufficiency', errorDetection:'Error Detection',
+      fastQuant:'Fast Quant', quantStrategy:'Quant Strategy', constraintDeduction:'Constraint Deduction',
+      mimQuant:'MiM Quant', dataInsights:'Data Insights', criticalReasoning:'Critical Reasoning',
+      riddles:'Riddles',
+    };
+    for (const [key, label] of Object.entries(labels)) {
+      const mod = data.modules[key];
+      if (!mod || mod.answered < 5) continue;
+      const acc = (mod.correct / mod.answered) * 100;
+      if (acc > bestAcc) { bestAcc = acc; best = label; }
+      if (acc < worstAcc) { worstAcc = acc; worst = label; }
+    }
+    return { strongest: best, weakest: worst, strongestAcc: Math.round(bestAcc), weakestAcc: Math.round(worstAcc) };
+  }
+
   /** Reset stats for active user */
   function reset() {
     localStorage.removeItem(_storageKey());
   }
 
+  // ── EXAM HISTORY ──
+  const EXAM_HISTORY_KEY = 'gmat_exam_history';
+
+  function saveExamResult(result) {
+    try {
+      const user = getActiveUser();
+      const key = EXAM_HISTORY_KEY + '_' + user;
+      const history = JSON.parse(localStorage.getItem(key) || '[]');
+      // Strip explanations to save space — keep only metadata + answers
+      if (result.questions) {
+        result.questions = result.questions.map(q => ({
+          text: q.text.slice(0, 200),
+          choices: q.choices,
+          correct: q.correct,
+          userIdx: q.userIdx,
+          isCorrect: q.isCorrect,
+          isAnswered: q.isAnswered,
+          time: q.time,
+        }));
+      }
+      history.push(result);
+      // Keep last 10 exams
+      if (history.length > 10) history.splice(0, history.length - 10);
+      localStorage.setItem(key, JSON.stringify(history));
+    } catch {}
+  }
+
+  function getExamHistory() {
+    try {
+      const user = getActiveUser();
+      const key = EXAM_HISTORY_KEY + '_' + user;
+      return JSON.parse(localStorage.getItem(key) || '[]');
+    } catch { return []; }
+  }
+
+  // ── LEADERBOARD ──
+  const FIREBASE_DB_URL = ''; // Set to your Firebase Realtime Database URL, e.g. 'https://your-project.firebaseio.com'
+  const LB_LOCAL_KEY = 'gmat_leaderboard';
+
+  function getLeaderboard(callback) {
+    if (FIREBASE_DB_URL) {
+      fetch(`${FIREBASE_DB_URL}/leaderboard.json?orderBy="xp"&limitToLast=50`)
+        .then(r => r.json())
+        .then(data => {
+          if (!data) return callback([]);
+          const entries = Object.values(data).sort((a, b) => b.xp - a.xp);
+          try { localStorage.setItem(LB_LOCAL_KEY, JSON.stringify(entries)); } catch {}
+          callback(entries);
+        })
+        .catch(() => {
+          try { callback(JSON.parse(localStorage.getItem(LB_LOCAL_KEY)) || []); } catch { callback([]); }
+        });
+    } else {
+      try { callback(JSON.parse(localStorage.getItem(LB_LOCAL_KEY)) || []); } catch { callback([]); }
+    }
+  }
+
+  function submitScore(nickname, callback) {
+    const data = _load();
+    const lp = getLevelProgress();
+    const entry = {
+      nickname: nickname.slice(0, 20),
+      xp: data.xp,
+      level: lp.level,
+      accuracy: data.totalAnswered > 0 ? Math.round((data.totalCorrect / data.totalAnswered) * 100) : 0,
+      answered: data.totalAnswered,
+      streak: data.dailyStreak || 0,
+      date: new Date().toISOString().slice(0, 10),
+    };
+
+    if (FIREBASE_DB_URL) {
+      fetch(`${FIREBASE_DB_URL}/leaderboard/${encodeURIComponent(nickname.replace(/[.#$[\]\/]/g, '_'))}.json`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(entry),
+      })
+        .then(r => r.json())
+        .then(() => {
+          _saveLocalLB(entry);
+          if (callback) callback(true);
+        })
+        .catch(() => {
+          _saveLocalLB(entry);
+          if (callback) callback(false);
+        });
+    } else {
+      _saveLocalLB(entry);
+      if (callback) callback(true);
+    }
+  }
+
+  function _saveLocalLB(entry) {
+    try {
+      const lb = JSON.parse(localStorage.getItem(LB_LOCAL_KEY)) || [];
+      const filtered = lb.filter(e => e.nickname !== entry.nickname);
+      filtered.push(entry);
+      filtered.sort((a, b) => b.xp - a.xp);
+      localStorage.setItem(LB_LOCAL_KEY, JSON.stringify(filtered.slice(0, 50)));
+    } catch {}
+  }
+
   return {
     record, saveSession, getAll, getModule, getMistakes, getAllMistakes,
     getAvgTime, getAccuracy, formatTime, reset,
+    getLevelProgress, getTopicGroups, getWeeklyImprovement, getTopicStrengths,
     getActiveUser, setActiveUser, getAllUsers, addUser, deleteUser,
+    getLeaderboard, submitScore,
+    saveExamResult, getExamHistory,
   };
 })();

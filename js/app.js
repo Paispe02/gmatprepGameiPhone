@@ -11,6 +11,7 @@ const App = (() => {
   let sessionTotal = 0;
   let sessionTimes = [];
   let answered = false;
+  let lastEarnedXP = 0;
 
   // Module settings
   let multTables = [2,3,4,5,6,7,8,9,10,11,12];
@@ -36,9 +37,72 @@ const App = (() => {
   // Question browser state (for WP and BT modules)
   let questionPool = [];     // filtered question list
   let questionIndex = -1;    // current index in pool
-  let completedIds = new Set(); // IDs of answered questions (per user)
+  let completedIds = {}; // { questionId: 'correct' | 'wrong' }
 
   const SPEED_MODULES = ['multiplication', 'arithmetic', 'percentages'];
+
+  // Adaptive difficulty
+  let adaptiveHistory = []; // last N {correct: bool, timeMs: number}
+  const ADAPTIVE_WINDOW = 5;
+  const DIFFICULTY_ORDER = ['easy', 'medium', 'hard'];
+
+  // ── FEEDBACK ──
+  function haptic(style) {
+    if (navigator.vibrate) navigator.vibrate(style === 'success' ? 30 : style === 'error' ? [40, 30, 40] : 15);
+  }
+  function showStreakBurst(streak) {
+    if (streak % 5 !== 0 || streak === 0) return;
+    const el = document.createElement('div');
+    el.className = 'streak-confetti';
+    el.textContent = streak >= 20 ? '🏆' : streak >= 10 ? '🔥' : '🎯';
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 1300);
+  }
+
+  // ── ADAPTIVE DIFFICULTY ──
+  function checkAdaptiveDifficulty() {
+    if (!SPEED_MODULES.includes(currentModule) || currentModule === 'multiplication') return;
+    if (adaptiveHistory.length < ADAPTIVE_WINDOW) return;
+
+    const recent = adaptiveHistory.slice(-ADAPTIVE_WINDOW);
+    const correctCount = recent.filter(r => r.correct).length;
+    const avgTime = recent.reduce((s, r) => s + r.timeMs, 0) / recent.length;
+
+    let currentDiff;
+    switch (currentModule) {
+      case 'arithmetic': currentDiff = arithDifficulty; break;
+      case 'percentages': currentDiff = pctDifficulty; break;
+      default: return;
+    }
+
+    const idx = DIFFICULTY_ORDER.indexOf(currentDiff);
+    let newIdx = idx;
+
+    if (correctCount >= 3 && avgTime < 8000 && idx < 2) {
+      newIdx = idx + 1;
+    } else if (correctCount <= 2 && idx > 0) {
+      newIdx = idx - 1;
+    }
+
+    if (newIdx !== idx) {
+      const newDiff = DIFFICULTY_ORDER[newIdx];
+      switch (currentModule) {
+        case 'arithmetic': arithDifficulty = newDiff; renderDifficultyBar(); break;
+        case 'percentages': pctDifficulty = newDiff; renderDifficultyBar(); break;
+      }
+      showAdaptiveToast(newIdx > idx);
+      adaptiveHistory = [];
+    }
+  }
+
+  function showAdaptiveToast(harder) {
+    const el = document.createElement('div');
+    el.className = 'adaptive-toast';
+    el.textContent = harder ? '⬆ Harder!' : '⬇ Easier';
+    el.style.background = harder ? 'var(--success)' : 'var(--warning)';
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 2000);
+  }
 
   // ── COMPLETED QUESTIONS PERSISTENCE ──
   function _completedKey() {
@@ -47,17 +111,27 @@ const App = (() => {
   function loadCompleted() {
     try {
       const raw = localStorage.getItem(_completedKey());
-      completedIds = raw ? new Set(JSON.parse(raw)) : new Set();
-    } catch { completedIds = new Set(); }
+      if (!raw) { completedIds = {}; return; }
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed)) {
+        // Backward compat: old format was array of IDs
+        completedIds = {};
+        parsed.forEach(id => { completedIds[id] = 'correct'; });
+        saveCompleted(); // migrate
+      } else {
+        completedIds = parsed || {};
+      }
+    } catch { completedIds = {}; }
   }
   function saveCompleted() {
-    localStorage.setItem(_completedKey(), JSON.stringify([...completedIds]));
+    try { localStorage.setItem(_completedKey(), JSON.stringify(completedIds)); } catch {}
   }
 
   // ── CLEANUP ──
   function cleanupModule() {
     if (stopwatchInterval) { clearInterval(stopwatchInterval); stopwatchInterval = null; }
     if (examState && examState.timerInterval) { clearInterval(examState.timerInterval); examState.timerInterval = null; }
+    if (fastGame && fastGame.timerInterval) { clearInterval(fastGame.timerInterval); fastGame.timerInterval = null; }
     const overlay = document.getElementById('modal-overlay');
     if (overlay) overlay.classList.remove('active');
     answered = false;
@@ -88,6 +162,9 @@ const App = (() => {
     if (view === 'learn') renderLearn();
     if (view === 'review') renderReview();
     if (view === 'examSim') renderExamSetup();
+    if (view === 'allGames') renderAllGames();
+    if (view === 'fastGame') renderFastGameSetup();
+    if (view === 'leaderboard') renderLeaderboard();
   }
 
   function startModule(module) {
@@ -101,6 +178,7 @@ const App = (() => {
     sessionCorrect = 0;
     sessionTotal = 0;
     sessionTimes = [];
+    adaptiveHistory = [];
     loadCompleted();
 
     // Switch view
@@ -119,7 +197,7 @@ const App = (() => {
       rebuildPool();
       if (questionPool.length > 0) {
         // Start with first unanswered, or first
-        const first = questionPool.findIndex(q => !completedIds.has(q.id));
+        const first = questionPool.findIndex(q => !completedIds[q.id]);
         goToQuestion(first >= 0 ? first : 0);
       }
     } else {
@@ -154,6 +232,85 @@ const App = (() => {
     const el = document.getElementById('view-dashboard');
     const activeUser = Stats.getActiveUser();
     const allUsers = Stats.getAllUsers();
+    const lp = Stats.getLevelProgress();
+    const improvement = Stats.getWeeklyImprovement();
+    const strengths = Stats.getTopicStrengths();
+
+    let html = `
+      <div class="hub-player-row">
+        <select id="user-select" onchange="App.switchUser(this.value)" class="hub-user-select">
+          ${allUsers.map(u => `<option value="${esc(u)}" ${u===activeUser?'selected':''}>${esc(u)}</option>`).join('')}
+        </select>
+        <div class="hub-player-actions">
+          <button class="btn btn-outline btn-sm" onclick="App.addNewUser()">+</button>
+          ${allUsers.length > 1 ? `<button class="btn btn-outline btn-sm" onclick="App.deleteCurrentUser()" style="color:var(--danger)">×</button>` : ''}
+          <button class="btn btn-outline btn-sm" onclick="App.resetStats()" style="color:var(--danger)">↺</button>
+        </div>
+      </div>
+
+      <div class="hub-hero">
+        <div class="hub-level-row">
+          <div class="level-badge">Lv ${lp.level}</div>
+          <div class="hub-level-bar-wrap">
+            <div class="level-bar"><div class="level-fill" style="width:${lp.percent}%"></div></div>
+            <div class="level-xp">${lp.xpInLevel} / ${lp.xpNeeded} XP</div>
+          </div>
+        </div>
+        <div class="hub-streaks-row">
+          <div class="hub-streak">🔥 <strong>${stats.dailyStreak || 0}</strong> day streak</div>
+          <div class="hub-streak">⚡ <strong>${stats.currentStreak}</strong> in a row</div>
+          <div class="hub-streak">🎯 <strong>${Stats.getAccuracy()}%</strong> accuracy</div>
+        </div>
+        ${improvement !== null ? `<div class="hero-improvement ${improvement >= 0 ? 'positive' : 'negative'}">${improvement >= 0 ? '↑' : '↓'} ${Math.abs(improvement)}% vs last week</div>` : ''}
+        ${strengths.strongest ? `<div class="hub-insight">${strengths.weakest && strengths.weakest !== strengths.strongest ? `📚 Focus on: <strong>${strengths.weakest}</strong>` : `💪 Top: <strong>${strengths.strongest}</strong>`}</div>` : ''}
+      </div>
+
+      <div class="hub-actions">
+        <div class="hub-card hub-card-primary" onclick="App.startFastGame()">
+          <div class="hub-card-icon">⚡</div>
+          <div class="hub-card-text">
+            <h3>Fast Game</h3>
+            <p>2-min mixed challenge</p>
+          </div>
+          <div class="hub-card-arrow">→</div>
+        </div>
+
+        <div class="hub-card hub-card-secondary" onclick="App.navigate('examSim')">
+          <div class="hub-card-icon">🏆</div>
+          <div class="hub-card-text">
+            <h3>Mock Exam</h3>
+            <p>Timed GMAT simulation</p>
+          </div>
+          <div class="hub-card-arrow">→</div>
+        </div>
+
+        <div class="hub-bottom-row hub-bottom-3">
+          <div class="hub-card hub-card-small" onclick="App.navigate('allGames')">
+            <div class="hub-card-icon">🎮</div>
+            <h3>All Games</h3>
+            <p>${stats.totalAnswered} played</p>
+          </div>
+          <div class="hub-card hub-card-small" onclick="App.navigate('leaderboard')">
+            <div class="hub-card-icon">🏅</div>
+            <h3>Ranking</h3>
+            <p>Compete globally</p>
+          </div>
+          <div class="hub-card hub-card-small" onclick="App.navigate('review')">
+            <div class="hub-card-icon">📖</div>
+            <h3>Review</h3>
+            <p>Mistakes log</p>
+          </div>
+        </div>
+      </div>
+    `;
+    el.innerHTML = html;
+  }
+
+  // ── ALL GAMES ──
+  function renderAllGames() {
+    const stats = Stats.getAll();
+    const el = document.getElementById('view-allGames');
+    const topicGroups = Stats.getTopicGroups();
 
     const mods = {
       multiplication: { name:'Multiplication Tables', icon:'✕', desc:'Drill your times tables from 2 to 12' },
@@ -178,25 +335,26 @@ const App = (() => {
     };
 
     let html = `
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap">
-        <span style="font-size:0.88rem;color:var(--text-light)">Player:</span>
-        <select id="user-select" onchange="App.switchUser(this.value)" style="padding:6px 12px;border:1px solid var(--border);border-radius:6px;font-size:0.9rem;background:var(--card)">
-          ${allUsers.map(u => `<option value="${esc(u)}" ${u===activeUser?'selected':''}>${esc(u)}</option>`).join('')}
-        </select>
-        <button class="btn btn-outline btn-sm" onclick="App.addNewUser()">+ New Player</button>
-        <button class="btn btn-outline btn-sm" onclick="App.resetStats()" style="margin-left:auto;color:var(--danger);border-color:var(--danger)">Reset Stats</button>
-        ${allUsers.length > 1 ? `<button class="btn btn-outline btn-sm" onclick="App.deleteCurrentUser()" style="color:var(--danger);border-color:var(--danger)">Delete Player</button>` : ''}
+      <div class="allgames-header">
+        <button class="btn btn-outline btn-sm" onclick="App.navigate('dashboard')">← Back</button>
+        <h2>All Games</h2>
       </div>
-      <div class="stats-grid">
-        <div class="stat-card"><div class="stat-value">${stats.totalAnswered}</div><div class="stat-label">Questions Answered</div></div>
-        <div class="stat-card"><div class="stat-value">${Stats.getAccuracy()}%</div><div class="stat-label">Overall Accuracy</div></div>
-        <div class="stat-card"><div class="stat-value">${stats.bestStreak}</div><div class="stat-label">Best Streak</div></div>
-        <div class="stat-card"><div class="stat-value">${stats.currentStreak}</div><div class="stat-label">Current Streak</div></div>
-      </div>
-      <h2 style="margin-bottom:16px">Choose a Module</h2>
-      <div class="module-grid">
     `;
 
+    // Topic progress summary
+    html += '<div class="topic-progress-section"><h3 style="margin-bottom:12px">Topic Progress</h3>';
+    for (const [name, g] of Object.entries(topicGroups)) {
+      html += `
+        <div class="topic-bar-row">
+          <div class="topic-bar-label">${name}</div>
+          <div class="topic-bar-track"><div class="topic-bar-fill" style="width:${Math.min(g.accuracy, 100)}%"></div></div>
+          <div class="topic-bar-pct">${g.accuracy}%</div>
+        </div>`;
+    }
+    html += '</div>';
+
+    // Module grid
+    html += '<div class="module-grid">';
     for (const [key, info] of Object.entries(mods)) {
       const mod = stats.modules[key];
       const avgTime = Stats.getAvgTime(key);
@@ -208,10 +366,402 @@ const App = (() => {
           <div class="module-stats">${mod.answered > 0
             ? `${mod.answered} answered · ${acc}% · avg ${Stats.formatTime(avgTime)}${mod.bestTime ? ` · best ${Stats.formatTime(mod.bestTime)}` : ''}`
             : 'Not started yet'}</div>
+          <div class="module-progress-bar"><div class="module-progress-fill" style="width:${acc}%"></div></div>
         </div>`;
     }
     html += '</div>';
+
+    // Study resources
+    html += `
+      <h2 style="margin:24px 0 16px">Study Resources</h2>
+      <div class="hub-bottom-row">
+        <div class="hub-card hub-card-small" onclick="App.navigate('tricks')">
+          <div class="hub-card-icon">💡</div>
+          <h3>Math Tricks</h3>
+          <p>Mental shortcuts</p>
+        </div>
+        <div class="hub-card hub-card-small" onclick="App.navigate('learn')">
+          <div class="hub-card-icon">📚</div>
+          <h3>Study Guide</h3>
+          <p>Strategies & theory</p>
+        </div>
+      </div>
+    `;
+
     el.innerHTML = html;
+  }
+
+  // ── FAST GAME ──
+  let fastGame = null;
+
+  function startFastGame() {
+    navigate('fastGame');
+  }
+
+  function renderFastGameSetup() {
+    const el = document.getElementById('view-fastGame');
+    el.innerHTML = `
+      <div class="fastgame-setup">
+        <button class="btn btn-outline btn-sm" onclick="App.navigate('dashboard')" style="align-self:flex-start">← Back</button>
+        <div class="fastgame-hero-icon">⚡</div>
+        <h2>Fast Game</h2>
+        <p class="fastgame-desc">Random questions from all topics. How many can you nail?</p>
+        <div class="fastgame-time-options">
+          <button class="btn btn-outline fastgame-time-btn active" onclick="App.setFastGameTime(120)" data-time="120">2 min</button>
+          <button class="btn btn-outline fastgame-time-btn" onclick="App.setFastGameTime(180)" data-time="180">3 min</button>
+          <button class="btn btn-outline fastgame-time-btn" onclick="App.setFastGameTime(300)" data-time="300">5 min</button>
+        </div>
+        <button class="btn btn-primary fastgame-start-btn" onclick="App.launchFastGame()">Start Game</button>
+      </div>
+    `;
+    fastGame = { timeLimit: 120 };
+  }
+
+  function setFastGameTime(seconds) {
+    fastGame.timeLimit = seconds;
+    document.querySelectorAll('.fastgame-time-btn').forEach(b => {
+      b.classList.toggle('active', parseInt(b.dataset.time) === seconds);
+    });
+  }
+
+  function launchFastGame() {
+    const el = document.getElementById('view-fastGame');
+    
+    // Build random question pool from all available modules
+    const pool = [];
+    
+    // Add procedural questions
+    const difficulties = ['easy', 'medium', 'hard'];
+    for (let i = 0; i < 10; i++) {
+      const d = difficulties[Math.floor(Math.random() * 3)];
+      pool.push(Questions.getMultiplication([2,3,4,5,6,7,8,9,10,11,12]));
+      pool.push(Questions.getArithmetic(d));
+      pool.push(Questions.getPercentage(d));
+    }
+    
+    // Add browser module questions (random subset)
+    const browserGetters = [
+      'getAllWordProblems', 'getAllBrainTeasers', 'getAllNumberTheory',
+      'getAllEstimation', 'getAllDataSufficiency', 'getAllErrorDetection',
+      'getAllFastQuant', 'getAllQuantStrategy', 'getAllConstraintDeduction',
+      'getAllMimQuant', 'getAllDataInsights', 'getAllCriticalReasoning', 'getAllRiddles'
+    ];
+    for (const getter of browserGetters) {
+      if (Questions[getter]) {
+        const all = Questions[getter]();
+        if (all.length > 0) {
+          // Pick 3 random questions from each module
+          const shuffled = [...all].sort(() => Math.random() - 0.5);
+          for (let i = 0; i < Math.min(3, shuffled.length); i++) {
+            pool.push(shuffled[i]);
+          }
+        }
+      }
+    }
+    
+    // Shuffle pool
+    for (let i = pool.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [pool[i], pool[j]] = [pool[j], pool[i]];
+    }
+
+    fastGame = {
+      ...fastGame,
+      pool,
+      index: 0,
+      correct: 0,
+      total: 0,
+      startTime: Date.now(),
+      timerInterval: null,
+      active: true,
+    };
+
+    renderFastGameQuestion();
+    startFastGameTimer();
+  }
+
+  function startFastGameTimer() {
+    const updateTimer = () => {
+      if (!fastGame || !fastGame.active) return;
+      const elapsed = Math.floor((Date.now() - fastGame.startTime) / 1000);
+      const remaining = Math.max(0, fastGame.timeLimit - elapsed);
+      const min = Math.floor(remaining / 60);
+      const sec = remaining % 60;
+      const timerEl = document.getElementById('fg-timer');
+      if (timerEl) {
+        timerEl.textContent = `${min}:${String(sec).padStart(2, '0')}`;
+        if (remaining <= 10) timerEl.classList.add('fg-timer-warning');
+      }
+      if (remaining <= 0) {
+        endFastGame();
+      }
+    };
+    fastGame.timerInterval = setInterval(updateTimer, 500);
+    updateTimer();
+  }
+
+  function renderFastGameQuestion() {
+    if (!fastGame || !fastGame.active) return;
+    const el = document.getElementById('view-fastGame');
+    const q = fastGame.pool[fastGame.index % fastGame.pool.length];
+    fastGame._currentQ = q;
+    fastGame._qStart = performance.now();
+
+    // Determine module for stats recording
+    if (q.meta && q.meta.module) fastGame._currentModule = q.meta.module;
+    else if (q.id) {
+      // Infer module from ID prefix
+      if (q.id.startsWith('wp_')) fastGame._currentModule = 'wordProblems';
+      else if (q.id.startsWith('bt_')) fastGame._currentModule = 'brainTeasers';
+      else if (q.id.startsWith('nt_') || q.id.startsWith('cnt_')) fastGame._currentModule = 'numberTheory';
+      else if (q.id.startsWith('est_')) fastGame._currentModule = 'estimation';
+      else if (q.id.startsWith('ds_')) fastGame._currentModule = 'dataSufficiency';
+      else if (q.id.startsWith('ed_')) fastGame._currentModule = 'errorDetection';
+      else if (q.id.startsWith('fq_')) fastGame._currentModule = 'fastQuant';
+      else if (q.id.startsWith('qs_')) fastGame._currentModule = 'quantStrategy';
+      else if (q.id.startsWith('cd_')) fastGame._currentModule = 'constraintDeduction';
+      else if (q.id.startsWith('mq_')) fastGame._currentModule = 'mimQuant';
+      else if (q.id.startsWith('di_')) fastGame._currentModule = 'dataInsights';
+      else if (q.id.startsWith('cr_')) fastGame._currentModule = 'criticalReasoning';
+      else if (q.id.startsWith('rd_')) fastGame._currentModule = 'riddles';
+      else fastGame._currentModule = 'brainTeasers';
+    } else {
+      fastGame._currentModule = q.meta?.module || 'arithmetic';
+    }
+
+    let questionHtml;
+    if (q.choices) {
+      // Multiple choice
+      const choicesHtml = q.choices.map((c, i) => 
+        `<button class="choice-btn" onclick="App.fastGameAnswer(${i})">${esc(c)}</button>`
+      ).join('');
+      questionHtml = `
+        <div class="fg-question-text">${esc(q.text)}</div>
+        ${q.statement1 ? `<div class="ds-statements"><p><strong>Statement 1:</strong> ${esc(q.statement1)}</p><p><strong>Statement 2:</strong> ${esc(q.statement2)}</p></div>` : ''}
+        <div class="choices">${choicesHtml}</div>
+      `;
+    } else {
+      // Input type
+      questionHtml = `
+        <div class="fg-question-text">${esc(q.text)}</div>
+        <div style="display:flex;gap:10px;align-items:center">
+          <input type="text" id="fg-input" class="answer-input" inputmode="decimal" autocomplete="off" placeholder="Your answer" onkeydown="if(event.key==='Enter')App.fastGameSubmitInput()">
+          <button class="btn btn-primary" onclick="App.fastGameSubmitInput()">Submit</button>
+        </div>
+      `;
+    }
+
+    el.innerHTML = `
+      <div class="fastgame-play">
+        <div class="fg-header">
+          <div class="fg-score">${fastGame.correct}/${fastGame.total}</div>
+          <div class="fg-timer" id="fg-timer">--:--</div>
+          <button class="btn btn-outline btn-sm" onclick="App.endFastGame()">End</button>
+        </div>
+        <div class="fg-progress-bar">
+          <div class="fg-progress-fill" style="width:${Math.min(100, ((Date.now() - fastGame.startTime) / (fastGame.timeLimit * 1000)) * 100)}%"></div>
+        </div>
+        <div class="fg-question-card">
+          ${questionHtml}
+        </div>
+      </div>
+    `;
+
+    // Focus input if present
+    const inp = document.getElementById('fg-input');
+    if (inp) setTimeout(() => inp.focus(), 50);
+  }
+
+  function fastGameAnswer(choiceIdx) {
+    if (!fastGame || !fastGame.active) return;
+    const q = fastGame._currentQ;
+    const ok = choiceIdx === q.correct;
+    const timeMs = Math.round(performance.now() - fastGame._qStart);
+    
+    fastGame.total++;
+    if (ok) fastGame.correct++;
+    
+    // Record in stats
+    const userAns = q.choices[choiceIdx];
+    const correctAns = q.choices[q.correct];
+    Stats.record(fastGame._currentModule, q.text, userAns, correctAns, ok, timeMs);
+    
+    haptic(ok ? 'success' : 'error');
+    
+    // Brief visual feedback then next
+    const btns = document.querySelectorAll('.choice-btn');
+    btns.forEach((b, i) => {
+      if (i === q.correct) b.classList.add('correct');
+      if (i === choiceIdx && !ok) b.classList.add('wrong');
+      b.disabled = true;
+    });
+    
+    setTimeout(() => {
+      fastGame.index++;
+      renderFastGameQuestion();
+    }, ok ? 300 : 1200);
+  }
+
+  function fastGameSubmitInput() {
+    if (!fastGame || !fastGame.active) return;
+    const inp = document.getElementById('fg-input');
+    if (!inp || !inp.value.trim()) return;
+    
+    const q = fastGame._currentQ;
+    const userAns = inp.value.trim();
+    const correctAns = String(q.correctAnswer);
+    const ok = checkAnswer(userAns, correctAns);
+    const timeMs = Math.round(performance.now() - fastGame._qStart);
+    
+    fastGame.total++;
+    if (ok) fastGame.correct++;
+    
+    Stats.record(fastGame._currentModule, q.text, userAns, correctAns, ok, timeMs);
+    haptic(ok ? 'success' : 'error');
+    
+    inp.classList.add(ok ? 'correct' : 'wrong');
+    if (!ok) {
+      const feedback = document.createElement('div');
+      feedback.className = 'fg-correct-feedback';
+      feedback.textContent = `Correct: ${correctAns}`;
+      inp.parentElement.appendChild(feedback);
+    }
+    
+    setTimeout(() => {
+      fastGame.index++;
+      renderFastGameQuestion();
+    }, ok ? 300 : 1500);
+  }
+
+  function endFastGame() {
+    if (!fastGame) return;
+    fastGame.active = false;
+    if (fastGame.timerInterval) clearInterval(fastGame.timerInterval);
+    
+    const elapsed = Math.floor((Date.now() - fastGame.startTime) / 1000);
+    const acc = fastGame.total > 0 ? Math.round((fastGame.correct / fastGame.total) * 100) : 0;
+    
+    const el = document.getElementById('view-fastGame');
+    el.innerHTML = `
+      <div class="fastgame-results">
+        <div class="fg-results-icon">${acc >= 80 ? '🏆' : acc >= 60 ? '🎯' : '💪'}</div>
+        <h2>Game Over!</h2>
+        <div class="fg-results-grid">
+          <div class="fg-result-item">
+            <div class="fg-result-value">${fastGame.correct}/${fastGame.total}</div>
+            <div class="fg-result-label">Correct</div>
+          </div>
+          <div class="fg-result-item">
+            <div class="fg-result-value">${acc}%</div>
+            <div class="fg-result-label">Accuracy</div>
+          </div>
+          <div class="fg-result-item">
+            <div class="fg-result-value">${Math.floor(elapsed / 60)}:${String(elapsed % 60).padStart(2, '0')}</div>
+            <div class="fg-result-label">Time</div>
+          </div>
+        </div>
+        <div class="fg-results-actions">
+          <button class="btn btn-primary" onclick="App.startFastGame()">Play Again</button>
+          <button class="btn btn-outline" onclick="App.navigate('dashboard')">Home</button>
+        </div>
+      </div>
+    `;
+  }
+
+  // ── LEADERBOARD ──
+  function renderLeaderboard() {
+    const el = document.getElementById('view-leaderboard');
+    el.innerHTML = `
+      <div class="lb-container">
+        <div class="lb-header">
+          <button class="btn btn-outline btn-sm" onclick="App.navigate('dashboard')">← Back</button>
+          <h2>🏅 Leaderboard</h2>
+        </div>
+        <div class="lb-submit-section">
+          <p class="lb-submit-desc">Share your progress with the community!</p>
+          <div class="lb-submit-row">
+            <input type="text" id="lb-nickname" class="answer-input" placeholder="Your nickname" maxlength="20" style="flex:1">
+            <button class="btn btn-primary" onclick="App.submitToLeaderboard()">Submit</button>
+          </div>
+          <div id="lb-submit-status"></div>
+        </div>
+        <div id="lb-list" class="lb-list">
+          <div class="lb-loading">Loading...</div>
+        </div>
+      </div>
+    `;
+
+    const lastNick = localStorage.getItem('gmat_lb_nickname');
+    if (lastNick) document.getElementById('lb-nickname').value = lastNick;
+
+    Stats.getLeaderboard(entries => {
+      renderLeaderboardList(entries);
+    });
+  }
+
+  function renderLeaderboardList(entries) {
+    const el = document.getElementById('lb-list');
+    if (!el) return;
+
+    if (entries.length === 0) {
+      el.innerHTML = '<div class="lb-empty">No scores yet. Be the first!</div>';
+      return;
+    }
+
+    let html = `
+      <div class="lb-table-header">
+        <span class="lb-rank">#</span>
+        <span class="lb-name">Player</span>
+        <span class="lb-xp">XP</span>
+        <span class="lb-level">Level</span>
+        <span class="lb-acc">Acc.</span>
+      </div>
+    `;
+
+    entries.forEach((entry, i) => {
+      const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : `${i + 1}`;
+      html += `
+        <div class="lb-row ${i < 3 ? 'lb-row-top' : ''}">
+          <span class="lb-rank">${medal}</span>
+          <span class="lb-name">${esc(entry.nickname)}${entry.streak > 0 ? ` <span class="lb-streak-badge">🔥${entry.streak}</span>` : ''}</span>
+          <span class="lb-xp">${entry.xp.toLocaleString()}</span>
+          <span class="lb-level">Lv${entry.level}</span>
+          <span class="lb-acc">${entry.accuracy}%</span>
+        </div>
+      `;
+    });
+
+    el.innerHTML = html;
+  }
+
+  function submitToLeaderboard() {
+    const inp = document.getElementById('lb-nickname');
+    const statusEl = document.getElementById('lb-submit-status');
+    if (!inp || !inp.value.trim()) {
+      if (statusEl) statusEl.innerHTML = '<span style="color:var(--danger)">Enter a nickname first</span>';
+      return;
+    }
+
+    // Disable button to prevent spam
+    const submitBtn = inp.parentElement.querySelector('.btn-primary');
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending...'; }
+
+    const nickname = inp.value.trim();
+    try { localStorage.setItem('gmat_lb_nickname', nickname); } catch {}
+
+    if (statusEl) statusEl.innerHTML = '<span style="color:var(--text-light)">Submitting...</span>';
+
+    Stats.submitScore(nickname, (success) => {
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Submit'; }
+      if (statusEl) {
+        statusEl.innerHTML = success
+          ? '<span style="color:var(--success)">✓ Score submitted!</span>'
+          : '<span style="color:var(--warning)">Saved locally (offline)</span>';
+      }
+      Stats.getLeaderboard(entries => {
+        renderLeaderboardList(entries);
+      });
+    });
   }
 
   // ── USER MANAGEMENT ──
@@ -441,16 +991,18 @@ const App = (() => {
     const el = getEl('question-sidebar');
     if (!el) return;
     const total = questionPool.length;
-    const done = questionPool.filter(q => completedIds.has(q.id)).length;
+    const done = questionPool.filter(q => completedIds[q.id]).length;
+    const correctCount = questionPool.filter(q => completedIds[q.id] === 'correct').length;
 
-    let html = `<div class="sidebar-header">${done}/${total} completed</div><ul class="sidebar-list">`;
+    let html = `<div class="sidebar-header">${correctCount}✓ ${done - correctCount}✗ / ${total}</div><ul class="sidebar-list">`;
     questionPool.forEach((q, i) => {
-      const isDone = completedIds.has(q.id);
+      const status = completedIds[q.id]; // 'correct', 'wrong', or undefined
+      const isDone = !!status;
       const isCurrent = i === questionIndex;
       const preview = q.text.length > 45 ? q.text.slice(0, 42) + '…' : q.text;
-      html += `<li class="sidebar-item${isCurrent ? ' current' : ''}${isDone ? ' done' : ''}" onclick="App.goToQuestion(${i})" title="${esc(q.text)}">
+      html += `<li class="sidebar-item${isCurrent ? ' current' : ''}${status === 'correct' ? ' done-correct' : status === 'wrong' ? ' done-wrong' : ''}" onclick="App.goToQuestion(${i})" title="${esc(q.text)}">
         <span class="sidebar-num">${i+1}</span>
-        <span class="sidebar-status">${isDone ? '✓' : '○'}</span>
+        <span class="sidebar-status ${status === 'correct' ? 'status-correct' : status === 'wrong' ? 'status-wrong' : ''}">${status === 'correct' ? '✓' : status === 'wrong' ? '✗' : '○'}</span>
         <span class="sidebar-text">${esc(preview)}</span>
       </li>`;
     });
@@ -637,21 +1189,27 @@ const App = (() => {
     sessionTotal++;
     if (ok) sessionCorrect++;
     sessionTimes.push(timeMs);
-    Stats.record(currentModule, currentQuestion.text, userAns, correctAns, ok, timeMs);
+    const result = Stats.record(currentModule, currentQuestion.text, userAns, correctAns, ok, timeMs);
+    lastEarnedXP = result.totalXP;
+    haptic(ok ? 'success' : 'error');
+    if (ok) showStreakBurst(result.data.currentStreak);
     // Mark question as completed in browser
-    if (currentQuestion.id) { completedIds.add(currentQuestion.id); saveCompleted(); }
-    updateSessionUI();
+    if (currentQuestion.id) { completedIds[currentQuestion.id] = ok ? 'correct' : 'wrong'; saveCompleted(); }
+    updateSessionUI(result.data);
+    // Adaptive difficulty tracking
+    adaptiveHistory.push({ correct: ok, timeMs });
+    checkAdaptiveDifficulty();
     // Update sidebar if in browser mode
     if (isBrowserModule(currentModule) && getEl('question-sidebar')) {
       renderSidebar();
     }
   }
 
-  function updateSessionUI() {
+  function updateSessionUI(statsData) {
     const s = getEl('session-score');
     const st = getEl('session-streak');
     if (s) s.textContent = `${sessionCorrect}/${sessionTotal}`;
-    if (st) st.textContent = Stats.getAll().currentStreak;
+    if (st) st.textContent = (statsData || Stats.getAll()).currentStreak;
   }
 
   // ── EXPLANATION MODAL ──
@@ -661,6 +1219,7 @@ const App = (() => {
       setTimeout(() => nextQuestion(), 300);
       return;
     }
+
     const overlay = document.getElementById('modal-overlay');
     const modal = document.getElementById('modal-content');
     let trickHtml = '';
@@ -684,8 +1243,12 @@ const App = (() => {
       <div class="result-icon ${ok?'correct':'wrong'}">${ok?'✓':'✗'}</div>
       <h3>${ok?'Correct!':'Incorrect'}</h3>
       ${!ok ? `<div class="correct-answer">Correct answer: ${esc(String(correctAns))}</div>` : ''}
-      <p style="margin-bottom:16px">Time: <strong>${formatStopwatch(timeMs)}</strong></p>
-      ${expl ? `<div class="explanation-block"><h4>Step-by-Step Solution</h4><p style="white-space:pre-line">${esc(expl)}</p></div>` : ''}
+      <p style="margin-bottom:8px">Time: <strong>${formatStopwatch(timeMs)}</strong></p>
+      <div class="xp-earned ${ok ? 'correct' : ''}">+${lastEarnedXP} XP</div>
+      ${expl ? (expl.length > 200
+        ? `<div class="explanation-block"><h4>Step-by-Step Solution</h4><p style="white-space:pre-line" class="expl-short">${esc(expl.slice(0, 180))}…</p><p style="white-space:pre-line;display:none" class="expl-full">${esc(expl)}</p><button class="btn btn-outline btn-sm expl-toggle" onclick="var b=this.closest('.explanation-block');b.querySelector('.expl-short').style.display='none';b.querySelector('.expl-full').style.display='block';this.style.display='none'">See full reasoning →</button></div>`
+        : `<div class="explanation-block"><h4>Step-by-Step Solution</h4><p style="white-space:pre-line">${esc(expl)}</p></div>`)
+      : ''}
       ${trickHtml}
       <div class="btn-group">
         <button class="btn btn-primary" onclick="App.closeModalAndNext()">${hasNext ? 'Next Question →' : 'Done'}</button>
@@ -1021,6 +1584,33 @@ const App = (() => {
       <div class="btn-group" style="margin-top:16px">
         <button class="btn btn-outline btn-sm" onclick="App.navigate('dashboard')">← Back to Dashboard</button>
       </div>`;
+
+    // Exam history
+    const history = Stats.getExamHistory();
+    if (history.length > 0) {
+      let histHtml = '<h3 style="margin-top:32px;margin-bottom:12px">📋 Past Exams</h3>';
+      histHtml += '<div class="exam-history-list">';
+      history.slice().reverse().forEach((exam, idx) => {
+        const realIdx = history.length - 1 - idx;
+        const date = new Date(exam.date);
+        const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        const timeStr = date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        histHtml += `
+          <div class="exam-history-item" onclick="App.reviewPastExam(${realIdx})">
+            <div class="exam-hist-left">
+              <div class="exam-hist-score">${exam.score}</div>
+              <div class="exam-hist-date">${dateStr} ${timeStr}</div>
+            </div>
+            <div class="exam-hist-right">
+              <div class="exam-hist-detail">${exam.correct}/${exam.total} · ${exam.accuracy}%</div>
+              <div class="exam-hist-arrow">→</div>
+            </div>
+          </div>
+        `;
+      });
+      histHtml += '</div>';
+      el.innerHTML += histHtml;
+    }
   }
 
   function setExamLength(btn) {
@@ -1237,16 +1827,36 @@ const App = (() => {
     const avgTime = answered > 0 ? Math.round(details.filter(d => d.isAnswered).reduce((s, d) => s + d.time, 0) / answered) : 0;
 
     const rawScore = (correct / total) * 100;
-    const estScore = Math.round(205 + (rawScore / 100) * 600);
+    const estScore = 205 + Math.round((rawScore / 100) * 60) * 10;
 
     const el = document.getElementById('view-examSim');
     const reviewHtml = details.map((d, i) => {
       const statusClass = !d.isAnswered ? 'skipped' : d.isCorrect ? 'correct' : 'wrong';
       const statusIcon = !d.isAnswered ? '○' : d.isCorrect ? '✓' : '✗';
+      const userAnswer = d.isAnswered ? d.q.choices[d.userIdx] : '—';
+      const correctAnswer = d.q.choices[d.q.correct];
+      const explText = d.q.explanation || '';
       return `<div class="exam-review-item ${statusClass}">
-        <span class="exam-review-num">${i+1}. ${statusIcon}</span>
-        <span class="exam-review-text">${esc(d.q.text.length > 80 ? d.q.text.slice(0,77)+'…' : d.q.text)}</span>
-        <span class="exam-review-time">${Stats.formatTime(Math.round(d.time))}</span>
+        <div class="exam-review-header" onclick="this.parentElement.classList.toggle('expanded')">
+          <span class="exam-review-num">${i+1}. ${statusIcon}</span>
+          <span class="exam-review-text">${esc(d.q.text.length > 80 ? d.q.text.slice(0,77)+'…' : d.q.text)}</span>
+          <span class="exam-review-time">${Stats.formatTime(Math.round(d.time))}</span>
+          <span class="exam-review-toggle">▼</span>
+        </div>
+        <div class="exam-review-detail">
+          <p class="exam-review-q" style="white-space:pre-line">${esc(d.q.text)}</p>
+          <div class="exam-review-answers">
+            ${d.q.choices.map((c, ci) => {
+              let cls = '';
+              if (ci === d.q.correct) cls = 'review-correct';
+              else if (ci === d.userIdx && !d.isCorrect) cls = 'review-wrong';
+              const marker = ci === d.userIdx ? '► ' : '  ';
+              return `<div class="exam-review-choice ${cls}">${marker}${esc(c)}</div>`;
+            }).join('')}
+          </div>
+          ${!d.isAnswered ? '<p class="review-note">Not answered</p>' : ''}
+          ${explText ? `<div class="exam-review-expl"><strong>Explanation:</strong> <span style="white-space:pre-line">${esc(explText)}</span></div>` : ''}
+        </div>
       </div>`;
     }).join('');
 
@@ -1254,10 +1864,22 @@ const App = (() => {
       <h2 style="margin-bottom:6px">📊 Exam Results</h2>
       <p style="color:var(--text-light);margin-bottom:20px">Exam completed in ${Math.floor(totalTime/60000)} min ${Math.floor((totalTime%60000)/1000)} sec</p>
       <div class="stats-grid" style="margin-bottom:24px">
-        <div class="stat-card"><div class="stat-value" style="color:var(--primary)">${estScore}</div><div class="stat-label">Est. Score (approx.)</div></div>
+        <div class="stat-card"><div class="stat-value" style="color:var(--primary)">${estScore}</div><div class="stat-label">Est. Score (approx.) <span class="score-info-btn" onclick="event.stopPropagation();document.getElementById('gmat-score-info').classList.toggle('hidden')">ⓘ</span></div></div>
         <div class="stat-card"><div class="stat-value">${correct}/${total}</div><div class="stat-label">Correct</div></div>
         <div class="stat-card"><div class="stat-value">${accuracy}%</div><div class="stat-label">Accuracy</div></div>
         <div class="stat-card"><div class="stat-value">${Stats.formatTime(avgTime)}</div><div class="stat-label">Avg Time</div></div>
+      </div>
+      <div id="gmat-score-info" class="score-info-panel hidden">
+        <h4>How GMAT Scoring Works</h4>
+        <p>The GMAT Focus Edition scores range from <strong>205 to 805</strong>, in 10-point increments.</p>
+        <ul>
+          <li><strong>Median score:</strong> ~552 (50th percentile)</li>
+          <li><strong>700+:</strong> Top ~12% — competitive for top MBA programs</li>
+          <li><strong>650-700:</strong> Strong score for most programs</li>
+          <li><strong>600-650:</strong> Average — sufficient for many programs</li>
+          <li><strong>Below 600:</strong> Below average — may limit options</li>
+        </ul>
+        <p style="margin-top:8px;font-size:0.82rem;color:var(--text-light)">⚠ This score is a rough approximation based on accuracy only. The real GMAT uses adaptive difficulty, varied question types (Quant, Verbal, DI), and a proprietary algorithm. Use this as a directional guide, not a prediction.</p>
       </div>
       <h3 style="margin-bottom:12px">Question Review</h3>
       <div class="exam-review-list">${reviewHtml}</div>
@@ -1266,7 +1888,84 @@ const App = (() => {
         <button class="btn btn-outline" onclick="App.navigate('dashboard')">Dashboard</button>
       </div>`;
 
+    // Save exam to history
+    Stats.saveExamResult({
+      date: new Date().toISOString(),
+      score: estScore,
+      correct,
+      total,
+      accuracy,
+      avgTime,
+      timeMs: totalTime,
+      config: examState.config,
+      questions: details.map(d => ({
+        text: d.q.text,
+        choices: d.q.choices,
+        correct: d.q.correct,
+        userIdx: d.userIdx,
+        isCorrect: d.isCorrect,
+        isAnswered: d.isAnswered,
+        time: Math.round(d.time),
+        explanation: d.q.explanation || '',
+      })),
+    });
+
     examState = null;
+  }
+
+  function reviewPastExam(idx) {
+    const history = Stats.getExamHistory();
+    const exam = history[idx];
+    if (!exam) return;
+
+    const el = document.getElementById('view-examSim');
+    const totalTime = exam.timeMs;
+
+    const reviewHtml = exam.questions.map((d, i) => {
+      const statusClass = !d.isAnswered ? 'skipped' : d.isCorrect ? 'correct' : 'wrong';
+      const statusIcon = !d.isAnswered ? '○' : d.isCorrect ? '✓' : '✗';
+      const explText = d.explanation || '';
+      return `<div class="exam-review-item ${statusClass}">
+        <div class="exam-review-header" onclick="this.parentElement.classList.toggle('expanded')">
+          <span class="exam-review-num">${i+1}. ${statusIcon}</span>
+          <span class="exam-review-text">${esc(d.text.length > 80 ? d.text.slice(0,77)+'…' : d.text)}</span>
+          <span class="exam-review-time">${Stats.formatTime(d.time)}</span>
+          <span class="exam-review-toggle">▼</span>
+        </div>
+        <div class="exam-review-detail">
+          <p class="exam-review-q" style="white-space:pre-line">${esc(d.text)}</p>
+          <div class="exam-review-answers">
+            ${d.choices.map((c, ci) => {
+              let cls = '';
+              if (ci === d.correct) cls = 'review-correct';
+              else if (ci === d.userIdx && !d.isCorrect) cls = 'review-wrong';
+              const marker = ci === d.userIdx ? '► ' : '  ';
+              return `<div class="exam-review-choice ${cls}">${marker}${esc(c)}</div>`;
+            }).join('')}
+          </div>
+          ${!d.isAnswered ? '<p class="review-note">Not answered</p>' : ''}
+          ${explText ? `<div class="exam-review-expl"><strong>Explanation:</strong> <span style="white-space:pre-line">${esc(explText)}</span></div>` : ''}
+        </div>
+      </div>`;
+    }).join('');
+
+    el.innerHTML = `
+      <div class="exam-results-header">
+        <button class="btn btn-outline btn-sm" onclick="App.renderExamSetup()">← Back</button>
+        <h2>📊 Exam Review</h2>
+      </div>
+      <p style="color:var(--text-light);margin-bottom:20px">${new Date(exam.date).toLocaleDateString('en-US', { month:'long', day:'numeric', year:'numeric' })}</p>
+      <div class="stats-grid" style="margin-bottom:24px">
+        <div class="stat-card"><div class="stat-value" style="color:var(--primary)">${exam.score}</div><div class="stat-label">Est. Score</div></div>
+        <div class="stat-card"><div class="stat-value">${exam.correct}/${exam.total}</div><div class="stat-label">Correct</div></div>
+        <div class="stat-card"><div class="stat-value">${exam.accuracy}%</div><div class="stat-label">Accuracy</div></div>
+        <div class="stat-card"><div class="stat-value">${Stats.formatTime(exam.avgTime)}</div><div class="stat-label">Avg Time</div></div>
+      </div>
+      <h3 style="margin-bottom:12px">Question Review</h3>
+      <div class="exam-review-list">${reviewHtml}</div>
+      <div class="btn-group" style="margin-top:24px">
+        <button class="btn btn-outline" onclick="App.renderExamSetup()">Back to Exams</button>
+      </div>`;
   }
 
   // ── UTILS ──
@@ -1326,7 +2025,7 @@ const App = (() => {
       link.addEventListener('click', e => {
         e.preventDefault();
         const view = link.dataset.view;
-        if (['multiplication','arithmetic','percentages','wordProblems','brainTeasers','numberTheory','estimation','dataSufficiency','errorDetection','fastQuant','quantStrategy','constraintDeduction','speedRecognition','memoryChunking','visualSpatial','mimQuant','dataInsights','criticalReasoning'].includes(view)) {
+        if (['multiplication','arithmetic','percentages','wordProblems','brainTeasers','numberTheory','estimation','dataSufficiency','errorDetection','fastQuant','quantStrategy','constraintDeduction','speedRecognition','memoryChunking','visualSpatial','mimQuant','dataInsights','criticalReasoning','riddles'].includes(view)) {
           startModule(view);
         } else {
           navigate(view);
@@ -1356,6 +2055,9 @@ const App = (() => {
     renderReview, toggleTheme,
     renderExamSetup, startExam, setExamLength, setExamDiff,
     examSelectChoice, examToggleFlag, examPrev, examNext, examFinish,
+    reviewPastExam,
+    startFastGame, launchFastGame, setFastGameTime, fastGameAnswer, fastGameSubmitInput, endFastGame, renderAllGames,
+    submitToLeaderboard, renderLeaderboard,
   };
 })();
 

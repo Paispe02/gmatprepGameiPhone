@@ -1,0 +1,227 @@
+[
+  {
+    "id": "pl1",
+    "category": "profitLoss",
+    "difficulty": "easy",
+    "text": "An item is bought for $80 and sold for $100. What is the profit percentage?",
+    "choices": [
+      "15%",
+      "20%",
+      "25%",
+      "30%",
+      "35%"
+    ],
+    "correct": 2,
+    "explanation": "Profit = 100 − 80 = $20. Profit % = (20 ÷ 80) × 100 = 25%.\n\nRemember: Profit % is always relative to COST price, not selling price."
+  },
+  {
+    "id": "pl2",
+    "category": "profitLoss",
+    "difficulty": "easy",
+    "text": "A store offers a 20% discount on an item marked at $50. What is the selling price?",
+    "choices": [
+      "$30",
+      "$35",
+      "$40",
+      "$42.50",
+      "$45"
+    ],
+    "correct": 2,
+    "explanation": "Discount: 50 × 0.20 = $10. Selling price: 50 − 10 = $40.\n\nOr directly: 50 × 0.80 = $40."
+  },
+  {
+    "id": "pl3",
+    "category": "profitLoss",
+    "difficulty": "medium",
+    "text": "A merchant bought goods for $500, marked them 40% above cost. After giving a 15% discount on the marked price, what was the profit?",
+    "choices": [
+      "$70",
+      "$95",
+      "$120",
+      "$150",
+      "$175"
+    ],
+    "correct": 1,
+    "explanation": "Marked price: 500 × 1.40 = $700.\nDiscount: 700 × 0.15 = $105. Selling price: 700 − 105 = $595.\nProfit: 595 − 500 = $95."
+  },
+  {
+    "id": "pl4",
+    "category": "profitLoss",
+    "difficulty": "medium",
+    "text": "A man buys 12 items for $60 and sells them at $7 each. What is the profit percentage?",
+    "choices": [
+      "28%",
+      "35%",
+      "40%",
+      "50%",
+      "60%"
+    ],
+    "correct": 2,
+    "explanation": "Cost: $60. Revenue: 12 × 7 = $84. Profit: 84 − 60 = $24.\nProfit %: (24 ÷ 60) × 100 = 40%."
+  },
+  {
+    "id": "pl5",
+    "category": "profitLoss",
+    "difficulty": "hard",
+    "text": "A shopkeeper sells an item at 12% loss for $88. What was the cost price?",
+    "choices": [
+      "$78",
+      "$88",
+      "$100",
+      "$110",
+      "$120"
+    ],
+    "correct": 2,
+    "explanation": "Selling at 12% loss means SP = 88% of CP.\n0.88 × CP = 88. CP = 88 ÷ 0.88 = $100.\n\nCheck: 100 × 0.88 = 88 ✓"
+  },
+  {
+    "id": "pl6",
+    "category": "profitLoss",
+    "difficulty": "easy",
+    "text": "Buy 10 pens at $8 each, sell at $10 each. Total profit?",
+    "choices": [
+      "$10",
+      "$15",
+      "$20",
+      "$25",
+      "$30"
+    ],
+    "correct": 2,
+    "explanation": "Cost: 10×$8=$80. Revenue: 10×$10=$100. Profit=$20."
+  },
+  {
+    "id": "pl7",
+    "category": "profitLoss",
+    "difficulty": "easy",
+    "text": "Article sold at $450 with 10% loss. Cost price?",
+    "choices": [
+      "$400",
+      "$450",
+      "$495",
+      "$500",
+      "$550"
+    ],
+    "correct": 3,
+    "explanation": "SP=CP×0.9. 450=0.9×CP → CP=$500."
+  },
+  {
+    "id": "pl8",
+    "category": "profitLoss",
+    "difficulty": "easy",
+    "text": "Buy at $200, sell at $250. Profit percentage?",
+    "choices": [
+      "15%",
+      "20%",
+      "25%",
+      "30%",
+      "50%"
+    ],
+    "correct": 2,
+    "explanation": "Profit=$50. Profit%=50/200×100=25%."
+  },
+  {
+    "id": "pl9",
+    "category": "profitLoss",
+    "difficulty": "medium",
+    "text": "Two items sold for $600 each. On one 20% gain, on other 20% loss. Net result?",
+    "choices": [
+      "$50 profit",
+      "No gain/loss",
+      "$25 loss",
+      "$50 loss",
+      "$100 loss"
+    ],
+    "correct": 3,
+    "explanation": "Item 1 (gain): CP=600/1.2=$500. Profit=$100.\nItem 2 (loss): CP=600/0.8=$750. Loss=$150.\nNet=$100−$150=−$50 loss.\n\n⚠️ GMAT trap: same SP with equal % gain & loss → always NET LOSS.\nFormula: Loss%=(common%)²/100=400/100=4%."
+  },
+  {
+    "id": "pl10",
+    "category": "profitLoss",
+    "difficulty": "medium",
+    "text": "Goods marked 40% above cost, then 20% discount. Profit percentage?",
+    "choices": [
+      "8%",
+      "10%",
+      "12%",
+      "15%",
+      "20%"
+    ],
+    "correct": 2,
+    "explanation": "Let CP=$100. MP=$140. Discount=$28. SP=$112.\nProfit=$12 → 12%.\nFormula: 1.4×0.8−1=1.12−1=0.12=12%."
+  },
+  {
+    "id": "pl11",
+    "category": "profitLoss",
+    "difficulty": "medium",
+    "text": "Cost of 5 oranges = selling price of 4 oranges. Profit percentage?",
+    "choices": [
+      "15%",
+      "20%",
+      "25%",
+      "30%",
+      "40%"
+    ],
+    "correct": 2,
+    "explanation": "Let CP=c. Then 5c=SP of 4 → SP=5c/4.\nProfit per unit=5c/4−c=c/4. Profit%=(c/4)/c×100=25%."
+  },
+  {
+    "id": "pl12",
+    "category": "profitLoss",
+    "difficulty": "hard",
+    "text": "Dealer buys 20 items for the price of 15 at list price. Sells all 20 at list price. Profit %?",
+    "choices": [
+      "20%",
+      "25%",
+      "30%",
+      "33.33%",
+      "40%"
+    ],
+    "correct": 3,
+    "explanation": "Let list=$1. Cost of 20=$15. Revenue=$20.\nProfit=$5. Profit%=5/15×100=33.33%."
+  },
+  {
+    "id": "pl13",
+    "category": "profitLoss",
+    "difficulty": "hard",
+    "text": "After successive discounts of 20% and 10%, price is $360. Original price?",
+    "choices": [
+      "$450",
+      "$475",
+      "$500",
+      "$525",
+      "$550"
+    ],
+    "correct": 2,
+    "explanation": "P×0.8×0.9=360 → P×0.72=360 → P=$500.\n⚠️ Total discount≠30%! It's 1−0.72=28%."
+  },
+  {
+    "id": "pl14",
+    "category": "profitLoss",
+    "difficulty": "hard",
+    "text": "A and B invest $15,000 and $25,000 in business. Profit=$12,000. A's share?",
+    "choices": [
+      "$3,600",
+      "$4,000",
+      "$4,500",
+      "$5,000",
+      "$6,000"
+    ],
+    "correct": 2,
+    "explanation": "Ratio: 15k:25k=3:5. A's share=12,000×3/8=$4,500."
+  },
+  {
+    "id": "pl15",
+    "category": "profitLoss",
+    "difficulty": "hard",
+    "text": "Shopkeeper gives 10% discount on marked price and still makes 8% profit. Marked price is what % above cost?",
+    "choices": [
+      "12%",
+      "15%",
+      "18%",
+      "20%",
+      "25%"
+    ],
+    "correct": 3,
+    "explanation": "Let CP=100. SP=108 (8% profit). MP×0.9=108 → MP=120.\nMP is 20% above CP.\nFormula: markup=(1+profit%)/(1−discount%)−1=(1.08/0.9)−1=0.2=20%."
+  }
+]

@@ -1,0 +1,58 @@
+{
+  "wordProblems": [
+    "distanceRateTime.json",
+    "geometry.json",
+    "mixture.json",
+    "numberProperties.json",
+    "probability.json",
+    "profitLoss.json",
+    "workRate.json"
+  ],
+  "brainTeasers": [
+    "balanceScale.json",
+    "lateral.json",
+    "logic.json",
+    "numberPattern.json",
+    "truthLiar.json",
+    "cryptarithmetic.json",
+    "clockPuzzle.json",
+    "agePuzzle.json",
+    "probabilityParadox.json",
+    "gameStrategy.json",
+    "geometric.json",
+    "riverCrossing.json"
+  ],
+  "numberTheory": [
+    "numberTheory.json"
+  ],
+  "estimation": [
+    "estimation.json"
+  ],
+  "dataSufficiency": [
+    "dataSufficiency.json"
+  ],
+  "errorDetection": [
+    "errorDetection.json"
+  ],
+  "fastQuant": [
+    "fastQuant.json"
+  ],
+  "quantStrategy": [
+    "quantStrategy.json"
+  ],
+  "constraintDeduction": [
+    "constraintDeduction.json"
+  ],
+  "mimQuant": [
+    "mimQuant.json"
+  ],
+  "dataInsights": [
+    "dataInsights.json"
+  ],
+  "criticalReasoning": [
+    "criticalReasoning.json"
+  ],
+  "riddles": [
+    "riddles.json"
+  ]
+}

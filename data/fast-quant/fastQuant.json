@@ -1,0 +1,752 @@
+[
+  {
+    "id": "fq1",
+    "category": "fastQuant",
+    "difficulty": "easy",
+    "text": "A store marks up its products 40% above cost and then offers a seasonal discount of 20% on the marked price. During a clearance event, an additional 10% discount is given on the already-discounted price. If the original cost of an item was $50, what is the final selling price after both discounts?",
+    "choices": [
+      "$44.80",
+      "$48.00",
+      "$50.40",
+      "$52.00",
+      "$56.00"
+    ],
+    "correct": 2,
+    "explanation": "Quick parse: Cost=$50, Markup 40%, then two successive discounts 20% and 10%.\n50 × 1.4 = 70. 70 × 0.8 = 56. 56 × 0.9 = 50.40.\n\nSpeed tip: Ignore 'seasonal' and 'clearance' fluff. Extract: Cost → Markup → Discount1 → Discount2."
+  },
+  {
+    "id": "fq2",
+    "category": "fastQuant",
+    "difficulty": "easy",
+    "text": "During a school fundraiser last Thursday, Mrs. Patterson's 4th grade class of 28 students sold lemonade at $2 per cup. Meanwhile, Mr. Garcia's 5th grade class of 32 students sold cookies at $3 per box. If Mrs. Patterson's class sold a total of 150 cups of lemonade, how much revenue did her class generate?",
+    "choices": [
+      "$250",
+      "$280",
+      "$300",
+      "$320",
+      "$450"
+    ],
+    "correct": 2,
+    "explanation": "Quick parse: Lemonade $2/cup, sold 150 cups.\n150 × 2 = $300.\n\nSpeed tip: Everything about Mr. Garcia's class, class sizes, and cookies is irrelevant. Price × quantity sold."
+  },
+  {
+    "id": "fq3",
+    "category": "fastQuant",
+    "difficulty": "easy",
+    "text": "In a certain office building located on the corner of 5th Avenue and Main Street, there are 12 floors. Each floor has 8 offices. The building was constructed in 1987 and renovated twice since then. If the landlord wants to install new carpeting in every office at a cost of $200 per office, what is the total carpeting cost?",
+    "choices": [
+      "$14,400",
+      "$16,800",
+      "$24,000",
+      "$21,600",
+      "$19,200"
+    ],
+    "correct": 4,
+    "explanation": "Quick parse: 12 floors × 8 offices × $200/office.\n12 × 8 = 96 offices. 96 × 200 = $19,200.\n\nSpeed tip: Location, year, and renovations are noise. Floors × offices/floor × cost/office."
+  },
+  {
+    "id": "fq4",
+    "category": "fastQuant",
+    "difficulty": "easy",
+    "text": "Jennifer, who graduated from Stanford with honors in 2015 and has been working in consulting for 8 years, earns an annual salary of $120,000. Her company offers a year-end bonus equal to 15% of annual salary. What is Jennifer's bonus amount?",
+    "choices": [
+      "$12,000",
+      "$15,000",
+      "$18,000",
+      "$20,000",
+      "$24,000"
+    ],
+    "correct": 2,
+    "explanation": "Quick parse: Salary $120,000. Bonus = 15%.\n120,000 × 0.15 = $18,000.\n\nSpeed tip: Education and years of experience are irrelevant. Just: salary × bonus rate."
+  },
+  {
+    "id": "fq5",
+    "category": "fastQuant",
+    "difficulty": "easy",
+    "text": "A rectangular garden has a length of 15 meters and a width of 8 meters. The garden is surrounded by a wooden fence installed three years ago at a cost of $12 per meter of fencing. What is the area of the garden in square meters?",
+    "choices": [
+      "120 sq m",
+      "92 sq m",
+      "46 sq m",
+      "138 sq m",
+      "96 sq m"
+    ],
+    "correct": 0,
+    "explanation": "Quick parse: Rectangle, length=15m, width=8m. AREA asked.\n15 × 8 = 120 sq m.\n\nSpeed tip: Fence info relates to PERIMETER, not area. Trap: 46 is the perimeter, not area. They ask AREA = length × width."
+  },
+  {
+    "id": "fq6",
+    "category": "fastQuant",
+    "difficulty": "easy",
+    "text": "A train traveling from Chicago to Detroit, a journey that normally takes 4.5 hours by car, departs at 9:00 AM at a constant speed of 80 mph. The distance between the two cities by rail is 240 miles. At what time does the train arrive?",
+    "choices": [
+      "11:00 AM",
+      "11:30 AM",
+      "1:30 PM",
+      "12:30 PM",
+      "12:00 PM"
+    ],
+    "correct": 4,
+    "explanation": "Quick parse: Distance=240 miles, speed=80 mph, departs 9:00 AM.\nTime = 240/80 = 3 hours. Arrival = 12:00 PM.\n\nSpeed tip: Car travel time is a distractor. Time = distance ÷ speed, then add to departure."
+  },
+  {
+    "id": "fq7",
+    "category": "fastQuant",
+    "difficulty": "easy",
+    "text": "Marcus bought 5 notebooks at $4 each and 3 pens at $2 each from Office Depot on Tuesday. His colleague Sarah bought 8 notebooks and 6 pens from the same store on Wednesday. If Marcus paid with a $50 bill, how much change did he receive?",
+    "choices": [
+      "$18",
+      "$20",
+      "$22",
+      "$24",
+      "$28"
+    ],
+    "correct": 3,
+    "explanation": "Quick parse: Marcus: 5×$4 + 3×$2 = 20 + 6 = $26. Change from $50.\n$50 − $26 = $24.\n\nSpeed tip: Sarah's purchase is completely irrelevant. Only Marcus's items matter."
+  },
+  {
+    "id": "fq8",
+    "category": "fastQuant",
+    "difficulty": "easy",
+    "text": "A water tank installed during the building's 2019 renovation holds exactly 500 liters. Currently it is 60% full. The building manager, who has 15 years of experience in facilities, needs to know how many more liters are needed to completely fill the tank.",
+    "choices": [
+      "100 L",
+      "200 L",
+      "250 L",
+      "300 L",
+      "350 L"
+    ],
+    "correct": 1,
+    "explanation": "Quick parse: Tank=500L, 60% full. Need remaining.\nCurrently: 500 × 0.6 = 300L. Remaining = 500 − 300 = 200L.\n\nSpeed tip: Installation date and manager experience are noise. Capacity × (1 − fill%) = amount needed."
+  },
+  {
+    "id": "fq9",
+    "category": "fastQuant",
+    "difficulty": "easy",
+    "text": "In a bag there are 6 red marbles, 4 blue marbles, and 10 green marbles. A child picks one at random. The bag was a birthday gift from her grandmother in Portland who recently celebrated turning 75. What is the probability of picking a blue marble?",
+    "choices": [
+      "1/5",
+      "1/4",
+      "3/10",
+      "2/5",
+      "1/2"
+    ],
+    "correct": 0,
+    "explanation": "Quick parse: 6+4+10 = 20 total. P(blue) = 4/20 = 1/5.\n\nSpeed tip: Grandmother, Portland, and birthday are pure noise. Blues ÷ total."
+  },
+  {
+    "id": "fq10",
+    "category": "fastQuant",
+    "difficulty": "easy",
+    "text": "The Martinez family drove 180 miles on Saturday and 220 miles on Sunday during their coastal vacation. Their SUV gets 25 miles per gallon and has a 16-gallon tank. If gas costs $4 per gallon, how much did they spend on gas for the entire weekend?",
+    "choices": [
+      "$48",
+      "$56",
+      "$60",
+      "$64",
+      "$72"
+    ],
+    "correct": 3,
+    "explanation": "Quick parse: Total = 180+220 = 400 miles. 25 mpg. $4/gallon.\nGallons = 400/25 = 16. Cost = 16 × 4 = $64.\n\nSpeed tip: Tank size is a distractor (they can refill). Total distance ÷ mpg × price."
+  },
+  {
+    "id": "fq11",
+    "category": "fastQuant",
+    "difficulty": "easy",
+    "text": "A factory employing 250 workers across three shifts produces 480 widgets/hour during the day shift. The night shift produces 320 widgets/hour due to union agreements from 2018. If the day shift runs for 8 hours, how many widgets does it produce?",
+    "choices": [
+      "2,560",
+      "3,200",
+      "3,520",
+      "3,840",
+      "6,400"
+    ],
+    "correct": 3,
+    "explanation": "Quick parse: Day shift: 480/hour × 8 hours.\n480 × 8 = 3,840.\n\nSpeed tip: Night shift, worker count, and union details are distractors. Rate × time."
+  },
+  {
+    "id": "fq12",
+    "category": "fastQuant",
+    "difficulty": "easy",
+    "text": "Five friends went to dinner at an Italian restaurant with a 4.8-star rating and over 500 reviews online. The total bill was $175. They split equally and each added a 20% tip on their share. How much does each person pay in total?",
+    "choices": [
+      "$35",
+      "$38",
+      "$40",
+      "$42",
+      "$45"
+    ],
+    "correct": 3,
+    "explanation": "Quick parse: $175 ÷ 5 = $35 each. With 20% tip: 35 × 1.2 = $42.\n\nSpeed tip: Restaurant rating and reviews are noise. Bill ÷ people × 1.2."
+  },
+  {
+    "id": "fq13",
+    "category": "fastQuant",
+    "difficulty": "medium",
+    "text": "At the Riverside Country Club, established in 1952 with over 800 members, the annual fee is $2,400. Members enrolled 5+ years get a 10% loyalty discount. New members pay a one-time $500 initiation fee plus the annual fee. David just joined this year after a colleague's referral. What is David's total first-year cost?",
+    "choices": [
+      "$2,160",
+      "$2,400",
+      "$2,900",
+      "$3,140",
+      "$3,400"
+    ],
+    "correct": 2,
+    "explanation": "Quick parse: David is NEW. Annual $2,400 + initiation $500 = $2,900.\n\nSpeed tip: History, member count, and loyalty discount (5+ years only) are irrelevant for a new member."
+  },
+  {
+    "id": "fq14",
+    "category": "fastQuant",
+    "difficulty": "medium",
+    "text": "Company XYZ reported quarterly revenues of $5M, $7M, $6M, and $8M. Operating expenses were 60% of revenue each quarter. The CEO plans to expand to three new markets next year and hire 200 employees at an average of $75,000 each. What were total operating expenses for the year?",
+    "choices": [
+      "$12.6M",
+      "$14.4M",
+      "$18.0M",
+      "$16.8M",
+      "$15.6M"
+    ],
+    "correct": 4,
+    "explanation": "Quick parse: Total revenue = 5+7+6+8 = $26M. Expenses = 60%.\n26 × 0.6 = $15.6M.\n\nSpeed tip: Future plans and hiring are irrelevant to THIS year's expenses."
+  },
+  {
+    "id": "fq15",
+    "category": "fastQuant",
+    "difficulty": "medium",
+    "text": "A wholesaler purchased 200 units at $15 each from Ohio. Shipping was $300. Warehouse storage is $100/month; items stored 2 months. All 200 units then sold at $25 each. What is the total profit?",
+    "choices": [
+      "$1,200",
+      "$1,500",
+      "$1,700",
+      "$1,800",
+      "$2,000"
+    ],
+    "correct": 1,
+    "explanation": "Quick parse: Total cost = (200×15) + 300 + (100×2) = 3,000 + 300 + 200 = $3,500.\nRevenue = 200×25 = $5,000. Profit = 5,000 − 3,500 = $1,500.\n\nSpeed tip: Ohio is noise. Sum ALL costs, subtract from revenue."
+  },
+  {
+    "id": "fq16",
+    "category": "fastQuant",
+    "difficulty": "medium",
+    "text": "At the company picnic at Lakewood Park, the committee ordered pizzas for 45 attendees, estimating 3 slices each. Each pizza has 8 slices and costs $14. They also spent $120 on drinks, $85 on decorations, and $60 on paper goods. The event ran from 11 AM to 4 PM. How many pizzas must they order?",
+    "choices": [
+      "15",
+      "16",
+      "17",
+      "18",
+      "20"
+    ],
+    "correct": 2,
+    "explanation": "Quick parse: 45 × 3 = 135 slices needed. 135 ÷ 8 = 16.875 → round up to 17.\n\nSpeed tip: Cost, other expenses, and schedule are noise. Slices needed ÷ slices per pizza, round UP."
+  },
+  {
+    "id": "fq17",
+    "category": "fastQuant",
+    "difficulty": "medium",
+    "text": "Lisa invested $8,000 in a CD paying 4.5% simple interest annually. Her advisor, who manages 300+ client portfolios at a firm founded in 1990, suggested this since Lisa plans to retire in 12 years. Lisa keeps the CD for exactly 3 years. What total amount does she receive?",
+    "choices": [
+      "$8,360",
+      "$8,720",
+      "$8,960",
+      "$9,080",
+      "$9,440"
+    ],
+    "correct": 3,
+    "explanation": "Quick parse: P=$8,000, r=4.5%, t=3 years, simple interest.\nInterest = 8,000 × 0.045 × 3 = $1,080. Total = $9,080.\n\nSpeed tip: Advisor details and retirement timeline are noise. TRAP: using 12 years instead of 3. Read carefully!"
+  },
+  {
+    "id": "fq18",
+    "category": "fastQuant",
+    "difficulty": "medium",
+    "text": "A swimming pool is 25m long and 10m wide, surrounded by a uniform 2m-wide walkway made of Italian marble at $45/sq m, installed by 8 workers over 3 weeks. What is the area of the walkway alone?",
+    "choices": [
+      "156 sq m",
+      "160 sq m",
+      "164 sq m",
+      "168 sq m",
+      "172 sq m"
+    ],
+    "correct": 0,
+    "explanation": "Quick parse: Pool=25×10. Walkway=2m wide all around.\nOuter = (25+4)×(10+4) = 29×14 = 406. Pool = 250. Walkway = 406−250 = 156 sq m.\n\nSpeed tip: Marble cost, crew, and duration are noise. They ask AREA not cost. Outer − inner."
+  },
+  {
+    "id": "fq19",
+    "category": "fastQuant",
+    "difficulty": "medium",
+    "text": "In a class of 50 students, 30 passed math and 35 passed science. Every student passed at least one test. The math teacher has 10 years of experience; the science teacher just won a teaching award. How many students passed both?",
+    "choices": [
+      "5",
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
+    "correct": 1,
+    "explanation": "Quick parse: Total=50, Math=30, Science=35, all passed at least one.\nBoth = 30 + 35 − 50 = 15.\n\nSpeed tip: Teacher credentials are noise. Inclusion-exclusion: A + B − Total = Both."
+  },
+  {
+    "id": "fq20",
+    "category": "fastQuant",
+    "difficulty": "medium",
+    "text": "Robert, a PM at a company founded in 2008 (recently IPO'd at $2B valuation), must allocate $45,000 among Engineering, Design, and Marketing in ratio 5:3:1. Engineering has 15 people, Design 8, Marketing 4. What does Design receive?",
+    "choices": [
+      "$5,000",
+      "$10,000",
+      "$12,000",
+      "$15,000",
+      "$25,000"
+    ],
+    "correct": 3,
+    "explanation": "Quick parse: $45,000 in ratio 5:3:1. Design = 3 parts of 9 total.\n(3/9) × 45,000 = $15,000.\n\nSpeed tip: Company info and team sizes are noise. Ratio share ÷ total ratio × budget."
+  },
+  {
+    "id": "fq21",
+    "category": "fastQuant",
+    "difficulty": "medium",
+    "text": "A retailer bought 80 jackets at $45 each from Vietnam for winter. Due to warm weather (8°F above average), only 60 were sold at the $75 retail price. The remaining 20 were donated to charity for a tax deduction. What was total revenue from jacket sales?",
+    "choices": [
+      "$3,600",
+      "$4,500",
+      "$5,400",
+      "$6,000",
+      "$6,900"
+    ],
+    "correct": 1,
+    "explanation": "Quick parse: Sold 60 at $75. Donations aren't revenue.\n60 × 75 = $4,500.\n\nSpeed tip: Cost, origin, weather details, and charity don't affect REVENUE. Revenue = units sold × price."
+  },
+  {
+    "id": "fq22",
+    "category": "fastQuant",
+    "difficulty": "medium",
+    "text": "Two trains depart toward each other simultaneously. Train A (express, 200 passengers, 8 cars) travels at 60 mph from Station Alpha. Train B (local, 150 passengers, 6 cars) travels at 90 mph from Station Beta. Stations are 450 miles apart. When do they meet?",
+    "choices": [
+      "2 hours",
+      "2.5 hours",
+      "4 hours",
+      "3.5 hours",
+      "3 hours"
+    ],
+    "correct": 4,
+    "explanation": "Quick parse: Distance=450, speeds 60+90=150 mph combined.\nTime = 450/150 = 3 hours.\n\nSpeed tip: Passengers and car counts are noise. Approaching: time = distance ÷ (speed₁ + speed₂)."
+  },
+  {
+    "id": "fq23",
+    "category": "fastQuant",
+    "difficulty": "medium",
+    "text": "A bakery supplying 12 local cafes since 2010 uses 2.5 cups of flour per 30 cookies. For Valentine's Day, the Grand Hotel (expecting 200 guests) ordered 360 heart-shaped cookies. How many cups of flour are needed?",
+    "choices": [
+      "25",
+      "27",
+      "28",
+      "29",
+      "30"
+    ],
+    "correct": 4,
+    "explanation": "Quick parse: 2.5 cups per 30 cookies. Need 360 cookies.\n360/30 = 12 batches. 12 × 2.5 = 30 cups.\n\nSpeed tip: Business history, cafe count, and guest count are noise. (Cookies needed ÷ batch size) × flour per batch."
+  },
+  {
+    "id": "fq24",
+    "category": "fastQuant",
+    "difficulty": "medium",
+    "text": "A survey by a top research firm across 5 cities polled 1,200 people at a cost of $250,000 over 6 months. Results: 45% prefer online shopping, 35% prefer in-store, rest have no preference. The CEO noted 200% online growth since 2015. How many respondents have no preference?",
+    "choices": [
+      "180",
+      "200",
+      "220",
+      "240",
+      "260"
+    ],
+    "correct": 3,
+    "explanation": "Quick parse: 1,200 total. No preference = 100−45−35 = 20%.\n1,200 × 0.20 = 240.\n\nSpeed tip: Cities, cost, duration, and growth stats are noise. Find missing %, multiply by total."
+  },
+  {
+    "id": "fq25",
+    "category": "fastQuant",
+    "difficulty": "medium",
+    "text": "At the county's top-rated dealership (7 years running), a salesman earns $2,500/month base plus 3% commission. In March he sold: sedan $28,000, SUV $42,000, truck $35,000, compact $15,000. His colleague sold 6 cars totaling $210,000. What was the salesman's March income?",
+    "choices": [
+      "$5,600",
+      "$5,900",
+      "$6,000",
+      "$6,100",
+      "$6,300"
+    ],
+    "correct": 3,
+    "explanation": "Quick parse: Base $2,500. Sales = 28K+42K+35K+15K = $120K. Commission = 3%.\n120,000 × 0.03 = $3,600. Total = 2,500 + 3,600 = $6,100.\n\nSpeed tip: Rating and colleague's sales are noise. Sum YOUR sales × commission + base."
+  },
+  {
+    "id": "fq26",
+    "category": "fastQuant",
+    "difficulty": "medium",
+    "text": "Pipe A fills a tank in 12 hours, Pipe B in 8 hours. Pipe C empties it in 24 hours. Tank capacity is 2,400L; it was part of a $2M municipal project. The project engineer has a PhD from Cornell. All three pipes open simultaneously — how long to fill the empty tank?",
+    "choices": [
+      "5 hours",
+      "6 hours",
+      "7 hours",
+      "7.5 hours",
+      "8 hours"
+    ],
+    "correct": 1,
+    "explanation": "Quick parse: Rates: A=1/12, B=1/8, C=−1/24 per hour.\nNet = 2/24 + 3/24 − 1/24 = 4/24 = 1/6 per hour. Time = 6 hours.\n\nSpeed tip: Capacity, cost, and credentials are noise. Add fill rates, subtract drain rate, invert."
+  },
+  {
+    "id": "fq27",
+    "category": "fastQuant",
+    "difficulty": "medium",
+    "text": "At a university (15,000 students, 6 campuses), the student council sold 400 standard tickets at $12 and 150 VIP tickets at $30. Costs: venue $2,000, catering $3,500, entertainment $1,500. The dean (9 years tenure) supported the event. What was the net profit?",
+    "choices": [
+      "$2,300",
+      "$2,800",
+      "$3,300",
+      "$4,300",
+      "$5,300"
+    ],
+    "correct": 0,
+    "explanation": "Quick parse: Revenue = 400×12 + 150×30 = 4,800 + 4,500 = $9,300.\nCosts = 2,000+3,500+1,500 = $7,000. Profit = $2,300.\n\nSpeed tip: University stats and dean's tenure are noise. Revenue − costs = profit."
+  },
+  {
+    "id": "fq28",
+    "category": "fastQuant",
+    "difficulty": "medium",
+    "text": "A stock recommended by analysts at Goldman, Morgan Stanley, and JP Morgan rose 25% in Q1 then fell 20% in Q2. The S&P 500 returned 8% over the same period and the stock's beta is 1.3. If the stock started at $200, what is its value after Q2?",
+    "choices": [
+      "$190",
+      "$200",
+      "$210",
+      "$220",
+      "$240"
+    ],
+    "correct": 1,
+    "explanation": "Quick parse: Start $200. Up 25% then down 20%.\n200 × 1.25 = 250. 250 × 0.80 = $200.\n\nSpeed tip: Analyst names, S&P return, and beta are noise. Multiply successive factors. Trap: +25% then −20% ≠ +5%."
+  },
+  {
+    "id": "fq29",
+    "category": "fastQuant",
+    "difficulty": "medium",
+    "text": "Michael runs 5 km every morning before his accounting job (11 years). He's training for a half marathon (21.1 km). His plan adds 2 km/week starting week 1. Registration is $75; the race is in 12 weeks. After how many complete weeks will his daily run first reach or exceed 15 km?",
+    "choices": [
+      "3 weeks",
+      "4 weeks",
+      "5 weeks",
+      "6 weeks",
+      "7 weeks"
+    ],
+    "correct": 2,
+    "explanation": "Quick parse: Base=5 km, +2 km/week. When ≥15 km?\nWeek 1: 7. Week 2: 9. Week 3: 11. Week 4: 13. Week 5: 15. ✓\n\nSpeed tip: Job, race distance, fee, and total weeks are noise. Solve: 5 + 2n ≥ 15 → n ≥ 5."
+  },
+  {
+    "id": "fq30",
+    "category": "fastQuant",
+    "difficulty": "medium",
+    "text": "A circular track (400m circumference) at a facility built in 1996 hosts 50 events/year. Athlete A runs at 8 m/s and B at 6 m/s in the SAME direction from the same point. They train 6 days/week. After how many seconds does A first lap B?",
+    "choices": [
+      "100 s",
+      "150 s",
+      "400 s",
+      "300 s",
+      "200 s"
+    ],
+    "correct": 4,
+    "explanation": "Quick parse: Same direction. Relative speed = 8−6 = 2 m/s. Lap = 400m.\nTime = 400/2 = 200 seconds.\n\nSpeed tip: Facility year, events, and training schedule are noise. Same direction: track ÷ speed difference."
+  },
+  {
+    "id": "fq31",
+    "category": "fastQuant",
+    "difficulty": "medium",
+    "text": "A certified organic farm (since 2016, 8 workers, 15 acres) sells at the Saturday market: tomatoes $3/kg, peppers $5/kg, lettuce $2/kg. Last week: 40 kg tomatoes, 24 kg peppers, 60 kg lettuce. What was total revenue?",
+    "choices": [
+      "$320",
+      "$360",
+      "$340",
+      "$380",
+      "$400"
+    ],
+    "correct": 1,
+    "explanation": "Quick parse: 40×3=120. 24×5=120. 60×2=120. Total = $360.\n\nSpeed tip: Certification, workers, and acreage are noise. Sum each: qty × price."
+  },
+  {
+    "id": "fq32",
+    "category": "fastQuant",
+    "difficulty": "medium",
+    "text": "A company had 200 employees at the start of 2020. Each year they hire 50 and lose 10. Their 15-story HQ was bought in 2018 for $12M and holds 500 max. The CEO got a $2M bonus in 2022. How many employees at the start of 2023?",
+    "choices": [
+      "280",
+      "300",
+      "320",
+      "340",
+      "360"
+    ],
+    "correct": 2,
+    "explanation": "Quick parse: Start 2020: 200. Net +40/year. To start of 2023 = 3 years.\n200 + (40×3) = 320.\n\nSpeed tip: Building details and CEO bonus are noise. Starting count + (net change × years elapsed)."
+  },
+  {
+    "id": "fq33",
+    "category": "fastQuant",
+    "difficulty": "hard",
+    "text": "The Henderson family is planning a vacation. Mr. Henderson earns $85,000 as a senior engineer at a 2,000-person firm. Mrs. Henderson earns $65,000 as a marketing director. They have children aged 7, 11, and 14. Their budget allocates 8% of combined gross income to vacation. Their financial planner ($200/hr) advised a separate $2,000 emergency travel fund. What is the annual vacation budget, NOT including the emergency fund?",
+    "choices": [
+      "$12,000",
+      "$11,200",
+      "$10,400",
+      "$9,600",
+      "$8,000"
+    ],
+    "correct": 0,
+    "explanation": "Quick parse: Combined = 85K+65K = $150K. Vacation = 8%.\n150,000 × 0.08 = $12,000.\n\nSpeed tip: Children's ages, planner fee, and emergency fund are all noise. Question explicitly excludes emergency fund."
+  },
+  {
+    "id": "fq34",
+    "category": "fastQuant",
+    "difficulty": "hard",
+    "text": "A lab certified by the EPA and state agency since 2015 has Solution X (40% concentration) and Solution Y (70%). The technician (MS Chemistry from Berkeley, 5 publications) must create exactly 30 liters of 50% concentration for a pharma trial starting next quarter. How many liters of Solution X are needed?",
+    "choices": [
+      "10 L",
+      "15 L",
+      "24 L",
+      "22 L",
+      "20 L"
+    ],
+    "correct": 4,
+    "explanation": "Quick parse: Mix X(40%) + Y(70%) → 30L at 50%.\n0.40x + 0.70(30−x) = 0.50(30) → 0.40x + 21 − 0.70x = 15 → −0.30x = −6 → x = 20.\n\nSpeed tip: Certifications, degrees, and trial timeline are noise. Mixture equation."
+  },
+  {
+    "id": "fq35",
+    "category": "fastQuant",
+    "difficulty": "hard",
+    "text": "A startup ($5M Series A, Forbes '30 Under 30') has 45 engineers at $120K and 30 designers at $90K. Benefits = 25% of salary for all staff. The CFO needs total annual engineering cost INCLUDING benefits for the March board meeting. What is this amount?",
+    "choices": [
+      "$5,400,000",
+      "$5,625,000",
+      "$6,075,000",
+      "$6,500,000",
+      "$6,750,000"
+    ],
+    "correct": 4,
+    "explanation": "Quick parse: 45 engineers × $120K × 1.25.\n45 × 120,000 = 5,400,000. × 1.25 = $6,750,000.\n\nSpeed tip: Funding, Forbes, designers, and meeting date are noise. Engineers × salary × (1 + benefit rate)."
+  },
+  {
+    "id": "fq36",
+    "category": "fastQuant",
+    "difficulty": "hard",
+    "text": "In a city (avg household income $72K, 15% population growth over a decade), a cinema charges $14/adult and $9/child. Opening night of a $200M global blockbuster: 320 adult tickets sold, total revenue $6,010. The cinema has 500 seats across 5 screens. How many children's tickets were sold?",
+    "choices": [
+      "150",
+      "170",
+      "185",
+      "200",
+      "215"
+    ],
+    "correct": 1,
+    "explanation": "Quick parse: Adults: 320×14 = $4,480. Total=$6,010. Children at $9.\nChildren revenue = 6,010−4,480 = $1,530. Tickets = 1,530/9 = 170.\n\nSpeed tip: City stats, global earnings, and capacity are noise. (Total − adult revenue) ÷ child price."
+  },
+  {
+    "id": "fq37",
+    "category": "fastQuant",
+    "difficulty": "hard",
+    "text": "Prof. Williams (22 years at MIT, 3 textbooks on probability) assigned her 35-student class this problem: A fair coin is tossed 4 times. Top 20% get 5 extra credit points on the final. Time limit 90 minutes. What is the probability of exactly 3 heads?",
+    "choices": [
+      "1/4",
+      "3/16",
+      "1/8",
+      "5/16",
+      "3/8"
+    ],
+    "correct": 0,
+    "explanation": "Quick parse: Fair coin, 4 tosses, P(exactly 3H).\nC(4,3) × (1/2)⁴ = 4/16 = 1/4.\n\nSpeed tip: Professor bio, class size, extra credit, and time limit are noise. C(n,k)/2ⁿ."
+  },
+  {
+    "id": "fq38",
+    "category": "fastQuant",
+    "difficulty": "hard",
+    "text": "A developer bought 3 adjacent lots on Elm Street (neighborhood values up 30% in 5 years). Lot A: 4,000 sq ft at $50/sq ft. Lot B: 6,000 sq ft at $45/sq ft. Lot C: 5,000 sq ft at $55/sq ft. Architect fee = 8% of land cost. City council approved after 6-month review. What is total land cost BEFORE architect fees?",
+    "choices": [
+      "$700,000",
+      "$725,000",
+      "$745,000",
+      "$770,000",
+      "$800,000"
+    ],
+    "correct": 2,
+    "explanation": "Quick parse: A: 4000×50=$200K. B: 6000×45=$270K. C: 5000×55=$275K.\nTotal = $745,000.\n\nSpeed tip: Value trends, architect fee, and approval time are noise. Question says BEFORE fees."
+  },
+  {
+    "id": "fq39",
+    "category": "fastQuant",
+    "difficulty": "hard",
+    "text": "A plant runs 24/7 since 1998 with 300 workers reporting to the VP of Ops. Three 8-hour shifts: morning 150 units/hr, evening 120 units/hr, night 90 units/hr. QC rejects 5% of all production. How many GOOD units per week?",
+    "choices": [
+      "19,152",
+      "19,500",
+      "20,000",
+      "20,160",
+      "21,280"
+    ],
+    "correct": 0,
+    "explanation": "Quick parse: Daily = (150+120+90)×8 = 2,880. Weekly = 2,880×7 = 20,160. After 5% reject: 20,160×0.95 = 19,152.\n\nSpeed tip: Start date, workers, and reporting structure are noise. Sum rates × hours × 7 × (1−reject%)."
+  },
+  {
+    "id": "fq40",
+    "category": "fastQuant",
+    "difficulty": "hard",
+    "text": "A boat serviced at Marina Bay ($500/month slip) goes upstream at 8 km/h and downstream at 12 km/h. The 180 km river crosses 3 counties with different fishing laws. Captain: 20 years experience, Coast Guard cert through 2028. Round trip of 48 km each way — total time?",
+    "choices": [
+      "8 hours",
+      "9 hours",
+      "12 hours",
+      "11 hours",
+      "10 hours"
+    ],
+    "correct": 4,
+    "explanation": "Quick parse: Up: 48/8 = 6h. Down: 48/12 = 4h. Total = 10 hours.\n\nSpeed tip: Marina fees, river length, counties, and captain bio are noise. Sum: distance/speed each way."
+  },
+  {
+    "id": "fq41",
+    "category": "fastQuant",
+    "difficulty": "hard",
+    "text": "A portfolio at a boutique firm ($2B AUM) has: Fund A $40K at 6%, Fund B $25K at 8%, Fund C $35K at 5%. Manager (Wharton MBA, 15 years) charges 1% flat fee on total value. What is total annual interest earned BEFORE the management fee?",
+    "choices": [
+      "$5,550",
+      "$6,150",
+      "$6,350",
+      "$6,550",
+      "$7,150"
+    ],
+    "correct": 1,
+    "explanation": "Quick parse: A: 40K×0.06=$2,400. B: 25K×0.08=$2,000. C: 35K×0.05=$1,750.\nTotal = $6,150.\n\nSpeed tip: AUM, MBA, experience, and fee are noise (asks BEFORE fee). Sum principal×rate."
+  },
+  {
+    "id": "fq42",
+    "category": "fastQuant",
+    "difficulty": "hard",
+    "text": "Elena invested $80K and Marco $120K in a restaurant (2019, busy street with 10,000 daily pedestrians). Revenue $500K, expenses $350K. They split profits by investment ratio and reinvest 30%. The head chef has won 2 awards. What does Elena take home after reinvestment?",
+    "choices": [
+      "$28,000",
+      "$36,000",
+      "$42,000",
+      "$48,000",
+      "$60,000"
+    ],
+    "correct": 2,
+    "explanation": "Quick parse: Ratio 80:120 = 2:3. Profit = 500K−350K = $150K. After 30% reinvest: 150K×0.7 = $105K.\nElena = (2/5)×105,000 = $42,000.\n\nSpeed tip: Year, foot traffic, and chef awards are noise. Profit × (1−reinvest%) × ratio share."
+  },
+  {
+    "id": "fq43",
+    "category": "fastQuant",
+    "difficulty": "hard",
+    "text": "A blue cylindrical water tower visible from the highway has radius 7m and height 10m. Built 1995 for $500K, serves 3,500 households (avg 2.4 persons). Maintenance: 4 technicians, quarterly inspections. Currently 75% full. How many cubic meters of water? (π = 22/7)",
+    "choices": [
+      "770",
+      "1,050",
+      "1,155",
+      "1,540",
+      "2,310"
+    ],
+    "correct": 2,
+    "explanation": "Quick parse: Cylinder r=7, h=10. Volume×0.75.\n(22/7)×49×10 = 22×70 = 1,540 full. 1,540×0.75 = 1,155 m³.\n\nSpeed tip: Color, cost, households, and maintenance are noise. πr²h × fill fraction."
+  },
+  {
+    "id": "fq44",
+    "category": "fastQuant",
+    "difficulty": "hard",
+    "text": "In Greenville School District (12 schools, $45M budget approved last September), 3rd-grade reading scores rose from avg 72 to 78 after a new $150/student program funded by federal grant. There are 600 third-graders. By what PERCENTAGE did the average score increase?",
+    "choices": [
+      "6%",
+      "7.5%",
+      "8%",
+      "8.33%",
+      "10%"
+    ],
+    "correct": 3,
+    "explanation": "Quick parse: From 72 to 78. % increase = (78−72)/72 × 100 = 6/72 × 100 = 8.33%.\n\nSpeed tip: District size, budget, cost/student, and grant are noise. TRAP: 6% is the POINT increase, not percentage. % change = change/original × 100."
+  },
+  {
+    "id": "fq45",
+    "category": "fastQuant",
+    "difficulty": "hard",
+    "text": "A store owner (25 years in retail, chamber of commerce president) bought 400 shirts at $10 each from a supplier in Bangladesh. He marked them up 100% to a retail price of $20. He sold 75% at full retail and the remaining 25% at a 50% discount off retail during a weekend sale promoted on local radio. Monthly store overhead is $1,300. What was his net profit from shirt sales after overhead?",
+    "choices": [
+      "$1,700",
+      "$1,800",
+      "$1,900",
+      "$2,000",
+      "$2,100"
+    ],
+    "correct": 0,
+    "explanation": "Quick parse: Cost = 400×$10 = $4,000. Retail = $20.\n75% at full: 300×$20 = $6,000. 25% at 50% off ($10): 100×$10 = $1,000.\nRevenue = $7,000. Gross profit = 7,000−4,000 = $3,000. Net = 3,000−1,300 = $1,700.\n\nSpeed tip: Retail years, chamber title, supplier country, and radio promo are noise. Revenue (full + discounted) − cost − overhead."
+  },
+  {
+    "id": "fq46",
+    "category": "fastQuant",
+    "difficulty": "hard",
+    "text": "Alex paints a fence alone in 6 hours; Beth in 12 hours. The 120m cedar fence (imported from Canada) cost the homeowner $3,000 two years ago. They work together for 3 hours, then Alex leaves. How many more hours does Beth need alone?",
+    "choices": [
+      "1.5 hours",
+      "2 hours",
+      "2.5 hours",
+      "3 hours",
+      "4 hours"
+    ],
+    "correct": 3,
+    "explanation": "Quick parse: Alex=1/6 per hr, Beth=1/12 per hr. Together 3 hours.\nCombined = 1/6+1/12 = 3/12 = 1/4 per hr. In 3 hrs: 3×(1/4) = 3/4 done.\nRemaining = 1/4. Beth alone: (1/4)÷(1/12) = 3 hours.\n\nSpeed tip: Fence length, material, cost are noise. Combined rate × time = done. Remaining ÷ individual rate."
+  },
+  {
+    "id": "fq47",
+    "category": "fastQuant",
+    "difficulty": "hard",
+    "text": "A company surveyed 800 employees in NY (400, 55% transit), London (300, 80% transit), and Tokyo (100, 90% transit). Survey cost $50K and took 3 months. HR director (4 years tenure) presents at the March board meeting. What % of ALL employees use public transit?",
+    "choices": [
+      "68.75%",
+      "70%",
+      "72.5%",
+      "75%",
+      "78%"
+    ],
+    "correct": 0,
+    "explanation": "Quick parse: NY: 400×0.55=220. London: 300×0.80=240. Tokyo: 100×0.90=90.\nTotal = 550/800 = 68.75%.\n\nSpeed tip: Cost, timeline, and HR tenure are noise. TRAP: don't average percentages (55+80+90)/3. Weight by group size."
+  },
+  {
+    "id": "fq48",
+    "category": "fastQuant",
+    "difficulty": "hard",
+    "text": "A 200m × 150m field farmed by the Rivera family since 1952 (3 generations) needs a diagonal irrigation path. It will be 2m wide, paved with gravel at $8/m. County ag board approval takes 60 days. What is the diagonal length?",
+    "choices": [
+      "200 m",
+      "225 m",
+      "300 m",
+      "275 m",
+      "250 m"
+    ],
+    "correct": 4,
+    "explanation": "Quick parse: Rectangle 200×150. Diagonal.\n√(200²+150²) = √(40,000+22,500) = √62,500 = 250 m.\n\nSpeed tip: Family history, width, cost, and approval time are noise. Pythagorean theorem."
+  },
+  {
+    "id": "fq49",
+    "category": "fastQuant",
+    "difficulty": "hard",
+    "text": "At a 2,000-person tech conference (45 countries, keynotes from Google/Apple/Microsoft, $1,200 registration, 8 corporate sponsors, venue seats 2,500): 40% are engineers, 25% PMs, 20% data scientists, rest executives. Of executives, 60% have MBAs. How many executives have MBAs?",
+    "choices": [
+      "180",
+      "150",
+      "120",
+      "90",
+      "72"
+    ],
+    "correct": 0,
+    "explanation": "Quick parse: Executives = 100−40−25−20 = 15% of 2,000 = 300.\nWith MBAs: 300×0.6 = 180.\n\nSpeed tip: Countries, speakers, fees, capacity, sponsors are noise. Find remainder %, then apply sub-rate."
+  },
+  {
+    "id": "fq50",
+    "category": "fastQuant",
+    "difficulty": "hard",
+    "text": "A hospital pharmacy (Joint Commission accredited, 450-bed facility, 200+ physicians) has Solution A at 5% and Solution B at 20%. Dr. Chen (UCSF 2005, 12 publications) needs 600 mL of 12% solution for a cardiac ward patient on the 7th floor. How many mL of Solution B?",
+    "choices": [
+      "200 mL",
+      "280 mL",
+      "300 mL",
+      "320 mL",
+      "360 mL"
+    ],
+    "correct": 1,
+    "explanation": "Quick parse: A(5%) + B(20%) → 600mL at 12%.\n0.05(600−x) + 0.20x = 0.12(600) → 30−0.05x+0.20x = 72 → 0.15x = 42 → x = 280 mL.\n\nSpeed tip: Accreditation, beds, physicians, credentials, and location are noise. Mixture algebra."
+  }
+]

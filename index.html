@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GMAT Free Trainer</title>
+  <!-- ===== PWA / iPhone ===== -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1a2744">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="GMAT Free">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js');
+      });
+    }
+  </script>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="logo"><img src="icons/logo.png" alt="Logo">GMAT<span> Free Trainer</span></div>
+    <ul class="nav-links">
+      <li><a href="#" data-view="dashboard" class="active">Home</a></li>
+      <li><a href="#" data-view="allGames">Games</a></li>
+      <li><a href="#" data-view="tricks">Tricks</a></li>
+      <li><a href="#" data-view="learn">Learn</a></li>
+      <li><a href="#" data-view="review">Review</a></li>
+    </ul>
+    <button class="theme-toggle" id="theme-toggle" onclick="App.toggleTheme()" title="Toggle dark/light mode">🌙</button>
+  </nav>
+
+  <!-- ===== MAIN CONTAINER ===== -->
+  <div class="container">
+
+    <!-- Dashboard -->
+    <div id="view-dashboard" class="view active">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Multiplication -->
+    <div id="view-multiplication" class="view">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Arithmetic -->
+    <div id="view-arithmetic" class="view">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Percentages -->
+    <div id="view-percentages" class="view">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Word Problems -->
+    <div id="view-wordProblems" class="view">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Brain Teasers -->
+    <div id="view-brainTeasers" class="view">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Number Theory -->
+    <div id="view-numberTheory" class="view">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Estimation -->
+    <div id="view-estimation" class="view">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Data Sufficiency -->
+    <div id="view-dataSufficiency" class="view">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Error Detection -->
+    <div id="view-errorDetection" class="view">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Fast Quant Reading -->
+    <div id="view-fastQuant" class="view">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Quant Strategy -->
+    <div id="view-quantStrategy" class="view">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Constraint Deduction -->
+    <div id="view-constraintDeduction" class="view">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Speed Recognition -->
+    <div id="view-speedRecognition" class="view">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Memory & Chunking -->
+    <div id="view-memoryChunking" class="view">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Visual-Spatial -->
+    <div id="view-visualSpatial" class="view">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Tricks Reference -->
+    <div id="view-tricks" class="view">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Learn / Training Section -->
+    <div id="view-learn" class="view">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- MiM Practice: Quantitative -->
+    <div id="view-mimQuant" class="view">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Data Insights -->
+    <div id="view-dataInsights" class="view">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Critical Reasoning -->
+    <div id="view-criticalReasoning" class="view">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Riddles & Lateral Thinking -->
+    <div id="view-riddles" class="view">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Review Mistakes -->
+    <div id="view-review" class="view">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Exam Simulation -->
+    <div id="view-examSim" class="view"></div>
+
+    <!-- All Games (module selection) -->
+    <div id="view-allGames" class="view">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Fast Game -->
+    <div id="view-fastGame" class="view">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Leaderboard -->
+    <div id="view-leaderboard" class="view">
+      <!-- rendered by JS -->
+    </div>
+
+  </div>
+
+  <!-- ===== EXPLANATION MODAL ===== -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" id="modal-content">
+      <!-- rendered by JS -->
+    </div>
+  </div>
+
+  <!-- ===== SCRIPTS (order matters) ===== -->
+  <script src="js/stats.js"></script>
+  <script src="js/tricks.js"></script>
+  <script src="js/questions-data.js"></script>
+  <script src="js/questions.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

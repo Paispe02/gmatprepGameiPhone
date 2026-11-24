@@ -1,0 +1,272 @@
+[
+  {
+    "id": "drt1",
+    "category": "distanceRateTime",
+    "difficulty": "easy",
+    "text": "A car travels at a constant speed of 60 mph and covers 240 miles. How long does the trip take?",
+    "choices": [
+      "2 hours",
+      "3 hours",
+      "4 hours",
+      "5 hours",
+      "6 hours"
+    ],
+    "correct": 2,
+    "explanation": "Time = Distance ÷ Speed = 240 ÷ 60 = 4 hours.\n\nRemember: D = R × T → T = D/R → R = D/T"
+  },
+  {
+    "id": "drt2",
+    "category": "distanceRateTime",
+    "difficulty": "easy",
+    "text": "A cyclist covers 120 miles in 5 hours. What is the average speed in mph?",
+    "choices": [
+      "18 mph",
+      "20 mph",
+      "24 mph",
+      "28 mph",
+      "30 mph"
+    ],
+    "correct": 2,
+    "explanation": "Speed = Distance ÷ Time = 120 ÷ 5 = 24 mph."
+  },
+  {
+    "id": "drt3",
+    "category": "distanceRateTime",
+    "difficulty": "medium",
+    "text": "Two cars start from the same point and travel in opposite directions. Car A travels at 50 mph and Car B at 70 mph. After how long are they 360 miles apart?",
+    "choices": [
+      "2 hours",
+      "2.5 hours",
+      "3 hours",
+      "3.6 hours",
+      "4.5 hours"
+    ],
+    "correct": 2,
+    "explanation": "Opposite directions → speeds add.\nCombined speed: 50 + 70 = 120 mph.\nTime = 360 ÷ 120 = 3 hours."
+  },
+  {
+    "id": "drt4",
+    "category": "distanceRateTime",
+    "difficulty": "medium",
+    "text": "A train travels 300 miles from X to Y at 75 mph. The return trip at 60 mph. What is the average speed for the entire journey?",
+    "choices": [
+      "60 mph",
+      "65 mph",
+      "66.67 mph",
+      "70 mph",
+      "72.5 mph"
+    ],
+    "correct": 2,
+    "explanation": "Time X→Y: 300 ÷ 75 = 4 hours. Time Y→X: 300 ÷ 60 = 5 hours.\nTotal distance: 600 miles. Total time: 9 hours.\nAverage speed: 600 ÷ 9 = 66.67 mph.\n\n⚠️ Average speed ≠ (75+60)/2 = 67.5! Use total distance / total time.\n\nShortcut for equal distances: 2×s1×s2/(s1+s2) = 2×75×60/135 = 66.67"
+  },
+  {
+    "id": "drt5",
+    "category": "distanceRateTime",
+    "difficulty": "hard",
+    "text": "A boat travels upstream 48 miles in 4 hours. The return downstream trip takes 3 hours. What is the boat's speed in still water?",
+    "choices": [
+      "10 mph",
+      "12 mph",
+      "14 mph",
+      "16 mph",
+      "18 mph"
+    ],
+    "correct": 2,
+    "explanation": "Upstream speed: 48 ÷ 4 = 12 mph. Downstream speed: 48 ÷ 3 = 16 mph.\nBoat speed = (upstream + downstream) ÷ 2 = (12 + 16) ÷ 2 = 14 mph.\nCurrent speed = (downstream − upstream) ÷ 2 = (16 − 12) ÷ 2 = 2 mph."
+  },
+  {
+    "id": "drt6",
+    "category": "distanceRateTime",
+    "difficulty": "hard",
+    "text": "Runner A runs at 8 mph and starts 1 hour after Runner B who runs at 6 mph. How far will Runner B have run when A catches up?",
+    "choices": [
+      "12 miles",
+      "18 miles",
+      "24 miles",
+      "30 miles",
+      "36 miles"
+    ],
+    "correct": 2,
+    "explanation": "Let t = hours Runner A runs. When they meet: 8t = 6(t+1).\n8t = 6t + 6 → 2t = 6 → t = 3 hours.\nDistance B: 6 × (3+1) = 24 miles."
+  },
+  {
+    "id": "drt7",
+    "category": "distanceRateTime",
+    "difficulty": "easy",
+    "text": "A bus travels 150 km in 2.5 hours. What is its average speed?",
+    "choices": [
+      "50 km/h",
+      "55 km/h",
+      "60 km/h",
+      "65 km/h",
+      "75 km/h"
+    ],
+    "correct": 2,
+    "explanation": "Speed=Distance/Time=150/2.5=60 km/h."
+  },
+  {
+    "id": "drt8",
+    "category": "distanceRateTime",
+    "difficulty": "easy",
+    "text": "A train 200m long passes a pole in 10 seconds. Speed in km/h?",
+    "choices": [
+      "20",
+      "36",
+      "54",
+      "72",
+      "80"
+    ],
+    "correct": 3,
+    "explanation": "Speed=200m/10s=20 m/s. Convert: 20×3.6=72 km/h.\nTrick: m/s × 3.6 = km/h."
+  },
+  {
+    "id": "drt9",
+    "category": "distanceRateTime",
+    "difficulty": "easy",
+    "text": "Cities 300 miles apart. Car A at 60mph from city 1, Car B at 40mph from city 2, same time. When do they meet?",
+    "choices": [
+      "2 hours",
+      "2.5 hours",
+      "3 hours",
+      "3.5 hours",
+      "4 hours"
+    ],
+    "correct": 2,
+    "explanation": "Approaching: combined speed=60+40=100 mph. Time=300/100=3 hours."
+  },
+  {
+    "id": "drt10",
+    "category": "distanceRateTime",
+    "difficulty": "easy",
+    "text": "Walk 4 mph for 2 hours, then jog 8 mph for 1 hour. Total distance?",
+    "choices": [
+      "12 miles",
+      "14 miles",
+      "16 miles",
+      "18 miles",
+      "20 miles"
+    ],
+    "correct": 2,
+    "explanation": "Walking: 4×2=8 miles. Jogging: 8×1=8 miles. Total=16 miles."
+  },
+  {
+    "id": "drt11",
+    "category": "distanceRateTime",
+    "difficulty": "medium",
+    "text": "A train 300m long crosses a 200m bridge in 25 seconds. Speed?",
+    "choices": [
+      "12 m/s",
+      "15 m/s",
+      "18 m/s",
+      "20 m/s",
+      "25 m/s"
+    ],
+    "correct": 3,
+    "explanation": "Total distance=300+200=500m. Speed=500/25=20 m/s.\nKey: train travels own length + bridge length to fully cross."
+  },
+  {
+    "id": "drt12",
+    "category": "distanceRateTime",
+    "difficulty": "medium",
+    "text": "Two trains approach from 400 km. Speeds 70 and 80 km/h. A fly at 100 km/h goes back and forth between them. Total fly distance?",
+    "choices": [
+      "200 km",
+      "240 km",
+      "266.67 km",
+      "300 km",
+      "400 km"
+    ],
+    "correct": 2,
+    "explanation": "Time until trains meet: 400/(70+80)=400/150=8/3 hrs.\nFly distance: 100×8/3=800/3≈266.67 km.\nKey insight: ignore the back-and-forth! Just compute total fly time."
+  },
+  {
+    "id": "drt13",
+    "category": "distanceRateTime",
+    "difficulty": "medium",
+    "text": "First half of trip at 40 km/h, second half at 60 km/h. Average speed?",
+    "choices": [
+      "45 km/h",
+      "48 km/h",
+      "50 km/h",
+      "52 km/h",
+      "55 km/h"
+    ],
+    "correct": 1,
+    "explanation": "Equal distances → harmonic mean: 2×40×60/(40+60)=4800/100=48 km/h.\n⚠️ NOT (40+60)/2=50! Harmonic mean applies for equal distances."
+  },
+  {
+    "id": "drt14",
+    "category": "distanceRateTime",
+    "difficulty": "medium",
+    "text": "Man rows upstream 30 km in 5 hrs, downstream 30 km in 3 hrs. Speed in still water?",
+    "choices": [
+      "5 km/h",
+      "6 km/h",
+      "7 km/h",
+      "8 km/h",
+      "10 km/h"
+    ],
+    "correct": 3,
+    "explanation": "Up=30/5=6 km/h. Down=30/3=10 km/h.\nStill water=(6+10)/2=8 km/h. Current=(10−6)/2=2 km/h."
+  },
+  {
+    "id": "drt15",
+    "category": "distanceRateTime",
+    "difficulty": "hard",
+    "text": "First third of distance at 20 km/h, second third at 30 km/h, last third at 60 km/h. Average speed?",
+    "choices": [
+      "25",
+      "30",
+      "36",
+      "40",
+      "45"
+    ],
+    "correct": 1,
+    "explanation": "Let each third=d. Total=3d.\nTimes: d/20+d/30+d/60=d(3+2+1)/60=d/10.\nAvg=3d/(d/10)=30 km/h."
+  },
+  {
+    "id": "drt16",
+    "category": "distanceRateTime",
+    "difficulty": "hard",
+    "text": "Drives to work at 60 mph, returns at 40 mph. Round trip is 2.5 hours. How far is work?",
+    "choices": [
+      "48 miles",
+      "50 miles",
+      "55 miles",
+      "60 miles",
+      "65 miles"
+    ],
+    "correct": 3,
+    "explanation": "d/60+d/40=2.5. (2d+3d)/120=2.5. 5d=300. d=60 miles.\nCheck: 60/60+60/40=1+1.5=2.5 ✓"
+  },
+  {
+    "id": "drt17",
+    "category": "distanceRateTime",
+    "difficulty": "hard",
+    "text": "A and B start 100 km apart walking toward each other. A: 10,12,14,16... km/day (increasing 2). B: 12 km/day constant. On which day do they meet?",
+    "choices": [
+      "Day 3",
+      "Day 4",
+      "Day 5",
+      "Day 6",
+      "Day 7"
+    ],
+    "correct": 1,
+    "explanation": "Day 1: A=10,B=12. Covered=22. Left=78.\nDay 2: A=12,B=12. Covered=24. Left=54.\nDay 3: A=14,B=12. Covered=26. Left=28.\nDay 4: A=16,B=12. Covered=28. Left=0. Meet at end of Day 4."
+  },
+  {
+    "id": "drt18",
+    "category": "distanceRateTime",
+    "difficulty": "hard",
+    "text": "Boat goes 24 km upstream and 28 km downstream in 6 hrs. Also 30 km upstream and 21 km downstream in 6.5 hrs. Boat speed in still water?",
+    "choices": [
+      "8",
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "correct": 2,
+    "explanation": "Let u=1/(b−c), v=1/(b+c).\n24u+28v=6 … (1)\n30u+21v=6.5 … (2)\n(1)×5: 120u+140v=30. (2)×4: 120u+84v=26.\nSubtract: 56v=4 → v=1/14 → b+c=14.\nFrom (1): 24u+28/14=6 → 24u=4 → u=1/6 → b−c=6.\nb=(14+6)/2=10 km/h."
+  }
+]

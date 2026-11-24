@@ -1,0 +1,287 @@
+[
+  {
+    "id": "np1",
+    "category": "numberProperties",
+    "difficulty": "easy",
+    "text": "What is the remainder when 47 is divided by 5?",
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "correct": 1,
+    "explanation": "47 = 5 × 9 + 2. The remainder is 2."
+  },
+  {
+    "id": "np2",
+    "category": "numberProperties",
+    "difficulty": "medium",
+    "text": "How many factors does 24 have?",
+    "choices": [
+      "4",
+      "6",
+      "8",
+      "10",
+      "12"
+    ],
+    "correct": 2,
+    "explanation": "24 = 2³ × 3¹.\nNumber of factors = (3+1)(1+1) = 4 × 2 = 8.\nFactors: 1, 2, 3, 4, 6, 8, 12, 24."
+  },
+  {
+    "id": "np3",
+    "category": "numberProperties",
+    "difficulty": "hard",
+    "text": "What is the greatest common divisor (GCD) of 48 and 180?",
+    "choices": [
+      "6",
+      "12",
+      "24",
+      "36",
+      "60"
+    ],
+    "correct": 1,
+    "explanation": "Euclidean algorithm: 180 = 48 × 3 + 36; 48 = 36 × 1 + 12; 36 = 12 × 3 + 0.\nGCD = 12.\n\nOr: 48 = 2⁴ × 3, 180 = 2² × 3² × 5. GCD = 2² × 3 = 12."
+  },
+  {
+    "id": "np4",
+    "category": "numberProperties",
+    "difficulty": "hard",
+    "text": "If a number leaves remainder 3 when divided by 7, what are the possible remainders when divided by 21?",
+    "choices": [
+      "3 only",
+      "3 or 10",
+      "3, 10, or 17",
+      "10 only",
+      "Cannot be determined"
+    ],
+    "correct": 2,
+    "explanation": "Number = 7k + 3. Possible values: 3, 10, 17, 24, 31...\n÷ 21: 3 mod 21 = 3, 10 mod 21 = 10, 17 mod 21 = 17, 24 mod 21 = 3.\nPattern repeats: possible remainders are 3, 10, or 17."
+  },
+  {
+    "id": "var1",
+    "category": "numberProperties",
+    "difficulty": "easy",
+    "text": "If 3x + 5 = 20, what is the value of x?",
+    "choices": [
+      "3",
+      "5",
+      "7",
+      "10",
+      "15"
+    ],
+    "correct": 1,
+    "explanation": "3x + 5 = 20. Subtract 5: 3x = 15. Divide by 3: x = 5."
+  },
+  {
+    "id": "var3",
+    "category": "numberProperties",
+    "difficulty": "hard",
+    "text": "A man's age is 3 times his son's age. In 10 years, the man will be twice the son's age. How old is the son now?",
+    "choices": [
+      "5 years",
+      "8 years",
+      "10 years",
+      "12 years",
+      "15 years"
+    ],
+    "correct": 2,
+    "explanation": "Let son = x, father = 3x.\nIn 10 years: 3x + 10 = 2(x + 10).\n3x + 10 = 2x + 20. x = 10 years."
+  },
+  {
+    "id": "var4",
+    "category": "numberProperties",
+    "difficulty": "hard",
+    "text": "Two numbers are in the ratio 3:5 and their difference is 12. What is the larger number?",
+    "choices": [
+      "15",
+      "18",
+      "20",
+      "30",
+      "36"
+    ],
+    "correct": 3,
+    "explanation": "Let numbers be 3k and 5k. Difference: 5k − 3k = 12.\n2k = 12, k = 6. Larger: 5 × 6 = 30."
+  },
+  {
+    "id": "np5",
+    "category": "numberProperties",
+    "difficulty": "easy",
+    "text": "LCM of 12 and 18?",
+    "choices": [
+      "6",
+      "18",
+      "36",
+      "72",
+      "216"
+    ],
+    "correct": 2,
+    "explanation": "12=2²×3. 18=2×3². LCM=2²×3²=36.\nOr: LCM=12×18/GCD(12,18)=216/6=36."
+  },
+  {
+    "id": "np6",
+    "category": "numberProperties",
+    "difficulty": "easy",
+    "text": "How many prime numbers between 1 and 20?",
+    "choices": [
+      "6",
+      "7",
+      "8",
+      "9",
+      "10"
+    ],
+    "correct": 2,
+    "explanation": "Primes: 2,3,5,7,11,13,17,19 = 8 primes.\n1 is NOT prime. 2 is the only even prime."
+  },
+  {
+    "id": "np7",
+    "category": "numberProperties",
+    "difficulty": "easy",
+    "text": "If n is even, which is always odd?",
+    "choices": [
+      "n+2",
+      "n²",
+      "2n+1",
+      "n/2",
+      "3n"
+    ],
+    "correct": 2,
+    "explanation": "n even → 2n=even → 2n+1=odd. Always.\nn+2=even, n²=even, n/2 could be either, 3n=even."
+  },
+  {
+    "id": "np8",
+    "category": "numberProperties",
+    "difficulty": "easy",
+    "text": "Sum of first 10 positive integers?",
+    "choices": [
+      "45",
+      "50",
+      "55",
+      "60",
+      "100"
+    ],
+    "correct": 2,
+    "explanation": "Sum=n(n+1)/2=10×11/2=55.\nEssential GMAT formula: sum of 1 to n = n(n+1)/2."
+  },
+  {
+    "id": "np9",
+    "category": "numberProperties",
+    "difficulty": "medium",
+    "text": "Units digit of 7^100?",
+    "choices": [
+      "1",
+      "3",
+      "7",
+      "9",
+      "0"
+    ],
+    "correct": 0,
+    "explanation": "Powers of 7 cycle: 7¹→7, 7²→9, 7³→3, 7⁴→1, then repeats.\nPeriod=4. 100÷4=25 rem 0. Position 4→units digit 1."
+  },
+  {
+    "id": "np10",
+    "category": "numberProperties",
+    "difficulty": "medium",
+    "text": "How many trailing zeros in 25!?",
+    "choices": [
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "correct": 3,
+    "explanation": "Trailing zeros=factors of 5 in n!.\n⌊25/5⌋+⌊25/25⌋=5+1=6.\nFormula: ⌊n/5⌋+⌊n/25⌋+⌊n/125⌋+..."
+  },
+  {
+    "id": "np11",
+    "category": "numberProperties",
+    "difficulty": "medium",
+    "text": "If x²−5x+6=0, what are the values of x?",
+    "choices": [
+      "1 and 6",
+      "2 and 3",
+      "−2 and −3",
+      "1 and 5",
+      "−1 and 6"
+    ],
+    "correct": 1,
+    "explanation": "Factor: (x−2)(x−3)=0 → x=2 or x=3.\nCheck: 2+3=5=−(−5) ✓ and 2×3=6 ✓"
+  },
+  {
+    "id": "np12",
+    "category": "numberProperties",
+    "difficulty": "medium",
+    "text": "Three consecutive odd numbers sum to 81. What is the largest?",
+    "choices": [
+      "25",
+      "27",
+      "29",
+      "31",
+      "33"
+    ],
+    "correct": 2,
+    "explanation": "Let them be n,n+2,n+4. Sum=3n+6=81 → n=25.\nLargest=29. Shortcut: middle=81/3=27, largest=29."
+  },
+  {
+    "id": "np13",
+    "category": "numberProperties",
+    "difficulty": "hard",
+    "text": "Remainder when 2^50 is divided by 7?",
+    "choices": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "correct": 3,
+    "explanation": "2^1 mod 7=2, 2^2=4, 2^3=1, 2^4=2, 2^5=4, 2^6=1...\nCycle {2,4,1} period 3. 50÷3=16 rem 2 → position 2→4."
+  },
+  {
+    "id": "np14",
+    "category": "numberProperties",
+    "difficulty": "hard",
+    "text": "Integers 1-1000 divisible by 3 or 5 (inclusive)?",
+    "choices": [
+      "333",
+      "400",
+      "467",
+      "534",
+      "600"
+    ],
+    "correct": 2,
+    "explanation": "By 3: ⌊1000/3⌋=333. By 5: ⌊1000/5⌋=200. By 15: ⌊1000/15⌋=66.\nBy inclusion-exclusion: 333+200−66=467."
+  },
+  {
+    "id": "np15",
+    "category": "numberProperties",
+    "difficulty": "hard",
+    "text": "Smallest positive integer with exactly 12 factors?",
+    "choices": [
+      "60",
+      "72",
+      "96",
+      "108",
+      "120"
+    ],
+    "correct": 0,
+    "explanation": "12=(2+1)(1+1)(1+1) → 2²×3×5=60.\n12=(3+1)(2+1) → 2³×3²=72.\n12=(5+1)(1+1) → 2⁵×3=96.\nSmallest is 60. Factors of 60: 1,2,3,4,5,6,10,12,15,20,30,60 → 12 ✓"
+  },
+  {
+    "id": "np16",
+    "category": "numberProperties",
+    "difficulty": "hard",
+    "text": "If the product of two consecutive positive integers is 240, what is their sum?",
+    "choices": [
+      "29",
+      "31",
+      "33",
+      "35",
+      "37"
+    ],
+    "correct": 1,
+    "explanation": "n(n+1)=240. n²+n−240=0.\nn=(−1+√961)/2=(−1+31)/2=15. So 15×16=240.\nSum=15+16=31."
+  }
+]

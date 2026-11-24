@@ -1,0 +1,272 @@
+[
+  {
+    "id": "wr1",
+    "category": "workRate",
+    "difficulty": "easy",
+    "text": "Machine A can complete a job in 8 hours. Machine B can complete the same job in 12 hours. If both machines work together, how many hours will it take to complete the job?",
+    "choices": [
+      "3.2 hours",
+      "4.8 hours",
+      "5.6 hours",
+      "6.4 hours",
+      "10 hours"
+    ],
+    "correct": 1,
+    "explanation": "Machine A's rate: 1/8 per hour. Machine B's rate: 1/12 per hour.\nCombined rate: 1/8 + 1/12 = 3/24 + 2/24 = 5/24 per hour.\nTime to complete job: 1 ÷ (5/24) = 24/5 = 4.8 hours.\n\nFormula shortcut: t = (a×b)/(a+b) = (8×12)/(8+12) = 96/20 = 4.8"
+  },
+  {
+    "id": "wr2",
+    "category": "workRate",
+    "difficulty": "easy",
+    "text": "Worker X can paint a fence in 6 hours. Worker Y can paint the same fence in 9 hours. Working together, how long will it take to paint the fence?",
+    "choices": [
+      "2.5 hours",
+      "3.0 hours",
+      "3.6 hours",
+      "4.5 hours",
+      "7.5 hours"
+    ],
+    "correct": 2,
+    "explanation": "Worker X's rate: 1/6 per hour. Worker Y's rate: 1/9 per hour.\nCombined rate: 1/6 + 1/9 = 3/18 + 2/18 = 5/18 per hour.\nTime: 1 ÷ (5/18) = 18/5 = 3.6 hours.\n\nShortcut: t = (6×9)/(6+9) = 54/15 = 3.6"
+  },
+  {
+    "id": "wr3",
+    "category": "workRate",
+    "difficulty": "medium",
+    "text": "Machine P can complete a task in 10 hours. Machine Q can complete it in 15 hours. They work together for 2 hours, then Q breaks down. P continues alone. How many additional hours does P need?",
+    "choices": [
+      "4 hours",
+      "5 hours",
+      "6.67 hours",
+      "10 hours",
+      "13.33 hours"
+    ],
+    "correct": 2,
+    "explanation": "Combined rate: 1/10 + 1/15 = 3/30 + 2/30 = 5/30 = 1/6 per hour.\nWork completed in 2 hours: 2 × 1/6 = 1/3.\nRemaining work: 2/3.\nP's rate: 1/10 per hour.\nAdditional time: (2/3) ÷ (1/10) = 20/3 ≈ 6.67 hours."
+  },
+  {
+    "id": "wr4",
+    "category": "workRate",
+    "difficulty": "medium",
+    "text": "Pipe A fills a pool in 12 hours. Pipe B fills it in 18 hours. A drain empties a full pool in 36 hours. If all three are open, how long to fill the pool?",
+    "choices": [
+      "6 hours",
+      "9 hours",
+      "11.4 hours",
+      "15 hours",
+      "20 hours"
+    ],
+    "correct": 1,
+    "explanation": "Pipe A rate: 1/12 per hour. Pipe B rate: 1/18 per hour. Drain rate: −1/36 per hour.\nNet rate: 1/12 + 1/18 − 1/36 = 3/36 + 2/36 − 1/36 = 4/36 = 1/9 per hour.\nTime to fill: 1 ÷ (1/9) = 9 hours."
+  },
+  {
+    "id": "wr5",
+    "category": "workRate",
+    "difficulty": "hard",
+    "text": "Workers A, B, and C complete a project in 12, 18, and 24 hours respectively. A works alone for 4 hours. Then B joins for 3 hours. Then C joins. How long does C work?",
+    "choices": [
+      "0.5 hours",
+      "1.05 hours",
+      "1.38 hours",
+      "2.5 hours",
+      "3.2 hours"
+    ],
+    "correct": 2,
+    "explanation": "A's rate: 1/12, B's rate: 1/18, C's rate: 1/24.\nAfter A works 4 hours: 4/12 = 1/3 completed.\nAfter A+B work 3 more hours: 3(1/12 + 1/18) = 3(5/36) = 15/36 = 5/12.\nTotal: 1/3 + 5/12 = 4/12 + 5/12 = 9/12 = 3/4.\nRemaining: 1/4.\nAll three work: rate = 1/12 + 1/18 + 1/24 = 6/72 + 4/72 + 3/72 = 13/72.\nTime: (1/4) ÷ (13/72) = 72/52 = 18/13 ≈ 1.38 hours."
+  },
+  {
+    "id": "wr6",
+    "category": "workRate",
+    "difficulty": "hard",
+    "text": "A cistern is filled by pipe A in 20 hours, emptied by pipe B in 30 hours, and filled by pipe C in 40 hours. All three are open and the cistern is 1/4 full. How long to completely fill it?",
+    "choices": [
+      "12 hours",
+      "15 hours",
+      "18 hours",
+      "22 hours",
+      "25 hours"
+    ],
+    "correct": 2,
+    "explanation": "Net rate: 1/20 − 1/30 + 1/40 = 6/120 − 4/120 + 3/120 = 5/120 = 1/24 per hour.\nNeed to fill: 1 − 1/4 = 3/4.\nTime: (3/4) ÷ (1/24) = (3/4) × 24 = 18 hours."
+  },
+  {
+    "id": "wr7",
+    "category": "workRate",
+    "difficulty": "easy",
+    "text": "Pipe A fills a tank in 5 hours. Pipe B fills it in 10 hours. Working together, how long to fill the tank?",
+    "choices": [
+      "2.5 hours",
+      "3 hours",
+      "3.33 hours",
+      "4 hours",
+      "7.5 hours"
+    ],
+    "correct": 2,
+    "explanation": "Rate A=1/5, Rate B=1/10. Combined=1/5+1/10=3/10.\nTime=10/3≈3.33 hours. Shortcut: (5×10)/(5+10)=50/15≈3.33"
+  },
+  {
+    "id": "wr8",
+    "category": "workRate",
+    "difficulty": "easy",
+    "text": "A can do a job in 20 days. B can do it in 30 days. They work together for 6 days. What fraction of the work is left?",
+    "choices": [
+      "1/4",
+      "1/3",
+      "2/5",
+      "1/2",
+      "3/5"
+    ],
+    "correct": 3,
+    "explanation": "Combined rate=1/20+1/30=3/60+2/60=5/60=1/12 per day.\nIn 6 days: 6×1/12=1/2 done. Remaining=1/2."
+  },
+  {
+    "id": "wr9",
+    "category": "workRate",
+    "difficulty": "easy",
+    "text": "Machine X produces 80 widgets/hr, Machine Y produces 120/hr. How long for both to produce 600 widgets together?",
+    "choices": [
+      "2 hours",
+      "2.5 hours",
+      "3 hours",
+      "3.5 hours",
+      "4 hours"
+    ],
+    "correct": 2,
+    "explanation": "Combined rate: 80+120=200 widgets/hr. Time=600/200=3 hours."
+  },
+  {
+    "id": "wr10",
+    "category": "workRate",
+    "difficulty": "easy",
+    "text": "If 6 workers build a wall in 10 days, how many days will 15 workers take?",
+    "choices": [
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "correct": 2,
+    "explanation": "Total work=6×10=60 worker-days. With 15: 60/15=4 days.\nInverse proportion: more workers → fewer days."
+  },
+  {
+    "id": "wr11",
+    "category": "workRate",
+    "difficulty": "medium",
+    "text": "A fills a pool in 8 hrs, B fills it in 12 hrs. A drain empties it in 24 hrs. All open from empty — how long to fill?",
+    "choices": [
+      "4 hours",
+      "5 hours",
+      "6 hours",
+      "8 hours",
+      "10 hours"
+    ],
+    "correct": 2,
+    "explanation": "Net rate=1/8+1/12−1/24=3/24+2/24−1/24=4/24=1/6 per hr.\nTime=6 hours."
+  },
+  {
+    "id": "wr12",
+    "category": "workRate",
+    "difficulty": "medium",
+    "text": "A and B together finish a job in 12 days. A alone takes 20 days. How long does B alone take?",
+    "choices": [
+      "25",
+      "28",
+      "30",
+      "32",
+      "36"
+    ],
+    "correct": 2,
+    "explanation": "1/A+1/B=1/12. 1/20+1/B=1/12.\n1/B=1/12−1/20=5/60−3/60=2/60=1/30. B=30 days."
+  },
+  {
+    "id": "wr13",
+    "category": "workRate",
+    "difficulty": "medium",
+    "text": "A completes a task in 10 hours. B is 50% more efficient than A. How long together?",
+    "choices": [
+      "3 hours",
+      "4 hours",
+      "5 hours",
+      "6 hours",
+      "7.5 hours"
+    ],
+    "correct": 1,
+    "explanation": "A rate=1/10. B rate=1.5×(1/10)=3/20.\nCombined=1/10+3/20=2/20+3/20=5/20=1/4. Time=4 hours."
+  },
+  {
+    "id": "wr14",
+    "category": "workRate",
+    "difficulty": "medium",
+    "text": "A reservoir is filled by Inlet A in 20 hrs, emptied by Outlet B in 30 hrs. Both open — how long to fill from empty?",
+    "choices": [
+      "40 hours",
+      "50 hours",
+      "60 hours",
+      "70 hours",
+      "80 hours"
+    ],
+    "correct": 2,
+    "explanation": "Net rate=1/20−1/30=3/60−2/60=1/60 per hr. Time=60 hours."
+  },
+  {
+    "id": "wr15",
+    "category": "workRate",
+    "difficulty": "hard",
+    "text": "A does 2/3 of a job in 16 days, then B finishes the rest in 8 days. How long would both take together?",
+    "choices": [
+      "10",
+      "12",
+      "14.4",
+      "16",
+      "18"
+    ],
+    "correct": 1,
+    "explanation": "A does 2/3 in 16 days → full job in 24 days. Rate A=1/24.\nB does 1/3 in 8 days → full job in 24 days. Rate B=1/24.\nTogether=1/24+1/24=2/24=1/12. Time=12 days."
+  },
+  {
+    "id": "wr16",
+    "category": "workRate",
+    "difficulty": "hard",
+    "text": "Pool: Inlet1 fills in 10 hrs, Inlet2 in 30 hrs, Drain empties in 20 hrs. Pool is 1/3 full. All open — time to fill completely?",
+    "choices": [
+      "5 hours",
+      "6 hours",
+      "7 hours",
+      "8 hours",
+      "10 hours"
+    ],
+    "correct": 3,
+    "explanation": "Net rate=1/10+1/30−1/20=6/60+2/60−3/60=5/60=1/12 per hr.\nNeed to fill 2/3. Time=(2/3)÷(1/12)=8 hours."
+  },
+  {
+    "id": "wr17",
+    "category": "workRate",
+    "difficulty": "hard",
+    "text": "A takes 3 days more than A+B together, B takes 8 days more than A+B together. How many days does A+B take together?",
+    "choices": [
+      "2√6",
+      "4",
+      "5",
+      "√24",
+      "6"
+    ],
+    "correct": 3,
+    "explanation": "Let t=together time. A alone=t+3, B alone=t+8.\n1/(t+3)+1/(t+8)=1/t → t(2t+11)=(t+3)(t+8)=t²+11t+24.\n2t²+11t=t²+11t+24 → t²=24 → t=√24=2√6≈4.9 days."
+  },
+  {
+    "id": "wr18",
+    "category": "workRate",
+    "difficulty": "hard",
+    "text": "10 men finish a job in 15 days. After 5 days, 5 more men join. How many more days to finish?",
+    "choices": [
+      "5",
+      "6",
+      "6.67",
+      "7.5",
+      "10"
+    ],
+    "correct": 2,
+    "explanation": "Total work=10×15=150 man-days. Done in 5 days: 10×5=50.\nRemaining=100. Workers now=15. Days=100/15=6.67 days."
+  }
+]

@@ -1,0 +1,242 @@
+[
+  {
+    "id": "mix1",
+    "category": "mixture",
+    "difficulty": "easy",
+    "text": "A chemist mixes 100 liters of 40% acid with 50 liters of 20% acid. What is the concentration of the mixture?",
+    "choices": [
+      "25%",
+      "30%",
+      "33.33%",
+      "35%",
+      "40%"
+    ],
+    "correct": 2,
+    "explanation": "Acid from first: 100 × 0.40 = 40L. Acid from second: 50 × 0.20 = 10L.\nTotal acid: 50L. Total volume: 150L.\nConcentration: 50 ÷ 150 = 33.33%."
+  },
+  {
+    "id": "mix2",
+    "category": "mixture",
+    "difficulty": "medium",
+    "text": "Coffee worth $12/lb is mixed with coffee worth $8/lb to make 50 lbs of mixture worth $10/lb. How many pounds of $12 coffee were used?",
+    "choices": [
+      "15 lbs",
+      "20 lbs",
+      "25 lbs",
+      "30 lbs",
+      "35 lbs"
+    ],
+    "correct": 2,
+    "explanation": "Let x = lbs of $12 coffee. 12x + 8(50−x) = 10(50).\n12x + 400 − 8x = 500. 4x = 100. x = 25 lbs.\n\nAlligation shortcut: ratio = (10−8):(12−10) = 2:2 = 1:1, so 25 lbs each."
+  },
+  {
+    "id": "mix3",
+    "category": "mixture",
+    "difficulty": "medium",
+    "text": "A trader mixes 30 kg of rice at $15/kg with 20 kg at $20/kg. At what price per kg should the mixture be sold for 20% profit?",
+    "choices": [
+      "$17",
+      "$18",
+      "$19",
+      "$20.40",
+      "$21.50"
+    ],
+    "correct": 3,
+    "explanation": "Total cost: 30(15) + 20(20) = 450 + 400 = $850.\nCost per kg: 850 ÷ 50 = $17/kg.\nSelling price for 20% profit: 17 × 1.20 = $20.40/kg."
+  },
+  {
+    "id": "mix4",
+    "category": "mixture",
+    "difficulty": "hard",
+    "text": "How much 90% alcohol solution must be mixed with 200 ml of 50% alcohol solution to get a 70% solution?",
+    "choices": [
+      "100 ml",
+      "150 ml",
+      "200 ml",
+      "250 ml",
+      "300 ml"
+    ],
+    "correct": 2,
+    "explanation": "Let x = ml of 90% solution. 0.90x + 0.50(200) = 0.70(x+200).\n0.90x + 100 = 0.70x + 140. 0.20x = 40. x = 200 ml."
+  },
+  {
+    "id": "mix5",
+    "category": "mixture",
+    "difficulty": "hard",
+    "text": "Three teas are mixed: 10 kg at $20/kg, 15 kg at $16/kg, and 25 kg at $12/kg. What is the cost per kg of the mixture?",
+    "choices": [
+      "$14",
+      "$14.80",
+      "$15.20",
+      "$16",
+      "$17"
+    ],
+    "correct": 1,
+    "explanation": "Total cost: 10(20) + 15(16) + 25(12) = 200 + 240 + 300 = $740.\nTotal weight: 50 kg. Cost per kg: 740 ÷ 50 = $14.80/kg."
+  },
+  {
+    "id": "var5",
+    "category": "mixture",
+    "difficulty": "easy",
+    "text": "In a cement-sand mixture, the ratio is 1:3. How many kg of sand are needed for 8 kg of cement?",
+    "choices": [
+      "6 kg",
+      "12 kg",
+      "24 kg",
+      "32 kg",
+      "40 kg"
+    ],
+    "correct": 2,
+    "explanation": "Ratio cement:sand = 1:3. If cement = 8 kg, sand = 3 × 8 = 24 kg."
+  },
+  {
+    "id": "mix6",
+    "category": "mixture",
+    "difficulty": "easy",
+    "text": "Mix 20L water with 80L milk. Milk concentration?",
+    "choices": [
+      "60%",
+      "70%",
+      "75%",
+      "80%",
+      "85%"
+    ],
+    "correct": 3,
+    "explanation": "Milk=80L, Total=100L. Concentration=80/100=80%."
+  },
+  {
+    "id": "mix7",
+    "category": "mixture",
+    "difficulty": "easy",
+    "text": "Mix 5 kg rice at $3/kg with 15 kg at $5/kg. Price per kg?",
+    "choices": [
+      "$3.50",
+      "$4.00",
+      "$4.50",
+      "$5.00",
+      "$5.50"
+    ],
+    "correct": 2,
+    "explanation": "Cost: 5(3)+15(5)=15+75=$90. Weight=20 kg. Price=$90/20=$4.50."
+  },
+  {
+    "id": "mix8",
+    "category": "mixture",
+    "difficulty": "easy",
+    "text": "200g of 30% salt solution. How much water to add to make it 20%?",
+    "choices": [
+      "50g",
+      "75g",
+      "100g",
+      "120g",
+      "150g"
+    ],
+    "correct": 2,
+    "explanation": "Salt=200×0.3=60g. After adding w grams water:\n60/(200+w)=0.20 → 60=40+0.2w → w=100g.\nCheck: 60/300=20% ✓"
+  },
+  {
+    "id": "mix9",
+    "category": "mixture",
+    "difficulty": "medium",
+    "text": "In what ratio must water be mixed with milk at $12/L to get mixture worth $8/L?",
+    "choices": [
+      "1:1",
+      "1:2",
+      "2:3",
+      "1:3",
+      "2:5"
+    ],
+    "correct": 1,
+    "explanation": "Alligation: water=$0, milk=$12, mean=$8.\nRatio water:milk=(12−8):(8−0)=4:8=1:2."
+  },
+  {
+    "id": "mix10",
+    "category": "mixture",
+    "difficulty": "medium",
+    "text": "60L of 40% alcohol. How much drained and replaced with pure alcohol to make 50%?",
+    "choices": [
+      "6L",
+      "8L",
+      "10L",
+      "12L",
+      "15L"
+    ],
+    "correct": 2,
+    "explanation": "Drain x liters. Alcohol after=0.4(60−x)+x=0.5×60.\n24−0.4x+x=30 → 0.6x=6 → x=10L.\nCheck: drain 10L→50L with 20L alcohol. Add 10L pure→30L in 60L=50% ✓"
+  },
+  {
+    "id": "mix11",
+    "category": "mixture",
+    "difficulty": "medium",
+    "text": "Type A tea $10/kg, Type B $15/kg. How many kg of B to mix with 12 kg of A for $12/kg mixture?",
+    "choices": [
+      "4 kg",
+      "6 kg",
+      "8 kg",
+      "10 kg",
+      "12 kg"
+    ],
+    "correct": 2,
+    "explanation": "10(12)+15x=12(12+x). 120+15x=144+12x. 3x=24. x=8 kg.\nAlligation: A:B=(15−12):(12−10)=3:2. B=12×(2/3)=8 ✓"
+  },
+  {
+    "id": "mix12",
+    "category": "mixture",
+    "difficulty": "hard",
+    "text": "60L mixture has milk:water = 2:1. How much water to add to make ratio 1:2?",
+    "choices": [
+      "20L",
+      "40L",
+      "60L",
+      "80L",
+      "100L"
+    ],
+    "correct": 2,
+    "explanation": "Milk=60×2/3=40L. Water=60×1/3=20L.\nNeed milk:water=1:2 → 40:(20+w)=1:2 → 80=20+w → w=60L.\nCheck: 40:80=1:2 ✓"
+  },
+  {
+    "id": "mix13",
+    "category": "mixture",
+    "difficulty": "hard",
+    "text": "A jar has 50L milk. 5L removed and replaced with water. Done 3 times. How much milk remains?",
+    "choices": [
+      "36.45L",
+      "38.5L",
+      "40L",
+      "40.5L",
+      "42L"
+    ],
+    "correct": 0,
+    "explanation": "After each cycle, milk multiplied by (50−5)/50=0.9.\nAfter 3 cycles: 50×0.9³=50×0.729=36.45L.\n\nStep by step:\nCycle 1: remove 5L milk → 45L. Add water → 45L milk in 50L.\nCycle 2: remove 5L of 90% → 4.5L milk removed → 40.5L milk.\nCycle 3: remove 5L of 81% → 4.05L milk removed → 36.45L milk ✓"
+  },
+  {
+    "id": "mix14",
+    "category": "mixture",
+    "difficulty": "hard",
+    "text": "8L of 25% acid + 12L of 40% acid + 5L water. Final acid concentration?",
+    "choices": [
+      "24%",
+      "27.2%",
+      "30%",
+      "32%",
+      "35%"
+    ],
+    "correct": 1,
+    "explanation": "Acid: 8×0.25+12×0.40=2+4.8=6.8L. Total=8+12+5=25L.\nConcentration=6.8/25=27.2%."
+  },
+  {
+    "id": "mix15",
+    "category": "mixture",
+    "difficulty": "hard",
+    "text": "A 40% alcohol solution and a 70% solution are mixed to get 10L of 52% solution. How much of the 40% solution is used?",
+    "choices": [
+      "4L",
+      "5L",
+      "6L",
+      "7L",
+      "8L"
+    ],
+    "correct": 2,
+    "explanation": "Let x=liters of 40%. Then (10−x)=liters of 70%.\n0.4x+0.7(10−x)=0.52×10.\n0.4x+7−0.7x=5.2 → −0.3x=−1.8 → x=6L.\nCheck: 0.4(6)+0.7(4)=2.4+2.8=5.2 → 52% ✓"
+  }
+]

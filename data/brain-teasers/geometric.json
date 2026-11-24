@@ -1,0 +1,5 @@
+[
+  {"id":"bt_gm1","category":"geometric","difficulty":"medium","text":"How many squares of ALL sizes (1×1, 2×2, ... 8×8) can be found on a standard 8×8 chessboard?","choices":["64","65","128","204","256"],"correct":3,"explanation":"Count by size: 8²+7²+6²+5²+4²+3²+2²+1² = 64+49+36+25+16+9+4+1 = 204. Formula: n(n+1)(2n+1)/6 = 8×9×17/6 = 204."},
+  {"id":"bt_gm2","category":"geometric","difficulty":"medium","text":"You have exactly 6 matchsticks of equal length. What is the maximum number of equilateral triangles you can form (each stick = one full side)?","choices":["2","3","4","6","8"],"correct":2,"explanation":"In 2D: max 2 triangles. In 3D: form a tetrahedron (triangular pyramid) — it has 4 equilateral faces and exactly 6 edges. Answer: 4."},
+  {"id":"bt_gm3","category":"geometric","difficulty":"easy","text":"What is the minimum number of straight cuts to divide a circular pizza into exactly 7 pieces? (Pieces need NOT be equal.)","choices":["2","3","4","6","7"],"correct":1,"explanation":"Max regions with n cuts: R(n) = n(n+1)/2 + 1. With 3 cuts: 3(4)/2+1 = 7 ✓. Key: each new cut must cross all previous cuts inside the circle."}
+]
